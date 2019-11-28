@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="argos"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\plugins\;CMake Files\plugins\robots\;CMake Files\plugins\robots\krembot\;CMake Files\plugins\robots\generic\;CMake Files\plugins\robots\eye-bot\;CMake Files\plugins\robots\e-puck\;CMake Files\plugins\robots\spiri\;CMake Files\plugins\robots\prototype\;CMake Files\plugins\simulator\;CMake Files\plugins\simulator\visualizations\;CMake Files\plugins\simulator\visualizations\qt-opengl\;CMake Files\plugins\simulator\physics_engines\;CMake Files\plugins\simulator\physics_engines\dynamics2d\;CMake Files\plugins\simulator\physics_engines\dynamics3d\;CMake Files\plugins\simulator\physics_engines\pointmass3d\;CMake Files\plugins\simulator\media\;CMake Files\plugins\simulator\entities\;CMake Files\cmake\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\;CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\;CMake Files\..\doc\;CMake Files\scripts\;CMake Files\scripts\slackware\;CMake Files\core\;CMake Files\testing\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="argos3plugin_simulator_krembot">
+				<Option output="/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/libargos3plugin_simulator_krembot.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DARGOS_simulator_BUILD"/>
+					<Add option="-DHAVE_PTHREAD_H"/>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add directory="/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot"/>
+					<Add directory="/home/eli/ws/argos3/src/plugins/robots/krembot"/>
+					<Add directory="/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/argos3plugin_simulator_krembot_autogen/include"/>
+					<Add directory="/home/eli/ws/argos3/src"/>
+					<Add directory="/home/eli/ws/argos3/src/cmake-build-debug"/>
+					<Add directory="/usr/include/lua5.2"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/Makefile&quot;  VERBOSE=1 argos3plugin_simulator_krembot"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="argos3plugin_simulator_krembot/fast">
+				<Option output="/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/libargos3plugin_simulator_krembot.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DARGOS_simulator_BUILD"/>
+					<Add option="-DHAVE_PTHREAD_H"/>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add directory="/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot"/>
+					<Add directory="/home/eli/ws/argos3/src/plugins/robots/krembot"/>
+					<Add directory="/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/argos3plugin_simulator_krembot_autogen/include"/>
+					<Add directory="/home/eli/ws/argos3/src"/>
+					<Add directory="/home/eli/ws/argos3/src/cmake-build-debug"/>
+					<Add directory="/usr/include/lua5.2"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++-64"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/Makefile&quot;  VERBOSE=1 argos3plugin_simulator_krembot/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="argos3plugin_simulator_krembot_autogen">
+				<Option working_dir="/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/Makefile&quot;  VERBOSE=1 argos3plugin_simulator_krembot_autogen"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/eli/ws/argos3/src/cmake-build-debug/plugins/robots/krembot/argos3plugin_simulator_krembot_autogen/mocs_compilation.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/control_interface/ci_krembot_base_ground_sensor.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/control_interface/ci_krembot_base_ground_sensor.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/control_interface/ci_krembot_distance_scanner_actuator.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/control_interface/ci_krembot_distance_scanner_actuator.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/control_interface/ci_krembot_distance_scanner_sensor.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/control_interface/ci_krembot_distance_scanner_sensor.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/control_interface/ci_krembot_encoder_sensor.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/control_interface/ci_krembot_encoder_sensor.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/control_interface/ci_krembot_light_sensor.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/control_interface/ci_krembot_light_sensor.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/control_interface/ci_krembot_motor_ground_sensor.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/control_interface/ci_krembot_motor_ground_sensor.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/control_interface/ci_krembot_proximity_sensor.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/control_interface/ci_krembot_proximity_sensor.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/control_interface/ci_krembot_turret_actuator.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/control_interface/ci_krembot_turret_actuator.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/control_interface/ci_krembot_turret_encoder_sensor.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/control_interface/ci_krembot_turret_encoder_sensor.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/dynamics2d_krembot_model.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/dynamics2d_krembot_model.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_base_ground_rotzonly_sensor.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_base_ground_rotzonly_sensor.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_distance_scanner_default_actuator.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_distance_scanner_default_actuator.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_distance_scanner_equipped_entity.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_distance_scanner_equipped_entity.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_distance_scanner_rotzonly_sensor.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_distance_scanner_rotzonly_sensor.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_entity.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_entity.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_light_rotzonly_sensor.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_light_rotzonly_sensor.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_motor_ground_rotzonly_sensor.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_motor_ground_rotzonly_sensor.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_proximity_default_sensor.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_proximity_default_sensor.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_turret_default_actuator.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_turret_default_actuator.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_turret_encoder_default_sensor.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_turret_encoder_default_sensor.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_turret_entity.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/krembot_turret_entity.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/pointmass3d_krembot_model.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/pointmass3d_krembot_model.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/qtopengl_krembot.cpp">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/simulator/qtopengl_krembot.h">
+			<Option target="argos3plugin_simulator_krembot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\plugins\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\plugins\robots\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/krembot/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\plugins\robots\krembot\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/generic/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\plugins\robots\generic\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/eye-bot/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\plugins\robots\eye-bot\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/e-puck/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\plugins\robots\e-puck\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/spiri/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\plugins\robots\spiri\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/robots/prototype/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\plugins\robots\prototype\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/simulator/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\plugins\simulator\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/simulator/visualizations/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\plugins\simulator\visualizations\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/simulator/visualizations/qt-opengl/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\plugins\simulator\visualizations\qt-opengl\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/simulator/physics_engines/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\plugins\simulator\physics_engines\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/simulator/physics_engines/dynamics2d/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\plugins\simulator\physics_engines\dynamics2d\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/simulator/physics_engines/dynamics3d/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\plugins\simulator\physics_engines\dynamics3d\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/simulator/physics_engines/pointmass3d/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\plugins\simulator\physics_engines\pointmass3d\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/simulator/media/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\plugins\simulator\media\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/plugins/simulator/entities/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\plugins\simulator\entities\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/cmake/ARGoSBuildChecks.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/cmake/ARGoSBuildFlags.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/cmake/ARGoSBuildOptions.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/cmake/ARGoSCheckQTOpenGL.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/cmake/ARGoSCreateDocs.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/cmake/ARGoSPackaging.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/cmake/FindASCIIDoc.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/cmake/FindDLFCN.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/cmake/FindFreeImage.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/cmake/FindGooglePerfTools.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/cmake/FindLua52.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/cmake/FindPthreads.cmake">
+			<Option virtualFolder="CMake Files\cmake\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/../doc/Doxyfile_embedded.in">
+			<Option virtualFolder="CMake Files\..\doc\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/../doc/Doxyfile_standalone.in">
+			<Option virtualFolder="CMake Files\..\doc\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/scripts/argos3.conf.in">
+			<Option virtualFolder="CMake Files\scripts\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/scripts/argos3.desktop.in">
+			<Option virtualFolder="CMake Files\scripts\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/scripts/argos3.pc.in">
+			<Option virtualFolder="CMake Files\scripts\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/scripts/argos_post_install.sh.in">
+			<Option virtualFolder="CMake Files\scripts\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/scripts/gdbinit.in">
+			<Option virtualFolder="CMake Files\scripts\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/scripts/setup_env.sh.in">
+			<Option virtualFolder="CMake Files\scripts\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/scripts/slackware/argos.SlackBuild.in">
+			<Option virtualFolder="CMake Files\scripts\slackware\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/scripts/slackware/doinst.sh.in">
+			<Option virtualFolder="CMake Files\scripts\slackware\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/scripts/slackware/slack-desc.in">
+			<Option virtualFolder="CMake Files\scripts\slackware\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/core/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\core\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/core/config.h.in">
+			<Option virtualFolder="CMake Files\core\"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/argos3/src/testing/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\testing\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

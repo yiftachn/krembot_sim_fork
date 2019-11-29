@@ -116,7 +116,7 @@ namespace argos {
        * @return An LED by numeric index.
        * @see GetAllLEDs()
        */
-      CLEDEntity& GetLED(UInt32 un_index);
+//      CLEDEntity& GetLED(UInt32 un_index);
 
       /**
        * Returns all the LEDs.

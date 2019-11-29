@@ -167,16 +167,16 @@ namespace argos {
    /****************************************/
    /****************************************/
 
-   CLEDEntity& CLEDEquippedEntity::GetLED(UInt32 un_index) {
-      ARGOS_ASSERT(un_index < m_tLEDs.size(),
-                   "CLEDEquippedEntity::GetLED(), id=\"" <<
-                   GetId() <<
-                   "\": index out of bounds: un_index = " <<
-                   un_index <<
-                   ", m_tLEDs.size() = " <<
-                   m_tLEDs.size());
-      return m_tLEDs[un_index]->LED;
-   }
+//   CLEDEntity& CLEDEquippedEntity::GetLED(UInt32 un_index) {
+//      ARGOS_ASSERT(un_index < m_tLEDs.size(),
+//                   "CLEDEquippedEntity::GetLED(), id=\"" <<
+//                   GetId() <<
+//                   "\": index out of bounds: un_index = " <<
+//                   un_index <<
+//                   ", m_tLEDs.size() = " <<
+//                   m_tLEDs.size());
+//      return m_tLEDs[un_index]->LED;
+//   }
 
    /****************************************/
    /****************************************/

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+export ARGOS_PLUGIN_PATH=/home/eli/ws/krembot_sim/argos3/build_simulator/core:/home/eli/ws/krembot_sim/argos3/build_simulator/testing:/home/eli/ws/krembot_sim/argos3/build_simulator/plugins/robots/e-puck:/home/eli/ws/krembot_sim/argos3/build_simulator/plugins/robots/eye-bot:/home/eli/ws/krembot_sim/argos3/build_simulator/plugins/robots/foot-bot:/home/eli/ws/krembot_sim/argos3/build_simulator/plugins/robots/generic:/home/eli/ws/krembot_sim/argos3/build_simulator/plugins/robots/prototype:/home/eli/ws/krembot_sim/argos3/build_simulator/plugins/robots/spiri:/home/eli/ws/krembot_sim/argos3/build_simulator/plugins/simulator/visualizations/qt-opengl:/home/eli/ws/krembot_sim/argos3/build_simulator/plugins/simulator/entities:/home/eli/ws/krembot_sim/argos3/build_simulator/plugins/simulator/physics_engines/dynamics2d:/home/eli/ws/krembot_sim/argos3/build_simulator/plugins/simulator/physics_engines/dynamics3d:/home/eli/ws/krembot_sim/argos3/build_simulator/plugins/simulator/physics_engines/pointmass3d:/home/eli/ws/krembot_sim/argos3/build_simulator/plugins/simulator/media
+
+export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:${ARGOS_PLUGIN_PATH}

@@ -1,5 +1,3 @@
-project(argos)
-
 #
 # Set minimum required version
 #
@@ -75,9 +73,9 @@ endif(NOT EXISTS ${CMAKE_BINARY_DIR}/argos3)
 #
 add_subdirectory(core)
 add_subdirectory(plugins)
-#if(ARGOS_BUILD_FOR_SIMULATOR)
-#  add_subdirectory(testing)
-#endif(ARGOS_BUILD_FOR_SIMULATOR)
+if(ARGOS_BUILD_FOR_SIMULATOR)
+  add_subdirectory(testing)
+endif(ARGOS_BUILD_FOR_SIMULATOR)
 
 #
 # Create documentation

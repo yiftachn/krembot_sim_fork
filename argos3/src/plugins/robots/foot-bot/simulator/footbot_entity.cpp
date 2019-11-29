@@ -41,7 +41,7 @@ namespace argos {
    static const Real PROXIMITY_SENSOR_RING_RADIUS          = BODY_RADIUS;
    static const CRadians PROXIMITY_SENSOR_RING_START_ANGLE = CRadians(0);//((ARGOS_PI / 12.0f) * 0.5f);
    static const Real PROXIMITY_SENSOR_RING_RANGE           = 0.25f;
-   static const UInt32 NUM_OF_PROXIMITY_SENSORS               = 24;
+   static const UInt32 NUM_OF_PROXIMITY_SENSORS               = 8;
 
    static const Real LED_RING_ELEVATION         = 0.085f;
    static const Real RAB_ELEVATION              = 0.1f;
@@ -52,8 +52,8 @@ namespace argos {
 //   static const CRadians LED_ANGLE_SLICE        = CRadians(ARGOS_PI / 8.0);
 //   static const CRadians HALF_LED_ANGLE_SLICE   = LED_ANGLE_SLICE * 0.5f;
 
-    static const CRadians LED_START_ANGLE           = CRadians((ARGOS_PI / 8) * 0.5f);
-    static const UInt32 NUM_OF_PROXIMITY_LEDS          = 24;
+    static const CRadians LED_START_ANGLE           = CRadians(0 );
+    static const UInt32 NUM_OF_LEDS                 = 8;
 
 
    static const Real OMNIDIRECTIONAL_CAMERA_ELEVATION = 0.288699733f;
@@ -139,8 +139,8 @@ namespace argos {
             CVector3(0.0f, 0.0f, LED_RING_ELEVATION),
             LED_RING_RADIUS,
             LED_START_ANGLE,
-            NUM_OF_PROXIMITY_LEDS,
-            cTurretAnchor, CColor::BLUE);
+            NUM_OF_LEDS,
+            cTurretAnchor);
 //         m_pcLEDEquippedEntity->AddLED(
 //            CVector3(0.0f, 0.0f, BEACON_ELEVATION),
 //            cTurretAnchor);
@@ -300,8 +300,8 @@ namespace argos {
             CVector3(0.0f, 0.0f, LED_RING_ELEVATION),
             LED_RING_RADIUS,
             LED_START_ANGLE,
-            NUM_OF_PROXIMITY_LEDS,
-            cTurretAnchor, CColor::BLUE);
+            NUM_OF_LEDS,
+            cTurretAnchor);
 //         m_pcLEDEquippedEntity->AddLED(
 //            CVector3(0.0f, 0.0f, BEACON_ELEVATION),
 //            cTurretAnchor);

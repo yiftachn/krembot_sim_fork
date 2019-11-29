@@ -93,7 +93,7 @@ namespace argos {
 
    CQTOpenGLFootBot::CQTOpenGLFootBot() :
       m_unVertices(40),
-      m_fLEDAngleSlice(360.0f / 12.0f) {
+      m_fLEDAngleSlice(360.0f / 8.0f) {
       /* Reserve the needed display lists */
       m_unLists = glGenLists(13);
 
@@ -217,7 +217,7 @@ namespace argos {
       /* Place the grippable part of the gripper module (LEDs) */
       glPushMatrix();
       CLEDEquippedEntity& cLEDEquippedEntity = c_entity.GetLEDEquippedEntity();
-      for(UInt32 i = 0; i < 12; i++) {
+      for(UInt32 i = 0; i < 8; i++) {
          const CColor& cColor = cLEDEquippedEntity.GetLED(i).GetColor();
          glRotatef(m_fLEDAngleSlice, 0.0f, 0.0f, 1.0f);
          SetLEDMaterial(cColor.GetRed()   / 255.0f,
@@ -260,11 +260,11 @@ namespace argos {
       /* Place the iMX module */
       glCallList(m_unIMXList);
       /* Place the beacon */
-      const CColor& cBeaconColor = cLEDEquippedEntity.GetLED(12).GetColor();
-      SetLEDMaterial(cBeaconColor.GetRed()   / 255.0f,
-                     cBeaconColor.GetGreen() / 255.0f,
-                     cBeaconColor.GetBlue()  / 255.0f);
-      glCallList(m_unBeaconList);
+//      const CColor& cBeaconColor = cLEDEquippedEntity.GetLED(12).GetColor();
+//      SetLEDMaterial(cBeaconColor.GetRed()   / 255.0f,
+//                     cBeaconColor.GetGreen() / 255.0f,
+//                     cBeaconColor.GetBlue()  / 255.0f);
+//      glCallList(m_unBeaconList);
       /* Place the camera */
       glCallList(m_unCameraList);
    }

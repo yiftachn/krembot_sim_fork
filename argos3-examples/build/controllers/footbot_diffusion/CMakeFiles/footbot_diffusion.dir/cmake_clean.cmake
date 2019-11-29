@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "footbot_diffusion_automoc.cpp"
   "CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o"
   "CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o"
+  "CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o"
   "CMakeFiles/footbot_diffusion.dir/footbot_diffusion_automoc.cpp.o"
   "libfootbot_diffusion.pdb"
   "libfootbot_diffusion.so"

@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/footbot_diffusion.cpp" "/home/eli/ws/krembot_sim/argos3-examples/build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o"
   "/home/eli/ws/krembot_sim/argos3-examples/build/controllers/footbot_diffusion/footbot_diffusion_automoc.cpp" "/home/eli/ws/krembot_sim/argos3-examples/build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion_automoc.cpp.o"
+  "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgb_led.cpp" "/home/eli/ws/krembot_sim/argos3-examples/build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o"
   "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgba_sensor.cpp" "/home/eli/ws/krembot_sim/argos3-examples/build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

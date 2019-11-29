@@ -72,6 +72,7 @@
       -->
       <actuators>
         <differential_steering implementation="default" />
+	<leds                  implementation="default" medium="leds" />
       </actuators>
       <!--
           The <sensors> section contains a list of the sensors used by
@@ -96,6 +97,13 @@
     </footbot_diffusion_controller>
 
   </controllers>
+
+  <!-- ********* -->
+  <!-- * Media * -->
+  <!-- ********* -->
+  <media>
+    <led id="leds" />
+  </media>
 
   <!-- *********************** -->
   <!-- * Arena configuration * -->

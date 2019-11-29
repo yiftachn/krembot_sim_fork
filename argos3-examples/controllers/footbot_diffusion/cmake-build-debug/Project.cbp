@@ -99,6 +99,12 @@
 		<Unit filename="/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/mobile_base.h">
 			<Option target="footbot_diffusion"/>
 		</Unit>
+		<Unit filename="/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgb_led.cpp">
+			<Option target="footbot_diffusion"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgb_led.h">
+			<Option target="footbot_diffusion"/>
+		</Unit>
 		<Unit filename="/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgba_sensor.cpp">
 			<Option target="footbot_diffusion"/>
 		</Unit>

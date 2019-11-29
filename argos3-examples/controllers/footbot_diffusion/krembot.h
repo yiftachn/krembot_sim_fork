@@ -11,6 +11,7 @@
 #include <argos3/core/utility/math/vector2.h>
 #include "mobile_base.h"
 #include "rgba_sensor.h"
+#include "rgb_led.h"
 
 /*
  * All the ARGoS stuff in the 'argos' namespace.
@@ -20,6 +21,12 @@ using namespace argos;
 
 
 class Krembot {
+
+private:
+
+    void test() {
+        //todo: implement tests of all components here
+    }
 
 public:
 
@@ -35,34 +42,34 @@ public:
     MobileBase Base;
 //    CBumpers Bumpers;
 //    Battery Bat;
-//    RGBLed Led;
+    RGBLed Led;
 //    IMUSensor Imu;
-    CCI_FootBotProximitySensor& proximity;
     Krembot(CCI_DifferentialSteeringActuator& wheels,
-            CCI_FootBotProximitySensor& proximity)  :
-            proximity(proximity),
+            CCI_FootBotProximitySensor& proximity,
+            CCI_LEDsActuator & leds)  :
             Base(wheels),
-            RgbaFront("RgbaFront", proximity.GetReadings()[0]),
-            RgbaFrontRight("RgbaFrontRight", proximity.GetReadings()[1]),
-            RgbaRight("RgbaRight", proximity.GetReadings()[2]),
-            RgbaRearRight("RgbaRearRight", proximity.GetReadings()[3]),
-            RgbaRear("RgbaRear", proximity.GetReadings()[4]),
-            RgbaRearLeft("RgbaRearLeft", proximity.GetReadings()[5]),
-            RgbaLeft("RgbaLeft", proximity.GetReadings()[6]),
-            RgbaFrontLeft("RgbaFrontLeft", proximity.GetReadings()[7])
+            RgbaFront("RgbaFront", 0, proximity),
+            RgbaFrontRight("RgbaFrontRight", 1, proximity),
+            RgbaRight("RgbaRight", 2, proximity),
+            RgbaRearRight("RgbaRearRight", 3, proximity),
+            RgbaRear("RgbaRear", 4,  proximity),
+            RgbaRearLeft("RgbaRearLeft", 5, proximity),
+            RgbaLeft("RgbaLeft", 6, proximity),
+            RgbaFrontLeft("RgbaFrontLeft", 7, proximity),
+            Led(leds)
     {
 
     }
 
     
     void setup() {
-
+        Led.write(0,255,0);
     }
 
 
     void loop() {
 
-        std::cout << RgbaFront.readRGBA().Proximity << "| " << proximity.GetReadings()[0].Value << std::endl;
+
     }
 };
 

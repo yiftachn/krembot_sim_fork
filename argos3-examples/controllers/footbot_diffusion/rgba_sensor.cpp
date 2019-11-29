@@ -41,7 +41,7 @@
 RGBAResult RGBASensor::readRGBA()
 {
     RGBAResult result;
-    result.Proximity = m_pcProximity.Value;
+    result.Proximity = m_cProximity.GetReadings()[m_index].Value * 100;
     //todo: fill up colors
 //    i2cMuxSelectMe();
 //    if (!apds_.readAmbientLight(result.Ambient))

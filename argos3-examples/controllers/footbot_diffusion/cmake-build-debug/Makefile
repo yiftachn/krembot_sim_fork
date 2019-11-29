@@ -150,6 +150,33 @@ footbot_diffusion.cpp.s:
 	$(MAKE) -f CMakeFiles/footbot_diffusion.dir/build.make CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.s
 .PHONY : footbot_diffusion.cpp.s
 
+rgb_led.o: rgb_led.cpp.o
+
+.PHONY : rgb_led.o
+
+# target to build an object file
+rgb_led.cpp.o:
+	$(MAKE) -f CMakeFiles/footbot_diffusion.dir/build.make CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o
+.PHONY : rgb_led.cpp.o
+
+rgb_led.i: rgb_led.cpp.i
+
+.PHONY : rgb_led.i
+
+# target to preprocess a source file
+rgb_led.cpp.i:
+	$(MAKE) -f CMakeFiles/footbot_diffusion.dir/build.make CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.i
+.PHONY : rgb_led.cpp.i
+
+rgb_led.s: rgb_led.cpp.s
+
+.PHONY : rgb_led.s
+
+# target to generate assembly for a file
+rgb_led.cpp.s:
+	$(MAKE) -f CMakeFiles/footbot_diffusion.dir/build.make CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.s
+.PHONY : rgb_led.cpp.s
+
 rgba_sensor.o: rgba_sensor.cpp.o
 
 .PHONY : rgba_sensor.o
@@ -189,6 +216,9 @@ help:
 	@echo "... footbot_diffusion.o"
 	@echo "... footbot_diffusion.i"
 	@echo "... footbot_diffusion.s"
+	@echo "... rgb_led.o"
+	@echo "... rgb_led.i"
+	@echo "... rgb_led.s"
 	@echo "... rgba_sensor.o"
 	@echo "... rgba_sensor.i"
 	@echo "... rgba_sensor.s"

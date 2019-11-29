@@ -105,9 +105,33 @@ controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o.provides.build: controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o
 
 
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o: controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/flags.make
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o: ../controllers/footbot_diffusion/rgb_led.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o"
+	cd /home/eli/ws/krembot_sim/argos3-examples/build/controllers/footbot_diffusion && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o -c /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgb_led.cpp
+
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.i"
+	cd /home/eli/ws/krembot_sim/argos3-examples/build/controllers/footbot_diffusion && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgb_led.cpp > CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.i
+
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.s"
+	cd /home/eli/ws/krembot_sim/argos3-examples/build/controllers/footbot_diffusion && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgb_led.cpp -o CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.s
+
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o.requires:
+
+.PHONY : controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o.requires
+
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o.provides: controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o.requires
+	$(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o.provides.build
+.PHONY : controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o.provides
+
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o.provides.build: controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o
+
+
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion_automoc.cpp.o: controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/flags.make
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion_automoc.cpp.o: controllers/footbot_diffusion/footbot_diffusion_automoc.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion_automoc.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion_automoc.cpp.o"
 	cd /home/eli/ws/krembot_sim/argos3-examples/build/controllers/footbot_diffusion && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/footbot_diffusion.dir/footbot_diffusion_automoc.cpp.o -c /home/eli/ws/krembot_sim/argos3-examples/build/controllers/footbot_diffusion/footbot_diffusion_automoc.cpp
 
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion_automoc.cpp.i: cmake_force
@@ -133,6 +157,7 @@ controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion
 footbot_diffusion_OBJECTS = \
 "CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o" \
 "CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o" \
+"CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o" \
 "CMakeFiles/footbot_diffusion.dir/footbot_diffusion_automoc.cpp.o"
 
 # External object files for target footbot_diffusion
@@ -140,10 +165,11 @@ footbot_diffusion_EXTERNAL_OBJECTS =
 
 controllers/footbot_diffusion/libfootbot_diffusion.so: controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o
 controllers/footbot_diffusion/libfootbot_diffusion.so: controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o
+controllers/footbot_diffusion/libfootbot_diffusion.so: controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o
 controllers/footbot_diffusion/libfootbot_diffusion.so: controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion_automoc.cpp.o
 controllers/footbot_diffusion/libfootbot_diffusion.so: controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make
 controllers/footbot_diffusion/libfootbot_diffusion.so: controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX shared module libfootbot_diffusion.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared module libfootbot_diffusion.so"
 	cd /home/eli/ws/krembot_sim/argos3-examples/build/controllers/footbot_diffusion && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/footbot_diffusion.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -153,6 +179,7 @@ controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build: controller
 
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/requires: controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o.requires
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/requires: controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o.requires
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/requires: controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o.requires
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/requires: controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion_automoc.cpp.o.requires
 
 .PHONY : controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/requires

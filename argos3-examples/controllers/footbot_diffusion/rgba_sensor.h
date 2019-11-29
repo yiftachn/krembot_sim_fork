@@ -55,18 +55,20 @@ class RGBASensor
 {
 private:
 
-    uint8_t addr_;
-    std::string m_name;
+    uint8_t m_index = 0;
+    std::string m_name = "";
 
+    argos::CCI_FootBotProximitySensor & m_cProximity;
 
-    const argos::CCI_FootBotProximitySensor::SReading & m_pcProximity;
 
 public:
 //todo: get colors sensor in ctor
     RGBASensor(const std::string name,
-            const argos::CCI_FootBotProximitySensor::SReading & proximitySensor) :
+               uint8_t index,
+               argos::CCI_FootBotProximitySensor & proximity) :
             m_name(name),
-            m_pcProximity(proximitySensor) {};
+            m_index(index),
+            m_cProximity(proximity) {};
 
     inline void init(uint8_t addr) { }
 

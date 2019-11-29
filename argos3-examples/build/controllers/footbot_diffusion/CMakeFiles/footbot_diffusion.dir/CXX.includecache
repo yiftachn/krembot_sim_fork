@@ -43,6 +43,8 @@ mobile_base.h
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/mobile_base.h
 rgba_sensor.h
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgba_sensor.h
+rgb_led.h
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgb_led.h
 
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/krembot_main.h
 krembot.h
@@ -58,6 +60,16 @@ argos3/plugins/robots/foot-bot/control_interface/ci_footbot_proximity_sensor.h
 cstdint
 -
 argos3/plugins/robots/generic/control_interface/ci_differential_steering_actuator.h
+-
+
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgb_led.cpp
+rgb_led.h
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgb_led.h
+
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgb_led.h
+stdint.h
+-
+argos3/plugins/robots/generic/control_interface/ci_leds_actuator.h
 -
 
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgba_sensor.cpp

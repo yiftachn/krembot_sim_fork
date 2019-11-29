@@ -18,9 +18,7 @@ class KrembotMain {
 protected:
     Krembot & krembot;
 public:
-    KrembotMain(Krembot & krembot_in) : krembot(krembot_in) {
-
-    }
+    KrembotMain(Krembot & krembot_in) : krembot(krembot_in) {}
 
     virtual void setup() {
         krembot.setup();

@@ -89,46 +89,19 @@ public:
 
 private:
 
-    Krembot krembot;
+    Krembot * m_pKrembot = nullptr;
+    KrembotMain * m_pKrembotMain = nullptr;
 
    /* Pointer to the differential steering actuator */
-   CCI_DifferentialSteeringActuator* m_pcWheels;
+   CCI_DifferentialSteeringActuator* m_pcWheels = nullptr;
    /* Pointer to the foot-bot proximity sensor */
-   CCI_FootBotProximitySensor* m_pcProximity;
+   CCI_FootBotProximitySensor* m_pcProximity = nullptr;
     /* Pointer to the foot-bot light sensor */
-    CCI_FootBotLightSensor* m_pcLight;
+    CCI_FootBotLightSensor* m_pcLight = nullptr;
     /* Pointer to the LEDs actuator */
-    CCI_LEDsActuator* m_pcLEDs;
+    CCI_LEDsActuator* m_pcLEDs = nullptr;
     /* Pointer to the omnidirectional camera sensor */
-    CCI_ColoredBlobOmnidirectionalCameraSensor* m_pcCamera;
-
-   /*
-    * The following variables are used as parameters for the
-    * algorithm. You can set their value in the <parameters> section
-    * of the XML configuration file, under the
-    * <controllers><footbot_diffusion_controller> section.
-    */
-
-   /* Maximum tolerance for the angle between
-    * the robot heading direction and
-    * the closest obstacle detected. */
-   CDegrees m_cAlpha;
-   /* Maximum tolerance for the proximity reading between
-    * the robot and the closest obstacle.
-    * The proximity reading is 0 when nothing is detected
-    * and grows exponentially to 1 when the obstacle is
-    * touching the robot.
-    */
-   Real m_fDelta;
-   /* Wheel speed. */
-   Real m_fWheelVelocity;
-   /* Angle tolerance range to go straight.
-    * It is set to [-alpha,alpha]. */
-   CRange<CRadians> m_cGoStraightAngleRange;
-
-   KrembotMain * krembot_loop;
-
-   
+    CCI_ColoredBlobOmnidirectionalCameraSensor* m_pcCamera = nullptr;
 
 };
 

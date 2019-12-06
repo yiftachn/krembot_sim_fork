@@ -78,10 +78,15 @@ controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o: /usr/local/include/argos3/core/utility/configuration/tinyxml/ticpprc.h
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o: /usr/local/include/argos3/core/utility/configuration/tinyxml/tinystr.h
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o: /usr/local/include/argos3/core/utility/configuration/tinyxml/tinyxml.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o: /usr/local/include/argos3/core/utility/datatypes/color.h
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o: /usr/local/include/argos3/core/utility/datatypes/datatypes.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o: /usr/local/include/argos3/core/utility/logging/argos_colored_text.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o: /usr/local/include/argos3/core/utility/logging/argos_log.h
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o: /usr/local/include/argos3/core/utility/math/angles.h
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o: /usr/local/include/argos3/core/utility/math/general.h
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o: /usr/local/include/argos3/core/utility/math/range.h
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o: /usr/local/include/argos3/core/utility/string_utilities.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o: /usr/local/include/argos3/plugins/robots/foot-bot/control_interface/ci_footbot_light_sensor.h
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o: /usr/local/include/argos3/plugins/robots/foot-bot/control_interface/ci_footbot_proximity_sensor.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o: /usr/local/include/argos3/plugins/robots/generic/control_interface/ci_colored_blob_omnidirectional_camera_sensor.h
 

@@ -10,6 +10,8 @@
 #include <string>
 
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_proximity_sensor.h>
+#include <argos3/plugins/robots/generic/control_interface/ci_colored_blob_omnidirectional_camera_sensor.h>
+#include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_light_sensor.h>
 
 enum class RGBAAddr
 {
@@ -59,16 +61,22 @@ private:
     std::string m_name = "";
 
     argos::CCI_FootBotProximitySensor & m_cProximity;
+    argos::CCI_FootBotLightSensor & m_Light;
+    argos::CCI_ColoredBlobOmnidirectionalCameraSensor & m_ColorCam;
 
 
 public:
 //todo: get colors sensor in ctor
     RGBASensor(const std::string name,
                uint8_t index,
-               argos::CCI_FootBotProximitySensor & proximity) :
+               argos::CCI_FootBotProximitySensor & proximity,
+               argos::CCI_FootBotLightSensor & light,
+               argos::CCI_ColoredBlobOmnidirectionalCameraSensor & colorCam) :
             m_name(name),
             m_index(index),
-            m_cProximity(proximity) {};
+            m_cProximity(proximity),
+            m_Light(light),
+            m_ColorCam(colorCam){};
 
     inline void init(uint8_t addr) { }
 

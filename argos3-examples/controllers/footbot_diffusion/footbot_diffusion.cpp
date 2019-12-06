@@ -14,11 +14,17 @@ CFootBotDiffusion::CFootBotDiffusion() {}
 void CFootBotDiffusion::Init(TConfigurationNode& t_node) {
     m_pcWheels    = GetActuator<CCI_DifferentialSteeringActuator>("differential_steering");
     m_pcProximity = GetSensor  <CCI_FootBotProximitySensor      >("footbot_proximity"    );
-//    m_pcLight  = GetSensor  <CCI_FootBotLightSensor                    >("footbot_light");
+    m_pcLight  = GetSensor  <CCI_FootBotLightSensor                    >("footbot_light");
     m_pcLEDs   = GetActuator<CCI_LEDsActuator                          >("leds");
-//    m_pcCamera = GetSensor  <CCI_ColoredBlobOmnidirectionalCameraSensor>("colored_blob_omnidirectional_camera");
+    m_pcCamera = GetSensor  <CCI_ColoredBlobOmnidirectionalCameraSensor>("colored_blob_omnidirectional_camera");
 
-    m_pKrembot = new Krembot(*m_pcWheels, *m_pcProximity, *m_pcLEDs);
+    m_pKrembot = new Krembot(
+            *m_pcWheels,
+            *m_pcProximity,
+            *m_pcLEDs,
+            *m_pcLight,
+            *m_pcCamera
+    );
     m_pKrembotMain = new KrembotMain(*m_pKrembot);
     m_pKrembotMain->setup();
 }

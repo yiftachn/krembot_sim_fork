@@ -20,7 +20,7 @@ namespace argos {
    public:
 
       virtual Real CalculateReading(Real f_distance) {
-         return f_distance;
+          return f_distance;
       }
 
    };

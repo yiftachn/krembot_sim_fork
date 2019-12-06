@@ -42,8 +42,16 @@ RGBAResult RGBASensor::readRGBA()
 {
     RGBAResult result;
     result.Proximity = m_cProximity.GetReadings()[m_index].Value * 100;
-    //todo: fill up colors
-//    i2cMuxSelectMe();
+
+    //std::cout << m_Light.GetReadings().size() << std::endl;
+    result.Ambient = m_Light.GetReadings()[m_index].Value;
+    for (int i=0; i<8; i++) {
+
+    std::cout << m_ColorCam.GetReadings()[i].Value << std::endl;
+    }
+
+    const argos::CCI_FootBotLightSensor::TReadings& tReadings = m_Light.GetReadings();
+
 //    if (!apds_.readAmbientLight(result.Ambient))
 //    {
 //        result.AmbientError = true;

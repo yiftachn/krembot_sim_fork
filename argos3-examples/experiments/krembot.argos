@@ -84,6 +84,8 @@
       -->
       <sensors>
         <footbot_proximity implementation="default" show_rays="true" />
+        <footbot_light                       implementation="rot_z_only" show_rays="true" />
+        <colored_blob_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="true" />
       </sensors>
       <!--
           The <params> section is passed as-is to the controller's Init()
@@ -137,11 +139,16 @@
     </box>
     <box id="wall_west" size="0.1,2,0.5" movable="false">
       <body position="-1,0,0" orientation="0,0,0" />
-    </box>
+    </box> 
 
     <!-- Place a foot-bot in the origin and bind it to the controller -->
     <foot-bot id="fb_0">
       <body position="0,0,0" orientation="0,0,0" />
+      <controller config="fdc"/>
+    </foot-bot>
+
+    <foot-bot id="fb_1">
+      <body position="0.4,0,0" orientation="0,0,0" />
       <controller config="fdc"/>
     </foot-bot>
 

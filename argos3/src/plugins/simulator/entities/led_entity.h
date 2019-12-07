@@ -127,6 +127,7 @@ namespace argos {
 
        inline void SetIntensity(Real f_intensity) {
            m_fIntensity = f_intensity;
+           // todo: set alpha too? (with m_cColor.SetAlpha())
        }
 
    protected:

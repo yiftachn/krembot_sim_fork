@@ -12,7 +12,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a6f7cbc-e7c1-4087-b1f3-40d165e450ff" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/foot-bot/simulator/footbot_light_rotzonly_sensor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/foot-bot/simulator/footbot_light_rotzonly_sensor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/libfootbot_diffusion.so" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/libfootbot_diffusion.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../experiments/krembot.argos" beforeDir="false" afterPath="$PROJECT_DIR$/../../experiments/krembot.argos" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/generic/control_interface/ci_leds_actuator.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/generic/control_interface/ci_leds_actuator.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/generic/simulator/leds_default_actuator.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/generic/simulator/leds_default_actuator.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../argos3/src/plugins/simulator/entities/led_entity.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../argos3/src/plugins/simulator/entities/led_entity.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

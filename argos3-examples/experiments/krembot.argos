@@ -152,7 +152,7 @@
     </foot-bot>
 
       <foot-bot id="fb_1">
-      <body position="0.0,-0.5,0" orientation="0,0,0" />
+      <body position="0.0,-0.2,0" orientation="0,0,0" />
       <controller config="fdc"/>
     </foot-bot>  
 

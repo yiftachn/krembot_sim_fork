@@ -84,6 +84,12 @@ namespace argos {
        */
       virtual void SetAllIntensities(UInt8 un_intensity);
 
+       virtual void SetAllIntensities(Real un_intensity) {
+           for(size_t i = 0; i < m_tSettings.size(); ++i) {
+               m_tSettings[i].SetAlpha(un_intensity);
+           }
+       }
+
 #ifdef ARGOS_WITH_LUA
       virtual void CreateLuaState(lua_State* pt_lua_state);
 #endif

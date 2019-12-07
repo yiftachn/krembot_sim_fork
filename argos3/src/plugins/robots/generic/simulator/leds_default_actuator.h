@@ -37,7 +37,7 @@ namespace argos {
       virtual void Reset();
       virtual void Destroy();
 
-       virtual void SetAllIntensities(UInt8 un_intensity) override { //elhay
+       virtual void SetAllIntensities(Real un_intensity) override { //elhay
            for (const auto & led : m_pcLEDEquippedEntity->GetLEDs()) {
                led->LED.SetIntensity(un_intensity);
            }

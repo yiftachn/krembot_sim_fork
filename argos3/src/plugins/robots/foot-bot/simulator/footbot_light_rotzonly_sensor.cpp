@@ -134,7 +134,7 @@ namespace argos {
              ++it) {
             /* Get a reference to the light */
              CLEDEntity& cLight = *(any_cast<CLEDEntity*>(it->second));
-             fprintf(stderr, "id: %s", cLight.GetParent().GetParent().GetId().c_str());
+             //fprintf(stderr, "id: %s", cLight.GetParent().GetParent().GetId().c_str());
              if (cLight.GetParent().GetParent().GetId() == m_cRobot->GetId()) { //elhay: if light is coming from our robot, disregard
                  continue;
              }

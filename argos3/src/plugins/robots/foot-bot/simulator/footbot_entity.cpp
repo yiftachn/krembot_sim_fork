@@ -20,6 +20,7 @@
 #include <argos3/plugins/simulator/entities/perspective_camera_equipped_entity.h>
 #include <argos3/plugins/simulator/entities/proximity_sensor_equipped_entity.h>
 #include <argos3/plugins/simulator/entities/wifi_equipped_entity.h>
+#include <argos3/plugins/simulator/entities/light_entity.h>
 #include "footbot_distance_scanner_equipped_entity.h"
 #include "footbot_turret_entity.h"
 
@@ -56,7 +57,7 @@ namespace argos {
     static const UInt32 NUM_OF_LEDS                 = 8;
 
 
-   static const Real OMNIDIRECTIONAL_CAMERA_ELEVATION = 0.288699733f;
+   static const Real OMNIDIRECTIONAL_CAMERA_ELEVATION = LED_RING_ELEVATION;//0.288699733f;
 
    /****************************************/
    /****************************************/

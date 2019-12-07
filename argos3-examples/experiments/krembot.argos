@@ -83,7 +83,7 @@
           $ argos3 -q sensors
       -->
       <sensors>
-        <footbot_proximity implementation="default" show_rays="true" />
+        <footbot_proximity implementation="default" show_rays="false" />
         <footbot_light                       implementation="rot_z_only" show_rays="true" />
         <colored_blob_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="true" />
       </sensors>
@@ -100,12 +100,7 @@
 
   </controllers>
 
-  <!-- ********* -->
-  <!-- * Media * -->
-  <!-- ********* -->
-  <media>
-    <led id="leds" />
-  </media>
+
 
   <!-- *********************** -->
   <!-- * Arena configuration * -->
@@ -126,6 +121,15 @@
       $ argos3 -q box
   -->
   <arena size="3, 3, 1" center="0,0,0.5">
+
+
+     <!-- <light id="light"
+           position="0.4,0.2,0.2"
+           orientation="0,0,0"
+           color="yellow"
+           intensity="3.0"
+           medium="leds" />   -->
+
 
     <!-- Place four boxes in a square to delimit the arena -->
     <box id="wall_north" size="2,0.1,0.5" movable="false">
@@ -148,9 +152,9 @@
     </foot-bot>
 
     <foot-bot id="fb_1">
-      <body position="0.4,0,0" orientation="0,0,0" />
+      <body position="0.4,0.1,0" orientation="0,0,0" />
       <controller config="fdc"/>
-    </foot-bot>
+    </foot-bot> 
 
   </arena>
 
@@ -182,7 +186,11 @@
 
       $ argos3 -q media
   -->
-  <media />
+
+  <media>
+    <led id="leds" />
+  </media>
+
 
   <!-- ****************** -->
   <!-- * Visualization * -->

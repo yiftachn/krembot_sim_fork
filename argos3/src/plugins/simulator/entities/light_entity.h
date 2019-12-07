@@ -34,21 +34,21 @@ namespace argos {
 
       virtual void Init(TConfigurationNode& t_tree);
 
-      inline Real GetIntensity() const {
-         return m_fIntensity;
-      }
-
-      inline void SetIntensity(Real f_intensity) {
-         m_fIntensity = f_intensity;
-      }
+//      inline Real GetIntensity() const {
+//         return m_fIntensity;
+//      }
+//
+//      inline void SetIntensity(Real f_intensity) {
+//         m_fIntensity = f_intensity;
+//      }
 
       virtual std::string GetTypeDescription() const {
          return "light";
       }
 
-   protected:
-
-      Real m_fIntensity;
+//   protected:
+//
+//      Real m_fIntensity;
    };
 
 }

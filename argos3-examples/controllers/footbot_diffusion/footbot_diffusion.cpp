@@ -17,6 +17,7 @@ void CFootBotDiffusion::Init(TConfigurationNode& t_node) {
     m_pcLight  = GetSensor  <CCI_FootBotLightSensor                    >("footbot_light");
     m_pcLEDs   = GetActuator<CCI_LEDsActuator                          >("leds");
     m_pcCamera = GetSensor  <CCI_ColoredBlobOmnidirectionalCameraSensor>("colored_blob_omnidirectional_camera");
+    m_pcCamera->Enable();
 
     m_pKrembot = new Krembot(
             *m_pcWheels,

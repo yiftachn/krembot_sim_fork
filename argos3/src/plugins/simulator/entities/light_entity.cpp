@@ -8,6 +8,7 @@
 #include <argos3/core/simulator/simulator.h>
 #include <argos3/core/simulator/space/space.h>
 #include <argos3/plugins/simulator/media/led_medium.h>
+#include <argos3/plugins/simulator/entities/light_entity.h>
 
 namespace argos {
 
@@ -15,8 +16,8 @@ namespace argos {
    /****************************************/
 
    CLightEntity::CLightEntity() :
-      CLEDEntity(NULL),
-      m_fIntensity(1.0f) {}
+      CLEDEntity(NULL)
+      {}
       
    /****************************************/
    /****************************************/
@@ -28,8 +29,8 @@ namespace argos {
       CLEDEntity(NULL,
                  str_id,
                  c_position,
-                 c_color),
-      m_fIntensity(f_intensity) {}
+                 c_color,
+                 f_intensity){}
 
    /****************************************/
    /****************************************/

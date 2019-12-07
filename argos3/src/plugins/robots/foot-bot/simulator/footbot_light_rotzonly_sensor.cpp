@@ -118,7 +118,7 @@ namespace argos {
       /* Buffers to contain data about the intersection */
       SEmbodiedEntityIntersectionItem sIntersection;
       /* List of light entities */
-      CSpace::TMapPerTypePerId::iterator itLights = m_cSpace.GetEntityMapPerTypePerId().find("light");
+      CSpace::TMapPerTypePerId::iterator itLights = m_cSpace.GetEntityMapPerTypePerId().find("led"/*"light"*/);
       if (itLights != m_cSpace.GetEntityMapPerTypePerId().end()) {
          CSpace::TMapPerType& mapLights = itLights->second;
          /*
@@ -132,7 +132,7 @@ namespace argos {
              it != mapLights.end();
              ++it) {
             /* Get a reference to the light */
-            CLightEntity& cLight = *(any_cast<CLightEntity*>(it->second));
+             CLEDEntity& cLight = *(any_cast<CLEDEntity*>(it->second));
             /* Consider the light only if it has non zero intensity */
             if(cLight.GetIntensity() > 0.0f) {
                /* Set the ray end */

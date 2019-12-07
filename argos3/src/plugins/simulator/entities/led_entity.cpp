@@ -34,6 +34,20 @@ namespace argos {
       SetColor(c_color);
    }
 
+   CLEDEntity::CLEDEntity(CComposableEntity* pc_parent,
+                const std::string& str_id,
+                const CVector3& c_position,
+                const CColor& c_color,
+                const Real& c_intensity) :
+    CPositionalEntity(pc_parent, str_id, c_position, CQuaternion()),
+    m_cColor(c_color),
+            m_cInitColor(c_color),
+            m_pcMedium(NULL), 
+            m_fIntensity(c_intensity){
+       SetColor(c_color);
+   }
+                
+
    /****************************************/
    /****************************************/
 

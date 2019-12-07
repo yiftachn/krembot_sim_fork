@@ -31,6 +31,10 @@ krembot_main.h
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/krembot_main.h
 
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/krembot.h
+tr1/functional
+-
+string
+-
 argos3/core/control_interface/ci_controller.h
 -
 argos3/plugins/robots/generic/control_interface/ci_differential_steering_actuator.h

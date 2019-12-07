@@ -12,12 +12,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a6f7cbc-e7c1-4087-b1f3-40d165e450ff" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/CXX.includecache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/flags.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/flags.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion_automoc.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion_automoc.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/libfootbot_diffusion.so" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/libfootbot_diffusion.so" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../experiments/krembot.argos" beforeDir="false" afterPath="$PROJECT_DIR$/../../experiments/krembot.argos" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/foot-bot/simulator/footbot_light_rotzonly_sensor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/foot-bot/simulator/footbot_light_rotzonly_sensor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/foot-bot/simulator/footbot_light_rotzonly_sensor.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/foot-bot/simulator/footbot_light_rotzonly_sensor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../argos3/src/plugins/simulator/entities/light_sensor_equipped_entity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../argos3/src/plugins/simulator/entities/light_sensor_equipped_entity.cpp" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +74,7 @@
       <option name="presentableId" value="Default" />
       <updated>1574992213572</updated>
       <workItem from="1574992214846" duration="9400000" />
-      <workItem from="1575640095088" duration="8545000" />
+      <workItem from="1575640095088" duration="10577000" />
     </task>
     <servers />
   </component>

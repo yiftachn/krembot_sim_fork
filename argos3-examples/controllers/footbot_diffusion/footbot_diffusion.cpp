@@ -20,6 +20,7 @@ void CFootBotDiffusion::Init(TConfigurationNode& t_node) {
     m_pcCamera->Enable();
 
     m_pKrembot = new Krembot(
+            GetId(),
             *m_pcWheels,
             *m_pcProximity,
             *m_pcLEDs,

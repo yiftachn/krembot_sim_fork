@@ -18,7 +18,7 @@ namespace argos {
    /****************************************/
 
    static CRange<Real> SENSOR_RANGE(0.0f, 1.0f);
-   static CRadians SENSOR_SPACING      = CRadians(ARGOS_PI / 12.0f);
+   static CRadians SENSOR_SPACING      = CRadians(ARGOS_PI / 4);
    static CRadians SENSOR_HALF_SPACING = SENSOR_SPACING * 0.5;
 
    /****************************************/
@@ -175,8 +175,8 @@ namespace argos {
                    * process sensors that are with 180 degrees of intersection of light
                    * ray with robot body
                    */
-                  for(SInt32 nIndexOffset = -6; nIndexOffset < 7; ++nIndexOffset) {
-                     UInt32 unIdx = Modulo(nReadingIdx + nIndexOffset, 24);
+                  for(SInt32 nIndexOffset = -1; nIndexOffset < 2; ++nIndexOffset) {
+                     UInt32 unIdx = Modulo(nReadingIdx + nIndexOffset, 8);
                      CRadians cAngularDistanceFromOptimalLightReceptionPoint = Abs((cAngleLightWrtFootbot - m_tReadings[unIdx].Angle).SignedNormalize());
                      /*
                       * ComputeReading gives value as if sensor was perfectly in line with
@@ -185,6 +185,7 @@ namespace argos {
                       */
                      m_tReadings[unIdx].Value += ComputeReading(fReading) * ScaleReading(cAngularDistanceFromOptimalLightReceptionPoint);
                   }
+
                }
                else {
                   /* The ray is occluded */

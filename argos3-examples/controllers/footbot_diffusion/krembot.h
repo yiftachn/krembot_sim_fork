@@ -2,6 +2,8 @@
 #define KREMBOT_BRIDGE_H
 
 
+#include <tr1/functional>
+#include <string>
 
 #include <argos3/core/control_interface/ci_controller.h>
 /* Definition of the differential steering actuator */
@@ -28,6 +30,8 @@ class Krembot {
 
 private:
 
+    std::string m_name = "";
+
     void test() {
         //todo: implement tests of all components here
     }
@@ -49,23 +53,39 @@ public:
 //    Battery Bat;
     RGBLed Led; // dont
 //    IMUSensor Imu;
-    Krembot(CCI_DifferentialSteeringActuator& wheels,
+    Krembot(const std::string & id,
+            CCI_DifferentialSteeringActuator& wheels,
             CCI_FootBotProximitySensor& proximity,
             CCI_LEDsActuator & leds,
             CCI_FootBotLightSensor & light,
             CCI_ColoredBlobOmnidirectionalCameraSensor & colorCam)  :
+            m_name(id),
             Base(wheels),
             RgbaFront("RgbaFront", 0, proximity, light, colorCam),
-            RgbaFrontRight("RgbaFrontRight", 1, proximity, light, colorCam),
-            RgbaRight("RgbaRight", 2, proximity, light, colorCam),
-            RgbaRearRight("RgbaRearRight", 3, proximity, light, colorCam),
+            RgbaFrontLeft("RgbaFrontLeft", 1, proximity, light, colorCam),
+            RgbaLeft("RgbaLeft", 2, proximity, light, colorCam),
+            RgbaRearLeft("RgbaRearLeft", 3, proximity, light, colorCam),
             RgbaRear("RgbaRear", 4,  proximity, light, colorCam),
-            RgbaRearLeft("RgbaRearLeft", 5, proximity, light, colorCam),
-            RgbaLeft("RgbaLeft", 6, proximity, light, colorCam),
-            RgbaFrontLeft("RgbaFrontLeft", 7, proximity, light, colorCam),
+            RgbaRearRight("RgbaRearRight", 5, proximity, light, colorCam),
+            RgbaRight("RgbaRight", 6, proximity, light, colorCam),
+            RgbaFrontRight("RgbaFrontRight", 7, proximity, light, colorCam),
+
+
             Led(leds)
     {
 
+    }
+
+    std::string getId() {
+        return std::to_string(std::tr1::hash<std::string>()(m_name));
+    }
+
+    inline std::string getName() {
+        return m_name;
+    }
+
+    bool have_name() {
+        return m_name.length() > 0;
     }
 
     
@@ -77,6 +97,15 @@ public:
     void loop() {
 
          RgbaFront.readRGBA().Proximity ;
+
+         std::cout << "[" << getName() << ", 0] " << RgbaFront.readRGBA().Ambient << " " << RgbaFront.readRGBA().Proximity << std::endl;
+        std::cout << "[" << getName() << ", 1] " << RgbaFrontLeft.readRGBA().Ambient  << " " << RgbaFrontLeft.readRGBA().Proximity << std::endl;
+        std::cout << "[" << getName() << ", 2] " << RgbaLeft.readRGBA().Ambient  << " " << RgbaLeft.readRGBA().Proximity << std::endl;
+        std::cout << "[" << getName() << ", 3] " << RgbaRearLeft.readRGBA().Ambient  << " " << RgbaRearLeft.readRGBA().Proximity << std::endl;
+        std::cout << "[" << getName() << ", 4] " << RgbaRear.readRGBA().Ambient  << " " << RgbaRear.readRGBA().Proximity << std::endl;
+        std::cout << "[" << getName() << ", 5] " << RgbaRearRight.readRGBA().Ambient  << " " << RgbaRearRight.readRGBA().Proximity << std::endl;
+        std::cout << "[" << getName() << ", 6] " << RgbaRight.readRGBA().Ambient  << " " << RgbaRight.readRGBA().Proximity << std::endl;
+        std::cout << "[" << getName() << ", 7] " << RgbaFrontRight.readRGBA().Ambient  << " " << RgbaFrontRight.readRGBA().Proximity << std::endl;
 
 
     }

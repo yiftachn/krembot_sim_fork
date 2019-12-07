@@ -123,12 +123,12 @@
   <arena size="3, 3, 1" center="0,0,0.5">
 
 
-      <light id="light"
+     <!-- <light id="light"
            position="-0.4,0.0,0.1"
            orientation="0,0,0"
            color="yellow"
            intensity="3.0"
-           medium="leds" />   
+           medium="leds" /> -->   
 
 
     <!-- Place four boxes in a square to delimit the arena -->
@@ -151,10 +151,10 @@
       <controller config="fdc"/>
     </foot-bot>
 
-     <!-- <foot-bot id="fb_1">
+      <foot-bot id="fb_1">
       <body position="0.0,-0.5,0" orientation="0,0,0" />
       <controller config="fdc"/>
-    </foot-bot>  -->
+    </foot-bot>  
 
   </arena>
 

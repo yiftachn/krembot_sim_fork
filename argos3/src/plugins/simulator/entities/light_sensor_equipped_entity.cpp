@@ -163,7 +163,7 @@ namespace argos {
       for(UInt32 i = 0; i < un_num_sensors; ++i) {
          cAngle = c_start_angle + i * cSensorSpacing;
          cAngle.SignedNormalize();
-         cPos.Set(f_radius, 0.0f, c_center.GetZ());
+         cPos.Set(f_radius, 0.0f, 0.0);
          cPos.RotateZ(cAngle);
          cPos += c_center;
          cDir.Set(f_range, 0.0f, 0.0f);

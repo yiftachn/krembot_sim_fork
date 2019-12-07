@@ -119,7 +119,7 @@ namespace argos {
       /* Buffers to contain data about the intersection */
       SEmbodiedEntityIntersectionItem sIntersection;
       /* List of light entities */
-      CSpace::TMapPerTypePerId::iterator itLights = m_cSpace.GetEntityMapPerTypePerId().find("led"/*"light"*/);
+      CSpace::TMapPerTypePerId::iterator itLights = m_cSpace.GetEntityMapPerTypePerId().find("light"/*"light"*/);
       if (itLights != m_cSpace.GetEntityMapPerTypePerId().end()) {
          CSpace::TMapPerType& mapLights = itLights->second;
          /*
@@ -133,11 +133,11 @@ namespace argos {
              it != mapLights.end();
              ++it) {
             /* Get a reference to the light */
-             CLEDEntity& cLight = *(any_cast<CLEDEntity*>(it->second));
+             CLightEntity /*CLEDEntity*/& cLight = *(any_cast<CLightEntity /*CLEDEntity*/  *>(it->second));
              //fprintf(stderr, "id: %s", cLight.GetParent().GetParent().GetId().c_str());
-             if (cLight.GetParent().GetParent().GetId() == m_cRobot->GetId()) { //elhay: if light is coming from our robot, disregard
-                 continue;
-             }
+//             if (cLight.GetParent().GetParent().GetId() == m_cRobot->GetId()) { //elhay: if light is coming from our robot, disregard
+//                 continue;
+//             }
              /* Consider the light only if it has non zero intensity */
              if(cLight.GetIntensity() > 0.0f) {
                /* Set the ray end */
@@ -166,10 +166,17 @@ namespace argos {
                    * Division says how many sensor spacings there are between first sensor and point at which ray hits footbot body
                    * Increase magnitude of result of division to ensure correct rounding
                    */
-                  Real fIdx = (cAngleLightWrtFootbot - SENSOR_HALF_SPACING) / SENSOR_SPACING;
+                  Real fIdx = (cAngleLightWrtFootbot /*- SENSOR_HALF_SPACING*/) / SENSOR_SPACING;
+                  fprintf(stderr, "fidx: %f\n", fIdx);
                   SInt32 nReadingIdx = (fIdx > 0) ? fIdx + 0.5f : fIdx - 0.5f;
+                   fprintf(stderr, "nReadingIdx: %d\n", nReadingIdx);
+
+//                   if (nReadingIdx == -1) { //elhay: fix for case where light is straigh f/w
+//                       nReadingIdx = 0;
+//                   }
                   /* Set the actual readings */
                   Real fReading = cRobotToLight.Length();
+//                   fprintf(stderr, "fReading: %f\n", fReading);
                   /*
                    * Take 6 readings before closest sensor and 6 readings after - thus we
                    * process sensors that are with 180 degrees of intersection of light
@@ -177,13 +184,27 @@ namespace argos {
                    */
                   for(SInt32 nIndexOffset = -1; nIndexOffset < 2; ++nIndexOffset) {
                      UInt32 unIdx = Modulo(nReadingIdx + nIndexOffset, 8);
+                      fprintf(stderr, "nIndexOffset: %d\n", nIndexOffset);
+                      fprintf(stderr, "unIdx: %d\n", unIdx);
+                      fprintf(stderr, "cAngleLightWrtFootbot: %f\n", ToDegrees(cAngleLightWrtFootbot));
+                      fprintf(stderr, "m_tReadings[unIdx].Angle: %f\n", ToDegrees(m_tReadings[unIdx].Angle));
                      CRadians cAngularDistanceFromOptimalLightReceptionPoint = Abs((cAngleLightWrtFootbot - m_tReadings[unIdx].Angle).SignedNormalize());
+
+
+                      fprintf(stderr, "cAngularDistanceFromOptimalLightReceptionPoint: %f\n", cAngularDistanceFromOptimalLightReceptionPoint.GetValue());
                      /*
                       * ComputeReading gives value as if sensor was perfectly in line with
                       * light ray. We then linearly decrease actual reading from 1 (dist
                       * 0) to 0 (dist PI/2)
                       */
+
+                      fprintf(stderr, "ComputeReading(fReading): %f\n", ComputeReading(fReading));
+
+                      fprintf(stderr, "ScaleReading(cAngularDistanceFromOptimalLightReceptionPoint: %f\n", ScaleReading(cAngularDistanceFromOptimalLightReceptionPoint));
+
                      m_tReadings[unIdx].Value += ComputeReading(fReading) * ScaleReading(cAngularDistanceFromOptimalLightReceptionPoint);
+
+                      fprintf(stderr, "Value: %f\n----\n", m_tReadings[unIdx].Value);
                   }
 
                }

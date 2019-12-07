@@ -13,6 +13,15 @@
 #include <argos3/plugins/robots/generic/control_interface/ci_colored_blob_omnidirectional_camera_sensor.h>
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_light_sensor.h>
 
+
+/*
+ *           0
+ *        1     7
+ *      2         6
+ *        3     5
+ *           4
+ */
+
 enum class RGBAAddr
 {
     Front = 0,

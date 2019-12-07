@@ -43,7 +43,10 @@ RGBAResult RGBASensor::readRGBA()
     RGBAResult result;
     result.Proximity = m_cProximity.GetReadings()[m_index].Value * 100;
 
-    std::cout << m_Light.GetReadings()[m_index].Value << std::endl;
+    for (int i=0; i< m_Light.GetReadings().size(); ++i) {
+
+    std::cout << "[" << i << "]" << m_Light.GetReadings()[i].Value << std::endl;
+    }
     result.Ambient = m_Light.GetReadings()[m_index].Value;
 //    for (int i=0; i<m_ColorCam.GetReadings().BlobList.size(); i++) {
 //

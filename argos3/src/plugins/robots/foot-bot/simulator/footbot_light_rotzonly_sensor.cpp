@@ -71,6 +71,7 @@ namespace argos {
       catch(CARGoSException& ex) {
          THROW_ARGOSEXCEPTION_NESTED("Can't set robot for the foot-bot light default sensor", ex);
       }
+      m_cRobot = &c_entity;
    }
 
    /****************************************/
@@ -133,8 +134,12 @@ namespace argos {
              ++it) {
             /* Get a reference to the light */
              CLEDEntity& cLight = *(any_cast<CLEDEntity*>(it->second));
-            /* Consider the light only if it has non zero intensity */
-            if(cLight.GetIntensity() > 0.0f) {
+             fprintf(stderr, "id: %s", cLight.GetParent().GetParent().GetId().c_str());
+             if (cLight.GetParent().GetParent().GetId() == m_cRobot->GetId()) { //elhay: if light is coming from our robot, disregard
+                 continue;
+             }
+             /* Consider the light only if it has non zero intensity */
+             if(cLight.GetIntensity() > 0.0f) {
                /* Set the ray end */
                cOcclusionCheckRay.SetEnd(cLight.GetPosition());
                /* Check occlusion between the foot-bot and the light */

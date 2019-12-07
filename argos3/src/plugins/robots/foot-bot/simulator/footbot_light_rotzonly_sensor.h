@@ -65,6 +65,8 @@ namespace argos {
 
       /** Reference to the space */
       CSpace& m_cSpace;
+
+      CComposableEntity * m_cRobot; // elhay
    };
 
 }

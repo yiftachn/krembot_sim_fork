@@ -66,9 +66,15 @@ class RGBASensor
 {
 private:
 
+    float wrapToPi(float rads) {
+        if (rads > M_PI) return (2 * -M_PI) + rads;
+        else return rads;
+    }
+
     uint8_t m_index = 0;
     std::string m_name = "";
 
+    argos::CRange<argos::CRadians> m_ColorSensorAngularRange;
     argos::CCI_FootBotProximitySensor & m_cProximity;
     argos::CCI_FootBotLightSensor & m_Light;
     argos::CCI_ColoredBlobOmnidirectionalCameraSensor & m_ColorCam;
@@ -80,12 +86,7 @@ public:
                uint8_t index,
                argos::CCI_FootBotProximitySensor & proximity,
                argos::CCI_FootBotLightSensor & light,
-               argos::CCI_ColoredBlobOmnidirectionalCameraSensor & colorCam) :
-            m_name(name),
-            m_index(index),
-            m_cProximity(proximity),
-            m_Light(light),
-            m_ColorCam(colorCam){};
+               argos::CCI_ColoredBlobOmnidirectionalCameraSensor & colorCam);
 
     inline void init(uint8_t addr) { }
 

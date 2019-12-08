@@ -200,6 +200,8 @@ namespace argos {
    /****************************************/
 
    void CColoredBlobPerspectiveCameraDefaultSensor::Update() {
+
+
       if(m_bEnabled) {
          /* Increase data counter */
          ++m_sReadings.Counter;

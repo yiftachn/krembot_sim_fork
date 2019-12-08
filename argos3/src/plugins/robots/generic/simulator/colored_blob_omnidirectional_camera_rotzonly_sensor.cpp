@@ -181,6 +181,7 @@ namespace argos {
    /****************************************/
 
    void CColoredBlobOmnidirectionalCameraRotZOnlySensor::Update() {
+
       if(m_bEnabled) {
          /* Increase data counter */
          ++m_sReadings.Counter;
@@ -189,7 +190,8 @@ namespace argos {
          cCameraPos += m_pcEmbodiedEntity->GetOriginAnchor().Position;
          Real fGroundHalfRange = cCameraPos.GetZ() * Tan(m_pcOmnicamEntity->GetAperture());
          /* Prepare the operation */
-         m_pcOperation->Setup(fGroundHalfRange);
+//         fprintf(stderr, "range: %f", fGroundHalfRange);
+         m_pcOperation->Setup(fGroundHalfRange + 0.3); //elhay: added 0.3 m for increased range. original range is 0.233536
          /* Go through LED entities in box range */
          m_pcLEDIndex->ForEntitiesInBoxRange(
             CVector3(cCameraPos.GetX(),

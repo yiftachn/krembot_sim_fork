@@ -34,26 +34,90 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
 
-/* Author: Elhay Rauper, Yair Shlomi */
+/* Author: Elhay Rauper */
 
 #include "rgba_sensor.h"
+using namespace argos;
+RGBASensor::RGBASensor(const std::string name,
+                        uint8_t index,
+                        CCI_FootBotProximitySensor &proximity,
+                       CCI_FootBotLightSensor &light,
+                       CCI_ColoredBlobOmnidirectionalCameraSensor &colorCam) :
+                        m_name(name),
+                        m_index(index),
+                        m_cProximity(proximity),
+                        m_Light(light),
+                        m_ColorCam(colorCam)
+{
+    const float rgbaSensorSpacing = index * (M_PI / 4.0f); //45 deg
+    const float rangeOffset = (M_PI / 8.0f); //22.5 deg
+
+    CRadians boundary1( wrapToPi( rgbaSensorSpacing + rangeOffset ) );
+    CRadians boundary2( wrapToPi( rgbaSensorSpacing - rangeOffset ) );
+
+    if (boundary1 > boundary2) {
+        m_ColorSensorAngularRange.Set(boundary2, boundary1);
+    } else {
+        m_ColorSensorAngularRange.Set(boundary1, boundary2);
+    }
+}
+
+
 
 RGBAResult RGBASensor::readRGBA()
 {
     RGBAResult result;
-    //result.Proximity = m_cProximity.GetReadings()[m_index].Value * 100;
+    result.Proximity = m_cProximity.GetReadings()[m_index].Value * 100; // todo: scale this according to real robot
+    result.Ambient = m_Light.GetReadings()[m_index].Value * 100; // todo: scale this according to real robot
 
-    for (int i=0; i< m_Light.GetReadings().size(); ++i) {
+    const auto & cameraBlobReadings = m_ColorCam.GetReadings().BlobList;
 
-    std::cout << "[" << i << "]" << m_Light.GetReadings()[i].Value << std::endl;
+    //float numOfInBoundReadings = 0;
+    for (const auto & reading : cameraBlobReadings) {
+        // handle front and back sensor
+        bool updateColors = false;
+        if (m_index == 0)
+        {
+            if ( (reading->Angle >= CRadians(0) && reading->Angle < m_ColorSensorAngularRange.GetMax()) ||
+                 (reading->Angle <= CRadians(0) && reading->Angle > m_ColorSensorAngularRange.GetMin()) ) {
+                updateColors = true;
+            }
+        } else if (m_index == 4) {
+            if ( (reading->Angle >= -CRadians(ARGOS_PI) && reading->Angle < m_ColorSensorAngularRange.GetMin()) ||
+                 (reading->Angle <= CRadians(ARGOS_PI) && reading->Angle > m_ColorSensorAngularRange.GetMax()) ) {
+                updateColors = true;
+            }
+        } else if (m_ColorSensorAngularRange.WithinMinBoundIncludedMaxBoundIncluded(reading->Angle)) {
+            updateColors = true;
+        }
+
+        if (updateColors) {
+
+            result.Green = reading->Color.GetGreen();
+            result.Red = reading->Color.GetRed();
+            result.Blue = reading->Color.GetBlue();
+            //result.Ambient += reading->Color.GetAlpha() / floatNumOfReadings; //we already getting a more precise reading from light sensor
+            //++numOfInBoundReadings;
+        }
     }
-    //result.Ambient = m_Light.GetReadings()[m_index].Value * 100; //todo: changes this
+
 //    for (int i=0; i<m_ColorCam.GetReadings().BlobList.size(); i++) {
 //
-//    std::cout << m_ColorCam.GetReadings().BlobList[i]->Color << std::endl;
+//        std::cout << "color: " <<(int)m_ColorCam.GetReadings().BlobList[i]->Color.GetAlpha() <<"| angle: " << m_ColorCam.GetReadings().BlobList[i]->Angle << "| dist: " << m_ColorCam.GetReadings().BlobList[i]->Distance<< std::endl;
 //    }
 
-    //const argos::CCI_FootBotLightSensor::TReadings& tReadings = m_Light.GetReadings();
+
+    return result;
+
+
+//    for (int i=0; i< m_Light.GetReadings().size(); ++i) {
+//
+//    std::cout << "[" << i << "]" << m_Light.GetReadings()[i].Value << std::endl;
+//    }
+
+
+
+    //const CCI_FootBotLightSensor::TReadings& tReadings = m_Light.GetReadings();
 
 //    if (!apds_.readAmbientLight(result.Ambient))
 //    {
@@ -87,7 +151,6 @@ RGBAResult RGBASensor::readRGBA()
 //            result.Proximity = 20;
 //        result.Distance = 117.55 * pow(result.Proximity, -0.51); //result min val is 6, and max is 25 cm
 //    }
-    return result;
 }
 
 

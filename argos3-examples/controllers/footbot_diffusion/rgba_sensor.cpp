@@ -67,7 +67,14 @@ RGBASensor::RGBASensor(const std::string name,
 RGBAResult RGBASensor::readRGBA()
 {
     RGBAResult result;
-    result.Proximity = m_cProximity.GetReadings()[m_index].Value * 100; // todo: scale this according to real robot
+
+    const Real rawProximity = m_cProximity.GetReadings()[m_index].Value;
+    if (rawProximity == NO_PROX_INTERSECTION) {
+        result.Proximity = 0;
+    } else {
+        result.Proximity = rawProximity * 100; // todo: scale this according to real robot
+    }
+
     result.Ambient = m_Light.GetReadings()[m_index].Value * 100; // todo: scale this according to real robot
 
     const auto & cameraBlobReadings = m_ColorCam.GetReadings().BlobList;

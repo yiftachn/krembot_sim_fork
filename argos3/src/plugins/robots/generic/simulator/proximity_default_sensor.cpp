@@ -104,7 +104,7 @@ namespace argos {
          }
          else {
             /* No intersection */
-            m_tReadings[i] = 0.0f;
+            m_tReadings[i] = -1.0f;
             if(m_bShowRays) {
                m_pcControllableEntity->AddCheckedRay(false, cScanningRay);
             }

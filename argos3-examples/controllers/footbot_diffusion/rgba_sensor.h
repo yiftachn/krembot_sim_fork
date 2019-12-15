@@ -66,6 +66,8 @@ class RGBASensor
 {
 private:
 
+    static const int8_t NO_PROX_INTERSECTION = -1;
+
     float wrapToPi(float rads) {
         if (rads > M_PI) return (2 * -M_PI) + rads;
         else return rads;

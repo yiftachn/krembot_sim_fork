@@ -8,6 +8,16 @@
 
 /home/eli/ws/krembot_sim/argos3-examples/build/controllers/footbot_diffusion/footbot_diffusion_automoc.cpp
 
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cbumpers.cpp
+cbumpers.h
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cbumpers.h
+
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cbumpers.h
+cstdint
+-
+argos3/plugins/robots/foot-bot/control_interface/ci_footbot_proximity_sensor.h
+-
+
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/footbot_diffusion.cpp
 footbot_diffusion.h
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/footbot_diffusion.h
@@ -53,6 +63,8 @@ rgba_sensor.h
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgba_sensor.h
 rgb_led.h
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgb_led.h
+cbumpers.h
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cbumpers.h
 
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/krembot_main.h
 krembot.h

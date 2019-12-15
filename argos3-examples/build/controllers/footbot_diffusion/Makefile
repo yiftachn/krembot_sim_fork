@@ -140,6 +140,33 @@ footbot_diffusion_automoc/fast:
 	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion_automoc.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion_automoc.dir/build
 .PHONY : footbot_diffusion_automoc/fast
 
+cbumpers.o: cbumpers.cpp.o
+
+.PHONY : cbumpers.o
+
+# target to build an object file
+cbumpers.cpp.o:
+	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.o
+.PHONY : cbumpers.cpp.o
+
+cbumpers.i: cbumpers.cpp.i
+
+.PHONY : cbumpers.i
+
+# target to preprocess a source file
+cbumpers.cpp.i:
+	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.i
+.PHONY : cbumpers.cpp.i
+
+cbumpers.s: cbumpers.cpp.s
+
+.PHONY : cbumpers.s
+
+# target to generate assembly for a file
+cbumpers.cpp.s:
+	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.s
+.PHONY : cbumpers.cpp.s
+
 footbot_diffusion.o: footbot_diffusion.cpp.o
 
 .PHONY : footbot_diffusion.o
@@ -258,6 +285,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... footbot_diffusion"
 	@echo "... footbot_diffusion_automoc"
+	@echo "... cbumpers.o"
+	@echo "... cbumpers.i"
+	@echo "... cbumpers.s"
 	@echo "... footbot_diffusion.o"
 	@echo "... footbot_diffusion.i"
 	@echo "... footbot_diffusion.s"

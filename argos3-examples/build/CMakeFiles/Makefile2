@@ -130,7 +130,7 @@ controllers/footbot_diffusion/preinstall:
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/all: controllers/footbot_diffusion/CMakeFiles/footbot_diffusion_automoc.dir/all
 	$(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/depend
 	$(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=18,19,20,21,22 "Built target footbot_diffusion"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=18,19,20,21,22,23 "Built target footbot_diffusion"
 .PHONY : controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/all
 
 # Include target in all.
@@ -140,7 +140,7 @@ all: controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/all
 
 # Build rule for subdir invocation for target.
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles 0
 .PHONY : controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rule
@@ -167,7 +167,7 @@ clean: controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/clean
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion_automoc.dir/all:
 	$(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion_automoc.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion_automoc.dir/depend
 	$(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion_automoc.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion_automoc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=23 "Built target footbot_diffusion_automoc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=24 "Built target footbot_diffusion_automoc"
 .PHONY : controllers/footbot_diffusion/CMakeFiles/footbot_diffusion_automoc.dir/all
 
 # Build rule for subdir invocation for target.
@@ -218,7 +218,7 @@ controllers/footbot_synchronization/preinstall:
 controllers/footbot_synchronization/CMakeFiles/footbot_synchronization.dir/all: controllers/footbot_synchronization/CMakeFiles/footbot_synchronization_automoc.dir/all
 	$(MAKE) -f controllers/footbot_synchronization/CMakeFiles/footbot_synchronization.dir/build.make controllers/footbot_synchronization/CMakeFiles/footbot_synchronization.dir/depend
 	$(MAKE) -f controllers/footbot_synchronization/CMakeFiles/footbot_synchronization.dir/build.make controllers/footbot_synchronization/CMakeFiles/footbot_synchronization.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=47,48,49 "Built target footbot_synchronization"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=48,49,50 "Built target footbot_synchronization"
 .PHONY : controllers/footbot_synchronization/CMakeFiles/footbot_synchronization.dir/all
 
 # Include target in all.
@@ -255,7 +255,7 @@ clean: controllers/footbot_synchronization/CMakeFiles/footbot_synchronization.di
 controllers/footbot_synchronization/CMakeFiles/footbot_synchronization_automoc.dir/all:
 	$(MAKE) -f controllers/footbot_synchronization/CMakeFiles/footbot_synchronization_automoc.dir/build.make controllers/footbot_synchronization/CMakeFiles/footbot_synchronization_automoc.dir/depend
 	$(MAKE) -f controllers/footbot_synchronization/CMakeFiles/footbot_synchronization_automoc.dir/build.make controllers/footbot_synchronization/CMakeFiles/footbot_synchronization_automoc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=50 "Built target footbot_synchronization_automoc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=51 "Built target footbot_synchronization_automoc"
 .PHONY : controllers/footbot_synchronization/CMakeFiles/footbot_synchronization_automoc.dir/all
 
 # Build rule for subdir invocation for target.
@@ -306,7 +306,7 @@ controllers/footbot_flocking/preinstall:
 controllers/footbot_flocking/CMakeFiles/footbot_flocking.dir/all: controllers/footbot_flocking/CMakeFiles/footbot_flocking_automoc.dir/all
 	$(MAKE) -f controllers/footbot_flocking/CMakeFiles/footbot_flocking.dir/build.make controllers/footbot_flocking/CMakeFiles/footbot_flocking.dir/depend
 	$(MAKE) -f controllers/footbot_flocking/CMakeFiles/footbot_flocking.dir/build.make controllers/footbot_flocking/CMakeFiles/footbot_flocking.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=24,25,26 "Built target footbot_flocking"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=25,26,27 "Built target footbot_flocking"
 .PHONY : controllers/footbot_flocking/CMakeFiles/footbot_flocking.dir/all
 
 # Include target in all.
@@ -343,7 +343,7 @@ clean: controllers/footbot_flocking/CMakeFiles/footbot_flocking.dir/clean
 controllers/footbot_flocking/CMakeFiles/footbot_flocking_automoc.dir/all:
 	$(MAKE) -f controllers/footbot_flocking/CMakeFiles/footbot_flocking_automoc.dir/build.make controllers/footbot_flocking/CMakeFiles/footbot_flocking_automoc.dir/depend
 	$(MAKE) -f controllers/footbot_flocking/CMakeFiles/footbot_flocking_automoc.dir/build.make controllers/footbot_flocking/CMakeFiles/footbot_flocking_automoc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=27 "Built target footbot_flocking_automoc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=28 "Built target footbot_flocking_automoc"
 .PHONY : controllers/footbot_flocking/CMakeFiles/footbot_flocking_automoc.dir/all
 
 # Build rule for subdir invocation for target.
@@ -394,7 +394,7 @@ controllers/footbot_gripping/preinstall:
 controllers/footbot_gripping/CMakeFiles/footbot_gripping.dir/all: controllers/footbot_gripping/CMakeFiles/footbot_gripping_automoc.dir/all
 	$(MAKE) -f controllers/footbot_gripping/CMakeFiles/footbot_gripping.dir/build.make controllers/footbot_gripping/CMakeFiles/footbot_gripping.dir/depend
 	$(MAKE) -f controllers/footbot_gripping/CMakeFiles/footbot_gripping.dir/build.make controllers/footbot_gripping/CMakeFiles/footbot_gripping.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=32,33,34 "Built target footbot_gripping"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=33,34,35 "Built target footbot_gripping"
 .PHONY : controllers/footbot_gripping/CMakeFiles/footbot_gripping.dir/all
 
 # Include target in all.
@@ -431,7 +431,7 @@ clean: controllers/footbot_gripping/CMakeFiles/footbot_gripping.dir/clean
 controllers/footbot_gripping/CMakeFiles/footbot_gripping_automoc.dir/all:
 	$(MAKE) -f controllers/footbot_gripping/CMakeFiles/footbot_gripping_automoc.dir/build.make controllers/footbot_gripping/CMakeFiles/footbot_gripping_automoc.dir/depend
 	$(MAKE) -f controllers/footbot_gripping/CMakeFiles/footbot_gripping_automoc.dir/build.make controllers/footbot_gripping/CMakeFiles/footbot_gripping_automoc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=35 "Built target footbot_gripping_automoc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=36 "Built target footbot_gripping_automoc"
 .PHONY : controllers/footbot_gripping/CMakeFiles/footbot_gripping_automoc.dir/all
 
 # Build rule for subdir invocation for target.
@@ -482,7 +482,7 @@ controllers/footbot_foraging/preinstall:
 controllers/footbot_foraging/CMakeFiles/footbot_foraging.dir/all: controllers/footbot_foraging/CMakeFiles/footbot_foraging_automoc.dir/all
 	$(MAKE) -f controllers/footbot_foraging/CMakeFiles/footbot_foraging.dir/build.make controllers/footbot_foraging/CMakeFiles/footbot_foraging.dir/depend
 	$(MAKE) -f controllers/footbot_foraging/CMakeFiles/footbot_foraging.dir/build.make controllers/footbot_foraging/CMakeFiles/footbot_foraging.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=28,29,30 "Built target footbot_foraging"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=29,30,31 "Built target footbot_foraging"
 .PHONY : controllers/footbot_foraging/CMakeFiles/footbot_foraging.dir/all
 
 # Include target in all.
@@ -519,7 +519,7 @@ clean: controllers/footbot_foraging/CMakeFiles/footbot_foraging.dir/clean
 controllers/footbot_foraging/CMakeFiles/footbot_foraging_automoc.dir/all:
 	$(MAKE) -f controllers/footbot_foraging/CMakeFiles/footbot_foraging_automoc.dir/build.make controllers/footbot_foraging/CMakeFiles/footbot_foraging_automoc.dir/depend
 	$(MAKE) -f controllers/footbot_foraging/CMakeFiles/footbot_foraging_automoc.dir/build.make controllers/footbot_foraging/CMakeFiles/footbot_foraging_automoc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=31 "Built target footbot_foraging_automoc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=32 "Built target footbot_foraging_automoc"
 .PHONY : controllers/footbot_foraging/CMakeFiles/footbot_foraging_automoc.dir/all
 
 # Build rule for subdir invocation for target.
@@ -570,7 +570,7 @@ controllers/footbot_manualcontrol/preinstall:
 controllers/footbot_manualcontrol/CMakeFiles/footbot_manualcontrol.dir/all: controllers/footbot_manualcontrol/CMakeFiles/footbot_manualcontrol_automoc.dir/all
 	$(MAKE) -f controllers/footbot_manualcontrol/CMakeFiles/footbot_manualcontrol.dir/build.make controllers/footbot_manualcontrol/CMakeFiles/footbot_manualcontrol.dir/depend
 	$(MAKE) -f controllers/footbot_manualcontrol/CMakeFiles/footbot_manualcontrol.dir/build.make controllers/footbot_manualcontrol/CMakeFiles/footbot_manualcontrol.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=36,37,38 "Built target footbot_manualcontrol"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=37,38,39 "Built target footbot_manualcontrol"
 .PHONY : controllers/footbot_manualcontrol/CMakeFiles/footbot_manualcontrol.dir/all
 
 # Include target in all.
@@ -607,7 +607,7 @@ clean: controllers/footbot_manualcontrol/CMakeFiles/footbot_manualcontrol.dir/cl
 controllers/footbot_manualcontrol/CMakeFiles/footbot_manualcontrol_automoc.dir/all:
 	$(MAKE) -f controllers/footbot_manualcontrol/CMakeFiles/footbot_manualcontrol_automoc.dir/build.make controllers/footbot_manualcontrol/CMakeFiles/footbot_manualcontrol_automoc.dir/depend
 	$(MAKE) -f controllers/footbot_manualcontrol/CMakeFiles/footbot_manualcontrol_automoc.dir/build.make controllers/footbot_manualcontrol/CMakeFiles/footbot_manualcontrol_automoc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=39 "Built target footbot_manualcontrol_automoc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=40 "Built target footbot_manualcontrol_automoc"
 .PHONY : controllers/footbot_manualcontrol/CMakeFiles/footbot_manualcontrol_automoc.dir/all
 
 # Build rule for subdir invocation for target.
@@ -658,7 +658,7 @@ controllers/footbot_nn/preinstall:
 controllers/footbot_nn/CMakeFiles/footbot_nn.dir/all: controllers/footbot_nn/CMakeFiles/footbot_nn_automoc.dir/all
 	$(MAKE) -f controllers/footbot_nn/CMakeFiles/footbot_nn.dir/build.make controllers/footbot_nn/CMakeFiles/footbot_nn.dir/depend
 	$(MAKE) -f controllers/footbot_nn/CMakeFiles/footbot_nn.dir/build.make controllers/footbot_nn/CMakeFiles/footbot_nn.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=40,41,42,43,44,45 "Built target footbot_nn"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=41,42,43,44,45,46 "Built target footbot_nn"
 .PHONY : controllers/footbot_nn/CMakeFiles/footbot_nn.dir/all
 
 # Include target in all.
@@ -695,7 +695,7 @@ clean: controllers/footbot_nn/CMakeFiles/footbot_nn.dir/clean
 controllers/footbot_nn/CMakeFiles/footbot_nn_automoc.dir/all:
 	$(MAKE) -f controllers/footbot_nn/CMakeFiles/footbot_nn_automoc.dir/build.make controllers/footbot_nn/CMakeFiles/footbot_nn_automoc.dir/depend
 	$(MAKE) -f controllers/footbot_nn/CMakeFiles/footbot_nn_automoc.dir/build.make controllers/footbot_nn/CMakeFiles/footbot_nn_automoc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=46 "Built target footbot_nn_automoc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=47 "Built target footbot_nn_automoc"
 .PHONY : controllers/footbot_nn/CMakeFiles/footbot_nn_automoc.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1044,7 +1044,7 @@ loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions.dir/al
 loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions.dir/all: loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions_automoc.dir/all
 	$(MAKE) -f loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions.dir/build.make loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions.dir/depend
 	$(MAKE) -f loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions.dir/build.make loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=51,52,53,54 "Built target foraging_loop_functions"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=52,53,54,55 "Built target foraging_loop_functions"
 .PHONY : loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions.dir/all
 
 # Include target in all.
@@ -1081,7 +1081,7 @@ clean: loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions
 loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions_automoc.dir/all:
 	$(MAKE) -f loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions_automoc.dir/build.make loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions_automoc.dir/depend
 	$(MAKE) -f loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions_automoc.dir/build.make loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions_automoc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=55 "Built target foraging_loop_functions_automoc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=56 "Built target foraging_loop_functions_automoc"
 .PHONY : loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions_automoc.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1137,7 +1137,7 @@ loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functions.dir
 loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functions.dir/all: loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functions_automoc.dir/all
 	$(MAKE) -f loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functions.dir/build.make loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functions.dir/depend
 	$(MAKE) -f loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functions.dir/build.make loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functions.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=73,74,75 "Built target mpga_phototaxis_loop_functions"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=74,75,76 "Built target mpga_phototaxis_loop_functions"
 .PHONY : loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functions.dir/all
 
 # Include target in all.
@@ -1174,7 +1174,7 @@ clean: loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functi
 loop_functions/mpga_loop_functions/CMakeFiles/mpga.dir/all: loop_functions/mpga_loop_functions/CMakeFiles/mpga_automoc.dir/all
 	$(MAKE) -f loop_functions/mpga_loop_functions/CMakeFiles/mpga.dir/build.make loop_functions/mpga_loop_functions/CMakeFiles/mpga.dir/depend
 	$(MAKE) -f loop_functions/mpga_loop_functions/CMakeFiles/mpga.dir/build.make loop_functions/mpga_loop_functions/CMakeFiles/mpga.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=64,65,66,67 "Built target mpga"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=65,66,67,68 "Built target mpga"
 .PHONY : loop_functions/mpga_loop_functions/CMakeFiles/mpga.dir/all
 
 # Include target in all.
@@ -1211,7 +1211,7 @@ clean: loop_functions/mpga_loop_functions/CMakeFiles/mpga.dir/clean
 loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functions_automoc.dir/all:
 	$(MAKE) -f loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functions_automoc.dir/build.make loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functions_automoc.dir/depend
 	$(MAKE) -f loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functions_automoc.dir/build.make loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functions_automoc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=76 "Built target mpga_phototaxis_loop_functions_automoc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=77 "Built target mpga_phototaxis_loop_functions_automoc"
 .PHONY : loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functions_automoc.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1243,7 +1243,7 @@ clean: loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functi
 loop_functions/mpga_loop_functions/CMakeFiles/mpga_automoc.dir/all:
 	$(MAKE) -f loop_functions/mpga_loop_functions/CMakeFiles/mpga_automoc.dir/build.make loop_functions/mpga_loop_functions/CMakeFiles/mpga_automoc.dir/depend
 	$(MAKE) -f loop_functions/mpga_loop_functions/CMakeFiles/mpga_automoc.dir/build.make loop_functions/mpga_loop_functions/CMakeFiles/mpga_automoc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=68 "Built target mpga_automoc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=69 "Built target mpga_automoc"
 .PHONY : loop_functions/mpga_loop_functions/CMakeFiles/mpga_automoc.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1382,7 +1382,7 @@ loop_functions/trajectory_loop_functions/preinstall:
 loop_functions/trajectory_loop_functions/CMakeFiles/trajectory_loop_functions.dir/all: loop_functions/trajectory_loop_functions/CMakeFiles/trajectory_loop_functions_automoc.dir/all
 	$(MAKE) -f loop_functions/trajectory_loop_functions/CMakeFiles/trajectory_loop_functions.dir/build.make loop_functions/trajectory_loop_functions/CMakeFiles/trajectory_loop_functions.dir/depend
 	$(MAKE) -f loop_functions/trajectory_loop_functions/CMakeFiles/trajectory_loop_functions.dir/build.make loop_functions/trajectory_loop_functions/CMakeFiles/trajectory_loop_functions.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=77,78,79,80 "Built target trajectory_loop_functions"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=78,79,80,81 "Built target trajectory_loop_functions"
 .PHONY : loop_functions/trajectory_loop_functions/CMakeFiles/trajectory_loop_functions.dir/all
 
 # Include target in all.
@@ -1419,7 +1419,7 @@ clean: loop_functions/trajectory_loop_functions/CMakeFiles/trajectory_loop_funct
 loop_functions/trajectory_loop_functions/CMakeFiles/trajectory_loop_functions_automoc.dir/all:
 	$(MAKE) -f loop_functions/trajectory_loop_functions/CMakeFiles/trajectory_loop_functions_automoc.dir/build.make loop_functions/trajectory_loop_functions/CMakeFiles/trajectory_loop_functions_automoc.dir/depend
 	$(MAKE) -f loop_functions/trajectory_loop_functions/CMakeFiles/trajectory_loop_functions_automoc.dir/build.make loop_functions/trajectory_loop_functions/CMakeFiles/trajectory_loop_functions_automoc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=81 "Built target trajectory_loop_functions_automoc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=82 "Built target trajectory_loop_functions_automoc"
 .PHONY : loop_functions/trajectory_loop_functions/CMakeFiles/trajectory_loop_functions_automoc.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1470,7 +1470,7 @@ loop_functions/id_loop_functions/preinstall:
 loop_functions/id_loop_functions/CMakeFiles/id_loop_functions.dir/all: loop_functions/id_loop_functions/CMakeFiles/id_loop_functions_automoc.dir/all
 	$(MAKE) -f loop_functions/id_loop_functions/CMakeFiles/id_loop_functions.dir/build.make loop_functions/id_loop_functions/CMakeFiles/id_loop_functions.dir/depend
 	$(MAKE) -f loop_functions/id_loop_functions/CMakeFiles/id_loop_functions.dir/build.make loop_functions/id_loop_functions/CMakeFiles/id_loop_functions.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=56,57,58 "Built target id_loop_functions"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=57,58,59 "Built target id_loop_functions"
 .PHONY : loop_functions/id_loop_functions/CMakeFiles/id_loop_functions.dir/all
 
 # Include target in all.
@@ -1507,7 +1507,7 @@ clean: loop_functions/id_loop_functions/CMakeFiles/id_loop_functions.dir/clean
 loop_functions/id_loop_functions/CMakeFiles/id_loop_functions_automoc.dir/all:
 	$(MAKE) -f loop_functions/id_loop_functions/CMakeFiles/id_loop_functions_automoc.dir/build.make loop_functions/id_loop_functions/CMakeFiles/id_loop_functions_automoc.dir/depend
 	$(MAKE) -f loop_functions/id_loop_functions/CMakeFiles/id_loop_functions_automoc.dir/build.make loop_functions/id_loop_functions/CMakeFiles/id_loop_functions_automoc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=59 "Built target id_loop_functions_automoc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=60 "Built target id_loop_functions_automoc"
 .PHONY : loop_functions/id_loop_functions/CMakeFiles/id_loop_functions_automoc.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1559,7 +1559,7 @@ loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop_functi
 loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop_functions.dir/all: loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop_functions_automoc.dir/all
 	$(MAKE) -f loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop_functions.dir/build.make loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop_functions.dir/depend
 	$(MAKE) -f loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop_functions.dir/build.make loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop_functions.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=60,61,62 "Built target manualcontrol_loop_functions"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=61,62,63 "Built target manualcontrol_loop_functions"
 .PHONY : loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop_functions.dir/all
 
 # Include target in all.
@@ -1596,7 +1596,7 @@ clean: loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop
 loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop_functions_automoc.dir/all:
 	$(MAKE) -f loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop_functions_automoc.dir/build.make loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop_functions_automoc.dir/depend
 	$(MAKE) -f loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop_functions_automoc.dir/build.make loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop_functions_automoc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=63 "Built target manualcontrol_loop_functions_automoc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=64 "Built target manualcontrol_loop_functions_automoc"
 .PHONY : loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop_functions_automoc.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1668,7 +1668,7 @@ embedding/mpga/CMakeFiles/mpga_phototaxis.dir/all: loop_functions/mpga_loop_func
 embedding/mpga/CMakeFiles/mpga_phototaxis.dir/all: embedding/mpga/CMakeFiles/mpga_phototaxis_automoc.dir/all
 	$(MAKE) -f embedding/mpga/CMakeFiles/mpga_phototaxis.dir/build.make embedding/mpga/CMakeFiles/mpga_phototaxis.dir/depend
 	$(MAKE) -f embedding/mpga/CMakeFiles/mpga_phototaxis.dir/build.make embedding/mpga/CMakeFiles/mpga_phototaxis.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=69,70,71 "Built target mpga_phototaxis"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=70,71,72 "Built target mpga_phototaxis"
 .PHONY : embedding/mpga/CMakeFiles/mpga_phototaxis.dir/all
 
 # Include target in all.
@@ -1705,7 +1705,7 @@ clean: embedding/mpga/CMakeFiles/mpga_phototaxis.dir/clean
 embedding/mpga/CMakeFiles/mpga_phototaxis_automoc.dir/all:
 	$(MAKE) -f embedding/mpga/CMakeFiles/mpga_phototaxis_automoc.dir/build.make embedding/mpga/CMakeFiles/mpga_phototaxis_automoc.dir/depend
 	$(MAKE) -f embedding/mpga/CMakeFiles/mpga_phototaxis_automoc.dir/build.make embedding/mpga/CMakeFiles/mpga_phototaxis_automoc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=72 "Built target mpga_phototaxis_automoc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/build/CMakeFiles --progress-num=73 "Built target mpga_phototaxis_automoc"
 .PHONY : embedding/mpga/CMakeFiles/mpga_phototaxis_automoc.dir/all
 
 # Build rule for subdir invocation for target.

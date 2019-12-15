@@ -18,6 +18,7 @@
 #include "mobile_base.h"
 #include "rgba_sensor.h"
 #include "rgb_led.h"
+#include "cbumpers.h"
 
 /*
  * All the ARGoS stuff in the 'argos' namespace.
@@ -49,7 +50,7 @@ public:
     RGBASensor RgbaRearLeft;
 
     MobileBase Base; // done
-//    CBumpers Bumpers; // todo: simulate bumpers with prox sensor
+    CBumpers Bumpers;
 //    Battery Bat;
     RGBLed Led; // dont
 //    IMUSensor Imu;
@@ -61,6 +62,7 @@ public:
             CCI_ColoredBlobOmnidirectionalCameraSensor & colorCam)  :
             m_name(id),
             Base(wheels),
+            Bumpers(proximity),
             RgbaFront("RgbaFront", 0, proximity, light, colorCam),
             RgbaFrontLeft("RgbaFrontLeft", 1, proximity, light, colorCam),
             RgbaLeft("RgbaLeft", 2, proximity, light, colorCam),
@@ -97,16 +99,18 @@ public:
     void loop() {
 
         std::cout << "---" << getName() << "---" << std::endl;
+        Bumpers.read();
+        Bumpers.print();
          //RgbaFront.readRGBA() ;
 
-         std::cout << "[" << getName() << ", 0] " << RgbaFront.readRGBA().Ambient << " " << RgbaFront.readRGBA().Proximity << "{r:" << RgbaFront.readRGBA().Red<< " g:" << RgbaFront.readRGBA().Green<< " b:" << RgbaFront.readRGBA().Blue<< "}"<< std::endl;
-        std::cout << "[" << getName() << ", 1] " << RgbaFrontLeft.readRGBA().Ambient  << " " << RgbaFrontLeft.readRGBA().Proximity << "{r:" << RgbaFrontLeft.readRGBA().Red<< " g:" << RgbaFrontLeft.readRGBA().Green<< " b:" << RgbaFrontLeft.readRGBA().Blue<< "}" << std::endl;
-        std::cout << "[" << getName() << ", 2] " << RgbaLeft.readRGBA().Ambient  << " " << RgbaLeft.readRGBA().Proximity << "{r:" << RgbaLeft.readRGBA().Red<< " g:" << RgbaLeft.readRGBA().Green<< " b:" << RgbaLeft.readRGBA().Blue<< "}" << std::endl;
-        std::cout << "[" << getName() << ", 3] " << RgbaRearLeft.readRGBA().Ambient  << " " << RgbaRearLeft.readRGBA().Proximity << "{r:" << RgbaRearLeft.readRGBA().Red<< " g:" << RgbaRearLeft.readRGBA().Green<< " b:" << RgbaRearLeft.readRGBA().Blue<< "}" << std::endl;
-        std::cout << "[" << getName() << ", 4] " << RgbaRear.readRGBA().Ambient  << " " << RgbaRear.readRGBA().Proximity << "{r:" << RgbaRear.readRGBA().Red<< " g:" << RgbaRear.readRGBA().Green<< " b:" << RgbaRear.readRGBA().Blue<< "}" << std::endl;
-        std::cout << "[" << getName() << ", 5] " << RgbaRearRight.readRGBA().Ambient  << " " << RgbaRearRight.readRGBA().Proximity << "{r:" << RgbaRearRight.readRGBA().Red<< " g:" << RgbaRearRight.readRGBA().Green<< " b:" << RgbaRearRight.readRGBA().Blue<< "}" << std::endl;
-        std::cout << "[" << getName() << ", 6] " << RgbaRight.readRGBA().Ambient  << " " << RgbaRight.readRGBA().Proximity << "{r:" << RgbaRight.readRGBA().Red<< " g:" << RgbaRight.readRGBA().Green<< " b:" << RgbaRight.readRGBA().Blue<< "}" << std::endl;
-        std::cout << "[" << getName() << ", 7] " << RgbaFrontRight.readRGBA().Ambient  << " " << RgbaFrontRight.readRGBA().Proximity << "{r:" << RgbaFrontRight.readRGBA().Red<< " g:" << RgbaFrontRight.readRGBA().Green<< " b:" << RgbaFrontRight.readRGBA().Blue<< "}" << std::endl;
+//         std::cout << "[" << getName() << ", 0] " << RgbaFront.readRGBA().Ambient << " " << RgbaFront.readRGBA().Proximity << "{r:" << RgbaFront.readRGBA().Red<< " g:" << RgbaFront.readRGBA().Green<< " b:" << RgbaFront.readRGBA().Blue<< "}"<< std::endl;
+//        std::cout << "[" << getName() << ", 1] " << RgbaFrontLeft.readRGBA().Ambient  << " " << RgbaFrontLeft.readRGBA().Proximity << "{r:" << RgbaFrontLeft.readRGBA().Red<< " g:" << RgbaFrontLeft.readRGBA().Green<< " b:" << RgbaFrontLeft.readRGBA().Blue<< "}" << std::endl;
+//        std::cout << "[" << getName() << ", 2] " << RgbaLeft.readRGBA().Ambient  << " " << RgbaLeft.readRGBA().Proximity << "{r:" << RgbaLeft.readRGBA().Red<< " g:" << RgbaLeft.readRGBA().Green<< " b:" << RgbaLeft.readRGBA().Blue<< "}" << std::endl;
+//        std::cout << "[" << getName() << ", 3] " << RgbaRearLeft.readRGBA().Ambient  << " " << RgbaRearLeft.readRGBA().Proximity << "{r:" << RgbaRearLeft.readRGBA().Red<< " g:" << RgbaRearLeft.readRGBA().Green<< " b:" << RgbaRearLeft.readRGBA().Blue<< "}" << std::endl;
+//        std::cout << "[" << getName() << ", 4] " << RgbaRear.readRGBA().Ambient  << " " << RgbaRear.readRGBA().Proximity << "{r:" << RgbaRear.readRGBA().Red<< " g:" << RgbaRear.readRGBA().Green<< " b:" << RgbaRear.readRGBA().Blue<< "}" << std::endl;
+//        std::cout << "[" << getName() << ", 5] " << RgbaRearRight.readRGBA().Ambient  << " " << RgbaRearRight.readRGBA().Proximity << "{r:" << RgbaRearRight.readRGBA().Red<< " g:" << RgbaRearRight.readRGBA().Green<< " b:" << RgbaRearRight.readRGBA().Blue<< "}" << std::endl;
+//        std::cout << "[" << getName() << ", 6] " << RgbaRight.readRGBA().Ambient  << " " << RgbaRight.readRGBA().Proximity << "{r:" << RgbaRight.readRGBA().Red<< " g:" << RgbaRight.readRGBA().Green<< " b:" << RgbaRight.readRGBA().Blue<< "}" << std::endl;
+//        std::cout << "[" << getName() << ", 7] " << RgbaFrontRight.readRGBA().Ambient  << " " << RgbaFrontRight.readRGBA().Proximity << "{r:" << RgbaFrontRight.readRGBA().Red<< " g:" << RgbaFrontRight.readRGBA().Green<< " b:" << RgbaFrontRight.readRGBA().Blue<< "}" << std::endl;
 
 
     }

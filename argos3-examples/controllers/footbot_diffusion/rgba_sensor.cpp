@@ -69,9 +69,9 @@ RGBAResult RGBASensor::readRGBA()
     RGBAResult result;
 
     const Real rawProximity = m_cProximity.GetReadings()[m_index].Value;
-    if (rawProximity == NO_PROX_INTERSECTION) {
+    if (rawProximity == -1) { // no proximity intersection
         result.Proximity = 0;
-    } else {
+    } else { // intersection in sensor range
         result.Proximity = rawProximity * 100; // todo: scale this according to real robot
     }
 

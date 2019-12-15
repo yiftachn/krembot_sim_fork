@@ -123,6 +123,33 @@ footbot_diffusion/fast:
 	$(MAKE) -f CMakeFiles/footbot_diffusion.dir/build.make CMakeFiles/footbot_diffusion.dir/build
 .PHONY : footbot_diffusion/fast
 
+cbumpers.o: cbumpers.cpp.o
+
+.PHONY : cbumpers.o
+
+# target to build an object file
+cbumpers.cpp.o:
+	$(MAKE) -f CMakeFiles/footbot_diffusion.dir/build.make CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.o
+.PHONY : cbumpers.cpp.o
+
+cbumpers.i: cbumpers.cpp.i
+
+.PHONY : cbumpers.i
+
+# target to preprocess a source file
+cbumpers.cpp.i:
+	$(MAKE) -f CMakeFiles/footbot_diffusion.dir/build.make CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.i
+.PHONY : cbumpers.cpp.i
+
+cbumpers.s: cbumpers.cpp.s
+
+.PHONY : cbumpers.s
+
+# target to generate assembly for a file
+cbumpers.cpp.s:
+	$(MAKE) -f CMakeFiles/footbot_diffusion.dir/build.make CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.s
+.PHONY : cbumpers.cpp.s
+
 footbot_diffusion.o: footbot_diffusion.cpp.o
 
 .PHONY : footbot_diffusion.o
@@ -213,6 +240,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... footbot_diffusion"
 	@echo "... edit_cache"
+	@echo "... cbumpers.o"
+	@echo "... cbumpers.i"
+	@echo "... cbumpers.s"
 	@echo "... footbot_diffusion.o"
 	@echo "... footbot_diffusion.i"
 	@echo "... footbot_diffusion.s"

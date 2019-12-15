@@ -74,12 +74,12 @@ preinstall:
 CMakeFiles/footbot_diffusion.dir/all:
 	$(MAKE) -f CMakeFiles/footbot_diffusion.dir/build.make CMakeFiles/footbot_diffusion.dir/depend
 	$(MAKE) -f CMakeFiles/footbot_diffusion.dir/build.make CMakeFiles/footbot_diffusion.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5 "Built target footbot_diffusion"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target footbot_diffusion"
 .PHONY : CMakeFiles/footbot_diffusion.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/footbot_diffusion.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/footbot_diffusion.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/footbot_diffusion.dir/rule

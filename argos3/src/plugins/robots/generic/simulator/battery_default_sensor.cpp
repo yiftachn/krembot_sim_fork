@@ -85,7 +85,7 @@ namespace argos {
             fDiff;
       }
       else {
-         m_sReading.TimeLeft = std::numeric_limits<Real>::infinity();
+         m_sReading.TimeLeft = CPhysicsEngine::GetSimulationClockTick();//std::numeric_limits<Real>::infinity();
       }
    }
 

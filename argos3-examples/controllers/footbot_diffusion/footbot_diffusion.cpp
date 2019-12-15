@@ -12,10 +12,13 @@ CFootBotDiffusion::CFootBotDiffusion() {}
 /****************************************/
 
 void CFootBotDiffusion::Init(TConfigurationNode& t_node) {
+    //actuators
     m_pcWheels    = GetActuator<CCI_DifferentialSteeringActuator>("differential_steering");
+    m_pcLEDs   = GetActuator<CCI_LEDsActuator                          >("leds");
+
+    //seonsors
     m_pcProximity = GetSensor  <CCI_FootBotProximitySensor      >("footbot_proximity"    );
     m_pcLight  = GetSensor  <CCI_FootBotLightSensor                    >("footbot_light");
-    m_pcLEDs   = GetActuator<CCI_LEDsActuator                          >("leds");
     m_pcCamera = GetSensor  <CCI_ColoredBlobOmnidirectionalCameraSensor>("colored_blob_omnidirectional_camera");
     m_pcCamera->Enable();
 

@@ -1,0 +1,78 @@
+/*******************************************************************************
+* Copyright (c) 2018, RoboTICan, LTD.
+* All rights reserved.
+*
+* Redistribution and use in source and binary forms, with or without
+* modification, are permitted provided that the following conditions are met:
+*
+* * Redistributions of source code must retain the above copyright notice, this
+*   list of conditions and the following disclaimer.
+*
+* * Redistributions in binary form must reproduce the above copyright notice,
+*   this list of conditions and the following disclaimer in the documentation
+*   and/or other materials provided with the distribution.
+*
+* * Neither the name of RoboTICan nor the names of its
+*   contributors may be used to endorse or promote products derived from
+*   this software without specific prior written permission.
+*
+* THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+* AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+* IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+* DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+* FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+* DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+* SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+* CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+* OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+* OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*******************************************************************************/
+/* Author: Elhay Rauper, Yair Shlomi */
+
+#include <iostream>
+#include "battery.h"
+
+
+#define MAX_BAT_LVL 4.12
+#define MIN_BAT_LVL 3.3
+#define MAX_CHRG_LVL 5.0
+#define MIN_CHRG_LVL 0.0
+#define BATTERY_CAPACITY_MINUTES 120.0f
+
+using namespace std::chrono;
+
+Battery::Battery(){
+    m_startTime = steady_clock::now();
+}
+
+float Battery::timeRatio() {
+    const auto & elapsedMinutes = duration_cast<std::chrono::minutes>(steady_clock::now() - m_startTime).count();
+    float timeLeftMinutes = BATTERY_CAPACITY_MINUTES - elapsedMinutes;
+    if (timeLeftMinutes < 0 ) {
+        timeLeftMinutes = 0;
+    }
+    return (timeLeftMinutes / BATTERY_CAPACITY_MINUTES);
+}
+
+float Battery::readBatLvl() {
+    return (timeRatio() * (MAX_BAT_LVL - MIN_BAT_LVL)) + MIN_BAT_LVL;
+}
+
+bool Battery::isFull() { return (timeRatio() == 1); }
+
+uint8_t Battery::getBatLvl() { return timeRatio() * 100; }
+
+float Battery::getBatVolt() { return timeRatio() * 100.0; }
+
+void Battery::print()
+{
+    std::cout << "------------Battery Values------------" << std::endl;
+    std::cout << "Raw Battery read: " << timeRatio();
+    std::cout << " | Battery level: " << (int)getBatLvl();
+    std::cout << " | Charge Level: " << (int)getChargeLvl();
+    std::cout << " | Is Charging: " << (isCharging() == false ? "No" : "Yes");
+    std::cout << " | Is Full: " << (isFull() == false ? "No" : "Yes") << std::endl;
+}
+
+
+

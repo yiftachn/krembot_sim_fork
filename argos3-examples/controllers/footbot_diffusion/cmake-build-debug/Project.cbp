@@ -84,6 +84,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/battery.cpp">
+			<Option target="footbot_diffusion"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/battery.h">
+			<Option target="footbot_diffusion"/>
+		</Unit>
 		<Unit filename="/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cbumpers.cpp">
 			<Option target="footbot_diffusion"/>
 		</Unit>

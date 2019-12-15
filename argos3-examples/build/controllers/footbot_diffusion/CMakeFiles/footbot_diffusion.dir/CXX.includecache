@@ -8,6 +8,18 @@
 
 /home/eli/ws/krembot_sim/argos3-examples/build/controllers/footbot_diffusion/footbot_diffusion_automoc.cpp
 
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/battery.cpp
+iostream
+-
+battery.h
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/battery.h
+
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/battery.h
+cstdint
+-
+chrono
+-
+
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cbumpers.cpp
 cbumpers.h
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cbumpers.h
@@ -65,6 +77,8 @@ rgb_led.h
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgb_led.h
 cbumpers.h
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cbumpers.h
+battery.h
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/battery.h
 
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/krembot_main.h
 krembot.h

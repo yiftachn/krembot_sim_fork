@@ -4,6 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/battery.cpp" "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles/footbot_diffusion.dir/battery.cpp.o"
   "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cbumpers.cpp" "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.o"
   "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/footbot_diffusion.cpp" "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o"
   "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgb_led.cpp" "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o"

@@ -140,6 +140,33 @@ footbot_diffusion_automoc/fast:
 	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion_automoc.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion_automoc.dir/build
 .PHONY : footbot_diffusion_automoc/fast
 
+battery.o: battery.cpp.o
+
+.PHONY : battery.o
+
+# target to build an object file
+battery.cpp.o:
+	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/battery.cpp.o
+.PHONY : battery.cpp.o
+
+battery.i: battery.cpp.i
+
+.PHONY : battery.i
+
+# target to preprocess a source file
+battery.cpp.i:
+	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/battery.cpp.i
+.PHONY : battery.cpp.i
+
+battery.s: battery.cpp.s
+
+.PHONY : battery.s
+
+# target to generate assembly for a file
+battery.cpp.s:
+	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/battery.cpp.s
+.PHONY : battery.cpp.s
+
 cbumpers.o: cbumpers.cpp.o
 
 .PHONY : cbumpers.o
@@ -285,6 +312,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... footbot_diffusion"
 	@echo "... footbot_diffusion_automoc"
+	@echo "... battery.o"
+	@echo "... battery.i"
+	@echo "... battery.s"
 	@echo "... cbumpers.o"
 	@echo "... cbumpers.i"
 	@echo "... cbumpers.s"

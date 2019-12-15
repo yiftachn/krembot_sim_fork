@@ -123,6 +123,33 @@ footbot_diffusion/fast:
 	$(MAKE) -f CMakeFiles/footbot_diffusion.dir/build.make CMakeFiles/footbot_diffusion.dir/build
 .PHONY : footbot_diffusion/fast
 
+battery.o: battery.cpp.o
+
+.PHONY : battery.o
+
+# target to build an object file
+battery.cpp.o:
+	$(MAKE) -f CMakeFiles/footbot_diffusion.dir/build.make CMakeFiles/footbot_diffusion.dir/battery.cpp.o
+.PHONY : battery.cpp.o
+
+battery.i: battery.cpp.i
+
+.PHONY : battery.i
+
+# target to preprocess a source file
+battery.cpp.i:
+	$(MAKE) -f CMakeFiles/footbot_diffusion.dir/build.make CMakeFiles/footbot_diffusion.dir/battery.cpp.i
+.PHONY : battery.cpp.i
+
+battery.s: battery.cpp.s
+
+.PHONY : battery.s
+
+# target to generate assembly for a file
+battery.cpp.s:
+	$(MAKE) -f CMakeFiles/footbot_diffusion.dir/build.make CMakeFiles/footbot_diffusion.dir/battery.cpp.s
+.PHONY : battery.cpp.s
+
 cbumpers.o: cbumpers.cpp.o
 
 .PHONY : cbumpers.o
@@ -240,6 +267,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... footbot_diffusion"
 	@echo "... edit_cache"
+	@echo "... battery.o"
+	@echo "... battery.i"
+	@echo "... battery.s"
 	@echo "... cbumpers.o"
 	@echo "... cbumpers.i"
 	@echo "... cbumpers.s"

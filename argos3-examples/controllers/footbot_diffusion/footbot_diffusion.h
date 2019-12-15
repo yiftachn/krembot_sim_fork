@@ -28,7 +28,7 @@
 #include <argos3/plugins/robots/generic/control_interface/ci_differential_steering_actuator.h>
 /* Definition of the foot-bot proximity sensor */
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_proximity_sensor.h>
-
+/* Definition of the leds actuator */
 #include <argos3/plugins/robots/generic/control_interface/ci_leds_actuator.h>
 /* Definition of the omnidirectional camera sensor */
 #include <argos3/plugins/robots/generic/control_interface/ci_colored_blob_omnidirectional_camera_sensor.h>
@@ -92,10 +92,10 @@ private:
     Krembot * m_pKrembot = nullptr;
     KrembotMain * m_pKrembotMain = nullptr;
 
-   /* Pointer to the differential steering actuator */
-   CCI_DifferentialSteeringActuator* m_pcWheels = nullptr;
-   /* Pointer to the foot-bot proximity sensor */
-   CCI_FootBotProximitySensor* m_pcProximity = nullptr;
+    /* Pointer to the differential steering actuator */
+    CCI_DifferentialSteeringActuator* m_pcWheels = nullptr;
+    /* Pointer to the foot-bot proximity sensor */
+    CCI_FootBotProximitySensor* m_pcProximity = nullptr;
     /* Pointer to the foot-bot light sensor */
     CCI_FootBotLightSensor* m_pcLight = nullptr;
     /* Pointer to the LEDs actuator */

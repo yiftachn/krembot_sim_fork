@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/footbot_diffusion.dir/battery.cpp.o"
   "CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.o"
   "CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o"
+  "CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o"
   "CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o"
   "CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o"
   "libfootbot_diffusion.pdb"

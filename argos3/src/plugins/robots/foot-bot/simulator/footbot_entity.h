@@ -23,6 +23,7 @@ namespace argos {
    class CProximitySensorEquippedEntity;
    class CRABEquippedEntity;
    class CWiFiEquippedEntity;
+   class CImuEquippedEntity;
 }
 
 #include <argos3/core/simulator/entity/composable_entity.h>
@@ -117,6 +118,10 @@ namespace argos {
           return *m_pcBatteryEquippedEntity;
       }
 
+       inline CImuEquippedEntity& GetImuEquippedEntity() {
+           return *m_pcImuEquippedEntity;
+       }
+
       virtual std::string GetTypeDescription() const {
          return "foot-bot";
       }
@@ -138,6 +143,7 @@ namespace argos {
       CWheeledEntity*                        m_pcWheeledEntity;
       CWiFiEquippedEntity*                   m_pcWiFiEquippedEntity;
       CBatteryEquippedEntity*                m_pcBatteryEquippedEntity;
+      CImuEquippedEntity*                    m_pcImuEquippedEntity;
    };
 
 }

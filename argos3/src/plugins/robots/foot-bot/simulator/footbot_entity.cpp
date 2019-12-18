@@ -20,7 +20,9 @@
 #include <argos3/plugins/simulator/entities/perspective_camera_equipped_entity.h>
 #include <argos3/plugins/simulator/entities/proximity_sensor_equipped_entity.h>
 #include <argos3/plugins/simulator/entities/wifi_equipped_entity.h>
-#include <argos3/plugins/simulator/entities/light_entity.h>
+//#include <argos3/plugins/simulator/entities/light_entity.h>
+#include <argos3/plugins/simulator/entities/imu_equipped_entity.h>
+
 #include "footbot_distance_scanner_equipped_entity.h"
 #include "footbot_turret_entity.h"
 
@@ -78,7 +80,8 @@ namespace argos {
       m_pcRABEquippedEntity(NULL),
       m_pcWheeledEntity(NULL),
       m_pcWiFiEquippedEntity(NULL),
-      m_pcBatteryEquippedEntity(NULL) {
+      m_pcBatteryEquippedEntity(NULL),
+      m_pcImuEquippedEntity(NULL){
    }
 
    /****************************************/
@@ -111,7 +114,8 @@ namespace argos {
       m_pcRABEquippedEntity(NULL),
       m_pcWheeledEntity(NULL),
       m_pcWiFiEquippedEntity(NULL),
-      m_pcBatteryEquippedEntity(NULL) {
+      m_pcBatteryEquippedEntity(NULL),
+      m_pcImuEquippedEntity(NULL){
       try {
          /*
           * Create and init components
@@ -121,6 +125,7 @@ namespace argos {
           * Better to put this first, because many other entities need this one
           */
          m_pcEmbodiedEntity = new CEmbodiedEntity(this, "body_0", c_position, c_orientation);
+
          AddComponent(*m_pcEmbodiedEntity);
          SAnchor& cTurretAnchor = m_pcEmbodiedEntity->AddAnchor("turret");
          CQuaternion cPerspCamOrient(b_perspcam_front ? CRadians::ZERO : -CRadians::PI_OVER_TWO,
@@ -256,6 +261,9 @@ namespace argos {
          /* Battery equipped entity */
          m_pcBatteryEquippedEntity = new CBatteryEquippedEntity(this, "battery_0", str_bat_model);
          AddComponent(*m_pcBatteryEquippedEntity);
+         /* Imu equipped entity */
+          m_pcImuEquippedEntity = new CImuEquippedEntity(this, "imu");
+          AddComponent(*m_pcImuEquippedEntity);
          /* Controllable entity
             It must be the last one, for actuators/sensors to link to composing entities correctly */
          m_pcControllableEntity = new CControllableEntity(this, "controller_0");
@@ -438,6 +446,9 @@ namespace argos {
          if(NodeExists(t_tree, "battery"))
             m_pcBatteryEquippedEntity->Init(GetNode(t_tree, "battery"));
          AddComponent(*m_pcBatteryEquippedEntity);
+          /* Imu equipped entity */
+          m_pcImuEquippedEntity = new CImuEquippedEntity(this, "imu");
+          AddComponent(*m_pcImuEquippedEntity);
          /* Controllable entity
             It must be the last one, for actuators/sensors to link to composing entities correctly */
          m_pcControllableEntity = new CControllableEntity(this);
@@ -474,6 +485,7 @@ namespace argos {
       UPDATE(m_pcRABEquippedEntity);
       UPDATE(m_pcLEDEquippedEntity);
       UPDATE(m_pcBatteryEquippedEntity);
+      UPDATE(m_pcImuEquippedEntity);
    }
 
    /****************************************/

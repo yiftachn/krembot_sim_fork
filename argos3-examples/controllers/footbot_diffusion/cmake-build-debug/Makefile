@@ -204,6 +204,33 @@ footbot_diffusion.cpp.s:
 	$(MAKE) -f CMakeFiles/footbot_diffusion.dir/build.make CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.s
 .PHONY : footbot_diffusion.cpp.s
 
+imu_sensor.o: imu_sensor.cpp.o
+
+.PHONY : imu_sensor.o
+
+# target to build an object file
+imu_sensor.cpp.o:
+	$(MAKE) -f CMakeFiles/footbot_diffusion.dir/build.make CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o
+.PHONY : imu_sensor.cpp.o
+
+imu_sensor.i: imu_sensor.cpp.i
+
+.PHONY : imu_sensor.i
+
+# target to preprocess a source file
+imu_sensor.cpp.i:
+	$(MAKE) -f CMakeFiles/footbot_diffusion.dir/build.make CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.i
+.PHONY : imu_sensor.cpp.i
+
+imu_sensor.s: imu_sensor.cpp.s
+
+.PHONY : imu_sensor.s
+
+# target to generate assembly for a file
+imu_sensor.cpp.s:
+	$(MAKE) -f CMakeFiles/footbot_diffusion.dir/build.make CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.s
+.PHONY : imu_sensor.cpp.s
+
 rgb_led.o: rgb_led.cpp.o
 
 .PHONY : rgb_led.o
@@ -276,6 +303,9 @@ help:
 	@echo "... footbot_diffusion.o"
 	@echo "... footbot_diffusion.i"
 	@echo "... footbot_diffusion.s"
+	@echo "... imu_sensor.o"
+	@echo "... imu_sensor.i"
+	@echo "... imu_sensor.s"
 	@echo "... rgb_led.o"
 	@echo "... rgb_led.i"
 	@echo "... rgb_led.s"

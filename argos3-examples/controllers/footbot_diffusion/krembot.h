@@ -14,6 +14,8 @@
 #include <argos3/plugins/robots/generic/control_interface/ci_colored_blob_omnidirectional_camera_sensor.h>
 /* Definition of the foot-bot light sensor */
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_light_sensor.h>
+/* Definition of the foot-bot imu sensor */
+#include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.h>
 
 
 #include <argos3/core/utility/math/vector2.h>
@@ -22,6 +24,7 @@
 #include "rgb_led.h"
 #include "cbumpers.h"
 #include "battery.h"
+#include "imu_sensor.h"
 
 /*
  * All the ARGoS stuff in the 'argos' namespace.
@@ -55,17 +58,19 @@ public:
     CBumpers Bumpers;
     Battery Bat;
     RGBLed Led;
-//    IMUSensor Imu;
+    IMUSensor Imu;
 
     Krembot(const std::string & id,
             CCI_DifferentialSteeringActuator& wheels,
             CCI_FootBotProximitySensor& proximity,
             CCI_LEDsActuator & leds,
             CCI_FootBotLightSensor & light,
-            CCI_ColoredBlobOmnidirectionalCameraSensor & colorCam)  :
+            CCI_ColoredBlobOmnidirectionalCameraSensor & colorCam,
+            CCI_FootBotImuSensor & imu)  :
             m_name(id),
             Base(wheels),
             Bumpers(proximity),
+            Imu(imu),
             RgbaFront("RgbaFront", 0, proximity, light, colorCam),
             RgbaFrontLeft("RgbaFrontLeft", 1, proximity, light, colorCam),
             RgbaLeft("RgbaLeft", 2, proximity, light, colorCam),
@@ -103,8 +108,8 @@ public:
 
         std::cout << "---" << getName() << "---" << std::endl;
 
-
-        Bat.print();
+        std::cout << "y: " << Imu.read().yaw;
+//        Bat.print();
 
 
 //        Bumpers.read();

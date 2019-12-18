@@ -3108,6 +3108,12 @@
 		<Unit filename="/home/eli/ws/krembot_sim/argos3/src/plugins/robots/foot-bot/control_interface/ci_footbot_gripper_actuator.h">
 			<Option target="argos3plugin_simulator_footbot"/>
 		</Unit>
+		<Unit filename="/home/eli/ws/krembot_sim/argos3/src/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.cpp">
+			<Option target="argos3plugin_simulator_footbot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/krembot_sim/argos3/src/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.h">
+			<Option target="argos3plugin_simulator_footbot"/>
+		</Unit>
 		<Unit filename="/home/eli/ws/krembot_sim/argos3/src/plugins/robots/foot-bot/control_interface/ci_footbot_light_sensor.cpp">
 			<Option target="argos3plugin_simulator_footbot"/>
 		</Unit>
@@ -3178,6 +3184,12 @@
 			<Option target="argos3plugin_simulator_footbot"/>
 		</Unit>
 		<Unit filename="/home/eli/ws/krembot_sim/argos3/src/plugins/robots/foot-bot/simulator/footbot_gripper_default_actuator.h">
+			<Option target="argos3plugin_simulator_footbot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/krembot_sim/argos3/src/plugins/robots/foot-bot/simulator/footbot_imu_sensor.cpp">
+			<Option target="argos3plugin_simulator_footbot"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/krembot_sim/argos3/src/plugins/robots/foot-bot/simulator/footbot_imu_sensor.h">
 			<Option target="argos3plugin_simulator_footbot"/>
 		</Unit>
 		<Unit filename="/home/eli/ws/krembot_sim/argos3/src/plugins/robots/foot-bot/simulator/footbot_light_rotzonly_sensor.cpp">
@@ -3658,6 +3670,12 @@
 			<Option target="argos3plugin_simulator_entities"/>
 		</Unit>
 		<Unit filename="/home/eli/ws/krembot_sim/argos3/src/plugins/simulator/entities/ground_sensor_equipped_entity.h">
+			<Option target="argos3plugin_simulator_entities"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/krembot_sim/argos3/src/plugins/simulator/entities/imu_equipped_entity.cpp">
+			<Option target="argos3plugin_simulator_entities"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/krembot_sim/argos3/src/plugins/simulator/entities/imu_equipped_entity.h">
 			<Option target="argos3plugin_simulator_entities"/>
 		</Unit>
 		<Unit filename="/home/eli/ws/krembot_sim/argos3/src/plugins/simulator/entities/led_entity.cpp">

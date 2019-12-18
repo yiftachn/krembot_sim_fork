@@ -58,7 +58,7 @@ set(ARGOS3_SOURCES_PLUGINS_SIMULATOR_ENTITIES
   tag_entity.cpp
   tag_equipped_entity.cpp
   wheeled_entity.cpp
-  wifi_equipped_entity.cpp)
+  wifi_equipped_entity.cpp imu_equipped_entity.cpp imu_equipped_entity.h)
 
 #
 # Create entity plugin library

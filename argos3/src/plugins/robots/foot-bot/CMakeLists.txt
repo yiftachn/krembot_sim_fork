@@ -12,7 +12,8 @@ set(ARGOS3_HEADERS_PLUGINS_ROBOTS_FOOTBOT_CONTROLINTERFACE
   control_interface/ci_footbot_motor_ground_sensor.h
   control_interface/ci_footbot_proximity_sensor.h
   control_interface/ci_footbot_turret_actuator.h
-  control_interface/ci_footbot_turret_encoder_sensor.h)
+  control_interface/ci_footbot_turret_encoder_sensor.h
+  control_interface/ci_footbot_imu_sensor.h)
 # argos3/plugins/robots/foot-bot/simulator
 if(ARGOS_BUILD_FOR_SIMULATOR)
   set(ARGOS3_HEADERS_PLUGINS_ROBOTS_FOOTBOT_SIMULATOR
@@ -30,7 +31,8 @@ if(ARGOS_BUILD_FOR_SIMULATOR)
     simulator/footbot_proximity_default_sensor.h
     simulator/footbot_turret_default_actuator.h
     simulator/footbot_turret_encoder_default_sensor.h
-    simulator/footbot_turret_entity.h)
+    simulator/footbot_turret_entity.h
+    simulator/footbot_imu_sensor.h)
 endif(ARGOS_BUILD_FOR_SIMULATOR)
 
 #
@@ -47,7 +49,8 @@ set(ARGOS3_SOURCES_PLUGINS_ROBOTS_FOOTBOT
   control_interface/ci_footbot_motor_ground_sensor.cpp
   control_interface/ci_footbot_proximity_sensor.cpp
   control_interface/ci_footbot_turret_actuator.cpp
-  control_interface/ci_footbot_turret_encoder_sensor.cpp)
+  control_interface/ci_footbot_turret_encoder_sensor.cpp
+  control_interface/ci_footbot_imu_sensor.cpp)
 
 if(ARGOS_BUILD_FOR_SIMULATOR)
   set(ARGOS3_SOURCES_PLUGINS_ROBOTS_FOOTBOT
@@ -67,7 +70,8 @@ if(ARGOS_BUILD_FOR_SIMULATOR)
     simulator/footbot_proximity_default_sensor.cpp
     simulator/footbot_turret_default_actuator.cpp
     simulator/footbot_turret_encoder_default_sensor.cpp
-    simulator/footbot_turret_entity.cpp)
+    simulator/footbot_turret_entity.cpp
+    simulator/footbot_imu_sensor.cpp)
   # Compile the graphical visualization only if the necessary libraries have been found
   if(ARGOS_COMPILE_QTOPENGL)
     set(ARGOS3_HEADERS_PLUGINS_ROBOTS_FOOTBOT_SIMULATOR
@@ -76,7 +80,7 @@ if(ARGOS_BUILD_FOR_SIMULATOR)
     set(ARGOS3_SOURCES_PLUGINS_ROBOTS_FOOTBOT
       ${ARGOS3_SOURCES_PLUGINS_ROBOTS_FOOTBOT}
       simulator/qtopengl_footbot.h
-      simulator/qtopengl_footbot.cpp)
+      simulator/qtopengl_footbot.cpp control_interface/ci_footbot_imu_sensor.cpp control_interface/ci_footbot_imu_sensor.h simulator/footbot_imu_sensor.cpp simulator/footbot_imu_sensor.h)
   endif(ARGOS_COMPILE_QTOPENGL)
 endif(ARGOS_BUILD_FOR_SIMULATOR)
 

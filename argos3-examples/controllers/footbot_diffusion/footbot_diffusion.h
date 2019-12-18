@@ -34,6 +34,8 @@
 #include <argos3/plugins/robots/generic/control_interface/ci_colored_blob_omnidirectional_camera_sensor.h>
 /* Definition of the foot-bot light sensor */
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_light_sensor.h>
+/* Definition of the foot-bot imu sensor */
+#include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.h>
 
 #include "krembot_main.h"
 
@@ -102,6 +104,8 @@ private:
     CCI_LEDsActuator* m_pcLEDs = nullptr;
     /* Pointer to the omnidirectional camera sensor */
     CCI_ColoredBlobOmnidirectionalCameraSensor* m_pcCamera = nullptr;
+    /* Pointer to the imu sensor */
+    CCI_FootBotImuSensor* m_pcImu = nullptr;
 
 };
 

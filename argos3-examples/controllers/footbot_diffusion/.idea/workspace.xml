@@ -12,52 +12,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a6f7cbc-e7c1-4087-b1f3-40d165e450ff" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/battery.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/CMakeFiles/progress.marks" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/foot-bot/simulator/footbot_imu_sensor.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/foot-bot/simulator/footbot_imu_sensor.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../argos3/src/plugins/simulator/entities/imu_equipped_entity.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../argos3/src/plugins/simulator/entities/imu_equipped_entity.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build/CMakeFiles/3.5.1/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/CMakeFiles/3.5.1/CMakeSystem.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build/CMakeFiles/CMakeOutput.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/CMakeFiles/CMakeOutput.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/CXX.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/CXX.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/cmake_clean.cmake" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/depend.internal" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion_automoc.dir/AutogenInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion_automoc.dir/AutogenInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion_automoc.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/footbot_diffusion_automoc.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/libfootbot_diffusion.so" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_diffusion/libfootbot_diffusion.so" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_flocking/CMakeFiles/footbot_flocking.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_flocking/CMakeFiles/footbot_flocking.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_flocking/CMakeFiles/footbot_flocking_automoc.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_flocking/CMakeFiles/footbot_flocking_automoc.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_foraging/CMakeFiles/footbot_foraging.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_foraging/CMakeFiles/footbot_foraging.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_foraging/CMakeFiles/footbot_foraging_automoc.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_foraging/CMakeFiles/footbot_foraging_automoc.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_gripping/CMakeFiles/footbot_gripping.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_gripping/CMakeFiles/footbot_gripping.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_gripping/CMakeFiles/footbot_gripping_automoc.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_gripping/CMakeFiles/footbot_gripping_automoc.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_manualcontrol/CMakeFiles/footbot_manualcontrol.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_manualcontrol/CMakeFiles/footbot_manualcontrol.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_manualcontrol/CMakeFiles/footbot_manualcontrol_automoc.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_manualcontrol/CMakeFiles/footbot_manualcontrol_automoc.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_nn/CMakeFiles/footbot_nn.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_nn/CMakeFiles/footbot_nn.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_nn/CMakeFiles/footbot_nn_automoc.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_nn/CMakeFiles/footbot_nn_automoc.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_synchronization/CMakeFiles/footbot_synchronization.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_synchronization/CMakeFiles/footbot_synchronization.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/controllers/footbot_synchronization/CMakeFiles/footbot_synchronization_automoc.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/controllers/footbot_synchronization/CMakeFiles/footbot_synchronization_automoc.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/embedding/mpga/CMakeFiles/mpga_phototaxis.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/embedding/mpga/CMakeFiles/mpga_phototaxis.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/embedding/mpga/CMakeFiles/mpga_phototaxis_automoc.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/embedding/mpga/CMakeFiles/mpga_phototaxis_automoc.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions_automoc.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions_automoc.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/id_loop_functions/CMakeFiles/id_loop_functions.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/id_loop_functions/CMakeFiles/id_loop_functions.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/id_loop_functions/CMakeFiles/id_loop_functions_automoc.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/id_loop_functions/CMakeFiles/id_loop_functions_automoc.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop_functions.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop_functions.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop_functions_automoc.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop_functions_automoc.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/mpga_loop_functions/CMakeFiles/mpga.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/mpga_loop_functions/CMakeFiles/mpga.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/mpga_loop_functions/CMakeFiles/mpga_automoc.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/mpga_loop_functions/CMakeFiles/mpga_automoc.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functions.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functions.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functions_automoc.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functions_automoc.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/trajectory_loop_functions/CMakeFiles/trajectory_loop_functions.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/trajectory_loop_functions/CMakeFiles/trajectory_loop_functions.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/trajectory_loop_functions/CMakeFiles/trajectory_loop_functions_automoc.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/trajectory_loop_functions/CMakeFiles/trajectory_loop_functions_automoc.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/custom_distributions_loop_functions/CMakeFiles/custom_distributions_loop_functions.dir/custom_distributions_loop_functions.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/custom_distributions_loop_functions/CMakeFiles/custom_distributions_loop_functions.dir/custom_distributions_loop_functions.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/custom_distributions_loop_functions/libcustom_distributions_loop_functions.so" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/custom_distributions_loop_functions/libcustom_distributions_loop_functions.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions.dir/foraging_loop_functions.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions.dir/foraging_loop_functions.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions.dir/foraging_qt_user_functions.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/foraging_loop_functions/CMakeFiles/foraging_loop_functions.dir/foraging_qt_user_functions.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/foraging_loop_functions/libforaging_loop_functions.so" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/foraging_loop_functions/libforaging_loop_functions.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop_functions.dir/manualcontrol_qtuser_functions.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/manualcontrol_loop_functions/CMakeFiles/manualcontrol_loop_functions.dir/manualcontrol_qtuser_functions.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/manualcontrol_loop_functions/libmanualcontrol_loop_functions.so" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/manualcontrol_loop_functions/libmanualcontrol_loop_functions.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functions.dir/mpga_phototaxis_loop_functions.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/mpga_loop_functions/CMakeFiles/mpga_phototaxis_loop_functions.dir/mpga_phototaxis_loop_functions.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/mpga_loop_functions/libmpga_phototaxis_loop_functions.so" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/mpga_loop_functions/libmpga_phototaxis_loop_functions.so" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/trajectory_loop_functions/CMakeFiles/trajectory_loop_functions.dir/trajectory_loop_functions.cpp.o" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/trajectory_loop_functions/CMakeFiles/trajectory_loop_functions.dir/trajectory_loop_functions.cpp.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../build/loop_functions/trajectory_loop_functions/libtrajectory_loop_functions.so" beforeDir="false" afterPath="$PROJECT_DIR$/../../build/loop_functions/trajectory_loop_functions/libtrajectory_loop_functions.so" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../experiments/krembot.argos" beforeDir="false" afterPath="$PROJECT_DIR$/../../experiments/krembot.argos" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/generic/simulator/battery_default_sensor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/generic/simulator/battery_default_sensor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../argos3/src/cmake-build-debug/argos3_simulator.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../argos3/src/cmake-build-debug/argos3_simulator.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/foot-bot/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/foot-bot/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/foot-bot/simulator/footbot_entity.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/foot-bot/simulator/footbot_entity.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/foot-bot/simulator/footbot_entity.h" beforeDir="false" afterPath="$PROJECT_DIR$/../../../argos3/src/plugins/robots/foot-bot/simulator/footbot_entity.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../argos3/src/plugins/simulator/entities/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../argos3/src/plugins/simulator/entities/CMakeLists.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -112,7 +96,8 @@
       <updated>1574992213572</updated>
       <workItem from="1574992214846" duration="9400000" />
       <workItem from="1575640095088" duration="10577000" />
-      <workItem from="1576448805025" duration="8915000" />
+      <workItem from="1576448805025" duration="9198000" />
+      <workItem from="1576696830665" duration="6739000" />
     </task>
     <servers />
   </component>
@@ -131,5 +116,21 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/krembot.h</url>
+          <line>114</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/footbot_diffusion.cpp</url>
+          <line>31</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

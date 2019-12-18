@@ -30,6 +30,7 @@ controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o: ../controllers/footbot_diffusion/cbumpers.h
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o: ../controllers/footbot_diffusion/footbot_diffusion.cpp
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o: ../controllers/footbot_diffusion/footbot_diffusion.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o: ../controllers/footbot_diffusion/imu_sensor.h
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o: ../controllers/footbot_diffusion/krembot.h
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o: ../controllers/footbot_diffusion/krembot_main.h
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o: ../controllers/footbot_diffusion/mobile_base.h
@@ -62,6 +63,7 @@ controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o: /usr/local/include/argos3/core/utility/plugins/factory.h
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o: /usr/local/include/argos3/core/utility/plugins/factory_impl.h
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o: /usr/local/include/argos3/core/utility/string_utilities.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o: /usr/local/include/argos3/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.h
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o: /usr/local/include/argos3/plugins/robots/foot-bot/control_interface/ci_footbot_light_sensor.h
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o: /usr/local/include/argos3/plugins/robots/foot-bot/control_interface/ci_footbot_proximity_sensor.h
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o: /usr/local/include/argos3/plugins/robots/generic/control_interface/ci_colored_blob_omnidirectional_camera_sensor.h
@@ -69,6 +71,28 @@ controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o: /usr/local/include/argos3/plugins/robots/generic/control_interface/ci_leds_actuator.h
 
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion_automoc.cpp.o: controllers/footbot_diffusion/footbot_diffusion_automoc.cpp
+
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: ../controllers/footbot_diffusion/imu_sensor.cpp
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: ../controllers/footbot_diffusion/imu_sensor.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: /usr/include/lua5.2/lauxlib.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: /usr/include/lua5.2/lua.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: /usr/include/lua5.2/luaconf.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: /usr/include/lua5.2/lualib.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: /usr/local/include/argos3/core/config.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: /usr/local/include/argos3/core/control_interface/ci_sensor.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: /usr/local/include/argos3/core/utility/configuration/argos_configuration.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: /usr/local/include/argos3/core/utility/configuration/argos_exception.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: /usr/local/include/argos3/core/utility/configuration/base_configurable_resource.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: /usr/local/include/argos3/core/utility/configuration/tinyxml/ticpp.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: /usr/local/include/argos3/core/utility/configuration/tinyxml/ticpprc.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: /usr/local/include/argos3/core/utility/configuration/tinyxml/tinystr.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: /usr/local/include/argos3/core/utility/configuration/tinyxml/tinyxml.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: /usr/local/include/argos3/core/utility/datatypes/datatypes.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: /usr/local/include/argos3/core/utility/math/angles.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: /usr/local/include/argos3/core/utility/math/general.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: /usr/local/include/argos3/core/utility/math/range.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: /usr/local/include/argos3/core/utility/string_utilities.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: /usr/local/include/argos3/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.h
 
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o: ../controllers/footbot_diffusion/rgb_led.cpp
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o: ../controllers/footbot_diffusion/rgb_led.h

@@ -27,7 +27,7 @@ public:
     virtual void loop() {
         krembot.loop();
         //your code here
-        krembot.Base.drive(-50,0);
+        krembot.Base.drive(50,30);
     }
 };
 

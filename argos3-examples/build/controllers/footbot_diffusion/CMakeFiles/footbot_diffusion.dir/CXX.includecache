@@ -49,8 +49,18 @@ argos3/plugins/robots/generic/control_interface/ci_colored_blob_omnidirectional_
 -
 argos3/plugins/robots/foot-bot/control_interface/ci_footbot_light_sensor.h
 -
+argos3/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.h
+-
 krembot_main.h
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/krembot_main.h
+
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/imu_sensor.cpp
+imu_sensor.h
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/imu_sensor.h
+
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/imu_sensor.h
+argos3/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.h
+-
 
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/krembot.h
 tr1/functional
@@ -67,6 +77,8 @@ argos3/plugins/robots/generic/control_interface/ci_colored_blob_omnidirectional_
 -
 argos3/plugins/robots/foot-bot/control_interface/ci_footbot_light_sensor.h
 -
+argos3/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.h
+-
 argos3/core/utility/math/vector2.h
 -
 mobile_base.h
@@ -79,6 +91,8 @@ cbumpers.h
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cbumpers.h
 battery.h
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/battery.h
+imu_sensor.h
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/imu_sensor.h
 
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/krembot_main.h
 krembot.h
@@ -406,6 +420,12 @@ string
 vector
 -
 sstream
+-
+
+/usr/local/include/argos3/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.h
+argos3/core/utility/math/angles.h
+-
+argos3/core/control_interface/ci_sensor.h
 -
 
 /usr/local/include/argos3/plugins/robots/foot-bot/control_interface/ci_footbot_light_sensor.h

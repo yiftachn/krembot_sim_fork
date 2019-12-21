@@ -36,15 +36,10 @@
 #include "imu_sensor.h"
 
 
+using namespace argos;
 
-IMUSensor::IMUSensor(argos::CCI_FootBotImuSensor & imu) :
+IMUSensor::IMUSensor(CCI_FootBotImuSensor & imu) :
         m_Imu{imu} {}
-
-void IMUSensor::init()
-{
-
-}
-
 
 // get latest IMU fused data
 ImuData IMUSensor::read()
@@ -64,56 +59,15 @@ ImuData IMUSensor::read()
 //    data.ax = imu_.gz;
 
     const auto readings = m_Imu.GetReadings();
-    //todo: convert readings to angle before returning it
-    return ImuData(readings.Roll.GetValue(),
-            readings.Pitch.GetValue(),
-            readings.Yaw.GetValue()
+    return ImuData(
+            ToDegrees(readings.Roll).GetValue(),
+            ToDegrees(readings.Pitch).GetValue(),
+            ToDegrees(readings.Yaw).GetValue()
     );
 }
 
 
-void IMUSensor::loop()
-{
-//    // If intPin goes high, all data registers have new data
-//    // On interrupt, check if data ready interrupt
-//    if (imu_.readByte(MPU9250_ADDRESS, INT_STATUS) & 0x01)
-//    {
-//        imu_.readAccelData(imu_.accelCount);  // Read the x/y/z adc values
-//        imu_.getAres();
-//
-//        // Now we'll calculate the accleration value into actual g's
-//        // This depends on scale being set
-//        imu_.ax = (float)imu_.accelCount[0] * imu_.aRes;
-//        imu_.ay = (float)imu_.accelCount[1] * imu_.aRes;
-//        imu_.az = (float)imu_.accelCount[2] * imu_.aRes;
-//
-//        imu_.readGyroData(imu_.gyroCount);  // Read the x/y/z adc values
-//        imu_.getGres();
-//
-//        // Calculate the gyro value into actual degrees per second
-//        // This depends on scale being set
-//        imu_.gx = (float)imu_.gyroCount[0] * imu_.gRes;
-//        imu_.gy = (float)imu_.gyroCount[1] * imu_.gRes;
-//        imu_.gz = (float)imu_.gyroCount[2] * imu_.gRes;
-//
-//
-//    }
-//
-//    // Must be called before updating quaternions!
-//    imu_.updateTime();
-//    if (abs(imu_.gz) < 0.2)
-//    {
-//        imu_.gz = 0;
-//    }
-//
-//    yaw += imu_.gz * imu_.deltat;
-//    pitch = -atan2(-imu_.ax , imu_.az) * RAD_TO_DEG;
-//    roll = -atan2( imu_.ay , sqrt(imu_.az * imu_.az + imu_.ax * imu_.ax)) * RAD_TO_DEG;
-//
-//    imu_.yaw = yaw * (-1);
-//    imu_.roll = roll;
-//    imu_.pitch = pitch;
-}
+
 
 void IMUSensor::print()
 {
@@ -136,21 +90,5 @@ void IMUSensor::printRaw()
 //    Serial.print(" gx: ");Serial.print(imu_.gx);
 //    Serial.print(", gy: ");Serial.print(imu_.gy);
 //    Serial.print(", gz: ");Serial.println(imu_.gz);
-
-}
-
-void IMUSensor::publish()
-{
-//    String publishStr = "[IMU]: Roll, Pitch, Yaw";
-//    String roll = String (imu_.roll, 2);
-//    publishStr.concat(roll);
-//    publishStr.concat(", ");
-//    String pitch = String (imu_.pitch, 2);
-//    publishStr.concat(pitch);
-//    publishStr.concat(", ");
-//    String yaw = String (imu_.yaw, 2);
-//    publishStr.concat(yaw);
-//
-//    Particle.publish("Imu", publishStr, PRIVATE);
 
 }

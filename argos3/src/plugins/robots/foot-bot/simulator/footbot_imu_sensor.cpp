@@ -1,10 +1,9 @@
 //
-// Created by eli on 12/18/19.
+// Created by elhay rauper
 //
 
 #include <argos3/core/simulator/entity/composable_entity.h>
 #include <argos3/plugins/robots/foot-bot/simulator/footbot_imu_sensor.h>
-#include <argos3/plugins/simulator/entities/imu_equipped_entity.h>
 #include <argos3/core/simulator/simulator.h>
 
 
@@ -19,12 +18,10 @@ namespace argos{
         try {
             m_pcEmbodiedEntity = &(c_entity.GetComponent<CEmbodiedEntity>("body"));
             m_pcControllableEntity = &(c_entity.GetComponent<CControllableEntity>("controller"));
-            m_pcImuEntity = &(c_entity.GetComponent<CImuEquippedEntity>("footbot_imu"));
         }
         catch(CARGoSException& ex) {
             THROW_ARGOSEXCEPTION_NESTED("Can't set robot for the foot-bot imu sensor", ex);
         }
-        m_cRobot = &c_entity;
     }
 
     void CFootBotImuSensor::Update() {
@@ -34,8 +31,6 @@ namespace argos{
                 m_tReadings.Pitch,
                 m_tReadings.Roll
         );
-
-        //m_cRobot->G
     }
 
     void CFootBotImuSensor::Init(argos::TConfigurationNode &t_tree) {

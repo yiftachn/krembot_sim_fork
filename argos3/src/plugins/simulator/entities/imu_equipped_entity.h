@@ -1,5 +1,5 @@
 //
-// Created by eli on 12/18/19.
+// Created by elhay rauper
 //
 
 #ifndef ARGOS3_SIMULATOR_IMU_EQUIPPED_ENTITY_H
@@ -24,7 +24,7 @@ namespace argos {
         CImuEquippedEntity(CComposableEntity* pc_parent);
 
         CImuEquippedEntity(CComposableEntity* pc_parent,
-        const std::string& str_id);
+                            const std::string& str_id);
 
         virtual ~CImuEquippedEntity() {}
 
@@ -32,18 +32,9 @@ namespace argos {
 
         virtual void Reset() { };
 
-
-        inline const CRadians & GetRoll() const {
-            return m_Roll; //todo: fix this
-        }
-
         virtual std::string GetTypeDescription() const {
             return "footbot_imu";
         }
-
-    protected:
-
-        CRadians m_Roll;
 
     };
 

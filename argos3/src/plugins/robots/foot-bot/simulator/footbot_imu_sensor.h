@@ -1,11 +1,11 @@
 
+// created by elhay rauper
 
 #ifndef ARGOS3_SIMULATOR_FOOTBOT_IMU_SENSOR_H
 #define ARGOS3_SIMULATOR_FOOTBOT_IMU_SENSOR_H
 
 namespace argos {
     class CFootBotImuSensor;
-    class CImuEquippedEntity;
 }
 
 #include <argos3/core/simulator/sensor.h>
@@ -37,13 +37,8 @@ namespace argos {
         /** Reference to embodied entity associated to this sensor */
         CEmbodiedEntity* m_pcEmbodiedEntity;
 
-        /** Reference to imu sensor equipped entity associated to this sensor */
-        CImuEquippedEntity* m_pcImuEntity;
-
         /** Reference to controllable entity associated to this sensor */
         CControllableEntity* m_pcControllableEntity;
-
-        CComposableEntity * m_cRobot;
 
         /** Reference to the space */
         CSpace& m_cSpace;

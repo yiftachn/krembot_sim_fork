@@ -69,12 +69,17 @@ private:
 
 public:
     IMUSensor(argos::CCI_FootBotImuSensor &);
-    void init();
-    void loop();
+
     ImuData read();
     void print();
     void printRaw();
-    void publish();
+
+    /*
+     * mock up functions
+     */
+    void init() { }
+    void loop() { }
+    void publish() { }
 
 };
 

@@ -1,5 +1,5 @@
 //
-// Created by eli on 12/18/19.
+// Created by elhay rauper
 //
 
 #include <argos3/plugins/simulator/entities/imu_equipped_entity.h>

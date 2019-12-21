@@ -4,15 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/battery.cpp" "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles/footbot_diffusion.dir/battery.cpp.o"
-  "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cbumpers.cpp" "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.o"
-  "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/footbot_diffusion.cpp" "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o"
-  "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/imu_sensor.cpp" "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o"
-  "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/krembot.cpp" "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles/footbot_diffusion.dir/krembot.cpp.o"
-  "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/mobile_base.cpp" "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles/footbot_diffusion.dir/mobile_base.cpp.o"
-  "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgb_led.cpp" "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o"
-  "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgba_sensor.cpp" "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o"
-  "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/utils.cpp" "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles/footbot_diffusion.dir/utils.cpp.o"
+  "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/footbot_diffusion.cpp" "/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles/footbot_diffusion.dir/footbot_diffusion.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

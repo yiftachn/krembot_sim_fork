@@ -57,150 +57,30 @@ include CMakeFiles/footbot_diffusion.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/footbot_diffusion.dir/flags.make
 
-CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o: CMakeFiles/footbot_diffusion.dir/flags.make
-CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o: ../footbot_diffusion.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o -c /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/footbot_diffusion.cpp
+CMakeFiles/footbot_diffusion.dir/footbot_diffusion.o: CMakeFiles/footbot_diffusion.dir/flags.make
+CMakeFiles/footbot_diffusion.dir/footbot_diffusion.o: ../footbot_diffusion.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/footbot_diffusion.dir/footbot_diffusion.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/footbot_diffusion.dir/footbot_diffusion.o -c /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/footbot_diffusion.cpp
 
-CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/footbot_diffusion.cpp > CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.i
+CMakeFiles/footbot_diffusion.dir/footbot_diffusion.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/footbot_diffusion.dir/footbot_diffusion.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/footbot_diffusion.cpp > CMakeFiles/footbot_diffusion.dir/footbot_diffusion.i
 
-CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/footbot_diffusion.cpp -o CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.s
-
-CMakeFiles/footbot_diffusion.dir/mobile_base.cpp.o: CMakeFiles/footbot_diffusion.dir/flags.make
-CMakeFiles/footbot_diffusion.dir/mobile_base.cpp.o: ../mobile_base.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/footbot_diffusion.dir/mobile_base.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/footbot_diffusion.dir/mobile_base.cpp.o -c /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/mobile_base.cpp
-
-CMakeFiles/footbot_diffusion.dir/mobile_base.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/footbot_diffusion.dir/mobile_base.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/mobile_base.cpp > CMakeFiles/footbot_diffusion.dir/mobile_base.cpp.i
-
-CMakeFiles/footbot_diffusion.dir/mobile_base.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/footbot_diffusion.dir/mobile_base.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/mobile_base.cpp -o CMakeFiles/footbot_diffusion.dir/mobile_base.cpp.s
-
-CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o: CMakeFiles/footbot_diffusion.dir/flags.make
-CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o: ../rgba_sensor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o -c /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgba_sensor.cpp
-
-CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgba_sensor.cpp > CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.i
-
-CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgba_sensor.cpp -o CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.s
-
-CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o: CMakeFiles/footbot_diffusion.dir/flags.make
-CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o: ../rgb_led.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o -c /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgb_led.cpp
-
-CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgb_led.cpp > CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.i
-
-CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgb_led.cpp -o CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.s
-
-CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.o: CMakeFiles/footbot_diffusion.dir/flags.make
-CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.o: ../cbumpers.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.o -c /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cbumpers.cpp
-
-CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cbumpers.cpp > CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.i
-
-CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cbumpers.cpp -o CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.s
-
-CMakeFiles/footbot_diffusion.dir/battery.cpp.o: CMakeFiles/footbot_diffusion.dir/flags.make
-CMakeFiles/footbot_diffusion.dir/battery.cpp.o: ../battery.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/footbot_diffusion.dir/battery.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/footbot_diffusion.dir/battery.cpp.o -c /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/battery.cpp
-
-CMakeFiles/footbot_diffusion.dir/battery.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/footbot_diffusion.dir/battery.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/battery.cpp > CMakeFiles/footbot_diffusion.dir/battery.cpp.i
-
-CMakeFiles/footbot_diffusion.dir/battery.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/footbot_diffusion.dir/battery.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/battery.cpp -o CMakeFiles/footbot_diffusion.dir/battery.cpp.s
-
-CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: CMakeFiles/footbot_diffusion.dir/flags.make
-CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o: ../imu_sensor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o -c /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/imu_sensor.cpp
-
-CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/imu_sensor.cpp > CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.i
-
-CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/imu_sensor.cpp -o CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.s
-
-CMakeFiles/footbot_diffusion.dir/krembot.cpp.o: CMakeFiles/footbot_diffusion.dir/flags.make
-CMakeFiles/footbot_diffusion.dir/krembot.cpp.o: ../krembot.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/footbot_diffusion.dir/krembot.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/footbot_diffusion.dir/krembot.cpp.o -c /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/krembot.cpp
-
-CMakeFiles/footbot_diffusion.dir/krembot.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/footbot_diffusion.dir/krembot.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/krembot.cpp > CMakeFiles/footbot_diffusion.dir/krembot.cpp.i
-
-CMakeFiles/footbot_diffusion.dir/krembot.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/footbot_diffusion.dir/krembot.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/krembot.cpp -o CMakeFiles/footbot_diffusion.dir/krembot.cpp.s
-
-CMakeFiles/footbot_diffusion.dir/utils.cpp.o: CMakeFiles/footbot_diffusion.dir/flags.make
-CMakeFiles/footbot_diffusion.dir/utils.cpp.o: ../utils.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/footbot_diffusion.dir/utils.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/footbot_diffusion.dir/utils.cpp.o -c /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/utils.cpp
-
-CMakeFiles/footbot_diffusion.dir/utils.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/footbot_diffusion.dir/utils.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/utils.cpp > CMakeFiles/footbot_diffusion.dir/utils.cpp.i
-
-CMakeFiles/footbot_diffusion.dir/utils.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/footbot_diffusion.dir/utils.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/utils.cpp -o CMakeFiles/footbot_diffusion.dir/utils.cpp.s
+CMakeFiles/footbot_diffusion.dir/footbot_diffusion.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/footbot_diffusion.dir/footbot_diffusion.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/footbot_diffusion.cpp -o CMakeFiles/footbot_diffusion.dir/footbot_diffusion.s
 
 # Object files for target footbot_diffusion
 footbot_diffusion_OBJECTS = \
-"CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o" \
-"CMakeFiles/footbot_diffusion.dir/mobile_base.cpp.o" \
-"CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o" \
-"CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o" \
-"CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.o" \
-"CMakeFiles/footbot_diffusion.dir/battery.cpp.o" \
-"CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o" \
-"CMakeFiles/footbot_diffusion.dir/krembot.cpp.o" \
-"CMakeFiles/footbot_diffusion.dir/utils.cpp.o"
+"CMakeFiles/footbot_diffusion.dir/footbot_diffusion.o"
 
 # External object files for target footbot_diffusion
 footbot_diffusion_EXTERNAL_OBJECTS =
 
-libfootbot_diffusion.so: CMakeFiles/footbot_diffusion.dir/footbot_diffusion.cpp.o
-libfootbot_diffusion.so: CMakeFiles/footbot_diffusion.dir/mobile_base.cpp.o
-libfootbot_diffusion.so: CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o
-libfootbot_diffusion.so: CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o
-libfootbot_diffusion.so: CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.o
-libfootbot_diffusion.so: CMakeFiles/footbot_diffusion.dir/battery.cpp.o
-libfootbot_diffusion.so: CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o
-libfootbot_diffusion.so: CMakeFiles/footbot_diffusion.dir/krembot.cpp.o
-libfootbot_diffusion.so: CMakeFiles/footbot_diffusion.dir/utils.cpp.o
+libfootbot_diffusion.so: CMakeFiles/footbot_diffusion.dir/footbot_diffusion.o
 libfootbot_diffusion.so: CMakeFiles/footbot_diffusion.dir/build.make
 libfootbot_diffusion.so: CMakeFiles/footbot_diffusion.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX shared module libfootbot_diffusion.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared module libfootbot_diffusion.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/footbot_diffusion.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -42,10 +42,12 @@
 #include <argos3/plugins/robots/generic/control_interface/ci_colored_blob_omnidirectional_camera_sensor.h>
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_light_sensor.h>
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.h>
-
+//
 #include "krembot_main.h"
 
 using namespace argos;
+
+class Krembot;
 
 class CFootBotDiffusion : public CCI_Controller {
 

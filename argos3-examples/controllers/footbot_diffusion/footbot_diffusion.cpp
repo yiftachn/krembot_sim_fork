@@ -34,6 +34,9 @@
 #include "footbot_diffusion.h"
 #include <argos3/core/utility/configuration/argos_configuration.h>
 
+#include <krembot/krembot.h>
+
+
 CFootBotDiffusion::CFootBotDiffusion() {}
 
 void CFootBotDiffusion::Init(TConfigurationNode& t_node) {

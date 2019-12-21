@@ -23,7 +23,7 @@ CMAKE_AR:FILEPATH=/usr/bin/ar
 
 //Choose the type of build, options are: None(CMAKE_CXX_FLAGS or
 // CMAKE_C_FLAGS used) Debug Release RelWithDebInfo MinSizeRel.
-CMAKE_BUILD_TYPE:STRING=Debug
+CMAKE_BUILD_TYPE:STRING=
 
 //Enable/Disable color output during build.
 CMAKE_COLOR_MAKEFILE:BOOL=ON
@@ -233,55 +233,7 @@ argos3_examples_BINARY_DIR:STATIC=/home/eli/ws/krembot_sim/argos3-examples/build
 argos3_examples_SOURCE_DIR:STATIC=/home/eli/ws/krembot_sim/argos3-examples
 
 //Dependencies for the target
-custom_distributions_loop_functions_LIB_DEPENDS:STATIC=general;argos3core_simulator;general;argos3plugin_simulator_entities;general;argos3plugin_simulator_footbot;
-
-//Dependencies for the target
-epuck_obstacleavoidance_LIB_DEPENDS:STATIC=general;argos3core_simulator;general;argos3plugin_simulator_epuck;general;argos3plugin_simulator_genericrobot;
-
-//Dependencies for the target
-eyebot_circle_LIB_DEPENDS:STATIC=general;argos3core_simulator;general;argos3plugin_simulator_eyebot;general;argos3plugin_simulator_genericrobot;
-
-//Dependencies for the target
-eyebot_flocking_LIB_DEPENDS:STATIC=general;argos3core_simulator;general;argos3plugin_simulator_eyebot;general;argos3plugin_simulator_genericrobot;
-
-//Dependencies for the target
-footbot_diffusion_LIB_DEPENDS:STATIC=general;argos3core_simulator;general;argos3plugin_simulator_footbot;general;argos3plugin_simulator_genericrobot;
-
-//Dependencies for the target
-footbot_flocking_LIB_DEPENDS:STATIC=general;argos3core_simulator;general;argos3plugin_simulator_footbot;general;argos3plugin_simulator_genericrobot;
-
-//Dependencies for the target
-footbot_foraging_LIB_DEPENDS:STATIC=general;argos3core_simulator;general;argos3plugin_simulator_footbot;general;argos3plugin_simulator_genericrobot;
-
-//Dependencies for the target
-footbot_gripping_LIB_DEPENDS:STATIC=general;argos3core_simulator;general;argos3plugin_simulator_footbot;general;argos3plugin_simulator_genericrobot;
-
-//Dependencies for the target
-footbot_manualcontrol_LIB_DEPENDS:STATIC=general;argos3core_simulator;general;argos3plugin_simulator_footbot;general;argos3plugin_simulator_genericrobot;
-
-//Dependencies for the target
-footbot_nn_LIB_DEPENDS:STATIC=general;argos3core_simulator;general;argos3plugin_simulator_footbot;general;argos3plugin_simulator_genericrobot;
-
-//Dependencies for the target
-footbot_synchronization_LIB_DEPENDS:STATIC=general;argos3core_simulator;general;argos3plugin_simulator_footbot;general;argos3plugin_simulator_genericrobot;
-
-//Dependencies for the target
-foraging_loop_functions_LIB_DEPENDS:STATIC=general;footbot_foraging;general;argos3core_simulator;general;argos3plugin_simulator_dynamics2d;general;argos3plugin_simulator_entities;general;argos3plugin_simulator_footbot;general;argos3plugin_simulator_genericrobot;general;argos3plugin_simulator_media;general;argos3plugin_simulator_qtopengl;
-
-//Dependencies for the target
-id_loop_functions_LIB_DEPENDS:STATIC=general;argos3core_simulator;general;argos3plugin_simulator_entities;general;argos3plugin_simulator_footbot;general;argos3plugin_simulator_qtopengl;general;Qt5::Widgets;general;Qt5::Gui;general;/usr/lib/x86_64-linux-gnu/libglut.so;general;/usr/lib/x86_64-linux-gnu/libXmu.so;general;/usr/lib/x86_64-linux-gnu/libXi.so;general;/usr/lib/x86_64-linux-gnu/libGLU.so;general;/usr/lib/x86_64-linux-gnu/libGL.so;
-
-//Dependencies for the target
-manualcontrol_loop_functions_LIB_DEPENDS:STATIC=general;footbot_manualcontrol;general;argos3core_simulator;general;argos3plugin_simulator_entities;general;argos3plugin_simulator_footbot;general;argos3plugin_simulator_qtopengl;general;Qt5::Widgets;general;Qt5::Gui;general;/usr/lib/x86_64-linux-gnu/libglut.so;general;/usr/lib/x86_64-linux-gnu/libXmu.so;general;/usr/lib/x86_64-linux-gnu/libXi.so;general;/usr/lib/x86_64-linux-gnu/libGLU.so;general;/usr/lib/x86_64-linux-gnu/libGL.so;
-
-//Dependencies for the target
-mpga_LIB_DEPENDS:STATIC=general;argos3core_simulator;general;rt;
-
-//Dependencies for the target
-mpga_phototaxis_loop_functions_LIB_DEPENDS:STATIC=general;footbot_nn;general;argos3core_simulator;general;argos3plugin_simulator_dynamics2d;general;argos3plugin_simulator_entities;general;argos3plugin_simulator_footbot;general;argos3plugin_simulator_genericrobot;general;argos3plugin_simulator_media;general;mpga;
-
-//Dependencies for the target
-trajectory_loop_functions_LIB_DEPENDS:STATIC=general;argos3core_simulator;general;argos3plugin_simulator_entities;general;argos3plugin_simulator_footbot;general;argos3plugin_simulator_qtopengl;general;Qt5::Widgets;general;Qt5::Gui;general;/usr/lib/x86_64-linux-gnu/libglut.so;general;/usr/lib/x86_64-linux-gnu/libXmu.so;general;/usr/lib/x86_64-linux-gnu/libXi.so;general;/usr/lib/x86_64-linux-gnu/libGLU.so;general;/usr/lib/x86_64-linux-gnu/libGL.so;
+footbot_diffusion_LIB_DEPENDS:STATIC=general;krembot;general;argos3core_simulator;general;argos3plugin_simulator_footbot;general;argos3plugin_simulator_genericrobot;
 
 
 ########################
@@ -408,7 +360,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=21
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=3
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP
@@ -467,6 +419,40 @@ GLUT_Xi_LIBRARY-ADVANCED:INTERNAL=1
 GLUT_Xmu_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: GLUT_glut_LIBRARY
 GLUT_glut_LIBRARY-ADVANCED:INTERNAL=1
+KREMBOT_CFLAGS:INTERNAL=-I/usr/local/include;-I/usr/include/lua5.2/
+KREMBOT_CFLAGS_I:INTERNAL=
+KREMBOT_CFLAGS_OTHER:INTERNAL=
+KREMBOT_FOUND:INTERNAL=1
+KREMBOT_INCLUDEDIR:INTERNAL=/usr/local/include
+KREMBOT_INCLUDE_DIRS:INTERNAL=/usr/local/include;/usr/include/lua5.2/
+KREMBOT_LDFLAGS:INTERNAL=-L/usr/local/lib/argos3;-lkrembot_
+KREMBOT_LDFLAGS_OTHER:INTERNAL=
+KREMBOT_LIBDIR:INTERNAL=/usr/local/lib/argos3
+KREMBOT_LIBRARIES:INTERNAL=krembot_
+KREMBOT_LIBRARY_DIRS:INTERNAL=/usr/local/lib/argos3
+KREMBOT_LIBS:INTERNAL=
+KREMBOT_LIBS_L:INTERNAL=
+KREMBOT_LIBS_OTHER:INTERNAL=
+KREMBOT_LIBS_PATHS:INTERNAL=
+KREMBOT_PREFIX:INTERNAL=/usr/local
+KREMBOT_STATIC_CFLAGS:INTERNAL=-I/usr/local/include;-I/usr/include/lua5.2/
+KREMBOT_STATIC_CFLAGS_I:INTERNAL=
+KREMBOT_STATIC_CFLAGS_OTHER:INTERNAL=
+KREMBOT_STATIC_INCLUDE_DIRS:INTERNAL=/usr/local/include;/usr/include/lua5.2/
+KREMBOT_STATIC_LDFLAGS:INTERNAL=-L/usr/local/lib/argos3;-lkrembot_
+KREMBOT_STATIC_LDFLAGS_OTHER:INTERNAL=
+KREMBOT_STATIC_LIBDIR:INTERNAL=
+KREMBOT_STATIC_LIBRARIES:INTERNAL=krembot_
+KREMBOT_STATIC_LIBRARY_DIRS:INTERNAL=/usr/local/lib/argos3
+KREMBOT_STATIC_LIBS:INTERNAL=
+KREMBOT_STATIC_LIBS_L:INTERNAL=
+KREMBOT_STATIC_LIBS_OTHER:INTERNAL=
+KREMBOT_STATIC_LIBS_PATHS:INTERNAL=
+KREMBOT_VERSION:INTERNAL=-
+KREMBOT_krembot_INCLUDEDIR:INTERNAL=
+KREMBOT_krembot_LIBDIR:INTERNAL=
+KREMBOT_krembot_PREFIX:INTERNAL=
+KREMBOT_krembot_VERSION:INTERNAL=
 //ADVANCED property for variable: LUA_INCLUDE_DIR
 LUA_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: LUA_LIBRARIES
@@ -486,5 +472,6 @@ OPENGL_xmesa_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 __pkg_config_checked_ARGOS:INTERNAL=1
+__pkg_config_checked_KREMBOT:INTERNAL=1
 prefix_result:INTERNAL=/usr/local/lib/argos3
 

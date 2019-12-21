@@ -37,7 +37,7 @@
 #ifndef IKREMBOT_LOOP_H
 #define IKREMBOT_LOOP_H
 
-#include "krembot.h"
+#include <krembot/krembot.h>
 #include <argos3/core/control_interface/ci_controller.h>
 #include <argos3/plugins/robots/generic/control_interface/ci_differential_steering_actuator.h>
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_proximity_sensor.h>
@@ -52,11 +52,15 @@ public:
 
     virtual void setup() {
         krembot.setup();
+
+        krembot.Led.write(0,255,0);
+
     }
 
     virtual void loop() {
         krembot.loop();
 
+        krembot.Base.drive(50, 0);
         /*
          * You code  here
          */

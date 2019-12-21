@@ -140,60 +140,6 @@ footbot_diffusion_automoc/fast:
 	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion_automoc.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion_automoc.dir/build
 .PHONY : footbot_diffusion_automoc/fast
 
-battery.o: battery.cpp.o
-
-.PHONY : battery.o
-
-# target to build an object file
-battery.cpp.o:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/battery.cpp.o
-.PHONY : battery.cpp.o
-
-battery.i: battery.cpp.i
-
-.PHONY : battery.i
-
-# target to preprocess a source file
-battery.cpp.i:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/battery.cpp.i
-.PHONY : battery.cpp.i
-
-battery.s: battery.cpp.s
-
-.PHONY : battery.s
-
-# target to generate assembly for a file
-battery.cpp.s:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/battery.cpp.s
-.PHONY : battery.cpp.s
-
-cbumpers.o: cbumpers.cpp.o
-
-.PHONY : cbumpers.o
-
-# target to build an object file
-cbumpers.cpp.o:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.o
-.PHONY : cbumpers.cpp.o
-
-cbumpers.i: cbumpers.cpp.i
-
-.PHONY : cbumpers.i
-
-# target to preprocess a source file
-cbumpers.cpp.i:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.i
-.PHONY : cbumpers.cpp.i
-
-cbumpers.s: cbumpers.cpp.s
-
-.PHONY : cbumpers.s
-
-# target to generate assembly for a file
-cbumpers.cpp.s:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/cbumpers.cpp.s
-.PHONY : cbumpers.cpp.s
-
 footbot_diffusion.o: footbot_diffusion.cpp.o
 
 .PHONY : footbot_diffusion.o
@@ -248,168 +194,6 @@ footbot_diffusion_automoc.cpp.s:
 	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion_automoc.cpp.s
 .PHONY : footbot_diffusion_automoc.cpp.s
 
-imu_sensor.o: imu_sensor.cpp.o
-
-.PHONY : imu_sensor.o
-
-# target to build an object file
-imu_sensor.cpp.o:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o
-.PHONY : imu_sensor.cpp.o
-
-imu_sensor.i: imu_sensor.cpp.i
-
-.PHONY : imu_sensor.i
-
-# target to preprocess a source file
-imu_sensor.cpp.i:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.i
-.PHONY : imu_sensor.cpp.i
-
-imu_sensor.s: imu_sensor.cpp.s
-
-.PHONY : imu_sensor.s
-
-# target to generate assembly for a file
-imu_sensor.cpp.s:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.s
-.PHONY : imu_sensor.cpp.s
-
-krembot.o: krembot.cpp.o
-
-.PHONY : krembot.o
-
-# target to build an object file
-krembot.cpp.o:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/krembot.cpp.o
-.PHONY : krembot.cpp.o
-
-krembot.i: krembot.cpp.i
-
-.PHONY : krembot.i
-
-# target to preprocess a source file
-krembot.cpp.i:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/krembot.cpp.i
-.PHONY : krembot.cpp.i
-
-krembot.s: krembot.cpp.s
-
-.PHONY : krembot.s
-
-# target to generate assembly for a file
-krembot.cpp.s:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/krembot.cpp.s
-.PHONY : krembot.cpp.s
-
-mobile_base.o: mobile_base.cpp.o
-
-.PHONY : mobile_base.o
-
-# target to build an object file
-mobile_base.cpp.o:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/mobile_base.cpp.o
-.PHONY : mobile_base.cpp.o
-
-mobile_base.i: mobile_base.cpp.i
-
-.PHONY : mobile_base.i
-
-# target to preprocess a source file
-mobile_base.cpp.i:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/mobile_base.cpp.i
-.PHONY : mobile_base.cpp.i
-
-mobile_base.s: mobile_base.cpp.s
-
-.PHONY : mobile_base.s
-
-# target to generate assembly for a file
-mobile_base.cpp.s:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/mobile_base.cpp.s
-.PHONY : mobile_base.cpp.s
-
-rgb_led.o: rgb_led.cpp.o
-
-.PHONY : rgb_led.o
-
-# target to build an object file
-rgb_led.cpp.o:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o
-.PHONY : rgb_led.cpp.o
-
-rgb_led.i: rgb_led.cpp.i
-
-.PHONY : rgb_led.i
-
-# target to preprocess a source file
-rgb_led.cpp.i:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.i
-.PHONY : rgb_led.cpp.i
-
-rgb_led.s: rgb_led.cpp.s
-
-.PHONY : rgb_led.s
-
-# target to generate assembly for a file
-rgb_led.cpp.s:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.s
-.PHONY : rgb_led.cpp.s
-
-rgba_sensor.o: rgba_sensor.cpp.o
-
-.PHONY : rgba_sensor.o
-
-# target to build an object file
-rgba_sensor.cpp.o:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o
-.PHONY : rgba_sensor.cpp.o
-
-rgba_sensor.i: rgba_sensor.cpp.i
-
-.PHONY : rgba_sensor.i
-
-# target to preprocess a source file
-rgba_sensor.cpp.i:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.i
-.PHONY : rgba_sensor.cpp.i
-
-rgba_sensor.s: rgba_sensor.cpp.s
-
-.PHONY : rgba_sensor.s
-
-# target to generate assembly for a file
-rgba_sensor.cpp.s:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.s
-.PHONY : rgba_sensor.cpp.s
-
-utils.o: utils.cpp.o
-
-.PHONY : utils.o
-
-# target to build an object file
-utils.cpp.o:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/utils.cpp.o
-.PHONY : utils.cpp.o
-
-utils.i: utils.cpp.i
-
-.PHONY : utils.i
-
-# target to preprocess a source file
-utils.cpp.i:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/utils.cpp.i
-.PHONY : utils.cpp.i
-
-utils.s: utils.cpp.s
-
-.PHONY : utils.s
-
-# target to generate assembly for a file
-utils.cpp.s:
-	cd /home/eli/ws/krembot_sim/argos3-examples/build && $(MAKE) -f controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/build.make controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/utils.cpp.s
-.PHONY : utils.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -420,36 +204,12 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... footbot_diffusion"
 	@echo "... footbot_diffusion_automoc"
-	@echo "... battery.o"
-	@echo "... battery.i"
-	@echo "... battery.s"
-	@echo "... cbumpers.o"
-	@echo "... cbumpers.i"
-	@echo "... cbumpers.s"
 	@echo "... footbot_diffusion.o"
 	@echo "... footbot_diffusion.i"
 	@echo "... footbot_diffusion.s"
 	@echo "... footbot_diffusion_automoc.o"
 	@echo "... footbot_diffusion_automoc.i"
 	@echo "... footbot_diffusion_automoc.s"
-	@echo "... imu_sensor.o"
-	@echo "... imu_sensor.i"
-	@echo "... imu_sensor.s"
-	@echo "... krembot.o"
-	@echo "... krembot.i"
-	@echo "... krembot.s"
-	@echo "... mobile_base.o"
-	@echo "... mobile_base.i"
-	@echo "... mobile_base.s"
-	@echo "... rgb_led.o"
-	@echo "... rgb_led.i"
-	@echo "... rgb_led.s"
-	@echo "... rgba_sensor.o"
-	@echo "... rgba_sensor.i"
-	@echo "... rgba_sensor.s"
-	@echo "... utils.o"
-	@echo "... utils.i"
-	@echo "... utils.s"
 .PHONY : help
 
 

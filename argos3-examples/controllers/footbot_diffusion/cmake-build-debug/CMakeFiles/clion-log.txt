@@ -12,6 +12,33 @@ CMake Warning (dev) in CMakeLists.txt:
   line.
 This warning is for project developers.  Use -Wno-dev to suppress it.
 
+CMake Warning at CMakeLists.txt:3 (find_package):
+  By not providing "Findkrembot.cmake" in CMAKE_MODULE_PATH this project has
+  asked CMake to find a package configuration file provided by "krembot", but
+  CMake did not find one.
+
+  Could not find a package configuration file provided by "krembot" with any
+  of the following names:
+
+    krembotConfig.cmake
+    krembot-config.cmake
+
+  Add the installation prefix of "krembot" to CMAKE_PREFIX_PATH or set
+  "krembot_DIR" to a directory containing one of the above files.  If
+  "krembot" provides a separate development package or SDK, be sure it has
+  been installed.
+
+
+CMake Warning (dev) in CMakeLists.txt:
+  No cmake_minimum_required command is present.  A line of code such as
+
+    cmake_minimum_required(VERSION 3.15)
+
+  should be added at the top of the file.  The version specified may be lower
+  if you wish to support older CMake versions for this project.  For more
+  information run "cmake --help-policy CMP0000".
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cmake-build-debug

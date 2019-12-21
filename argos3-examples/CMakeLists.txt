@@ -21,9 +21,14 @@ set(CMAKE_MODULE_PATH $ENV{CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake)
 
 # Find the ARGoS package, make sure to save the ARGoS prefix
 find_package(PkgConfig)
+
 pkg_check_modules(ARGOS REQUIRED argos3_simulator)
 set(ARGOS_PREFIX ${ARGOS_PREFIX} CACHE INTERNAL "")
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ARGOS_PREFIX}/share/argos3/cmake)
+
+pkg_check_modules(KREMBOT REQUIRED krembot)
+set(KREMBOT_PREFIX ${KREMBOT_PREFIX} CACHE INTERNAL "")
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${KREMBOT_PREFIX}/share/krembot/cmake)
 
 # Check whether all the necessary libs have been installed to compile the
 # code that depends on Qt and OpenGL
@@ -44,11 +49,11 @@ include_directories(${CMAKE_SOURCE_DIR} ${ARGOS_INCLUDE_DIRS} ${LUA_INCLUDE_DIR}
 # Set ARGoS link dir
 link_directories(${ARGOS_LIBRARY_DIRS})
 
+include_directories(${CMAKE_SOURCE_DIR} ${KREMBOT_INCLUDE_DIRS} ${LUA_INCLUDE_DIR})
+link_directories(${KREMBOT_LIBRARY_DIRS})
+
+
 # Descend into the controllers directory
 add_subdirectory(controllers)
 
-# Descend into the loop_functions directory
-add_subdirectory(loop_functions)
 
-# Descend into the embedding directory
-add_subdirectory(embedding)

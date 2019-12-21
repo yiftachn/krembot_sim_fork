@@ -1,0 +1,13 @@
+/usr/local/lib/libkrembot.so
+/usr/local/share/pkgconfig/krembot.pc
+/usr/local/include/krembot/battery.h
+/usr/local/include/krembot/cbumpers.h
+/usr/local/include/krembot/SandTimer.h
+/usr/local/include/krembot/SerialSim.h
+/usr/local/include/krembot/krembot.h
+/usr/local/include/krembot/imu_sensor.h
+/usr/local/include/krembot/mobile_base.h
+/usr/local/include/krembot/rgb_led.h
+/usr/local/include/krembot/utils.h
+/usr/local/include/krembot/rgba_sensor.h
+/usr/local/lib/krembot/libkrembot.so

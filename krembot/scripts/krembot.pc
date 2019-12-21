@@ -1,0 +1,10 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+includedir=${prefix}/include
+libdir=${exec_prefix}/lib/argos3
+
+Name: krembot_
+Description: Krembot (Krembot simulator)
+Version: -
+Cflags: -I${includedir} -I/usr/include/lua5.2/
+Libs:  -L${libdir} -lkrembot_

@@ -1,0 +1,29 @@
+/home/eli/Downloads/clion-2019.2.5/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/eli/ws/krembot_sim/krembot
+CMake Warning (dev) in /usr/local/share/argos3/cmake/ARGoSCheckQTOpenGL.cmake:
+  Policy CMP0011 is not set: Included scripts do automatic cmake_policy PUSH
+  and POP.  Run "cmake --help-policy CMP0011" for policy details.  Use the
+  cmake_policy command to set the policy and suppress this warning.
+
+  The included script
+
+    /usr/local/share/argos3/cmake/ARGoSCheckQTOpenGL.cmake
+
+  affects policy settings.  CMake is implying the NO_POLICY_SCOPE option for
+  compatibility, so the effects are applied to the including context.
+Call Stack (most recent call first):
+  CMakeLists.txt:16 (include)
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Warning (dev) in CMakeLists.txt:
+  No cmake_minimum_required command is present.  A line of code such as
+
+    cmake_minimum_required(VERSION 3.15)
+
+  should be added at the top of the file.  The version specified may be lower
+  if you wish to support older CMake versions for this project.  For more
+  information run "cmake --help-policy CMP0000".
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/eli/ws/krembot_sim/krembot/cmake-build-debug

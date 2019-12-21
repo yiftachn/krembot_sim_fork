@@ -1,0 +1,3 @@
+# Hashes of file build rules.
+4d019835a1ec224f05c095de121a180e controllers/program_template/CMakeFiles/program_template_automoc
+3b245f6acd7948a0f36391b1b30959ba controllers/run_away_by_bumpers/CMakeFiles/run_away_by_bumpers_automoc

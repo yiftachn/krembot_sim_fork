@@ -1,8 +1,9 @@
-
-
 /*******************************************************************************
-* Copyright (c) 2018, RoboTICan, LTD.
+* Copyright (c) 2019, Elhay Rauper.
 * All rights reserved.
+*
+* This code API is based on Robotican's Krembot library, which can be found here:
+ * https://github.com/robotican/krembot
 *
 * Redistribution and use in source and binary forms, with or without
 * modification, are permitted provided that the following conditions are met:
@@ -14,7 +15,7 @@
 *   this list of conditions and the following disclaimer in the documentation
 *   and/or other materials provided with the distribution.
 *
-* * Neither the name of RoboTICan nor the names of its
+* * Neither the name of Elhay Rauper nor the names of its
 *   contributors may be used to endorse or promote products derived from
 *   this software without specific prior written permission.
 *
@@ -30,8 +31,9 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
 
-/* Author: Elhay Rauper */
-
+/*
+ * This class simulates physical bumper buttons by reading proximity to objects
+ */
 
 #ifndef CBUMPERS_H
 #define CBUMPERS_H
@@ -78,6 +80,9 @@ private:
 
     argos::CCI_FootBotProximitySensor & m_cProximity;
 
+    /*
+     * Calculate bumper's state based on proximity sensor
+     */
     BumperState CalcBumperState(const argos::Real & proximity, const BumperState & prevState);
 
 public:
@@ -87,12 +92,13 @@ public:
     BumpersRes read();
     void print();
     void countDown(uint8_t duration);
-    uint16_t readRaw();
 
     // mockup functions
     void publish() {};
     void printCalib() {};
     bool calib() {};
+    uint16_t readRaw() { return 0; };
+
 };
 
 

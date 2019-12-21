@@ -1,6 +1,9 @@
 /*******************************************************************************
-* Copyright (c) 2018, RoboTICan, LTD.
+* Copyright (c) 2019, Elhay Rauper.
 * All rights reserved.
+*
+* This code API is based on Robotican's Krembot library, which can be found here:
+ * https://github.com/robotican/krembot
 *
 * Redistribution and use in source and binary forms, with or without
 * modification, are permitted provided that the following conditions are met:
@@ -12,7 +15,7 @@
 *   this list of conditions and the following disclaimer in the documentation
 *   and/or other materials provided with the distribution.
 *
-* * Neither the name of RoboTICan nor the names of its
+* * Neither the name of Elhay Rauper nor the names of its
 *   contributors may be used to endorse or promote products derived from
 *   this software without specific prior written permission.
 *
@@ -28,8 +31,6 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
 
-/* Author: Elhay Rauper */
-
 #ifndef BATTERY_H
 #define BATTERY_H
 
@@ -41,7 +42,11 @@ class Battery
 private:
     std::chrono::steady_clock::time_point m_startTime;
 
-    // battery time left ratio (0-1)
+    /*
+     * return battery time left.
+     * return value is scaled to 0-1 for easy
+     * percentage calculation
+     */
     float timeRatio();
 
 public:

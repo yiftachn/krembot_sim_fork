@@ -1,6 +1,9 @@
 /*******************************************************************************
-* Copyright (c) 2018, RoboTICan, LTD.
+* Copyright (c) 2019, Elhay Rauper.
 * All rights reserved.
+*
+* This code API is based on Robotican's Krembot library, which can be found here:
+ * https://github.com/robotican/krembot
 *
 * Redistribution and use in source and binary forms, with or without
 * modification, are permitted provided that the following conditions are met:
@@ -12,7 +15,7 @@
 *   this list of conditions and the following disclaimer in the documentation
 *   and/or other materials provided with the distribution.
 *
-* * Neither the name of RoboTICan nor the names of its
+* * Neither the name of Elhay Rauper nor the names of its
 *   contributors may be used to endorse or promote products derived from
 *   this software without specific prior written permission.
 *
@@ -27,7 +30,6 @@
 * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
-/* Author: Elhay Rauper, Yair Shlomi */
 
 #include <iostream>
 #include "battery.h"
@@ -37,11 +39,12 @@
 #define MIN_BAT_LVL 3.3
 #define MAX_CHRG_LVL 5.0
 #define MIN_CHRG_LVL 0.0
-#define BATTERY_CAPACITY_MINUTES 120.0f
+#define BATTERY_CAPACITY_MINUTES 30.0f
 
 using namespace std::chrono;
 
 Battery::Battery(){
+    // register battery start time upon construction
     m_startTime = steady_clock::now();
 }
 

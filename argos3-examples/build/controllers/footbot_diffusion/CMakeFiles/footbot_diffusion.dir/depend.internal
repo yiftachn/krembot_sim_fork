@@ -75,6 +75,7 @@ controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/footbot_diffusion
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o
  /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/imu_sensor.cpp
  /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/imu_sensor.h
+ /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/utils.h
  /usr/include/lua5.2/lauxlib.h
  /usr/include/lua5.2/lua.h
  /usr/include/lua5.2/luaconf.h
@@ -94,6 +95,66 @@ controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/imu_sensor.cpp.o
  /usr/local/include/argos3/core/utility/math/range.h
  /usr/local/include/argos3/core/utility/string_utilities.h
  /usr/local/include/argos3/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/krembot.cpp.o
+ /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/battery.h
+ /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/cbumpers.h
+ /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/imu_sensor.h
+ /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/krembot.cpp
+ /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/krembot.h
+ /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/mobile_base.h
+ /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgb_led.h
+ /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgba_sensor.h
+ /usr/include/lua5.2/lauxlib.h
+ /usr/include/lua5.2/lua.h
+ /usr/include/lua5.2/luaconf.h
+ /usr/include/lua5.2/lualib.h
+ /usr/local/include/argos3/core/config.h
+ /usr/local/include/argos3/core/control_interface/ci_actuator.h
+ /usr/local/include/argos3/core/control_interface/ci_controller.h
+ /usr/local/include/argos3/core/control_interface/ci_sensor.h
+ /usr/local/include/argos3/core/utility/configuration/argos_configuration.h
+ /usr/local/include/argos3/core/utility/configuration/argos_exception.h
+ /usr/local/include/argos3/core/utility/configuration/base_configurable_resource.h
+ /usr/local/include/argos3/core/utility/configuration/tinyxml/ticpp.h
+ /usr/local/include/argos3/core/utility/configuration/tinyxml/ticpprc.h
+ /usr/local/include/argos3/core/utility/configuration/tinyxml/tinystr.h
+ /usr/local/include/argos3/core/utility/configuration/tinyxml/tinyxml.h
+ /usr/local/include/argos3/core/utility/datatypes/color.h
+ /usr/local/include/argos3/core/utility/datatypes/datatypes.h
+ /usr/local/include/argos3/core/utility/logging/argos_colored_text.h
+ /usr/local/include/argos3/core/utility/logging/argos_log.h
+ /usr/local/include/argos3/core/utility/math/angles.h
+ /usr/local/include/argos3/core/utility/math/general.h
+ /usr/local/include/argos3/core/utility/math/matrix/matrix.h
+ /usr/local/include/argos3/core/utility/math/range.h
+ /usr/local/include/argos3/core/utility/math/vector2.h
+ /usr/local/include/argos3/core/utility/plugins/factory.h
+ /usr/local/include/argos3/core/utility/plugins/factory_impl.h
+ /usr/local/include/argos3/core/utility/string_utilities.h
+ /usr/local/include/argos3/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.h
+ /usr/local/include/argos3/plugins/robots/foot-bot/control_interface/ci_footbot_light_sensor.h
+ /usr/local/include/argos3/plugins/robots/foot-bot/control_interface/ci_footbot_proximity_sensor.h
+ /usr/local/include/argos3/plugins/robots/generic/control_interface/ci_colored_blob_omnidirectional_camera_sensor.h
+ /usr/local/include/argos3/plugins/robots/generic/control_interface/ci_differential_steering_actuator.h
+ /usr/local/include/argos3/plugins/robots/generic/control_interface/ci_leds_actuator.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/mobile_base.cpp.o
+ /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/mobile_base.cpp
+ /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/mobile_base.h
+ /usr/include/lua5.2/lauxlib.h
+ /usr/include/lua5.2/lua.h
+ /usr/include/lua5.2/luaconf.h
+ /usr/include/lua5.2/lualib.h
+ /usr/local/include/argos3/core/config.h
+ /usr/local/include/argos3/core/control_interface/ci_actuator.h
+ /usr/local/include/argos3/core/utility/configuration/argos_configuration.h
+ /usr/local/include/argos3/core/utility/configuration/argos_exception.h
+ /usr/local/include/argos3/core/utility/configuration/base_configurable_resource.h
+ /usr/local/include/argos3/core/utility/configuration/tinyxml/ticpp.h
+ /usr/local/include/argos3/core/utility/configuration/tinyxml/ticpprc.h
+ /usr/local/include/argos3/core/utility/configuration/tinyxml/tinystr.h
+ /usr/local/include/argos3/core/utility/configuration/tinyxml/tinyxml.h
+ /usr/local/include/argos3/core/utility/datatypes/datatypes.h
+ /usr/local/include/argos3/plugins/robots/generic/control_interface/ci_differential_steering_actuator.h
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o
  /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgb_led.cpp
  /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgb_led.h
@@ -117,6 +178,7 @@ controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgb_led.cpp.o
 controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o
  /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgba_sensor.cpp
  /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgba_sensor.h
+ /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/utils.h
  /usr/include/lua5.2/lauxlib.h
  /usr/include/lua5.2/lua.h
  /usr/include/lua5.2/luaconf.h
@@ -141,3 +203,6 @@ controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/rgba_sensor.cpp.o
  /usr/local/include/argos3/plugins/robots/foot-bot/control_interface/ci_footbot_light_sensor.h
  /usr/local/include/argos3/plugins/robots/foot-bot/control_interface/ci_footbot_proximity_sensor.h
  /usr/local/include/argos3/plugins/robots/generic/control_interface/ci_colored_blob_omnidirectional_camera_sensor.h
+controllers/footbot_diffusion/CMakeFiles/footbot_diffusion.dir/utils.cpp.o
+ /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/utils.cpp
+ /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/utils.h

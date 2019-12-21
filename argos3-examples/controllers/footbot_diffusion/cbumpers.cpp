@@ -1,6 +1,9 @@
 /*******************************************************************************
-* Copyright (c) 2018, RoboTICan, LTD.
+* Copyright (c) 2019, Elhay Rauper.
 * All rights reserved.
+*
+* This code API is based on Robotican's Krembot library, which can be found here:
+ * https://github.com/robotican/krembot
 *
 * Redistribution and use in source and binary forms, with or without
 * modification, are permitted provided that the following conditions are met:
@@ -12,7 +15,7 @@
 *   this list of conditions and the following disclaimer in the documentation
 *   and/or other materials provided with the distribution.
 *
-* * Neither the name of RoboTICan nor the names of its
+* * Neither the name of Elhay Rauper nor the names of its
 *   contributors may be used to endorse or promote products derived from
 *   this software without specific prior written permission.
 *
@@ -28,8 +31,6 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
 
-/* Author: Elhay Rauper, Yair Shlomi */
-
 
 #include "cbumpers.h"
 
@@ -39,16 +40,16 @@ CBumpers::CBumpers(CCI_FootBotProximitySensor & proximity) :
         m_cProximity(proximity) {}
 
 BumperState CBumpers::CalcBumperState(const Real &proximity, const BumperState & prevState) {
-    if (proximity >= 0 && proximity <= 0.005) { // no proximity intersection
+    if (proximity >= 0 && proximity <= 0.005) { // we have proximity intersection, and inside bumper's range
         return BumperState::PRESSED;
     }
     if (proximity > 0.005) {
         return BumperState::UNPRESSED;
     }
+    // in case of no intersection return prev state
+    // to deal with cases where footbot is too close to object
+    // and reading is -1
     if (proximity == -1) {
-        // in case of no intersection return prev state
-        // to deal with cases where footbot is too close to object
-        // and reading is -1
         return prevState;
     }
 }
@@ -98,5 +99,3 @@ void CBumpers::print()
 
     std::cout << std::endl;
 }
-
-uint16_t CBumpers::readRaw() { return 0; }

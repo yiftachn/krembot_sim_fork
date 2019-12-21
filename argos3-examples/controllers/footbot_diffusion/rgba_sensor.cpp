@@ -1,12 +1,9 @@
-//
-// Created by eli on 11/29/19.
-//
-
-#include "rgba_sensor.h"
-
 /*******************************************************************************
-* Copyright (c) 2018, RoboTICan, LTD.
+* Copyright (c) 2019, Elhay Rauper.
 * All rights reserved.
+*
+* This code API is based on Robotican's Krembot library, which can be found here:
+ * https://github.com/robotican/krembot
 *
 * Redistribution and use in source and binary forms, with or without
 * modification, are permitted provided that the following conditions are met:
@@ -18,7 +15,7 @@
 *   this list of conditions and the following disclaimer in the documentation
 *   and/or other materials provided with the distribution.
 *
-* * Neither the name of RoboTICan nor the names of its
+* * Neither the name of Elhay Rauper nor the names of its
 *   contributors may be used to endorse or promote products derived from
 *   this software without specific prior written permission.
 *
@@ -34,10 +31,11 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
 
-/* Author: Elhay Rauper */
-
 #include "rgba_sensor.h"
+#include "utils.h"
+
 using namespace argos;
+
 RGBASensor::RGBASensor(const std::string name,
                         uint8_t index,
                         CCI_FootBotProximitySensor &proximity,
@@ -47,13 +45,20 @@ RGBASensor::RGBASensor(const std::string name,
                         m_index(index),
                         m_cProximity(proximity),
                         m_Light(light),
-                        m_ColorCam(colorCam)
+                        m_ColorCam(colorCam),
+
+                        // sensors limits in cm (according to Robotican)
+                        m_ProxRange{20, 255},
+                        m_DistRange{6.96, 25.51}
 {
+    // create virtual boundaries for each sensor
+    // sensors are located around Krembot, seperated by 45 degrees from each other
+    // so, upper and lower boundaries for each sensor is its location +- 22.5 degrees (half spacing)
     const float rgbaSensorSpacing = index * (M_PI / 4.0f); //45 deg
     const float rangeOffset = (M_PI / 8.0f); //22.5 deg
 
-    CRadians boundary1( wrapToPi( rgbaSensorSpacing + rangeOffset ) );
-    CRadians boundary2( wrapToPi( rgbaSensorSpacing - rangeOffset ) );
+    CRadians boundary1( utils::WrapToPi( rgbaSensorSpacing + rangeOffset ) );
+    CRadians boundary2( utils::WrapToPi( rgbaSensorSpacing - rangeOffset ) );
 
     if (boundary1 > boundary2) {
         m_ColorSensorAngularRange.Set(boundary2, boundary1);
@@ -68,21 +73,67 @@ RGBAResult RGBASensor::readRGBA()
 {
     RGBAResult result;
 
+    /*
+     * Calculate Krembot distance out of Footbot proximity sensor:
+     * The foot bot proximity sensor measure distance to closest object in range.
+     * The range is defined in the argos3 footbot_entity.cpp file, and is currently set to MAX_DISTANCE.
+     * The reading from the footbot proximity sensor shows -1 when there's no intersection in sesnor's range
+     * In the real krembot this process is done the opposite way (distance is calculated out of proximity)
+     */
     const Real rawProximity = m_cProximity.GetReadings()[m_index].Value;
-    if (rawProximity == -1) { // no proximity intersection
-        result.Proximity = 0;
-    } else { // intersection in sensor range
-        result.Proximity = rawProximity * 100; // todo: scale this according to real robot
+    /*
+     * No proximity intersection. In other words: no object in sensor's range
+     * This can happend in 2 cases:
+     * 1. We are too close to an object (simulator bug)
+     * 2. We are too far from an object
+     * To identify which case we are dealing with, a check is made for each calculation to tell if we
+     * are in a "far" or "near" range relative to the closest object. If we are in the near range and then
+     * see -1, it means we are in case 1. , otherwise case 2. The same principal is applied for CBumpers
+     * This method assumes that krembot is place at least 1 cm from any other object at the very beginning
+     * of the simulation run. Otherwise the first m_ProxState=FAR is not correct
+     */
+    if (rawProximity == -1) {
+        if (m_ProxState == ProxState::NEAR) {
+            result.Distance = m_DistRange.GetMin();
+        } else { // far
+            result.Distance = m_DistRange.GetMax();
+        }
+    } else { // intersection in sensor's range
+        result.Distance = rawProximity * 100; // convert meters to cm
+        const float halfDistRange = m_DistRange.GetMax()/2.0;
+        if (result.Distance >= halfDistRange) {
+            m_ProxState = ProxState::FAR;
+        } else {
+            m_ProxState = ProxState::NEAR;
+        }
+        // truncate value to min and max boundaries
+        m_DistRange.TruncValue(result.Distance);
     }
 
-    result.Ambient = m_Light.GetReadings()[m_index].Value * 100; // todo: scale this according to real robot
+    /*
+     * Calculate proximity out of distance using the following rules:
+     * 1. Krembot's proximity max value is read when distance is at min value
+     * 2. Krembot's proximity min value is read when distance is at max value
+     * 3. The max and min values are located on the first lines of this file
+     */
+    float krembotProx = {
+            (result.Distance - m_DistRange.GetMin()) *
+            (m_ProxRange.GetMax() - m_ProxRange.GetMin()) /
+            (m_DistRange.GetMax() - m_DistRange.GetMin()) +
+            m_ProxRange.GetMin()
+    };
+    result.Proximity = krembotProx;
 
+    // Calculate ambient
+    result.Ambient = m_Light.GetReadings()[m_index].Value * 100;
+
+    // Calculate colors
     const auto & cameraBlobReadings = m_ColorCam.GetReadings().BlobList;
 
-    //float numOfInBoundReadings = 0;
     for (const auto & reading : cameraBlobReadings) {
-        // handle front and back sensor
+
         bool updateColors = false;
+        // handle front (0) and back (4) sensor
         if (m_index == 0)
         {
             if ( (reading->Angle >= CRadians(0) && reading->Angle < m_ColorSensorAngularRange.GetMax()) ||
@@ -103,61 +154,10 @@ RGBAResult RGBASensor::readRGBA()
             result.Green = reading->Color.GetGreen();
             result.Red = reading->Color.GetRed();
             result.Blue = reading->Color.GetBlue();
-            //result.Ambient += reading->Color.GetAlpha() / floatNumOfReadings; //we already getting a more precise reading from light sensor
-            //++numOfInBoundReadings;
         }
     }
 
-//    for (int i=0; i<m_ColorCam.GetReadings().BlobList.size(); i++) {
-//
-//        std::cout << "color: " <<(int)m_ColorCam.GetReadings().BlobList[i]->Color.GetAlpha() <<"| angle: " << m_ColorCam.GetReadings().BlobList[i]->Angle << "| dist: " << m_ColorCam.GetReadings().BlobList[i]->Distance<< std::endl;
-//    }
-
-
     return result;
-
-
-//    for (int i=0; i< m_Light.GetReadings().size(); ++i) {
-//
-//    std::cout << "[" << i << "]" << m_Light.GetReadings()[i].Value << std::endl;
-//    }
-
-
-
-    //const CCI_FootBotLightSensor::TReadings& tReadings = m_Light.GetReadings();
-
-//    if (!apds_.readAmbientLight(result.Ambient))
-//    {
-//        result.AmbientError = true;
-//        Serial.print("[RGBA sensor] - Ambient sensor error");
-//    }
-//    if(!apds_.readRedLight(result.Red))
-//    {
-//        result.RedError = true;
-//        Serial.print("[RGBA sensor] - Red sensor error");
-//    }
-//    if(!apds_.readGreenLight(result.Green))
-//    {
-//        result.GreenError = true;
-//        Serial.print("[RGBA sensor] - Green sensor error");
-//    }
-//    if(!apds_.readBlueLight(result.Blue))
-//    {
-//        result.BlueError = true;
-//        Serial.print("[RGBA sensor] - Blue sensor error");
-//    }
-//    if(!apds_.readProximity(result.Proximity))
-//    {
-//        result.ProximityError = true;
-//        Serial.print("[RGBA sensor] - Proximity sensor error");
-//    }
-//    else
-//    {
-//        //convert proximity to distance (cm)
-//        if (result.Proximity < 20) //min bound - read below it is not reliable
-//            result.Proximity = 20;
-//        result.Distance = 117.55 * pow(result.Proximity, -0.51); //result min val is 6, and max is 25 cm
-//    }
 }
 
 
@@ -199,7 +199,6 @@ Colors RGBASensor::readColor()
         }
 
     }
-
     return Colors::None;
 }
 
@@ -260,7 +259,6 @@ HSVResult RGBASensor::rgbToHSV(RGBAResult in)
     }
 
     return out;
-
 }
 
 
@@ -308,7 +306,6 @@ void RGBASensor::printColor() {
             std::cout << " Blue ";
             break;
         }
-
         default:
             std::cout << " None ";
             break;

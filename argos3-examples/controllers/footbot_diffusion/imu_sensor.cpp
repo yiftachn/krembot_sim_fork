@@ -1,8 +1,9 @@
-
-
 /*******************************************************************************
-* Copyright (c) 2018, RoboTICan, LTD.
+* Copyright (c) 2019, Elhay Rauper.
 * All rights reserved.
+*
+* This code API is based on Robotican's Krembot library, which can be found here:
+ * https://github.com/robotican/krembot
 *
 * Redistribution and use in source and binary forms, with or without
 * modification, are permitted provided that the following conditions are met:
@@ -14,7 +15,7 @@
 *   this list of conditions and the following disclaimer in the documentation
 *   and/or other materials provided with the distribution.
 *
-* * Neither the name of RoboTICan nor the names of its
+* * Neither the name of Elhay Rauper nor the names of its
 *   contributors may be used to endorse or promote products derived from
 *   this software without specific prior written permission.
 *
@@ -30,11 +31,8 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
 
-/* Author: Elhay Rauper */
-
-
 #include "imu_sensor.h"
-
+#include "utils.h"
 
 using namespace argos;
 
@@ -44,51 +42,41 @@ IMUSensor::IMUSensor(CCI_FootBotImuSensor & imu) :
 // get latest IMU fused data
 ImuData IMUSensor::read()
 {
+    // Get radians readings
+    const auto readings =       m_Imu.GetReadings();
 
-    // assing readings to the correct real world axes
-//    data.roll = imu_.pitch;
-//    data.pitch = imu_.roll;
-//    data.yaw = imu_.yaw;
+    // Convert to degrees and multiply by -1 to flip circle
+    // from anti clock-wise positive to clock-wise positive
+    const float rollDeg =       -1 * ToDegrees(readings.Roll).GetValue();
+    const float pitchDeg =      -1 * ToDegrees(readings.Pitch).GetValue();
+    const float yawDeg =        -1 * ToDegrees(readings.Yaw).GetValue();
 
-//    data.ax = imu_.ax;
-//    data.ax = imu_.ay;
-//    data.ax = imu_.az;
-//
-//    data.ax = imu_.gx;
-//    data.ax = imu_.gy;
-//    data.ax = imu_.gz;
-
-    const auto readings = m_Imu.GetReadings();
+    // Convert data from -180-180 to 0-360 range and return
     return ImuData(
-            ToDegrees(readings.Roll).GetValue(),
-            ToDegrees(readings.Pitch).GetValue(),
-            ToDegrees(readings.Yaw).GetValue()
+            utils::ConvertToAllPositiveCircleRange(rollDeg),
+            utils::ConvertToAllPositiveCircleRange(pitchDeg),
+            utils::ConvertToAllPositiveCircleRange(yawDeg)
     );
 }
 
-
-
-
 void IMUSensor::print()
 {
-//    Serial.print("[IMU]: Roll, Pitch, Yaw");
-//    Serial.print(imu_.roll, 2);
-//    Serial.print(", ");
-//    Serial.print(imu_.pitch, 2);
-//    Serial.print(", ");
-//    Serial.println(imu_.yaw, 2);
+    const auto rpy = read();
+    std::cout << "[IMU]: Roll, Pitch, Yaw" <<
+                rpy.roll << ", " <<
+                rpy.pitch << ", " <<
+                rpy.yaw << ", " << std::endl;
 }
-
 
 void IMUSensor::printRaw()
 {
-//    print();
-//
-//    Serial.print("ax: ");Serial.print(imu_.ax);
-//    Serial.print(", ay: ");Serial.print(imu_.ay);
-//    Serial.print(", az: ");Serial.println(imu_.az);
-//    Serial.print(" gx: ");Serial.print(imu_.gx);
-//    Serial.print(", gy: ");Serial.print(imu_.gy);
-//    Serial.print(", gz: ");Serial.println(imu_.gz);
+    print();
 
+    const auto rpy = read();
+    std::cout << "ax: " << rpy.ax <<
+         "ay: " << rpy.ay <<
+         "az: " << rpy.az << std::endl;
+    std::cout << "gx: " << rpy.gx <<
+              "gy: " << rpy.gy <<
+              "gz: " << rpy.gz << std::endl;
 }

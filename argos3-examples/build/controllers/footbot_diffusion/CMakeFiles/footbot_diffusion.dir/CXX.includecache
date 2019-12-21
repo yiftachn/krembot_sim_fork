@@ -57,10 +57,16 @@ krembot_main.h
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/imu_sensor.cpp
 imu_sensor.h
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/imu_sensor.h
+utils.h
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/utils.h
 
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/imu_sensor.h
 argos3/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.h
 -
+
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/krembot.cpp
+krembot.h
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/krembot.h
 
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/krembot.h
 tr1/functional
@@ -104,6 +110,10 @@ argos3/plugins/robots/generic/control_interface/ci_differential_steering_actuato
 argos3/plugins/robots/foot-bot/control_interface/ci_footbot_proximity_sensor.h
 -
 
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/mobile_base.cpp
+mobile_base.h
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/mobile_base.h
+
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/mobile_base.h
 cstdint
 -
@@ -123,8 +133,8 @@ argos3/plugins/robots/generic/control_interface/ci_leds_actuator.h
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgba_sensor.cpp
 rgba_sensor.h
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgba_sensor.h
-rgba_sensor.h
-/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgba_sensor.h
+utils.h
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/utils.h
 
 /home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgba_sensor.h
 stdint.h
@@ -137,6 +147,18 @@ argos3/plugins/robots/generic/control_interface/ci_colored_blob_omnidirectional_
 -
 argos3/plugins/robots/foot-bot/control_interface/ci_footbot_light_sensor.h
 -
+
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/utils.cpp
+utils.h
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/utils.h
+stdexcept
+-
+sstream
+-
+math.h
+-
+
+/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/utils.h
 
 /usr/include/lua5.2/lauxlib.h
 stddef.h

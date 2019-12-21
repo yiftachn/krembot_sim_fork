@@ -108,10 +108,16 @@
 		<Unit filename="/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/imu_sensor.h">
 			<Option target="footbot_diffusion"/>
 		</Unit>
+		<Unit filename="/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/krembot.cpp">
+			<Option target="footbot_diffusion"/>
+		</Unit>
 		<Unit filename="/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/krembot.h">
 			<Option target="footbot_diffusion"/>
 		</Unit>
 		<Unit filename="/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/krembot_main.h">
+			<Option target="footbot_diffusion"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/mobile_base.cpp">
 			<Option target="footbot_diffusion"/>
 		</Unit>
 		<Unit filename="/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/mobile_base.h">
@@ -127,6 +133,12 @@
 			<Option target="footbot_diffusion"/>
 		</Unit>
 		<Unit filename="/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/rgba_sensor.h">
+			<Option target="footbot_diffusion"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/utils.cpp">
+			<Option target="footbot_diffusion"/>
+		</Unit>
+		<Unit filename="/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/utils.h">
 			<Option target="footbot_diffusion"/>
 		</Unit>
 		<Unit filename="/home/eli/ws/krembot_sim/argos3-examples/controllers/footbot_diffusion/CMakeLists.txt">

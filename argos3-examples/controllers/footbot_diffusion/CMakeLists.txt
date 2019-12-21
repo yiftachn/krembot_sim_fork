@@ -6,6 +6,7 @@ add_library(footbot_diffusion MODULE
         krembot.h
         krembot_main.h
         mobile_base.h
+        mobile_base.cpp
         rgba_sensor.cpp
         rgba_sensor.h
         rgb_led.cpp
@@ -13,7 +14,11 @@ add_library(footbot_diffusion MODULE
         cbumpers.cpp
         cbumpers.h
         battery.cpp
-        battery.h imu_sensor.cpp imu_sensor.h)
+        battery.h
+        imu_sensor.cpp
+        imu_sensor.h
+        utils.h
+        krembot.cpp utils.cpp)
 target_link_libraries(footbot_diffusion
   argos3core_simulator
   argos3plugin_simulator_footbot

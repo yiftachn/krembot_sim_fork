@@ -15,6 +15,9 @@ set(CMAKE_MAKEFILE_DEPENDS
   "../controllers/CMakeLists.txt"
   "../controllers/program_template/CMakeLists.txt"
   "../controllers/run_away_by_bumpers/CMakeLists.txt"
+  "../controllers/simple_demo/CMakeLists.txt"
+  "../loop_functions/CMakeLists.txt"
+  "../loop_functions/id_loop_functions/CMakeLists.txt"
   "/usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5Config.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/Qt5/Qt5ConfigVersion.cmake"
   "/usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfig.cmake"
@@ -68,6 +71,9 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "controllers/CMakeFiles/CMakeDirectoryInformation.cmake"
   "controllers/program_template/CMakeFiles/CMakeDirectoryInformation.cmake"
   "controllers/run_away_by_bumpers/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "controllers/simple_demo/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "loop_functions/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "loop_functions/id_loop_functions/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
@@ -76,4 +82,8 @@ set(CMAKE_DEPEND_INFO_FILES
   "controllers/program_template/CMakeFiles/program_template_automoc.dir/DependInfo.cmake"
   "controllers/run_away_by_bumpers/CMakeFiles/run_away_by_bumpers.dir/DependInfo.cmake"
   "controllers/run_away_by_bumpers/CMakeFiles/run_away_by_bumpers_automoc.dir/DependInfo.cmake"
+  "controllers/simple_demo/CMakeFiles/simple_demo.dir/DependInfo.cmake"
+  "controllers/simple_demo/CMakeFiles/simple_demo_automoc.dir/DependInfo.cmake"
+  "loop_functions/id_loop_functions/CMakeFiles/id_loop_functions.dir/DependInfo.cmake"
+  "loop_functions/id_loop_functions/CMakeFiles/id_loop_functions_automoc.dir/DependInfo.cmake"
   )

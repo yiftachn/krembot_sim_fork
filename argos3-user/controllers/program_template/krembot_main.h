@@ -53,8 +53,6 @@ public:
     virtual void setup() {
         krembot.setup();
 
-        krembot.Led.write(0,255,0);
-
         /*
          * todo user: your code goes here
          */
@@ -63,8 +61,6 @@ public:
 
     virtual void loop() {
         krembot.loop();
-
-        krembot.Base.drive(50, 0);
 
         /*
          * todo user: your code goes here

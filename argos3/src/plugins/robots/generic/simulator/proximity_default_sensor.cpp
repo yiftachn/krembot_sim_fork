@@ -71,7 +71,10 @@ namespace argos {
 
    /****************************************/
    /****************************************/
-   
+
+   /**
+    * Elhay: Changes were made to this function to return -1 instead of 0 for no-intersection reads
+    */
    void CProximityDefaultSensor::Update() {
       /* Ray used for scanning the environment for obstacles */
       CRay3 cScanningRay;

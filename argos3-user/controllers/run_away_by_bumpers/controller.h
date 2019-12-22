@@ -49,13 +49,13 @@ using namespace argos;
 
 class Krembot;
 
-class CFootBotDiffusion : public CCI_Controller {
+class Controller : public CCI_Controller {
 
 public:
 
-   CFootBotDiffusion();
+   Controller();
 
-   virtual ~CFootBotDiffusion() {}
+   virtual ~Controller() {}
 
    /*
     * This function initializes the controller.

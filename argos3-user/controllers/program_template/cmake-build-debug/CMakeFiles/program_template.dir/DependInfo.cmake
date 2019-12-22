@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/eli/ws/krembot_sim/argos3-user/controllers/program_template/controller.cpp" "/home/eli/ws/krembot_sim/argos3-user/controllers/program_template/cmake-build-debug/CMakeFiles/program_template.dir/controller.cpp.o"
+  "/home/eli/ws/krembot_sim/argos3-user/controllers/program_template/controller.cpp" "/home/eli/ws/krembot_sim/argos3-user/controllers/program_template/cmake-build-debug/CMakeFiles/program_template.dir/controller.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

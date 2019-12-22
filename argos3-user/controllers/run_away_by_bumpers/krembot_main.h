@@ -78,7 +78,9 @@ public:
                 turning = false;
                 krembot.Led.write(255,0,0);
 
+                Serial.Print("---"); Serial.Print(krembot.getName()); Serial.Print("---");
                 krembot.Bumpers.print();
+                Serial.Println("------");
 
             }
                 //if the pressed bumper is not one of the front ones

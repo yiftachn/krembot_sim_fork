@@ -179,7 +179,9 @@ namespace argos {
 
    /****************************************/
    /****************************************/
-
+    /**
+     * Elhay: Changes were made to this function to increase the range of the colores camera
+     */
    void CColoredBlobOmnidirectionalCameraRotZOnlySensor::Update() {
 
       if(m_bEnabled) {

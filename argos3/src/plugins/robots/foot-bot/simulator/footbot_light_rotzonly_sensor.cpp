@@ -101,7 +101,10 @@ namespace argos {
 
    /****************************************/
    /****************************************/
-   
+   /**
+  * Elhay: Changes were made to this function to detect led source light (instead of
+    * media source light)
+  */
    void CFootBotLightRotZOnlySensor::Update() {
       /* Erase readings */
       for(size_t i = 0; i < m_tReadings.size(); ++i) {

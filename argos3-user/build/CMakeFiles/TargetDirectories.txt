@@ -10,3 +10,13 @@
 /home/eli/ws/krembot_sim/argos3-user/build/controllers/run_away_by_bumpers/CMakeFiles/edit_cache.dir
 /home/eli/ws/krembot_sim/argos3-user/build/controllers/run_away_by_bumpers/CMakeFiles/run_away_by_bumpers.dir
 /home/eli/ws/krembot_sim/argos3-user/build/controllers/run_away_by_bumpers/CMakeFiles/run_away_by_bumpers_automoc.dir
+/home/eli/ws/krembot_sim/argos3-user/build/controllers/simple_demo/CMakeFiles/edit_cache.dir
+/home/eli/ws/krembot_sim/argos3-user/build/controllers/simple_demo/CMakeFiles/rebuild_cache.dir
+/home/eli/ws/krembot_sim/argos3-user/build/controllers/simple_demo/CMakeFiles/simple_demo.dir
+/home/eli/ws/krembot_sim/argos3-user/build/controllers/simple_demo/CMakeFiles/simple_demo_automoc.dir
+/home/eli/ws/krembot_sim/argos3-user/build/loop_functions/CMakeFiles/edit_cache.dir
+/home/eli/ws/krembot_sim/argos3-user/build/loop_functions/CMakeFiles/rebuild_cache.dir
+/home/eli/ws/krembot_sim/argos3-user/build/loop_functions/id_loop_functions/CMakeFiles/edit_cache.dir
+/home/eli/ws/krembot_sim/argos3-user/build/loop_functions/id_loop_functions/CMakeFiles/rebuild_cache.dir
+/home/eli/ws/krembot_sim/argos3-user/build/loop_functions/id_loop_functions/CMakeFiles/id_loop_functions.dir
+/home/eli/ws/krembot_sim/argos3-user/build/loop_functions/id_loop_functions/CMakeFiles/id_loop_functions_automoc.dir

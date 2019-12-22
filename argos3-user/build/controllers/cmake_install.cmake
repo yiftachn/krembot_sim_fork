@@ -36,6 +36,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/eli/ws/krembot_sim/argos3-user/build/controllers/program_template/cmake_install.cmake")
   include("/home/eli/ws/krembot_sim/argos3-user/build/controllers/run_away_by_bumpers/cmake_install.cmake")
+  include("/home/eli/ws/krembot_sim/argos3-user/build/controllers/simple_demo/cmake_install.cmake")
 
 endif()
 

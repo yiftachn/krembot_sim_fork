@@ -37,9 +37,9 @@
 #include <krembot/krembot.h>
 
 
-CFootBotDiffusion::CFootBotDiffusion() {}
+Controller::Controller() {}
 
-void CFootBotDiffusion::Init(TConfigurationNode& t_node) {
+void Controller::Init(TConfigurationNode& t_node) {
     //actuators
     m_pcWheels = GetActuator<CCI_DifferentialSteeringActuator>("differential_steering");
 
@@ -65,7 +65,7 @@ void CFootBotDiffusion::Init(TConfigurationNode& t_node) {
     m_pKrembotMain->setup();
 }
 
-void CFootBotDiffusion::ControlStep() {
+void Controller::ControlStep() {
     m_pKrembotMain->loop();
 }
 
@@ -79,5 +79,5 @@ void CFootBotDiffusion::ControlStep() {
  * controller class to instantiate.
  * See also the configuration files for an example of how this is used.
  */
-//todo user: change the name of the controller
-REGISTER_CONTROLLER(CFootBotDiffusion, "run_away_by_bumpers")
+// KREMBOT_PROGRAM_NAME is a macro defined inside the cmake file
+REGISTER_CONTROLLER(Controller, KREMBOT_PROGRAM_NAME)

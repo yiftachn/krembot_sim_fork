@@ -123,32 +123,20 @@ program_template/fast:
 	$(MAKE) -f CMakeFiles/program_template.dir/build.make CMakeFiles/program_template.dir/build
 .PHONY : program_template/fast
 
-controller.o: controller.cpp.o
-
+# target to build an object file
+controller.o:
+	$(MAKE) -f CMakeFiles/program_template.dir/build.make CMakeFiles/program_template.dir/controller.o
 .PHONY : controller.o
 
-# target to build an object file
-controller.cpp.o:
-	$(MAKE) -f CMakeFiles/program_template.dir/build.make CMakeFiles/program_template.dir/controller.cpp.o
-.PHONY : controller.cpp.o
-
-controller.i: controller.cpp.i
-
+# target to preprocess a source file
+controller.i:
+	$(MAKE) -f CMakeFiles/program_template.dir/build.make CMakeFiles/program_template.dir/controller.i
 .PHONY : controller.i
 
-# target to preprocess a source file
-controller.cpp.i:
-	$(MAKE) -f CMakeFiles/program_template.dir/build.make CMakeFiles/program_template.dir/controller.cpp.i
-.PHONY : controller.cpp.i
-
-controller.s: controller.cpp.s
-
-.PHONY : controller.s
-
 # target to generate assembly for a file
-controller.cpp.s:
-	$(MAKE) -f CMakeFiles/program_template.dir/build.make CMakeFiles/program_template.dir/controller.cpp.s
-.PHONY : controller.cpp.s
+controller.s:
+	$(MAKE) -f CMakeFiles/program_template.dir/build.make CMakeFiles/program_template.dir/controller.s
+.PHONY : controller.s
 
 # Help Target
 help:

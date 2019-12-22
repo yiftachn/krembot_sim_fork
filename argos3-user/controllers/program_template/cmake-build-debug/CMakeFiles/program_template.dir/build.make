@@ -57,27 +57,27 @@ include CMakeFiles/program_template.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/program_template.dir/flags.make
 
-CMakeFiles/program_template.dir/controller.cpp.o: CMakeFiles/program_template.dir/flags.make
-CMakeFiles/program_template.dir/controller.cpp.o: ../controller.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eli/ws/krembot_sim/argos3-user/controllers/program_template/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/program_template.dir/controller.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/program_template.dir/controller.cpp.o -c /home/eli/ws/krembot_sim/argos3-user/controllers/program_template/controller.cpp
+CMakeFiles/program_template.dir/controller.o: CMakeFiles/program_template.dir/flags.make
+CMakeFiles/program_template.dir/controller.o: ../controller.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/eli/ws/krembot_sim/argos3-user/controllers/program_template/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/program_template.dir/controller.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/program_template.dir/controller.o -c /home/eli/ws/krembot_sim/argos3-user/controllers/program_template/controller.cpp
 
-CMakeFiles/program_template.dir/controller.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/program_template.dir/controller.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eli/ws/krembot_sim/argos3-user/controllers/program_template/controller.cpp > CMakeFiles/program_template.dir/controller.cpp.i
+CMakeFiles/program_template.dir/controller.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/program_template.dir/controller.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/eli/ws/krembot_sim/argos3-user/controllers/program_template/controller.cpp > CMakeFiles/program_template.dir/controller.i
 
-CMakeFiles/program_template.dir/controller.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/program_template.dir/controller.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eli/ws/krembot_sim/argos3-user/controllers/program_template/controller.cpp -o CMakeFiles/program_template.dir/controller.cpp.s
+CMakeFiles/program_template.dir/controller.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/program_template.dir/controller.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/eli/ws/krembot_sim/argos3-user/controllers/program_template/controller.cpp -o CMakeFiles/program_template.dir/controller.s
 
 # Object files for target program_template
 program_template_OBJECTS = \
-"CMakeFiles/program_template.dir/controller.cpp.o"
+"CMakeFiles/program_template.dir/controller.o"
 
 # External object files for target program_template
 program_template_EXTERNAL_OBJECTS =
 
-libprogram_template.so: CMakeFiles/program_template.dir/controller.cpp.o
+libprogram_template.so: CMakeFiles/program_template.dir/controller.o
 libprogram_template.so: CMakeFiles/program_template.dir/build.make
 libprogram_template.so: CMakeFiles/program_template.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/eli/ws/krembot_sim/argos3-user/controllers/program_template/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX shared module libprogram_template.so"

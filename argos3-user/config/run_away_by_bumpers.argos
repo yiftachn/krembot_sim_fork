@@ -50,7 +50,7 @@
           controller.
     -->
     <!-- user todo: change controller path and id -->
-    <run_away_by_bumpers id="run_away_by_bumpers"
+    <run_away_by_bumpers_controller id="run_away_by_bumpers"
                                   library="/home/eli/ws/krembot_sim/argos3-user/build/controllers/run_away_by_bumpers/librun_away_by_bumpers.so"> 
       <!--
           The <actuators> section contains a list of the actuators used by
@@ -98,7 +98,7 @@
           controllers/program_template_controller/program_template_controller.h.
       -->
       <params alpha="7.5" delta="0.1" velocity="5" />
-    </run_away_by_bumpers>
+    </run_away_by_bumpers_controller>
 
   </controllers>
 

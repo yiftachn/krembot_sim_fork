@@ -35,6 +35,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/eli/ws/krembot_sim/argos3-user/build/controllers/cmake_install.cmake")
+  include("/home/eli/ws/krembot_sim/argos3-user/build/loop_functions/cmake_install.cmake")
 
 endif()
 

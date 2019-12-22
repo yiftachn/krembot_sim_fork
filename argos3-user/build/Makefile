@@ -162,6 +162,58 @@ run_away_by_bumpers_automoc/fast:
 	$(MAKE) -f controllers/run_away_by_bumpers/CMakeFiles/run_away_by_bumpers_automoc.dir/build.make controllers/run_away_by_bumpers/CMakeFiles/run_away_by_bumpers_automoc.dir/build
 .PHONY : run_away_by_bumpers_automoc/fast
 
+#=============================================================================
+# Target rules for targets named simple_demo
+
+# Build rule for target.
+simple_demo: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simple_demo
+.PHONY : simple_demo
+
+# fast build rule for target.
+simple_demo/fast:
+	$(MAKE) -f controllers/simple_demo/CMakeFiles/simple_demo.dir/build.make controllers/simple_demo/CMakeFiles/simple_demo.dir/build
+.PHONY : simple_demo/fast
+
+#=============================================================================
+# Target rules for targets named simple_demo_automoc
+
+# Build rule for target.
+simple_demo_automoc: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simple_demo_automoc
+.PHONY : simple_demo_automoc
+
+# fast build rule for target.
+simple_demo_automoc/fast:
+	$(MAKE) -f controllers/simple_demo/CMakeFiles/simple_demo_automoc.dir/build.make controllers/simple_demo/CMakeFiles/simple_demo_automoc.dir/build
+.PHONY : simple_demo_automoc/fast
+
+#=============================================================================
+# Target rules for targets named id_loop_functions
+
+# Build rule for target.
+id_loop_functions: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 id_loop_functions
+.PHONY : id_loop_functions
+
+# fast build rule for target.
+id_loop_functions/fast:
+	$(MAKE) -f loop_functions/id_loop_functions/CMakeFiles/id_loop_functions.dir/build.make loop_functions/id_loop_functions/CMakeFiles/id_loop_functions.dir/build
+.PHONY : id_loop_functions/fast
+
+#=============================================================================
+# Target rules for targets named id_loop_functions_automoc
+
+# Build rule for target.
+id_loop_functions_automoc: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 id_loop_functions_automoc
+.PHONY : id_loop_functions_automoc
+
+# fast build rule for target.
+id_loop_functions_automoc/fast:
+	$(MAKE) -f loop_functions/id_loop_functions/CMakeFiles/id_loop_functions_automoc.dir/build.make loop_functions/id_loop_functions/CMakeFiles/id_loop_functions_automoc.dir/build
+.PHONY : id_loop_functions_automoc/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -174,6 +226,10 @@ help:
 	@echo "... program_template_automoc"
 	@echo "... run_away_by_bumpers"
 	@echo "... run_away_by_bumpers_automoc"
+	@echo "... simple_demo"
+	@echo "... simple_demo_automoc"
+	@echo "... id_loop_functions"
+	@echo "... id_loop_functions_automoc"
 .PHONY : help
 
 

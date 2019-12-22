@@ -1,31 +1,19 @@
 INSTALLATION:
 
-1. install argos3:
+*This simulation was tested and intended to work under Ubuntu 16.04.6 LTS*
 
-cd /YOUR_HOME_DIR/krembot_sim/argos3/
-mkdir build && cd build
-cmake ..
-sudo make install
+run the installation script
+./install.sh
 
-souce setup_env.sh file:
-source /YOUR_HOME_DIR/krembot_sim/argos3/setup_env.sh
+---------------------
 
-* you can add this command to your .cshrc file in order to execute it automatically for each shell you open
-
-2. install krembot:
-
-cd /YOUR_HOME_DIR/krembot_sim/krembot/
-mkdir build && cd build
-cmake ..
-sudo make install
-
-3. compile argos3-user
-cd /YOUR_HOME_DIR/krembot_sim/argos3-user/
-mkdir build && cd build
-cmake ..
+Re-Compile argos3-user:
+cd /YOUR_HOME_DIR/krembot_sim/argos3-user/build
 make
 
-DOCUMENTATION:
+---------------------
+
+ADDITIONAL DOCUMENTATION:
 Argos3-user is the only folder you should be dealing with. You will find a documentation inside that folder (in the README files).
 
 more argos related documentation can be found at the following URLs:

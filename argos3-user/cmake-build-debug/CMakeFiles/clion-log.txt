@@ -1,7 +1,0 @@
-/home/eli/Downloads/clion-2019.2.5/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /home/eli/ws/krembot_sim/argos3-examples
--- Checking for module 'krembot'
---   Found krembot, version -
--- Could NOT find GALIB (missing: GALIB_LIBRARY GALIB_INCLUDE_DIR) 
--- Configuring done
--- Generating done
--- Build files have been written to: /home/eli/ws/krembot_sim/argos3-examples/cmake-build-debug

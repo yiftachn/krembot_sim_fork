@@ -5,6 +5,11 @@ INSTALLATION:
 run the installation script
 ./install.sh
 
+After installation, edit the path inside /YOUR_HOME_DIR/krembot_sim/argos3/setup_env.sh and source it:
+source /YOUR_HOME_DIR/krembot_sim/argos3/setup_env.sh
+
+You can add this command to your .cshrc in order to execute it automatically
+
 ---------------------
 
 Re-Compile argos3-user:

@@ -3,7 +3,7 @@ INSTALLATION:
 *This simulation was tested and intended to work under Ubuntu 16.04.6 LTS*
 
 run the installation script
-./install.sh
+./krembot/scripts/install.sh
 
 After installation, edit the path inside /YOUR_HOME_DIR/krembot_sim/argos3/setup_env.sh and source it:
 source /YOUR_HOME_DIR/krembot_sim/argos3/setup_env.sh

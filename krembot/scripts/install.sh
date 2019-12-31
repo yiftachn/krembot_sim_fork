@@ -1,6 +1,4 @@
-#!/bin/bash
-
-
+!/bin/bash 
 
 # this script is based on argos comilation instructions on github:
 # https://github.com/ilpincy/argos3
@@ -8,14 +6,14 @@
 
 echo "*** Installing Krembot Simulator ***" ; echo
 
-SCRIPT_PATH=`pwd`
+PKG_PATH="$( cd "$(dirname "$0")" ; pwd -P )"/../..
 
 echo "To complete the installation process, you will need to provide administrative privileges." ; echo
 sleep 1
 
 ########################################
 
-echo "Installing argos3..." ; echo
+echo "Installing argos3 dependencies..." ; echo
 #install dependencies 
 sudo apt-get install cmake libfreeimage-dev libfreeimageplus-dev \
   qt5-default freeglut3-dev libxi-dev libxmu-dev liblua5.3-dev \
@@ -24,31 +22,39 @@ sudo apt-get install cmake libfreeimage-dev libfreeimageplus-dev \
 # exit if any statement returns non true result
 set -e
 
-cd argos3
+cd $PKG_PATH/argos3
 
 mkdir build_simulator && cd build_simulator
 
+echo "Generating argos3 cmake files..." ; echo
+
 cmake ../src
+
+echo "Compiling argos3 from source..." ; echo
 
 make
 
+echo "Generating argos3 documentation..." ; echo
+
 make doc           # documentation is required!
 
-sudo make install
+echo "Installing argos3 binaries..." ; echo
 
-echo "Done." ; echo
+sudo make install
 
 ########################################
 
 echo "Installing krembot..." ; echo
 
-cd $SCRIPT_PATH
-
-cd krembot/
+cd $PKG_PATH/krembot
 
 mkdir build && cd build
 
+echo "Generating krembot cmake files..." ; echo
+
 cmake ..
+
+echo "Compiling and installing krembot binaries..." ; echo
 
 sudo make install
 
@@ -58,9 +64,7 @@ echo "Done." ; echo
 
 echo "Compiling argos3-user..." ; echo
 
-cd $SCRIPT_PATH
-
-cd argos3-user/
+cd $PKG_PATH/argos3-user/
 
 mkdir build && cd build
 

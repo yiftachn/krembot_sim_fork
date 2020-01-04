@@ -3,10 +3,10 @@ INSTALLATION:
 *This simulation was tested and intended to work under Ubuntu 16.04.6 LTS*
 
 run the installation script
-./krembot/scripts/install.sh
+./krembot_sim/krembot/scripts/install.sh
 
-After installation, edit the path inside /YOUR_HOME_DIR/krembot_sim/argos3/setup_env.sh and source it:
-source /YOUR_HOME_DIR/krembot_sim/argos3/setup_env.sh
+After installation source the following script:
+source ./krembot_sim/krembot/scripts/setup_env.sh
 
 You can add this command to your .cshrc in order to execute it automatically
 

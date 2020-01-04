@@ -28,31 +28,30 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
 
+#include "krembot_main.h"
+
 /*
  * This file simulates the .ino file of the krembot.
  * The original structure of this file must be maintained
- * for the simulator to work correctly
+ * for the simulator to work correctly.
+ * Don't create Krembot instance, it is created automatically in krembot_main.h
+ * Copy and past real robot setup() and loop() code into the functions below
  */
 
-#ifndef IKREMBOT_LOOP_H
-#define IKREMBOT_LOOP_H
+void KrembotMain::setup() {
+    krembot.setup();
 
-#include <krembot/krembot.h>
-#include <argos3/core/control_interface/ci_controller.h>
-#include <argos3/plugins/robots/generic/control_interface/ci_differential_steering_actuator.h>
-#include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_proximity_sensor.h>
+    /*
+     * todo user: your code goes here
+     */
 
-using namespace argos;
+}
 
-class KrembotMain {
-private:
-    Krembot & krembot;
-public:
-    KrembotMain(Krembot & krembot_in) : krembot(krembot_in) {}
+void KrembotMain::loop() {
+    krembot.loop();
 
-    void setup();
+    /*
+     * todo user: your code goes here
+     */
 
-    void loop();
-};
-
-#endif 
+}

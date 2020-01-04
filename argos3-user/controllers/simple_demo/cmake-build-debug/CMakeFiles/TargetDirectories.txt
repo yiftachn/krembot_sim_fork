@@ -1,3 +1,0 @@
-/home/eli/ws/krembot_sim/argos3-user/controllers/simple_demo/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/eli/ws/krembot_sim/argos3-user/controllers/simple_demo/cmake-build-debug/CMakeFiles/program_template.dir
-/home/eli/ws/krembot_sim/argos3-user/controllers/simple_demo/cmake-build-debug/CMakeFiles/edit_cache.dir

@@ -5,12 +5,12 @@ set(PROGRAM_NAME "program_template")
 
 add_definitions(-DKREMBOT_PROGRAM_NAME="${PROGRAM_NAME}_controller")
 
-add_library(${PROGRAM_NAME} MODULE
-        controller.h
+set(SRC_FILES
         controller.cpp
-        krembot_main.h)
+        krembot_main.cpp)
 
-#todo user: rename library
+add_library(${PROGRAM_NAME} MODULE ${SRC_FILES})
+
 target_link_libraries(${PROGRAM_NAME}
         krembot
   argos3core_simulator

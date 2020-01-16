@@ -28,19 +28,20 @@
 * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
-#ifndef KREMBOT_SERIALSIM_H
-#define KREMBOT_SERIALSIM_H
 
+#include "serial.h"
 
-#include <string>
+#include <iostream>
 
-class SerialSim {
+void Serial::Print(const std::string & message) const {
+#ifdef PRINT_SERIAL_IN_CONSOLE
+    printf("%s", message.c_str());
+#else
+    std::cout << message;
+#endif
+}
 
-public:
-    void Print(const std::string & message) const;
-
-    void Println(const std::string & message) const;
-};
-
-
-#endif //KREMBOT_SERIALSIM_H
+void Serial::Println(const std::string & message) const {
+    Print(message);
+    Print("\n");
+}

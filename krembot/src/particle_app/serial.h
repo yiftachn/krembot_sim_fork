@@ -28,16 +28,26 @@
 * OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
+#ifndef KREMBOT_SERIAL_H
+#define KREMBOT_SERIAL_H
 
-#include "SerialSim.h"
 
-#include <iostream>
+/*
+ * define PRINT_SERIAL_IN_CONSOLE flag to print Serial output to console
+ * instead of in Argos simulator GUI window
+ */
 
-void SerialSim::Print(const std::string & message) const {
-    std::cout << message;
-}
+#include <string>
 
-void SerialSim::Println(const std::string & message) const {
-    Print(message);
-    std::cout << std::endl;
-}
+class Serial {
+
+public:
+    void Print(const std::string & message) const;
+
+    void Println(const std::string & message) const;
+
+    inline void begin(int rate) { /* dummy */ }
+};
+
+
+#endif //KREMBOT_SERIAL_H

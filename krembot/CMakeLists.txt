@@ -1,5 +1,5 @@
 
-project(krembot)
+project(Krembot)
 
 include(GNUInstallDirs)
 
@@ -24,27 +24,28 @@ include_directories(${CMAKE_SOURCE_DIR} ${ARGOS_INCLUDE_DIRS} ${LUA_INCLUDE_DIR}
 # Set ARGoS link dir
 link_directories(${ARGOS_LIBRARY_DIRS})
 
-add_library(krembot MODULE
-		src/krembot.h
-		src/mobile_base.h
-		src/mobile_base.cpp
-		src/rgba_sensor.cpp
-		src/rgba_sensor.h
-		src/rgb_led.cpp
-		src/rgb_led.h
-		src/cbumpers.cpp
-		src/cbumpers.h
-		src/battery.cpp
-		src/battery.h
-		src/imu_sensor.cpp
-		src/imu_sensor.h
-		src/utils.h
-		src/krembot.cpp
-		src/SandTimer.cpp
-		src/SandTimer.h
-		src/utils.cpp
-		src/SerialSim.cpp
-		src/SerialSim.h)
+add_library(Krembot MODULE
+## krembot ##
+
+		src/krembot/krembot.cpp
+		src/krembot/mobile_base.cpp
+		src/krembot/rgba_sensor.cpp
+		src/krembot/rgb_led.cpp
+		src/krembot/cbumpers.cpp
+		src/krembot/battery.cpp
+		src/krembot/imu_sensor.cpp
+		src/krembot/utils.cpp
+
+		## sand timer ##
+
+		src/sand_timer/SandTimer.cpp
+
+		## particle application ##
+		src/particle_app/application.h
+		src/particle_app/serial.cpp
+		src/particle_app/particle_string.cpp
+		src/particle_app/timing.cpp
+		src/particle_app/particle_observer.cpp)
 
 #set_target_properties(krembot PROPERTIES PUBLIC_HEADER src/krembot.h src/mobile_base.h)
 
@@ -56,12 +57,12 @@ configure_file(
 
 #target_include_directories(krembot PRIVATE src/)
 
-target_link_libraries(krembot
+target_link_libraries(Krembot
   argos3core_simulator
   argos3plugin_simulator_footbot
   argos3plugin_simulator_genericrobot)
 
-install(TARGETS krembot
+install(TARGETS Krembot
 		LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 		PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 
@@ -72,7 +73,7 @@ install(FILES ${CMAKE_SOURCE_DIR}/scripts/krembot.pc
 file(GLOB HEADERS src/*.h)
 install(FILES ${HEADERS} DESTINATION include/${PROJECT_NAME})
 
-install(TARGETS krembot
+install(TARGETS Krembot
 		RUNTIME DESTINATION bin
-		LIBRARY DESTINATION lib/krembot
-		ARCHIVE DESTINATION lib/krembot)
+		LIBRARY DESTINATION lib/Krembot
+		ARCHIVE DESTINATION lib/Krembot)

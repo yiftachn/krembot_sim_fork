@@ -58,6 +58,7 @@
 #include "cbumpers.h"
 #include "battery.h"
 #include "imu_sensor.h"
+#include "../sand_timer/SandTimer.h"
 
 /*
  * All the ARGoS stuff in the 'argos' namespace.

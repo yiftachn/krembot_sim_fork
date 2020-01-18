@@ -33,29 +33,55 @@
 
 #include "src/krembot.h"
 
-Krembot::Krembot(const std::string & id,
-                 CCI_DifferentialSteeringActuator& wheels,
-                 CCI_FootBotProximitySensor& proximity,
-                 CCI_LEDsActuator & leds,
-                 CCI_FootBotLightSensor & light,
-                 CCI_ColoredBlobOmnidirectionalCameraSensor & colorCam,
-                 CCI_FootBotImuSensor & imu)  :
-        m_name(id),
-        Base(wheels),
-        Bumpers(proximity),
-        Imu(imu),
-        Led(leds),
-        RgbaFront("RgbaFront", 0, proximity, light, colorCam),
-        RgbaFrontLeft("RgbaFrontLeft", 1, proximity, light, colorCam),
-        RgbaLeft("RgbaLeft", 2, proximity, light, colorCam),
-        RgbaRearLeft("RgbaRearLeft", 3, proximity, light, colorCam),
-        RgbaRear("RgbaRear", 4,  proximity, light, colorCam),
-        RgbaRearRight("RgbaRearRight", 5, proximity, light, colorCam),
-        RgbaRight("RgbaRight", 6, proximity, light, colorCam),
-        RgbaFrontRight("RgbaFrontRight", 7, proximity, light, colorCam)
-        {
-            Particle.setName(m_name);
-        }
+//Krembot::Krembot(const std::string & id,
+//                 CCI_DifferentialSteeringActuator& wheels,
+//                 CCI_FootBotProximitySensor& proximity,
+//                 CCI_LEDsActuator & leds,
+//                 CCI_FootBotLightSensor & light,
+//                 CCI_ColoredBlobOmnidirectionalCameraSensor & colorCam,
+//                 CCI_FootBotImuSensor & imu)  :
+//        m_name(id),
+//        Base(wheels),
+//        Bumpers(proximity),
+//        Imu(imu),
+//        Led(leds),
+//        RgbaFront("RgbaFront", 0, proximity, light, colorCam),
+//        RgbaFrontLeft("RgbaFrontLeft", 1, proximity, light, colorCam),
+//        RgbaLeft("RgbaLeft", 2, proximity, light, colorCam),
+//        RgbaRearLeft("RgbaRearLeft", 3, proximity, light, colorCam),
+//        RgbaRear("RgbaRear", 4,  proximity, light, colorCam),
+//        RgbaRearRight("RgbaRearRight", 5, proximity, light, colorCam),
+//        RgbaRight("RgbaRight", 6, proximity, light, colorCam),
+//        RgbaFrontRight("RgbaFrontRight", 7, proximity, light, colorCam)
+//        {
+//            Particle.setName(m_name);
+//        }
+
+void Krembot::init(const std::string & id,
+          CCI_DifferentialSteeringActuator* wheels,
+          CCI_FootBotProximitySensor& proximity,
+          CCI_LEDsActuator & leds,
+          CCI_FootBotLightSensor & light,
+          CCI_ColoredBlobOmnidirectionalCameraSensor & colorCam,
+          CCI_FootBotImuSensor & imu)
+{
+    fprintf(stderr, "init");
+    m_name = id;
+    Base.init(wheels);
+//    Bumpers.init(proximity);
+//    Imu.init(imu);
+//    Led.init(leds);
+//    RgbaFront.init("RgbaFront", 0, proximity, light, colorCam);
+//    RgbaFrontLeft.init("RgbaFrontLeft", 1, proximity, light, colorCam);
+//    RgbaLeft.init("RgbaLeft", 2, proximity, light, colorCam);
+//    RgbaRearLeft.init("RgbaRearLeft", 3, proximity, light, colorCam);
+//    RgbaRear.init("RgbaRear", 4,  proximity, light, colorCam);
+//    RgbaRearRight.init("RgbaRearRight", 5, proximity, light, colorCam);
+//    RgbaRight.init("RgbaRight", 6, proximity, light, colorCam);
+//    RgbaFrontRight.init("RgbaFrontRight", 7, proximity, light, colorCam);
+
+    Particle.setName(m_name);
+}
 
 std::string Krembot::getId() {
     return std::to_string(std::tr1::hash<std::string>()(m_name));

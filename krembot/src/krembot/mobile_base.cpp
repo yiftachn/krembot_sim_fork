@@ -33,9 +33,17 @@
 
 #include "mobile_base.h"
 
-MobileBase::MobileBase(argos::CCI_DifferentialSteeringActuator& wheels) : m_pcWheels(wheels) {};
 
-bool MobileBase::drive(int8_t linear_spd, int8_t angular_spd){ 
+void MobileBase::init(argos::CCI_DifferentialSteeringActuator* wheels) {
+    fprintf(stderr, "wheels init, m_pcWheels outsdie %d", wheels);
+    m_pcWheels = wheels;
+    fprintf(stderr, "wheels init, m_pcWheels %d", m_pcWheels);
+
+}
+
+bool MobileBase::drive(int8_t linear_spd, int8_t angular_spd){
+
+    fprintf(stderr, "1. got speeds %d %d \n", linear_spd, angular_spd);
 
     if ((linear_spd < -100 || linear_spd > 100) ||
         (angular_spd < -100 || angular_spd > 100))
@@ -48,9 +56,18 @@ bool MobileBase::drive(int8_t linear_spd, int8_t angular_spd){
     int left_cmd = linear_scale - angular_scale;
     int right_cmd = linear_scale + angular_scale;
 
-    m_pcWheels.SetLinearVelocity(left_cmd, right_cmd);
+    fprintf(stderr, "2. got speeds %d %d \n", left_cmd, right_cmd);
 
-    return true;
+    if (m_pcWheels != nullptr) {
+        m_pcWheels->SetLinearVelocity(left_cmd, right_cmd);
+        return true;
+    }
+
+    fprintf(stderr, "wheels drive, m_pcWheels %d\n", m_pcWheels);
+
+    fprintf(stderr, "false");
+
+    return false;
 }
 
 void MobileBase::stop() {

@@ -78,7 +78,7 @@ private:
 
     BumpersRes m_results;
 
-    argos::CCI_FootBotProximitySensor & m_cProximity;
+    argos::CCI_FootBotProximitySensor * m_cProximity;
 
     /*
      * Calculate bumper's state based on proximity sensor
@@ -87,7 +87,7 @@ private:
 
 public:
 
-    CBumpers(argos::CCI_FootBotProximitySensor & proximity);
+    void init(argos::CCI_FootBotProximitySensor & proximity);
 
     BumpersRes read();
     void print();

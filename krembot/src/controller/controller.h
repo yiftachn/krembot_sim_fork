@@ -42,56 +42,58 @@
 #include <argos3/plugins/robots/generic/control_interface/ci_colored_blob_omnidirectional_camera_sensor.h>
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_light_sensor.h>
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.h>
-//
-#include "krembot_main.h"
+#include "../krembot.h"
+
 
 using namespace argos;
 
-class Krembot;
+extern void setup();
+extern void loop();
+
+static Krembot & krembot = Krembot::get();
+
 
 class Controller : public CCI_Controller {
 
 public:
 
-   Controller();
+    Controller();
 
-   virtual ~Controller() {}
+    virtual ~Controller() {}
 
-   /*
-    * This function initializes the controller.
-    * The 't_node' variable points to the <parameters> section in the XML
-    * file in the <controllers><footbot_diffusion_controller> section.
-    */
-   virtual void Init(TConfigurationNode& t_node);
+    /*
+     * This function initializes the controller.
+     * The 't_node' variable points to the <parameters> section in the XML
+     * file in the <controllers><footbot_diffusion_controller> section.
+     */
+    virtual void Init(TConfigurationNode& t_node);
 
-   /*
-    * This function is called once every time step.
-    * The length of the time step is set in the XML file.
-    */
-   virtual void ControlStep();
+    /*
+     * This function is called once every time step.
+     * The length of the time step is set in the XML file.
+     */
+    virtual void ControlStep();
 
-   /*
-    * This function resets the controller to its state right after the
-    * Init().
-    * It is called when you press the reset button in the GUI.
-    * In this example controller there is no need for resetting anything,
-    * so the function could have been omitted. It's here just for
-    * completeness.
-    */
-   virtual void Reset() {}
+    /*
+     * This function resets the controller to its state right after the
+     * Init().
+     * It is called when you press the reset button in the GUI.
+     * In this example controller there is no need for resetting anything,
+     * so the function could have been omitted. It's here just for
+     * completeness.
+     */
+    virtual void Reset() {}
 
-   /*
-    * Called to cleanup what done by Init() when the experiment finishes.
-    * In this example controller there is no need for clean anything up,
-    * so the function could have been omitted. It's here just for
-    * completeness.
-    */
-   virtual void Destroy() {}
+    /*
+     * Called to cleanup what done by Init() when the experiment finishes.
+     * In this example controller there is no need for clean anything up,
+     * so the function could have been omitted. It's here just for
+     * completeness.
+     */
+    virtual void Destroy() {}
 
 private:
 
-    Krembot * m_pKrembot = nullptr;
-    KrembotMain * m_pKrembotMain = nullptr;
 
     /* Pointer to the differential steering actuator */
     CCI_DifferentialSteeringActuator* m_pcWheels = nullptr;

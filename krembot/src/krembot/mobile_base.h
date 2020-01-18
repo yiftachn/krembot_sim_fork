@@ -42,11 +42,11 @@ class MobileBase
 
 private:
     const uint8_t MAX_ARGOS_SPEED = 5;
-    argos::CCI_DifferentialSteeringActuator& m_pcWheels;
+    argos::CCI_DifferentialSteeringActuator * m_pcWheels = nullptr;
 
 public:
 
-    MobileBase(argos::CCI_DifferentialSteeringActuator& wheels);
+    void init(argos::CCI_DifferentialSteeringActuator* wheels);
 
     bool drive(int8_t linear_spd, int8_t angular_spd);
 

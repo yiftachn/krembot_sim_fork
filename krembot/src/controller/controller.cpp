@@ -34,14 +34,17 @@
 #include "controller.h"
 #include <argos3/core/utility/configuration/argos_configuration.h>
 
-#include <Krembot/krembot.h>
 
 
-Controller::Controller() {}
+Controller::Controller() {
+   // Krembot::get();
+}
 
 void Controller::Init(TConfigurationNode& t_node) {
     //actuators
     m_pcWheels = GetActuator<CCI_DifferentialSteeringActuator>("differential_steering");
+
+    fprintf(stderr, "wheels first, m_pcWheels %d\n", m_pcWheels);
 
     m_pcLEDs = GetActuator<CCI_LEDsActuator>("leds");
 
@@ -52,21 +55,33 @@ void Controller::Init(TConfigurationNode& t_node) {
     m_pcCamera = GetSensor<CCI_ColoredBlobOmnidirectionalCameraSensor>("colored_blob_omnidirectional_camera");
     m_pcCamera->Enable();
 
-    m_pKrembot = new Krembot(
+//    Krembot::get().init(
+//            GetId(),
+//            m_pcWheels,
+//            *m_pcProximity,
+//            *m_pcLEDs,
+//            *m_pcLight,
+//            *m_pcCamera,
+//            *m_pcImu
+//    );
+
+    krembot.init(
             GetId(),
-            *m_pcWheels,
+            m_pcWheels,
             *m_pcProximity,
             *m_pcLEDs,
             *m_pcLight,
             *m_pcCamera,
             *m_pcImu
     );
-    m_pKrembotMain = new KrembotMain(*m_pKrembot);
-    m_pKrembotMain->setup();
+
+   //setup();
 }
 
 void Controller::ControlStep() {
-    m_pKrembotMain->loop();
+    fprintf(stderr, "wheels m_pcWheels in loop %d\n", m_pcWheels);
+    loop();
+
 }
 
 /*
@@ -80,4 +95,4 @@ void Controller::ControlStep() {
  * See also the configuration files for an example of how this is used.
  */
 // KREMBOT_PROGRAM_NAME is a macro defined inside the cmake file
-REGISTER_CONTROLLER(Controller, KREMBOT_PROGRAM_NAME)
+//REGISTER_CONTROLLER(Controller, KREMBOT_PROGRAM_NAME)

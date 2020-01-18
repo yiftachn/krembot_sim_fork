@@ -76,34 +76,53 @@ private:
 
     void test();
 
+    Krembot() {     fprintf(stderr, "krembot ctor\n");}
+
 public:
+    static Krembot& get() {
+        static Krembot instance;
+        return instance;
+    }
 
-    RGBASensor RgbaFront;
-    RGBASensor RgbaRear;
-    RGBASensor RgbaRight;
-    RGBASensor RgbaLeft;
-    RGBASensor RgbaFrontRight;
-    RGBASensor RgbaFrontLeft;
-    RGBASensor RgbaRearRight;
-    RGBASensor RgbaRearLeft;
 
+
+//    RGBASensor RgbaFront;
+//    RGBASensor RgbaRear;
+//    RGBASensor RgbaRight;
+//    RGBASensor RgbaLeft;
+//    RGBASensor RgbaFrontRight;
+//    RGBASensor RgbaFrontLeft;
+//    RGBASensor RgbaRearRight;
+//    RGBASensor RgbaRearLeft;
+//
     MobileBase Base;
-    CBumpers Bumpers;
-    Battery Bat;
-    RGBLed Led;
-    IMUSensor Imu;
+//    CBumpers Bumpers;
+//    Battery Bat;
+//    RGBLed Led;
+//    IMUSensor Imu;
 
-    Krembot(const std::string & id,
-            CCI_DifferentialSteeringActuator& wheels,
+//    Krembot();
+
+//
+//    Krembot(const std::string & id,
+//            CCI_DifferentialSteeringActuator& wheels,
+//            CCI_FootBotProximitySensor& proximity,
+//            CCI_LEDsActuator & leds,
+//            CCI_FootBotLightSensor & light,
+//            CCI_ColoredBlobOmnidirectionalCameraSensor & colorCam,
+//            CCI_FootBotImuSensor & imu);
+
+    void setup();
+
+    void loop();
+
+    void init(const std::string & id,
+            CCI_DifferentialSteeringActuator * wheels,
             CCI_FootBotProximitySensor& proximity,
             CCI_LEDsActuator & leds,
             CCI_FootBotLightSensor & light,
             CCI_ColoredBlobOmnidirectionalCameraSensor & colorCam,
             CCI_FootBotImuSensor & imu);
-
-    void setup();
-
-    void loop();
 
     /*
      * Simulated ID. This function assumes that each robot have a unique name.

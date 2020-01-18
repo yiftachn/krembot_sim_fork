@@ -36,8 +36,10 @@
 
 using namespace argos;
 
-CBumpers::CBumpers(CCI_FootBotProximitySensor & proximity) :
-        m_cProximity(proximity) {}
+
+void CBumpers::init(CCI_FootBotProximitySensor & proximity) {
+    m_cProximity = &proximity;
+}
 
 BumperState CBumpers::CalcBumperState(const Real &proximity, const BumperState & prevState) {
     if (proximity >= 0 && proximity <= 0.009) { // we have proximity intersection, and inside bumper's range
@@ -56,14 +58,14 @@ BumperState CBumpers::CalcBumperState(const Real &proximity, const BumperState &
 
 BumpersRes CBumpers::read()
 {
-    m_results.front = CalcBumperState(m_cProximity.GetReadings()[0].Value, m_results.front);
-    m_results.front_left = CalcBumperState(m_cProximity.GetReadings()[1].Value, m_results.front_left);
-    m_results.left = CalcBumperState(m_cProximity.GetReadings()[2].Value, m_results.left);
-    m_results.rear_left = CalcBumperState(m_cProximity.GetReadings()[3].Value, m_results.rear_left);
-    m_results.rear = CalcBumperState(m_cProximity.GetReadings()[4].Value, m_results.rear);
-    m_results.rear_right = CalcBumperState(m_cProximity.GetReadings()[5].Value, m_results.rear_right);
-    m_results.right = CalcBumperState(m_cProximity.GetReadings()[6].Value, m_results.right);
-    m_results.front_right = CalcBumperState(m_cProximity.GetReadings()[7].Value, m_results.front_right);
+    m_results.front = CalcBumperState(m_cProximity->GetReadings()[0].Value, m_results.front);
+    m_results.front_left = CalcBumperState(m_cProximity->GetReadings()[1].Value, m_results.front_left);
+    m_results.left = CalcBumperState(m_cProximity->GetReadings()[2].Value, m_results.left);
+    m_results.rear_left = CalcBumperState(m_cProximity->GetReadings()[3].Value, m_results.rear_left);
+    m_results.rear = CalcBumperState(m_cProximity->GetReadings()[4].Value, m_results.rear);
+    m_results.rear_right = CalcBumperState(m_cProximity->GetReadings()[5].Value, m_results.rear_right);
+    m_results.right = CalcBumperState(m_cProximity->GetReadings()[6].Value, m_results.right);
+    m_results.front_right = CalcBumperState(m_cProximity->GetReadings()[7].Value, m_results.front_right);
 
     return m_results;
 }

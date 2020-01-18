@@ -1,2 +1,4 @@
 *build*/
 .idea/
+doc/
+cmake-build-debug/

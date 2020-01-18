@@ -32,6 +32,7 @@
 *******************************************************************************/
 
 #include <iostream>
+#include "../particle_app/application.h"
 #include "battery.h"
 
 
@@ -69,12 +70,12 @@ float Battery::getBatVolt() { return timeRatio() * 100.0; }
 
 void Battery::print()
 {
-    std::cout << "------------Battery Values------------" << std::endl;
-    std::cout << "Raw Battery read: " << timeRatio();
-    std::cout << " | Battery level: " << (int)getBatLvl();
-    std::cout << " | Charge Level: " << (int)getChargeLvl();
-    std::cout << " | Is Charging: " << (isCharging() == false ? "No" : "Yes");
-    std::cout << " | Is Full: " << (isFull() == false ? "No" : "Yes") << std::endl;
+    Serial.Println("------------Battery Values------------");
+    Serial.Print("Raw Battery read: "); Serial.Print(std::to_string(timeRatio()));
+    Serial.Print(" | Battery level: "); Serial.Print(std::to_string((int)getBatLvl()));
+    Serial.Print(" | Charge Level: "); Serial.Print(std::to_string((int)getChargeLvl()));
+    Serial.Print(" | Is Charging: "); Serial.Print((isCharging() == false ? "No" : "Yes"));
+    Serial.Print(" | Is Full: "); Serial.Println((isFull() == false ? "No" : "Yes"));
 }
 
 

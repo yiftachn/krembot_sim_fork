@@ -47,19 +47,24 @@
 
 using namespace argos;
 
+/*
+ * setup() and loop() definitions. those functions should be
+ * declared inside client driver file
+ */
 extern void setup();
 extern void loop();
 
+/*
+ * Build and get krembot reference for client driver file usage
+ */
 static Krembot & krembot = Krembot::get();
-
 
 class Controller : public CCI_Controller {
 
 public:
+    Controller() = default;
 
-    Controller();
-
-    virtual ~Controller() {}
+    virtual ~Controller() = default;
 
     /*
      * This function initializes the controller.

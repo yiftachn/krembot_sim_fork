@@ -89,9 +89,9 @@ private:
     std::string m_name = "";
 
     argos::CRange<argos::CRadians> m_ColorSensorAngularRange;
-    argos::CCI_FootBotProximitySensor & m_cProximity;
-    argos::CCI_FootBotLightSensor & m_Light;
-    argos::CCI_ColoredBlobOmnidirectionalCameraSensor & m_ColorCam;
+    argos::CCI_FootBotProximitySensor * m_cProximity = nullptr;
+    argos::CCI_FootBotLightSensor * m_Light = nullptr;
+    argos::CCI_ColoredBlobOmnidirectionalCameraSensor * m_ColorCam = nullptr;
     argos::CRange<float> m_ProxRange;
     argos::CRange<float> m_DistRange;
 
@@ -105,13 +105,13 @@ private:
 
 public:
 
-    RGBASensor(const std::string name,
-               uint8_t index,
-               argos::CCI_FootBotProximitySensor & proximity,
-               argos::CCI_FootBotLightSensor & light,
-               argos::CCI_ColoredBlobOmnidirectionalCameraSensor & colorCam);
+    RGBASensor();
 
-    inline void init(uint8_t addr) { }
+    void init(const std::string name,
+               uint8_t index,
+               argos::CCI_FootBotProximitySensor * proximity,
+               argos::CCI_FootBotLightSensor * light,
+               argos::CCI_ColoredBlobOmnidirectionalCameraSensor * colorCam);
 
     RGBAResult readRGBA();
 

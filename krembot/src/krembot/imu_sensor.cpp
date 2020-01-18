@@ -33,6 +33,7 @@
 
 #include "imu_sensor.h"
 #include "utils.h"
+#include "../particle_app/application.h"
 
 using namespace argos;
 
@@ -62,10 +63,10 @@ ImuData IMUSensor::read()
 void IMUSensor::print()
 {
     const auto rpy = read();
-    std::cout << "[IMU]: Roll, Pitch, Yaw" <<
-                rpy.roll << ", " <<
-                rpy.pitch << ", " <<
-                rpy.yaw << ", " << std::endl;
+    Serial.Print("[IMU]: Roll, Pitch, Yaw");
+    Serial.Print(std::to_string(rpy.roll)); Serial.Print(", ");
+    Serial.Print(std::to_string(rpy.pitch)); Serial.Print(", ");
+    Serial.Println(std::to_string(rpy.yaw)); Serial.Print(", ");
 }
 
 void IMUSensor::printRaw()
@@ -73,10 +74,11 @@ void IMUSensor::printRaw()
     print();
 
     const auto rpy = read();
-    std::cout << "ax: " << rpy.ax <<
-         "ay: " << rpy.ay <<
-         "az: " << rpy.az << std::endl;
-    std::cout << "gx: " << rpy.gx <<
-              "gy: " << rpy.gy <<
-              "gz: " << rpy.gz << std::endl;
+    Serial.Print("ax: "); Serial.Print(std::to_string(rpy.ax));
+    Serial.Print("ay: "); Serial.Print(std::to_string(rpy.ay));
+    Serial.Println("az: "); Serial.Print(std::to_string(rpy.az));
+
+    Serial.Print("gx: "); Serial.Print(std::to_string(rpy.gx));
+    Serial.Print("gy: "); Serial.Print(std::to_string(rpy.gy));
+    Serial.Println("gz: "); Serial.Print(std::to_string(rpy.gz));
 }

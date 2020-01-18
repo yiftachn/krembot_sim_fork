@@ -35,6 +35,7 @@ add_library(Krembot MODULE
 		src/krembot/battery.cpp
 		src/krembot/imu_sensor.cpp
 		src/krembot/utils.cpp
+		src/krembot/cbumpers_result.cpp
 
 		## sand timer ##
 		src/sand_timer/SandTimer.cpp

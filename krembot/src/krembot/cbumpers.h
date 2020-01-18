@@ -40,35 +40,7 @@
 
 #include <cstdint>
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_proximity_sensor.h>
-
-enum BumperState
-{
-    UNDEFINED,
-    PRESSED,
-    UNPRESSED
-};
-
-struct BumpersRes
-{
-    BumperState front = BumperState::UNPRESSED,
-            front_right = BumperState::UNPRESSED,
-            right = BumperState::UNPRESSED,
-            rear_right = BumperState::UNPRESSED,
-            rear = BumperState::UNPRESSED,
-            rear_left = BumperState::UNPRESSED,
-            left = BumperState::UNPRESSED,
-            front_left = BumperState::UNPRESSED;
-
-    bool isAnyPressed()
-    {
-        if(front == BumperState::PRESSED || front_right == BumperState::PRESSED || right == BumperState::PRESSED || rear_right == BumperState::PRESSED ||
-           rear == BumperState::PRESSED || rear_left == BumperState::PRESSED || left == BumperState::PRESSED || front_left == BumperState::PRESSED)
-        {
-            return true;
-        }
-        return false;
-    }
-};
+#include "cbumpers_result.h"
 
 
 class CBumpers
@@ -76,9 +48,10 @@ class CBumpers
 
 private:
 
+
     BumpersRes m_results;
 
-    argos::CCI_FootBotProximitySensor * m_cProximity;
+    argos::CCI_FootBotProximitySensor * m_cProximity = nullptr;
 
     /*
      * Calculate bumper's state based on proximity sensor
@@ -87,7 +60,7 @@ private:
 
 public:
 
-    void init(argos::CCI_FootBotProximitySensor & proximity);
+    void init(argos::CCI_FootBotProximitySensor * proximity);
 
     BumpersRes read();
     void print();

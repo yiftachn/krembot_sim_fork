@@ -33,12 +33,14 @@
 
 
 #include "cbumpers.h"
+#include <argos3/core/utility/math/angles.h>
+#include "../particle_app/application.h"
+
 
 using namespace argos;
 
-
-void CBumpers::init(CCI_FootBotProximitySensor & proximity) {
-    m_cProximity = &proximity;
+void CBumpers::init(CCI_FootBotProximitySensor * proximity) {
+    m_cProximity = proximity;
 }
 
 BumperState CBumpers::CalcBumperState(const Real &proximity, const BumperState & prevState) {
@@ -58,45 +60,28 @@ BumperState CBumpers::CalcBumperState(const Real &proximity, const BumperState &
 
 BumpersRes CBumpers::read()
 {
-    m_results.front = CalcBumperState(m_cProximity->GetReadings()[0].Value, m_results.front);
-    m_results.front_left = CalcBumperState(m_cProximity->GetReadings()[1].Value, m_results.front_left);
-    m_results.left = CalcBumperState(m_cProximity->GetReadings()[2].Value, m_results.left);
-    m_results.rear_left = CalcBumperState(m_cProximity->GetReadings()[3].Value, m_results.rear_left);
-    m_results.rear = CalcBumperState(m_cProximity->GetReadings()[4].Value, m_results.rear);
-    m_results.rear_right = CalcBumperState(m_cProximity->GetReadings()[5].Value, m_results.rear_right);
-    m_results.right = CalcBumperState(m_cProximity->GetReadings()[6].Value, m_results.right);
-    m_results.front_right = CalcBumperState(m_cProximity->GetReadings()[7].Value, m_results.front_right);
+    if (m_cProximity == nullptr) {
+        throw std::invalid_argument("CBumpers::m_cProximity wasn't initialized");
+    }
+
+    for (int bumper_idx = 0; bumper_idx < BumpersRes::NUM_OF_BUMPERS; ++bumper_idx) {
+        auto & bumper = m_results.m_bumpers.at(bumper_idx).bumper;
+        bumper = CalcBumperState(
+                m_cProximity->GetReadings()[bumper_idx].Value, bumper
+        );
+    }
 
     return m_results;
 }
 
 void CBumpers::print()
 {
-    std::cout << "[Bumpers] Bumpers Pressed: " << std::endl;
+    Serial.Println("[Bumpers] Bumpers Pressed: ");
 
-    if (m_results.front == BumperState::PRESSED)
-        std::cout << "|   FRONT   |";
-
-    if (m_results.front_right == BumperState::PRESSED)
-        std::cout << "|FRONT RIGHT|";
-
-    if (m_results.right == BumperState::PRESSED)
-        std::cout << "|   RIGHT   |";
-
-    if (m_results.rear_right == BumperState::PRESSED)
-        std::cout << "|REAR  RIGHT|";
-
-    if (m_results.rear == BumperState::PRESSED)
-        std::cout << "|   REAR    |";
-
-    if (m_results.rear_left == BumperState::PRESSED)
-        std::cout << "| REAR LEFT |";
-
-    if (m_results.left == BumperState::PRESSED)
-        std::cout << "|   LEFT    |";
-
-    if (m_results.front_left == BumperState::PRESSED)
-        std::cout << "|FRONT LEFT|";
-
-    std::cout << std::endl;
+    for (const auto & bumper : m_results.m_bumpers) {
+        if (bumper.isPressed()) {
+            Serial.Print(bumper.name);
+        }
+    }
+    Serial.Println("");
 }

@@ -32,40 +32,33 @@
 *******************************************************************************/
 
 #include "mobile_base.h"
-
+#include <argos3/core/utility/math/angles.h>
 
 void MobileBase::init(argos::CCI_DifferentialSteeringActuator* wheels) {
-    fprintf(stderr, "wheels init, m_pcWheels outsdie %d", wheels);
     m_pcWheels = wheels;
-    fprintf(stderr, "wheels init, m_pcWheels %d", m_pcWheels);
-
 }
 
-bool MobileBase::drive(int8_t linear_spd, int8_t angular_spd){
+bool MobileBase::drive(int8_t linear_spd, int8_t angular_spd) {
+    argos::CRange<int> speedRange(-100, 100);
 
-    fprintf(stderr, "1. got speeds %d %d \n", linear_spd, angular_spd);
-
-    if ((linear_spd < -100 || linear_spd > 100) ||
-        (angular_spd < -100 || angular_spd > 100))
+    if ( ! speedRange.WithinMinBoundIncludedMaxBoundIncluded(linear_spd) ||
+         ! speedRange.WithinMinBoundIncludedMaxBoundIncluded(angular_spd))
+    {
         return false;
+    }
 
     // convert speed to 0-100 percentage
-    int linear_scale = int((linear_spd / 100.0) * MAX_ARGOS_SPEED);
-    int angular_scale = int((angular_spd / 100.0) * MAX_ARGOS_SPEED);
+    const float range_max = static_cast<float>(speedRange.GetMax());
+    int linear_scale = int((linear_spd / range_max) * MAX_ARGOS_SPEED);
+    int angular_scale = int((angular_spd / range_max) * MAX_ARGOS_SPEED);
 
     int left_cmd = linear_scale - angular_scale;
     int right_cmd = linear_scale + angular_scale;
-
-    fprintf(stderr, "2. got speeds %d %d \n", left_cmd, right_cmd);
 
     if (m_pcWheels != nullptr) {
         m_pcWheels->SetLinearVelocity(left_cmd, right_cmd);
         return true;
     }
-
-    fprintf(stderr, "wheels drive, m_pcWheels %d\n", m_pcWheels);
-
-    fprintf(stderr, "false");
 
     return false;
 }

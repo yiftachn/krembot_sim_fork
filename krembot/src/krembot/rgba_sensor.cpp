@@ -33,24 +33,27 @@
 
 #include "rgba_sensor.h"
 #include "utils.h"
+#include "../particle_app/application.h"
 
 using namespace argos;
 
-RGBASensor::RGBASensor(const std::string name,
-                        uint8_t index,
-                        CCI_FootBotProximitySensor &proximity,
-                       CCI_FootBotLightSensor &light,
-                       CCI_ColoredBlobOmnidirectionalCameraSensor &colorCam) :
-                        m_name(name),
-                        m_index(index),
-                        m_cProximity(proximity),
-                        m_Light(light),
-                        m_ColorCam(colorCam),
+RGBASensor::RGBASensor() :
+        // sensors limits in cm (according to Robotican)
+        m_ProxRange{20, 255},
+        m_DistRange{6.96, 25.51} { }
 
-                        // sensors limits in cm (according to Robotican)
-                        m_ProxRange{20, 255},
-                        m_DistRange{6.96, 25.51}
+void RGBASensor::init(const std::string name,
+                        uint8_t index,
+                        CCI_FootBotProximitySensor * proximity,
+                        CCI_FootBotLightSensor * light,
+                        CCI_ColoredBlobOmnidirectionalCameraSensor * colorCam)
 {
+    m_name = name;
+    m_index = index;
+    m_cProximity = proximity;
+    m_Light = light;
+    m_ColorCam = colorCam;
+
     // create virtual boundaries for each sensor
     // sensors are located around Krembot, seperated by 45 degrees from each other
     // so, upper and lower boundaries for each sensor is its location +- 22.5 degrees (half spacing)
@@ -67,10 +70,18 @@ RGBASensor::RGBASensor(const std::string name,
     }
 }
 
-
-
 RGBAResult RGBASensor::readRGBA()
 {
+    if (m_cProximity == nullptr) {
+        throw std::invalid_argument("m_cProximity wasn't initialized");
+    }
+    if (m_Light == nullptr) {
+        throw std::invalid_argument("m_Light wasn't initialized");
+    }
+    if (m_ColorCam == nullptr) {
+        throw std::invalid_argument("m_ColorCam wasn't initialized");
+    }
+
     RGBAResult result;
 
     /*
@@ -80,7 +91,7 @@ RGBAResult RGBASensor::readRGBA()
      * The reading from the footbot proximity sensor shows -1 when there's no intersection in sesnor's range
      * In the real krembot this process is done the opposite way (distance is calculated out of proximity)
      */
-    const Real rawProximity = m_cProximity.GetReadings()[m_index].Value;
+    const Real rawProximity = m_cProximity->GetReadings()[m_index].Value;
     /*
      * No proximity intersection. In other words: no object in sensor's range
      * This can happend in 2 cases:
@@ -125,10 +136,10 @@ RGBAResult RGBASensor::readRGBA()
     result.Proximity = krembotProx;
 
     // Calculate ambient
-    result.Ambient = m_Light.GetReadings()[m_index].Value * 100;
+    result.Ambient = m_Light->GetReadings()[m_index].Value * 100;
 
     // Calculate colors
-    const auto & cameraBlobReadings = m_ColorCam.GetReadings().BlobList;
+    const auto & cameraBlobReadings = m_ColorCam->GetReadings().BlobList;
 
     for (const auto & reading : cameraBlobReadings) {
 
@@ -266,50 +277,51 @@ HSVResult RGBASensor::rgbToHSV(RGBAResult in)
 void RGBASensor::printRGBA()
 {
     const RGBAResult result = readRGBA();
-    std::cout << "------------ " << m_name << " RGBA Sensor Values------------" << std::endl;
-    std::cout << "Ambient: " << result.Ambient << std::endl;
-    std::cout << "Red: " << result.Red << std::endl;
-    std::cout << "Green: " << result.Green << std::endl;
-    std::cout << "Blue: " << result.Blue << std::endl;
-    std::cout << "Distance: " << result.Distance << std::endl;
+    Serial.Print("------------ "); Serial.Print(m_name); Serial.Println(" RGBA Sensor Values------------");
+    Serial.Print("Ambient: "); Serial.Println(std::to_string(result.Ambient));
+    Serial.Print("Red: "); Serial.Println(std::to_string(result.Red));
+    Serial.Print("Green: "); Serial.Println(std::to_string(result.Green));
+    Serial.Print("Blue: "); Serial.Println(std::to_string(result.Blue));
+    Serial.Print("Distance: "); Serial.Println(std::to_string(result.Distance));
 }
 
 
 void RGBASensor::printHSV()
 {
     const HSVResult hsv = readHSV();
-    std::cout << "------------ " << m_name << " HSV Values------------" << std::endl;
-    std::cout << "Hue: " << hsv.H << std::endl;
-    std::cout << "Saturation: " << hsv.S << std::endl;
-    std::cout << "Value: " << hsv.V << std::endl;
+    Serial.Print("------------ "); Serial.Print(m_name); Serial.Println(" HSV Values------------");
+    Serial.Print("Hue: "); Serial.Println(std::to_string(hsv.H));
+    Serial.Print("Saturation: "); Serial.Println(std::to_string(hsv.S));
+    Serial.Print("Value: "); Serial.Println(std::to_string(hsv.V));
 }
 
 void RGBASensor::printColor() {
-    std::cout << m_name << " Color: ";
+    Serial.Print(m_name); Serial.Print(" Color: ");
     Colors color = readColor();
     switch (color)
     {
         case Colors::Red:
         {
-            std::cout << " Red ";
+            Serial.Print(" Red ");
             break;
         }
 
         case Colors::Green:
         {
-            std::cout << " Green ";
+            Serial.Print(" Green ");
             break;
         }
 
         case Colors::Blue:
         {
-            std::cout << " Blue ";
+            Serial.Print(" Blue ");
             break;
         }
         default:
-            std::cout << " None ";
+            Serial.Print(" None ");
             break;
     }
+    Serial.Println("");
 }
 
 void RGBASensor::print() {

@@ -11,7 +11,16 @@
 #define PRIVATE 0 // definition of publish flags
 
 class ParticleObserver {
-    void publish(String eventName, String content, int flags);
+private:
+    std::string m_name {};
+
+    inline void setName(const std::string & name) { m_name = name; }
+
+    friend class Krembot;
+
+public:
+    //todo: if eden's code doesn't compile with const & String, try only String
+    void publish(const String & eventName, const String & content, int flags);
     void publish(const char * eventName, int flags);
 };
 

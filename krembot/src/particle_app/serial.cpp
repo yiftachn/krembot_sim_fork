@@ -33,7 +33,7 @@
 
 #include <iostream>
 
-void Serial::Print(const std::string & message) const {
+void SerialSim::Print(const std::string & message) const {
 #ifdef PRINT_SERIAL_IN_CONSOLE
     printf("%s", message.c_str());
 #else
@@ -41,7 +41,7 @@ void Serial::Print(const std::string & message) const {
 #endif
 }
 
-void Serial::Println(const std::string & message) const {
+void SerialSim::Println(const std::string & message) const {
     Print(message);
     Print("\n");
 }

@@ -31,7 +31,7 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
 
-#include "krembot.h"
+#include "src/krembot.h"
 
 Krembot::Krembot(const std::string & id,
                  CCI_DifferentialSteeringActuator& wheels,
@@ -52,7 +52,10 @@ Krembot::Krembot(const std::string & id,
         RgbaRear("RgbaRear", 4,  proximity, light, colorCam),
         RgbaRearRight("RgbaRearRight", 5, proximity, light, colorCam),
         RgbaRight("RgbaRight", 6, proximity, light, colorCam),
-        RgbaFrontRight("RgbaFrontRight", 7, proximity, light, colorCam) {}
+        RgbaFrontRight("RgbaFrontRight", 7, proximity, light, colorCam)
+        {
+            Particle.setName(m_name);
+        }
 
 std::string Krembot::getId() {
     return std::to_string(std::tr1::hash<std::string>()(m_name));

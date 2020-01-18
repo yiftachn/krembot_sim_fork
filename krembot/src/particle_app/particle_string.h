@@ -32,6 +32,8 @@ public:
     String operator+(const String & other);
 
     String operator+(const char * other);
+
+    inline std::string str() const { return ss.str(); }
 };
 
 

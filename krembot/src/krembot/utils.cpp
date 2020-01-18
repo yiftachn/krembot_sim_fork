@@ -34,6 +34,7 @@
 #include <stdexcept>
 #include <sstream>
 #include <math.h>
+#include <ctime>
 
 namespace utils {
 
@@ -53,4 +54,17 @@ namespace utils {
         if (rads > M_PI) return (2 * -M_PI) + rads;
         else return rads;
     }
-}
+
+namespace datetime {
+
+    void getIso8601DateTime(char * buff, size_t size) {
+        if (size < ISO_8601_TIME_DATE_SIZE) {
+            return;
+        }
+        time_t now;
+        time(&now);
+        strftime(buff, size, "%FT%TZ", gmtime(&now));
+    }
+} // end of time
+
+} // end of utils

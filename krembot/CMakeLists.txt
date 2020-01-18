@@ -26,7 +26,6 @@ link_directories(${ARGOS_LIBRARY_DIRS})
 
 add_library(Krembot MODULE
 ## krembot ##
-
 		src/krembot/krembot.cpp
 		src/krembot/mobile_base.cpp
 		src/krembot/rgba_sensor.cpp
@@ -69,9 +68,20 @@ install(TARGETS Krembot
 install(FILES ${CMAKE_SOURCE_DIR}/scripts/krembot.pc
 		DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/pkgconfig)
 
-# Install library headers
-file(GLOB HEADERS src/*.h)
-install(FILES ${HEADERS} DESTINATION include/${PROJECT_NAME})
+
+# Install krembot library headers straigh inside Krembot, so
+# include of krembot.h is the same as real robot
+file(GLOB KREMBOT_HEADERS src/krembot/*.h src/krembot.h)
+install(FILES ${KREMBOT_HEADERS} DESTINATION include/${PROJECT_NAME})
+
+file(GLOB KREMBOT_HEADERS src/krembot/*.h)
+install(FILES ${KREMBOT_HEADERS} DESTINATION include/${PROJECT_NAME}/krembot)
+
+file(GLOB PARTICLE_HEADERS src/particle_app/*.h)
+install(FILES ${PARTICLE_HEADERS} DESTINATION include/${PROJECT_NAME}/particle_app)
+
+file(GLOB SAND_TIMER_HEADERS src/sand_timer/*.h)
+install(FILES ${SAND_TIMER_HEADERS} DESTINATION include/${PROJECT_NAME}/sand_timer)
 
 install(TARGETS Krembot
 		RUNTIME DESTINATION bin

@@ -39,7 +39,7 @@
 
 #include <string>
 
-class Serial {
+class SerialSim {
 
 public:
     void Print(const std::string & message) const;

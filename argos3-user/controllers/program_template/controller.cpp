@@ -34,7 +34,7 @@
 #include "controller.h"
 #include <argos3/core/utility/configuration/argos_configuration.h>
 
-#include <krembot/krembot.h>
+#include <Krembot/krembot.h>
 
 
 Controller::Controller() {}

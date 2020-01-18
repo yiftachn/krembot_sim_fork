@@ -52,13 +52,14 @@
 
 
 #include <argos3/core/utility/math/vector2.h>
-#include "mobile_base.h"
-#include "rgba_sensor.h"
-#include "rgb_led.h"
-#include "cbumpers.h"
-#include "battery.h"
-#include "imu_sensor.h"
-#include "../sand_timer/SandTimer.h"
+#include "./krembot/mobile_base.h"
+#include "./krembot/rgba_sensor.h"
+#include "./krembot/rgb_led.h"
+#include "./krembot/cbumpers.h"
+#include "./krembot/battery.h"
+#include "./krembot/imu_sensor.h"
+#include "./sand_timer/SandTimer.h"
+#include "./particle_app/application.h"
 
 /*
  * All the ARGoS stuff in the 'argos' namespace.

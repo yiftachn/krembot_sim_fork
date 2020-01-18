@@ -12,4 +12,6 @@
 
 static ParticleObserver Particle;
 
+static SerialSim Serial;
+
 #endif //KREMBOT_APPLICATION_H

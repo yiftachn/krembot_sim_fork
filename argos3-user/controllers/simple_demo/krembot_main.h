@@ -37,7 +37,7 @@
 #ifndef IKREMBOT_LOOP_H
 #define IKREMBOT_LOOP_H
 
-#include <krembot/krembot.h>
+#include <Krembot/krembot.h>
 #include <argos3/core/control_interface/ci_controller.h>
 #include <argos3/plugins/robots/generic/control_interface/ci_differential_steering_actuator.h>
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_proximity_sensor.h>

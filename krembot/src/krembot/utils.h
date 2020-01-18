@@ -33,6 +33,7 @@
 #define FOOTBOT_DIFFUSION_UTILS_H
 
 
+#include <cstdio>
 
 namespace utils {
     /*
@@ -44,6 +45,14 @@ namespace utils {
      * Wrap radians to -PI -> PI range
      */
     float WrapToPi(float rads) ;
-}
+
+namespace datetime {
+    static const size_t ISO_8601_TIME_DATE_SIZE = sizeof "2011-10-08T07:07:09Z";
+
+    void getDateTime(char * buff);
+
+} // end of time
+
+} // end of utils
 
 #endif //FOOTBOT_DIFFUSION_UTILS_H

@@ -20,3 +20,7 @@ void ParticleObserver::publish(const String & eventName, const String & content,
 void ParticleObserver::publish(const char * eventName, int flags) {
     publish(eventName, "null", flags);
 }
+
+void subscribe(const String & topic, std::function<void(const char*, const char*)> & func) {
+
+}

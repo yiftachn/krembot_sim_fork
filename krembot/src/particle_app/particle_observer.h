@@ -7,8 +7,14 @@
 
 #include "particle_string.h"
 
+#include <functional>
+// definition of publish flags
+#define PRIVATE 0
 
-#define PRIVATE 0 // definition of publish flags
+// definision of subscription flags
+#define ALL_DEVICES 0
+#define MY_DEVICES 1
+
 
 class ParticleObserver {
 private:
@@ -22,6 +28,8 @@ public:
     //todo: if eden's code doesn't compile with const & String, try only String
     void publish(const String & eventName, const String & content, int flags);
     void publish(const char * eventName, int flags);
+
+    void subscribe(const String & topic, std::function<void(const char*, const char*)> & func);
 };
 
 

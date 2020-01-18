@@ -39,6 +39,11 @@ void MobileBase::init(argos::CCI_DifferentialSteeringActuator* wheels) {
 }
 
 bool MobileBase::drive(int8_t linear_spd, int8_t angular_spd) {
+
+    if (m_pcWheels == nullptr) {
+
+    }
+
     argos::CRange<int> speedRange(-100, 100);
 
     if ( ! speedRange.WithinMinBoundIncludedMaxBoundIncluded(linear_spd) ||

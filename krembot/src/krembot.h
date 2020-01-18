@@ -63,7 +63,6 @@
 
 /*
  * All the ARGoS stuff in the 'argos' namespace.
- * With this statement, you save typing argos:: every time.
  */
 using namespace argos;
 
@@ -74,9 +73,7 @@ private:
 
     std::string m_name = "";
 
-    void test();
-
-    Krembot() {     fprintf(stderr, "krembot ctor\n");}
+    Krembot() = default;
 
 public:
     static Krembot& get() {
@@ -84,45 +81,27 @@ public:
         return instance;
     }
 
-
-
-//    RGBASensor RgbaFront;
-//    RGBASensor RgbaRear;
-//    RGBASensor RgbaRight;
-//    RGBASensor RgbaLeft;
-//    RGBASensor RgbaFrontRight;
-//    RGBASensor RgbaFrontLeft;
-//    RGBASensor RgbaRearRight;
-//    RGBASensor RgbaRearLeft;
-//
+    RGBASensor RgbaFront;
+    RGBASensor RgbaRear;
+    RGBASensor RgbaRight;
+    RGBASensor RgbaLeft;
+    RGBASensor RgbaFrontRight;
+    RGBASensor RgbaFrontLeft;
+    RGBASensor RgbaRearRight;
+    RGBASensor RgbaRearLeft;
     MobileBase Base;
-//    CBumpers Bumpers;
-//    Battery Bat;
-//    RGBLed Led;
-//    IMUSensor Imu;
-
-//    Krembot();
-
-//
-//    Krembot(const std::string & id,
-//            CCI_DifferentialSteeringActuator& wheels,
-//            CCI_FootBotProximitySensor& proximity,
-//            CCI_LEDsActuator & leds,
-//            CCI_FootBotLightSensor & light,
-//            CCI_ColoredBlobOmnidirectionalCameraSensor & colorCam,
-//            CCI_FootBotImuSensor & imu);
-
-    void setup();
-
-    void loop();
+    CBumpers Bumpers;
+    Battery Bat;
+    RGBLed Led;
+    IMUSensor Imu;
 
     void init(const std::string & id,
-            CCI_DifferentialSteeringActuator * wheels,
-            CCI_FootBotProximitySensor& proximity,
-            CCI_LEDsActuator & leds,
-            CCI_FootBotLightSensor & light,
-            CCI_ColoredBlobOmnidirectionalCameraSensor & colorCam,
-            CCI_FootBotImuSensor & imu);
+              CCI_DifferentialSteeringActuator * wheels,
+              CCI_FootBotProximitySensor * proximity,
+              CCI_LEDsActuator * leds,
+              CCI_FootBotLightSensor * light,
+              CCI_ColoredBlobOmnidirectionalCameraSensor * colorCam,
+              CCI_FootBotImuSensor * imu);
 
     /*
      * Simulated ID. This function assumes that each robot have a unique name.
@@ -136,6 +115,13 @@ public:
     inline std::string getName() { return m_name; }
 
     inline bool have_name() { return m_name.length() > 0; }
+
+    /*
+     * Mock up functions
+     */
+    inline void setup() { };
+
+    inline void loop() { };
 };
 
 #endif

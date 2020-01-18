@@ -37,14 +37,19 @@
 
 using namespace argos;
 
-IMUSensor::IMUSensor(CCI_FootBotImuSensor & imu) :
-        m_Imu{imu} {}
+void IMUSensor::init(CCI_FootBotImuSensor * imu) {
+    m_Imu = imu;
+}
 
 // get latest IMU fused data
 ImuData IMUSensor::read()
 {
+    if (m_Imu == nullptr) {
+        throw std::invalid_argument("IMUSensor::m_Imu wasn't initialized");
+    }
+
     // Get radians readings
-    const auto readings =       m_Imu.GetReadings();
+    const auto readings =       m_Imu->GetReadings();
 
     // Convert to degrees and multiply by -1 to flip circle
     // from anti clock-wise positive to clock-wise positive

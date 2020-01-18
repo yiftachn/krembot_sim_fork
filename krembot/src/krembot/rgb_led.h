@@ -41,10 +41,10 @@
 class RGBLed
 {
 private:
-    argos::CCI_LEDsActuator & m_led;
+    argos::CCI_LEDsActuator * m_led = nullptr;
 public:
 
-    RGBLed(argos::CCI_LEDsActuator & led);
+    void init(argos::CCI_LEDsActuator * led);
 
     void write(uint8_t red_val,
                uint8_t green_val,

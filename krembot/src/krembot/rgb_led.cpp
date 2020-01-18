@@ -34,21 +34,27 @@
 #include "rgb_led.h"
 
 
-RGBLed::RGBLed(argos::CCI_LEDsActuator & led) : m_led(led) {}
+void RGBLed::init(argos::CCI_LEDsActuator * led) {
+    m_led = led;
+}
 
 void RGBLed::write(uint8_t red_val,
                    uint8_t green_val,
                    uint8_t blue_val)
 {
+    if (m_led == nullptr) {
+        throw std::invalid_argument("RGBLed::m_led wasn't initialized");
+    }
+
     // if one of the RGB values is different than 0, than set leds color
     if ( (red_val | green_val | blue_val) ) {
-        m_led.SetAllIntensities(0.7);
-        m_led.SetAllColors(
+        m_led->SetAllIntensities(0.7);
+        m_led->SetAllColors(
                 argos::CColor{red_val, green_val, blue_val}
         );
     } else { // else (if all values are 0) turn off LEDs (set color to black)
-        m_led.SetAllIntensities(0.0);
-        m_led.SetAllColors(
+        m_led->SetAllIntensities(0.0);
+        m_led->SetAllColors(
                 argos::CColor::BLACK
         );
     }

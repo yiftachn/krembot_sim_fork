@@ -56,7 +56,7 @@ private:
     /*
      * Calculate bumper's state based on proximity sensor
      */
-    BumperState CalcBumperState(const argos::Real & proximity, const BumperState & prevState);
+    void CalcNewBumperStateBasedOnProximity(const argos::Real & proximity, BumperState & bumper);
 
 public:
 

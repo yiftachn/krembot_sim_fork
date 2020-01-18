@@ -43,18 +43,20 @@ void CBumpers::init(CCI_FootBotProximitySensor * proximity) {
     m_cProximity = proximity;
 }
 
-BumperState CBumpers::CalcBumperState(const Real &proximity, const BumperState & prevState) {
+void CBumpers::CalcNewBumperStateBasedOnProximity(const Real &proximity, BumperState & bumper) {
     if (proximity >= 0 && proximity <= 0.009) { // we have proximity intersection, and inside bumper's range
-        return BumperState::PRESSED;
+        bumper = BumperState::PRESSED;
     }
     if (proximity > 0.005) {
-        return BumperState::UNPRESSED;
+        bumper = BumperState::UNPRESSED;
     }
-    // in case of no intersection return prev state
-    // to deal with cases where footbot is too close to object
-    // and reading is -1
-    if (proximity == -1) {
-        return prevState;
+    // in case there is no intersection, leave bumper with previous state.
+    // in cases where footbot is too close to object reading is -1.
+    // if we reached this point than reading is negative, so if it's different
+    // than -1, there is a bug in the sensor's code
+    if (proximity != -1) {
+        std::string err = "proximity invalid value: %s (negative, but different than -1)" + std::to_string(proximity);
+        throw std::runtime_error(err);
     }
 }
 
@@ -65,12 +67,11 @@ BumpersRes CBumpers::read()
     }
 
     for (int bumper_idx = 0; bumper_idx < BumpersRes::NUM_OF_BUMPERS; ++bumper_idx) {
-        auto & bumper = m_results.m_bumpers.at(bumper_idx).bumper;
-        bumper = CalcBumperState(
-                m_cProximity->GetReadings()[bumper_idx].Value, bumper
+        auto & bumper = m_results.m_bumpers.at(bumper_idx);
+        CalcNewBumperStateBasedOnProximity(
+                m_cProximity->GetReadings()[bumper_idx].Value, *bumper
         );
     }
-
     return m_results;
 }
 
@@ -79,8 +80,8 @@ void CBumpers::print()
     Serial.Println("[Bumpers] Bumpers Pressed: ");
 
     for (const auto & bumper : m_results.m_bumpers) {
-        if (bumper.isPressed()) {
-            Serial.Print(bumper.name);
+        if (bumper->isPressed()) {
+            Serial.Print(bumper->getName());
         }
     }
     Serial.Println("");

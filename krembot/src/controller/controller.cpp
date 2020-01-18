@@ -51,11 +51,11 @@ void Controller::Init(TConfigurationNode& t_node) {
     krembot.init(
             GetId(),
             m_pcWheels,
-            *m_pcProximity,
-            *m_pcLEDs,
-            *m_pcLight,
-            *m_pcCamera,
-            *m_pcImu
+            m_pcProximity,
+            m_pcLEDs,
+            m_pcLight,
+            m_pcCamera,
+            m_pcImu
     );
 
     setup();

@@ -66,10 +66,10 @@ struct ImuData
 class IMUSensor
 {
 private:
-    argos::CCI_FootBotImuSensor & m_Imu;
+    argos::CCI_FootBotImuSensor * m_Imu = nullptr;
 
 public:
-    IMUSensor(argos::CCI_FootBotImuSensor &);
+    void init(argos::CCI_FootBotImuSensor * imu);
 
     ImuData read();
     void print();

@@ -33,52 +33,28 @@
 
 #include "src/krembot.h"
 
-//Krembot::Krembot(const std::string & id,
-//                 CCI_DifferentialSteeringActuator& wheels,
-//                 CCI_FootBotProximitySensor& proximity,
-//                 CCI_LEDsActuator & leds,
-//                 CCI_FootBotLightSensor & light,
-//                 CCI_ColoredBlobOmnidirectionalCameraSensor & colorCam,
-//                 CCI_FootBotImuSensor & imu)  :
-//        m_name(id),
-//        Base(wheels),
-//        Bumpers(proximity),
-//        Imu(imu),
-//        Led(leds),
-//        RgbaFront("RgbaFront", 0, proximity, light, colorCam),
-//        RgbaFrontLeft("RgbaFrontLeft", 1, proximity, light, colorCam),
-//        RgbaLeft("RgbaLeft", 2, proximity, light, colorCam),
-//        RgbaRearLeft("RgbaRearLeft", 3, proximity, light, colorCam),
-//        RgbaRear("RgbaRear", 4,  proximity, light, colorCam),
-//        RgbaRearRight("RgbaRearRight", 5, proximity, light, colorCam),
-//        RgbaRight("RgbaRight", 6, proximity, light, colorCam),
-//        RgbaFrontRight("RgbaFrontRight", 7, proximity, light, colorCam)
-//        {
-//            Particle.setName(m_name);
-//        }
-
 void Krembot::init(const std::string & id,
-          CCI_DifferentialSteeringActuator* wheels,
-          CCI_FootBotProximitySensor& proximity,
-          CCI_LEDsActuator & leds,
-          CCI_FootBotLightSensor & light,
-          CCI_ColoredBlobOmnidirectionalCameraSensor & colorCam,
-          CCI_FootBotImuSensor & imu)
+          CCI_DifferentialSteeringActuator * wheels,
+          CCI_FootBotProximitySensor * proximity,
+          CCI_LEDsActuator * leds,
+          CCI_FootBotLightSensor * light,
+          CCI_ColoredBlobOmnidirectionalCameraSensor * colorCam,
+          CCI_FootBotImuSensor * imu)
 {
     fprintf(stderr, "init");
     m_name = id;
     Base.init(wheels);
-//    Bumpers.init(proximity);
-//    Imu.init(imu);
-//    Led.init(leds);
-//    RgbaFront.init("RgbaFront", 0, proximity, light, colorCam);
-//    RgbaFrontLeft.init("RgbaFrontLeft", 1, proximity, light, colorCam);
-//    RgbaLeft.init("RgbaLeft", 2, proximity, light, colorCam);
-//    RgbaRearLeft.init("RgbaRearLeft", 3, proximity, light, colorCam);
-//    RgbaRear.init("RgbaRear", 4,  proximity, light, colorCam);
-//    RgbaRearRight.init("RgbaRearRight", 5, proximity, light, colorCam);
-//    RgbaRight.init("RgbaRight", 6, proximity, light, colorCam);
-//    RgbaFrontRight.init("RgbaFrontRight", 7, proximity, light, colorCam);
+    Bumpers.init(proximity);
+    Imu.init(imu);
+    Led.init(leds);
+    RgbaFront.init("RgbaFront", 0, proximity, light, colorCam);
+    RgbaFrontLeft.init("RgbaFrontLeft", 1, proximity, light, colorCam);
+    RgbaLeft.init("RgbaLeft", 2, proximity, light, colorCam);
+    RgbaRearLeft.init("RgbaRearLeft", 3, proximity, light, colorCam);
+    RgbaRear.init("RgbaRear", 4,  proximity, light, colorCam);
+    RgbaRearRight.init("RgbaRearRight", 5, proximity, light, colorCam);
+    RgbaRight.init("RgbaRight", 6, proximity, light, colorCam);
+    RgbaFrontRight.init("RgbaFrontRight", 7, proximity, light, colorCam);
 
     Particle.setName(m_name);
 }
@@ -86,31 +62,5 @@ void Krembot::init(const std::string & id,
 std::string Krembot::getId() {
     return std::to_string(std::tr1::hash<std::string>()(m_name));
 }
-
-void Krembot::test() {
-    //    std::cout << "---" << getName() << "---" << std::endl;
-//
-//    std::cout << "y: " << Imu.read().yaw;
-//        Bat.print();
-
-//        Bumpers.read();
-//        Bumpers.print();
-
-    //RgbaFront.readRGBA() ;
-//    std::cout << "[" << getName() << ", 0] dist:" << RgbaFront.readRGBA().Distance << "| prox: " << RgbaFront.readRGBA().Proximity << std::endl;
-//         std::cout << "[" << getName() << ", 0] " << RgbaFront.readRGBA().Ambient << " " << RgbaFront.readRGBA().Proximity << "{r:" << RgbaFront.readRGBA().Red<< " g:" << RgbaFront.readRGBA().Green<< " b:" << RgbaFront.readRGBA().Blue<< "}"<< std::endl;
-//        std::cout << "[" << getName() << ", 1] " << RgbaFrontLeft.readRGBA().Ambient  << " " << RgbaFrontLeft.readRGBA().Proximity << "{r:" << RgbaFrontLeft.readRGBA().Red<< " g:" << RgbaFrontLeft.readRGBA().Green<< " b:" << RgbaFrontLeft.readRGBA().Blue<< "}" << std::endl;
-//        std::cout << "[" << getName() << ", 2] " << RgbaLeft.readRGBA().Ambient  << " " << RgbaLeft.readRGBA().Proximity << "{r:" << RgbaLeft.readRGBA().Red<< " g:" << RgbaLeft.readRGBA().Green<< " b:" << RgbaLeft.readRGBA().Blue<< "}" << std::endl;
-//        std::cout << "[" << getName() << ", 3] " << RgbaRearLeft.readRGBA().Ambient  << " " << RgbaRearLeft.readRGBA().Proximity << "{r:" << RgbaRearLeft.readRGBA().Red<< " g:" << RgbaRearLeft.readRGBA().Green<< " b:" << RgbaRearLeft.readRGBA().Blue<< "}" << std::endl;
-//        std::cout << "[" << getName() << ", 4] " << RgbaRear.readRGBA().Ambient  << " " << RgbaRear.readRGBA().Proximity << "{r:" << RgbaRear.readRGBA().Red<< " g:" << RgbaRear.readRGBA().Green<< " b:" << RgbaRear.readRGBA().Blue<< "}" << std::endl;
-//        std::cout << "[" << getName() << ", 5] " << RgbaRearRight.readRGBA().Ambient  << " " << RgbaRearRight.readRGBA().Proximity << "{r:" << RgbaRearRight.readRGBA().Red<< " g:" << RgbaRearRight.readRGBA().Green<< " b:" << RgbaRearRight.readRGBA().Blue<< "}" << std::endl;
-//        std::cout << "[" << getName() << ", 6] " << RgbaRight.readRGBA().Ambient  << " " << RgbaRight.readRGBA().Proximity << "{r:" << RgbaRight.readRGBA().Red<< " g:" << RgbaRight.readRGBA().Green<< " b:" << RgbaRight.readRGBA().Blue<< "}" << std::endl;
-//        std::cout << "[" << getName() << ", 7] " << RgbaFrontRight.readRGBA().Ambient  << " " << RgbaFrontRight.readRGBA().Proximity << "{r:" << RgbaFrontRight.readRGBA().Red<< " g:" << RgbaFrontRight.readRGBA().Green<< " b:" << RgbaFrontRight.readRGBA().Blue<< "}" << std::endl;
-
-}
-
-void Krembot::setup() { }
-
-void Krembot::loop() { }
 
 

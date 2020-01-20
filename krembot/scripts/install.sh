@@ -76,4 +76,10 @@ echo "Done." ; echo
 
 ########################################
 
-echo "Installation script finished. Don't forget to edit the path inside argos3/setup_env.sh and source it" ; echo
+echo "Sourcing setup_env.sh..."; echo
+source $PKG_PATH/krembot/scripts/setup_env.sh
+echo "Done."; echo
+
+########################################
+
+echo "Installation script finished."; echo

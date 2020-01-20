@@ -50,12 +50,16 @@ void CBumpers::CalcNewBumperStateBasedOnProximity(const Real &proximity, BumperS
     if (proximity > 0.005) {
         bumper = BumperState::UNPRESSED;
     }
+
     // in case there is no intersection, leave bumper with previous state.
-    // in cases where footbot is too close to object reading is -1.
-    // if we reached this point than reading is negative, so if it's different
-    // than -1, there is a bug in the sensor's code
-    if (proximity != -1) {
-        std::string err = "proximity invalid value: %s (negative, but different than -1)" + std::to_string(proximity);
+    // in cases where footbot is too close to object reading is -1, those
+    // readings are ignored here.
+
+    // if we reached this point and value different than -1, and negative
+    // there is a bug in the sensor's code
+    if ( (proximity < 0) && (proximity != -1) ) {
+        std::string err = "Proximity invalid value: [" +
+                std::to_string(proximity) + "] (negative, but different than -1)";
         throw std::runtime_error(err);
     }
 }

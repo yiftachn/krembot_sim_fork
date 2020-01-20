@@ -15,4 +15,4 @@ sudo rm -rfv argos3 Krembot
 cd /usr/local/share
 sudo rm -rfv argos3
 
-
+echo; echo "Done."; echo

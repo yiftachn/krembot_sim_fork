@@ -41,7 +41,6 @@ void Krembot::init(const std::string & id,
           CCI_ColoredBlobOmnidirectionalCameraSensor * colorCam,
           CCI_FootBotImuSensor * imu)
 {
-    fprintf(stderr, "init");
     m_name = id;
     Base.init(wheels);
     Bumpers.init(proximity);

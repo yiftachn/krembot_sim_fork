@@ -31,31 +31,42 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
 
-#include "cbumpers_result.h"
+#ifndef KREMBOT_BUMPER_STATE_H
+#define KREMBOT_BUMPER_STATE_H
 
-bool BumpersRes::isAnyPressed() const
+#include <string>
+
+
+class BumperState
 {
-    if(front == BumperState::PRESSED ||
-        front_right == BumperState::PRESSED ||
-        right == BumperState::PRESSED ||
-        rear_right == BumperState::PRESSED ||
-        rear == BumperState::PRESSED ||
-        rear_left == BumperState::PRESSED ||
-        left == BumperState::PRESSED ||
-        front_left == BumperState::PRESSED)
-    {
-        return true;
-    }
-    return false;
-}
+private:
+    uint8_t m_state = UNDEFINED;
+    std::string m_name {};
+    uint8_t m_index = 0;
 
-void BumpersRes::fillFromStates(const std::vector<BumperState *> & states) {
-    front = states.at(0)->getState();
-    front_right = states.at(1)->getState();
-    right = states.at(2)->getState();
-    rear_right = states.at(3)->getState();
-    rear = states.at(4)->getState();
-    rear_left = states.at(5)->getState();
-    left = states.at(6)->getState();
-    front_left = states.at(7)->getState();
-}
+public:
+
+    static const uint8_t UNDEFINED = 0;
+    static const uint8_t PRESSED = 1;
+    static const uint8_t UNPRESSED = 2;
+
+    BumperState() = default;
+
+    BumperState(const std::string & bumperName, uint8_t ringIndex);
+
+    BumperState(const uint8_t state);
+
+    bool operator==(const BumperState & other);
+
+    void operator=(const uint8_t state);
+
+    const std::string & getName() const ;
+
+    uint8_t getIndex() const ;
+
+    bool isPressed() const ;
+
+    uint8_t getState() const ;
+};
+
+#endif //KREMBOT_BUMPER_STATE_H

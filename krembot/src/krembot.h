@@ -73,13 +73,15 @@ private:
 
     std::string m_name = "";
 
-    Krembot() = default;
+
 
 public:
     static Krembot& get() {
         static Krembot instance;
         return instance;
     }
+
+    Krembot() { fprintf(stderr, "Krembot ctor\n");}
 
     RGBASensor RgbaFront;
     RGBASensor RgbaRear;

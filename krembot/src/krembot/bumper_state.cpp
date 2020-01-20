@@ -31,31 +31,34 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
 
-#include "cbumpers_result.h"
+#include "bumper_state.h"
 
-bool BumpersRes::isAnyPressed() const
-{
-    if(front == BumperState::PRESSED ||
-        front_right == BumperState::PRESSED ||
-        right == BumperState::PRESSED ||
-        rear_right == BumperState::PRESSED ||
-        rear == BumperState::PRESSED ||
-        rear_left == BumperState::PRESSED ||
-        left == BumperState::PRESSED ||
-        front_left == BumperState::PRESSED)
-    {
-        return true;
-    }
-    return false;
+BumperState::BumperState(const std::string & bumperName, uint8_t ringIndex) :
+        m_name{bumperName},
+        m_index{ringIndex} { }
+
+BumperState::BumperState(const uint8_t state) : m_state {state} { }
+
+bool BumperState::operator==(const BumperState & other) {
+    return (this->m_state == other.m_state);
 }
 
-void BumpersRes::fillFromStates(const std::vector<BumperState *> & states) {
-    front = states.at(0)->getState();
-    front_right = states.at(1)->getState();
-    right = states.at(2)->getState();
-    rear_right = states.at(3)->getState();
-    rear = states.at(4)->getState();
-    rear_left = states.at(5)->getState();
-    left = states.at(6)->getState();
-    front_left = states.at(7)->getState();
+void BumperState::operator=(const uint8_t state) {
+    this->m_state = state;
+}
+
+const std::string & BumperState::getName() const {
+    return m_name;
+}
+
+uint8_t BumperState::getIndex() const {
+    return m_index;
+}
+
+bool BumperState::isPressed() const {
+    return (m_state == PRESSED);
+}
+
+uint8_t BumperState::getState() const {
+    return m_state;
 }

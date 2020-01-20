@@ -41,17 +41,34 @@
 #include <cstdint>
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_proximity_sensor.h>
 #include "cbumpers_result.h"
-
+#include "bumper_state.h"
 
 class CBumpers
 {
 
 private:
 
+    std::vector<BumperState *> m_bumpers;
 
-    BumpersRes m_results;
+
 
     argos::CCI_FootBotProximitySensor * m_cProximity = nullptr;
+
+    static const uint8_t NUM_OF_BUMPERS = 8;
+
+    /*
+     * The following members are left here despite the fact
+     * we have vector representing them, to support real
+     * krembot API
+     */
+    BumperState m_bump_front {"|   FRONT   |", 0};
+    BumperState m_bump_front_right {"|FRONT RIGHT|", 1};
+    BumperState m_bump_right {"|   RIGHT   |", 2};
+    BumperState m_bump_rear_right {"|REAR  RIGHT|", 3};
+    BumperState m_bump_rear {"|   REAR    |", 4};
+    BumperState m_bump_rear_left {"| REAR LEFT |", 5};
+    BumperState m_bump_left {"|   LEFT    |", 6};
+    BumperState m_bump_front_left {"|FRONT LEFT |", 7};
 
     /*
      * Calculate bumper's state based on proximity sensor
@@ -59,6 +76,8 @@ private:
     void CalcNewBumperStateBasedOnProximity(const argos::Real & proximity, BumperState & bumper);
 
 public:
+
+    CBumpers();
 
     void init(argos::CCI_FootBotProximitySensor * proximity);
 

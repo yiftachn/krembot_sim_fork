@@ -36,6 +36,7 @@ add_library(Krembot MODULE
 		src/krembot/imu_sensor.cpp
 		src/krembot/utils.cpp
 		src/krembot/cbumpers_result.cpp
+		src/krembot/bumper_state.cpp
 
 		## sand timer ##
 		src/sand_timer/SandTimer.cpp
@@ -48,7 +49,7 @@ add_library(Krembot MODULE
 		src/particle_app/particle_observer.cpp
 
 		## controller ##
-		src/controller/controller.cpp)
+		src/controller/controller.cpp )
 
 #set_target_properties(krembot PROPERTIES PUBLIC_HEADER src/krembot.h src/mobile_base.h)
 

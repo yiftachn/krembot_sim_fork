@@ -39,28 +39,39 @@
 
 using namespace argos;
 
+CBumpers::CBumpers() {
+    m_bumpers.reserve(NUM_OF_BUMPERS);
+    m_bumpers.push_back(&m_bump_front);
+    m_bumpers.push_back(&m_bump_front_right);
+    m_bumpers.push_back(&m_bump_right);
+    m_bumpers.push_back(&m_bump_rear_right);
+    m_bumpers.push_back(&m_bump_rear);
+    m_bumpers.push_back(&m_bump_rear_left);
+    m_bumpers.push_back(&m_bump_left);
+    m_bumpers.push_back(&m_bump_front_left);
+}
+
+
 void CBumpers::init(CCI_FootBotProximitySensor * proximity) {
     m_cProximity = proximity;
 }
 
 void CBumpers::CalcNewBumperStateBasedOnProximity(const Real &proximity, BumperState & bumper) {
-    if (proximity >= 0 && proximity <= 0.009) { // we have proximity intersection, and inside bumper's range
-        bumper = BumperState::PRESSED;
-    }
-    if (proximity > 0.005) {
-        bumper = BumperState::UNPRESSED;
-    }
-
+    static const CRange<double> intersectionRange {0, 0.009};
     // in case there is no intersection, leave bumper with previous state.
     // in cases where footbot is too close to object reading is -1, those
-    // readings are ignored here.
+    // readings are ignored.
 
     // if we reached this point and value different than -1, and negative
     // there is a bug in the sensor's code
     if ( (proximity < 0) && (proximity != -1) ) {
         std::string err = "Proximity invalid value: [" +
-                std::to_string(proximity) + "] (negative, but different than -1)";
+                          std::to_string(proximity) + "] (negative, but different than -1)";
         throw std::runtime_error(err);
+    } else if (intersectionRange.WithinMinBoundIncludedMaxBoundIncluded(proximity)) { // we have proximity intersection, and inside bumper's range
+        bumper = BumperState::PRESSED;
+    } else if (intersectionRange.GetMax() > 0.005) {
+        bumper = BumperState::UNPRESSED;
     }
 }
 
@@ -70,20 +81,23 @@ BumpersRes CBumpers::read()
         throw std::invalid_argument("CBumpers::m_cProximity wasn't initialized");
     }
 
-    for (int bumper_idx = 0; bumper_idx < BumpersRes::NUM_OF_BUMPERS; ++bumper_idx) {
-        auto & bumper = m_results.m_bumpers.at(bumper_idx);
+    for (int bumper_idx = 0; bumper_idx < NUM_OF_BUMPERS; ++bumper_idx) {
+        auto & bumper = m_bumpers.at(bumper_idx);
         CalcNewBumperStateBasedOnProximity(
                 m_cProximity->GetReadings()[bumper_idx].Value, *bumper
         );
     }
-    return m_results;
+
+    BumpersRes results;
+    results.fillFromStates(m_bumpers);
+    return results;
 }
 
 void CBumpers::print()
 {
     Serial.Println("[Bumpers] Bumpers Pressed: ");
 
-    for (const auto & bumper : m_results.m_bumpers) {
+    for (const auto & bumper : m_bumpers) {
         if (bumper->isPressed()) {
             Serial.Print(bumper->getName());
         }

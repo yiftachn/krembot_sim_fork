@@ -57,12 +57,12 @@ extern void loop();
 /*
  * Build and get krembot reference for client driver file usage
  */
-static Krembot & krembot = Krembot::get();
+Krembot krembot;// = Krembot::get();
 
 class Controller : public CCI_Controller {
 
 public:
-    Controller() = default;
+    Controller() {fprintf(stderr, "Controller ctor\n");}//= default;
 
     virtual ~Controller() = default;
 

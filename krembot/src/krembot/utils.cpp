@@ -57,7 +57,7 @@ namespace utils {
 
 namespace datetime {
 
-    void getIso8601DateTime(char * buff, size_t size) {
+    void GetIso8601DateTime(char * buff, size_t size) {
         if (size < ISO_8601_TIME_DATE_SIZE) {
             return;
         }
@@ -68,3 +68,4 @@ namespace datetime {
 } // end of time
 
 } // end of utils
+

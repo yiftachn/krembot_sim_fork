@@ -37,31 +37,45 @@
  * Copy and past real robot setup() and loop() code into the functions below
  */
 
-#include <argos3/core/control_interface/ci_controller.h>
-#include <Krembot/controller/controller.h>
+#include <Krembot/controller/krembot_controller.h>
 
+//DO NOT EDIT THIS MACRO
+KREMBOT_CONTROLLER_HEADER
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+
+/*
+ * Your global variables goes here
+ */
 
 
 void setup() {
     krembot.setup();
 
-    // your code goes here
+    /*
+     * Your setup code goes here
+     */
 }
 
 void loop() {
     krembot.loop();
-    
-    // your code goes here
+
+    /*
+     * Your loop code goes here
+     */
 }
 
-/*
- * This statement notifies ARGoS of the existence of the controller.
- * It binds the class passed as first argument to the string passed as
- * second argument.
- * The string is then usable in the configuration file to refer to this
- * controller.
- * When ARGoS reads that string in the configuration file, it knows which
- * controller class to instantiate.
- * See also the configuration files for an example of how this is used.
- */
-REGISTER_CONTROLLER(Controller, KREMBOT_PROGRAM_NAME)
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+
+//DO NOT EDIT THESE MACROS
+KREMBOT_CONTROLLER_FOOTER
+REGISTER_CONTROLLER(MyController, KREMBOT_PROGRAM_NAME)
+
+
+
+

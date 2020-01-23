@@ -32,7 +32,6 @@
 *******************************************************************************/
 
 #include <iostream>
-#include "../particle_app/application.h"
 #include "battery.h"
 
 
@@ -44,7 +43,7 @@
 
 using namespace std::chrono;
 
-Battery::Battery(){
+Battery::Battery(SerialSim & serial) : Serial {serial}{
     // register battery start time upon construction
     m_startTime = steady_clock::now();
 }

@@ -59,29 +59,21 @@
 #include "./krembot/battery.h"
 #include "./krembot/imu_sensor.h"
 #include "./sand_timer/SandTimer.h"
-#include "./particle_app/application.h"
 
 /*
  * All the ARGoS stuff in the 'argos' namespace.
  */
 using namespace argos;
 
-
 class Krembot {
 
 private:
 
     std::string m_name = "";
-
-
+    bool m_initialized = false;
+    SerialSim & Serial;
 
 public:
-    static Krembot& get() {
-        static Krembot instance;
-        return instance;
-    }
-
-    Krembot() { fprintf(stderr, "Krembot ctor\n");}
 
     RGBASensor RgbaFront;
     RGBASensor RgbaRear;
@@ -96,6 +88,8 @@ public:
     Battery Bat;
     RGBLed Led;
     IMUSensor Imu;
+
+    Krembot(SerialSim & serial);
 
     void init(const std::string & id,
               CCI_DifferentialSteeringActuator * wheels,
@@ -118,12 +112,14 @@ public:
 
     inline bool have_name() { return m_name.length() > 0; }
 
+    inline bool isInitialized() { return m_initialized; }
+
     /*
      * Mock up functions
      */
-    inline void setup() { };
+    inline void setup() { }
 
-    inline void loop() { };
+    inline void loop() { }
 };
 
 #endif

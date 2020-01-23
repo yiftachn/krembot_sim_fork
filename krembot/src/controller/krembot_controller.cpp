@@ -31,11 +31,10 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
 
-#include "controller.h"
+#include "krembot_controller.h"
 #include <argos3/core/utility/configuration/argos_configuration.h>
 
-
-void Controller::Init(TConfigurationNode& t_node) {
+void KrembotController::Init(TConfigurationNode& t_node) {
     //actuators
     m_pcWheels = GetActuator<CCI_DifferentialSteeringActuator>("differential_steering");
 
@@ -58,10 +57,6 @@ void Controller::Init(TConfigurationNode& t_node) {
             m_pcImu
     );
 
-    setup();
-}
+    Particle.setName(GetId());
 
-void Controller::ControlStep() {
-    loop();
 }
-

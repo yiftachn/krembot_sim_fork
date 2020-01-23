@@ -51,7 +51,7 @@ private:
 
     inline void setName(const std::string & name) { m_name = name; }
 
-    friend class Krembot;
+    friend class KrembotController;
 
 public:
     //todo: if eden's code doesn't compile with const & String, try only String

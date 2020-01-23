@@ -49,7 +49,7 @@ namespace utils {
 namespace datetime {
     static const size_t ISO_8601_TIME_DATE_SIZE = sizeof "2011-10-08T07:07:09Z";
 
-    void getDateTime(char * buff);
+    void GetIso8601DateTime(char * buff, size_t size);
 
 } // end of time
 

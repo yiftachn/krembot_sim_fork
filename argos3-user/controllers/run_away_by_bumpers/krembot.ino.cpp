@@ -37,161 +37,162 @@
  * Copy and past real robot setup() and loop() code into the functions below
  */
 
-#include <argos3/core/control_interface/ci_controller.h>
-#include <Krembot/controller/controller.h>
+#include <Krembot/controller/krembot_controller.h>
+
+//DO NOT EDIT THIS MACRO
+KREMBOT_CONTROLLER_HEADER
+
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+
+    SandTimer backTimer;
+    SandTimer turnTimer;
+
+    BumpersRes lastResults;
+
+    const int FORWARD_SPEED = 60;
+    const int BACKWARD_SPEED = -60;
 
 
-SandTimer backTimer;
-SandTimer turnTimer;
+    const int LEFT_SPEED = 75;
+    const int RIGHT_SPEED = -75;
+
+    const int BACK_INTERVAL = 450;
+    const int TURN_INTERVAL = 800;
+
+    bool drivingForward = false;
+    bool drivingBack = false;
+    bool turning = false;
 
 
-BumpersRes lastResults;
+    void setup() {
+        krembot.setup();
 
-const int FORWARD_SPEED = 60;
-const int BACKWARD_SPEED = -60;
+        // start driving forward
+        krembot.Base.drive(FORWARD_SPEED, 0);
+        backTimer.start(BACK_INTERVAL);
+        turnTimer.start(TURN_INTERVAL);
+    }
 
+    void loop() {
+        krembot.loop();
 
-const int LEFT_SPEED = 75;
-const int RIGHT_SPEED = -75;
-
-const int BACK_INTERVAL = 450;
-const int TURN_INTERVAL = 800;
-
-bool drivingForward = false;
-bool drivingBack = false;
-bool turning = false;
-
-
-void setup() {
-    krembot.setup();
-
-    // start driving forward
-    krembot.Base.drive(FORWARD_SPEED, 0);
-    backTimer.start(BACK_INTERVAL);
-    turnTimer.start(TURN_INTERVAL);
-}
-
-void loop() {
-    krembot.loop();
-
-    krembot.loop();
-
-    krembot.loop();
-
-    // read bumpre states
-    BumpersRes results = krembot.Bumpers.read();
-    if (results.isAnyPressed())
-    {
-        // if one of the bumpers was pressed check which one was pressed. based on the
-        // bumper that was pressed. if it was one of the front bumpers - switch to
-        // drivingBack mode for 450 miliseconds
-        if(results.front == BumperState::PRESSED || results.front_left == BumperState::PRESSED || results.front_right == BumperState::PRESSED)
+        // read bumpre states
+        BumpersRes results = krembot.Bumpers.read();
+        if (results.isAnyPressed())
         {
-            krembot.Base.drive(BACKWARD_SPEED, 0);
-            backTimer.startOver();
-            drivingBack = true;
-            turning = false;
-            krembot.Led.write(255,0,0);
+            // if one of the bumpers was pressed check which one was pressed. based on the
+            // bumper that was pressed. if it was one of the front bumpers - switch to
+            // drivingBack mode for 450 miliseconds
+            if(results.front == BumperState::PRESSED || results.front_left == BumperState::PRESSED || results.front_right == BumperState::PRESSED)
+            {
+                krembot.Base.drive(BACKWARD_SPEED, 0);
+                backTimer.startOver();
+                drivingBack = true;
+                turning = false;
+                krembot.Led.write(255,0,0);
 
-            Serial.Print("---"); Serial.Print(krembot.getName()); Serial.Print("---");
-            krembot.Bumpers.print();
-            Serial.Println("------");
+                Serial.Print("---"); Serial.Print(krembot.getName()); Serial.Print("---");
+                krembot.Bumpers.print();
+                Serial.Println("------");
+
+            }
+                //if the pressed bumper is not one of the front ones
+                // switch to turn mode for 450 miliseconds
+            else
+            {
+                drivingBack = false;
+                turning = true;
+                turnTimer.startOver();
+            }
+
+            lastResults = results;
 
         }
-            //if the pressed bumper is not one of the front ones
-            // switch to turn mode for 450 miliseconds
-        else
+
+
+        //if the finished turning disable turning mode
+        if(turnTimer.finished() && turning)
+        {
+            turning = false;
+            drivingBack = false;
+            krembot.Led.write(0,255,0);
+
+        }
+
+        // if finished driving back, switch to turning mode
+        if(backTimer.finished() && drivingBack)
         {
             drivingBack = false;
             turning = true;
             turnTimer.startOver();
+            krembot.Led.write(0,0,255);
+
         }
 
-        lastResults = results;
 
-    }
-
-
-    //if the finished turning disable turning mode
-    if(turnTimer.finished() && turning)
-    {
-        turning = false;
-        drivingBack = false;
-        krembot.Led.write(0,255,0);
-
-    }
-
-    // if finished driving back, switch to turning mode
-    if(backTimer.finished() && drivingBack)
-    {
-        drivingBack = false;
-        turning = true;
-        turnTimer.startOver();
-        krembot.Led.write(0,0,255);
-
-    }
-
-
-    //decide the turning direction based on the pressed BUMPER_REAR_LEFT
-    // if it was on the right side (or the front bumper) turn left.
-    // if it was one of the left side - turn right
-    if(turning)
-    {
-        krembot.Led.write(255,255,255);
-
-        if(lastResults.front == BumperState::PRESSED)
+        //decide the turning direction based on the pressed BUMPER_REAR_LEFT
+        // if it was on the right side (or the front bumper) turn left.
+        // if it was one of the left side - turn right
+        if(turning)
         {
-            // we chose to turn left
-            krembot.Base.drive(0, LEFT_SPEED);
+            krembot.Led.write(255,255,255);
+
+            if(lastResults.front == BumperState::PRESSED)
+            {
+                // we chose to turn left
+                krembot.Base.drive(0, LEFT_SPEED);
+            }
+            else if(lastResults.front_right == BumperState::PRESSED)
+            {
+                // we chose to turn left
+                krembot.Base.drive(0, LEFT_SPEED);
+            }
+            else if(lastResults.right == BumperState::PRESSED)
+            {
+                krembot.Base.drive(0, LEFT_SPEED);
+            }
+            else if(lastResults.rear_right == BumperState::PRESSED)
+            {
+                krembot.Base.drive(0, LEFT_SPEED);
+            }
+            else if(lastResults.rear == BumperState::PRESSED)
+            {
+                krembot.Base.drive(FORWARD_SPEED, 0);
+            }
+            else if(lastResults.rear_left == BumperState::PRESSED)
+            {
+                krembot.Base.drive(0, RIGHT_SPEED);
+            }
+            else if(lastResults.left == BumperState::PRESSED)
+            {
+                krembot.Base.drive(0, RIGHT_SPEED);
+            }
+            else if(lastResults.front_left == BumperState::PRESSED)
+            {
+                krembot.Base.drive(0, RIGHT_SPEED);
+            }
+
         }
-        else if(lastResults.front_right == BumperState::PRESSED)
-        {
-            // we chose to turn left
-            krembot.Base.drive(0, LEFT_SPEED);
-        }
-        else if(lastResults.right == BumperState::PRESSED)
-        {
-            krembot.Base.drive(0, LEFT_SPEED);
-        }
-        else if(lastResults.rear_right == BumperState::PRESSED)
-        {
-            krembot.Base.drive(0, LEFT_SPEED);
-        }
-        else if(lastResults.rear == BumperState::PRESSED)
+
+        //if not turning and not driving - drive forward
+        if(!turning && !drivingBack)
         {
             krembot.Base.drive(FORWARD_SPEED, 0);
+            krembot.Led.write(0,0,0);
         }
-        else if(lastResults.rear_left == BumperState::PRESSED)
-        {
-            krembot.Base.drive(0, RIGHT_SPEED);
-        }
-        else if(lastResults.left == BumperState::PRESSED)
-        {
-            krembot.Base.drive(0, RIGHT_SPEED);
-        }
-        else if(lastResults.front_left == BumperState::PRESSED)
-        {
-            krembot.Base.drive(0, RIGHT_SPEED);
-        }
-
     }
 
-    //if not turning and not driving - drive forward
-    if(!turning && !drivingBack)
-    {
-        krembot.Base.drive(FORWARD_SPEED, 0);
-        krembot.Led.write(0,0,0);
-    }
-}
 
-/*
- * This statement notifies ARGoS of the existence of the controller.
- * It binds the class passed as first argument to the string passed as
- * second argument.
- * The string is then usable in the configuration file to refer to this
- * controller.
- * When ARGoS reads that string in the configuration file, it knows which
- * controller class to instantiate.
- * See also the configuration files for an example of how this is used.
- */
-REGISTER_CONTROLLER(Controller, KREMBOT_PROGRAM_NAME)
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+
+//DO NOT EDIT THESE MACROS
+KREMBOT_CONTROLLER_FOOTER
+REGISTER_CONTROLLER(MyController, KREMBOT_PROGRAM_NAME)
+
+
+
+

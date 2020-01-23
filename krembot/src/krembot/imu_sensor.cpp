@@ -33,7 +33,6 @@
 
 #include "imu_sensor.h"
 #include "utils.h"
-#include "../particle_app/application.h"
 
 using namespace argos;
 

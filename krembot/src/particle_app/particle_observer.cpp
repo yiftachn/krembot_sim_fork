@@ -36,13 +36,15 @@
 
 #include "../krembot/utils.h"
 
+#include <iostream>
+
 void ParticleObserver::publish(const String & eventName, const String & content, int flags) {
     if (m_name.empty()) {
         return;
     }
     char dateBuff[utils::datetime::ISO_8601_TIME_DATE_SIZE];
-    utils::datetime::getDateTime(dateBuff);
-    printf("{\"data\":\"%s\",\"ttl\":\"60\",\"published_at\":\"%s\",\"coreid\":\"%s\"}",
+    utils::datetime::GetIso8601DateTime(dateBuff, utils::datetime::ISO_8601_TIME_DATE_SIZE);
+    fprintf(stderr,"{\"data\":\"%s\",\"ttl\":\"60\",\"published_at\":\"%s\",\"coreid\":\"%s\"}\n",
             content.str().c_str(),
            dateBuff,
             m_name.c_str());

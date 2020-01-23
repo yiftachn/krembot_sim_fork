@@ -31,6 +31,7 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
 
+
 #ifndef FOOTBOT_DIFFUSION_H
 #define FOOTBOT_DIFFUSION_H
 
@@ -42,29 +43,23 @@
 #include <argos3/plugins/robots/generic/control_interface/ci_colored_blob_omnidirectional_camera_sensor.h>
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_light_sensor.h>
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.h>
-#include "../krembot.h"
 
+
+#include "../krembot.h"
+#include "../particle_app/particle_observer.h"
+#include "../particle_app/serial.h"
+#include "../particle_app/particle_string.h"
+#include "../particle_app/timing.h"
 
 using namespace argos;
 
-/*
- * setup() and loop() definitions. those functions should be
- * declared inside client driver file
- */
-extern void setup();
-extern void loop();
 
-/*
- * Build and get krembot reference for client driver file usage
- */
-Krembot krembot;// = Krembot::get();
-
-class Controller : public CCI_Controller {
+class KrembotController : public CCI_Controller {
 
 public:
-    Controller() {fprintf(stderr, "Controller ctor\n");}//= default;
+    KrembotController() : krembot {Serial} { }
 
-    virtual ~Controller() = default;
+    virtual ~KrembotController() = default;
 
     /*
      * This function initializes the controller.
@@ -77,7 +72,7 @@ public:
      * This function is called once every time step.
      * The length of the time step is set in the XML file.
      */
-    virtual void ControlStep();
+    virtual void ControlStep() = 0;
 
     /*
      * This function resets the controller to its state right after the
@@ -97,6 +92,7 @@ public:
      */
     virtual void Destroy() {}
 
+
 private:
 
 
@@ -113,6 +109,44 @@ private:
     /* Pointer to the imu sensor */
     CCI_FootBotImuSensor* m_pcImu = nullptr;
 
+protected:
+    ParticleObserver Particle;
+
+    SerialSim Serial;
+
+    Krembot krembot;
 };
 
+
+#define KREMBOT_CONTROLLER_HEADER \
+    class MyController : public KrembotController{
+
+
+#define KREMBOT_CONTROLLER_FOOTER \
+public: \
+~MyController() = default; \
+void Init(TConfigurationNode& t_node) override { \
+KrembotController::Init(t_node); \
+if ( ! krembot.isInitialized() ) { \
+throw std::runtime_error("krembot.ino.cpp: krembot wasn't initialized in controller"); \
+} \
+setup(); \
+}; \
+void ControlStep() override { loop(); }; \
+}; \
+///* \
+// * This statement notifies ARGoS of the existence of the controller. \
+// * It binds the class passed as first argument to the string passed as \
+// * second argument. \
+// * The string is then usable in the configuration file to refer to this \
+// * controller. \
+// * When ARGoS reads that string in the configuration file, it knows which \
+// * controller class to instantiate. \
+// * See also the configuration files for an example of how this is used. \
+// */
+
+
 #endif
+
+
+

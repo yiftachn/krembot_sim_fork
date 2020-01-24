@@ -6,7 +6,9 @@ set(PROGRAM_NAME "program_template")
 add_definitions(-DKREMBOT_PROGRAM_NAME="${PROGRAM_NAME}_controller")
 
 set(SRC_FILES
-        krembot.ino.cpp)
+        krembot.ino.cpp
+        #todo: list here additional cpp files
+        )
 
 add_library(${PROGRAM_NAME} MODULE ${SRC_FILES})
 

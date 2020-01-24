@@ -134,17 +134,6 @@ setup(); \
 }; \
 void ControlStep() override { loop(); }; \
 }; \
-///* \
-// * This statement notifies ARGoS of the existence of the controller. \
-// * It binds the class passed as first argument to the string passed as \
-// * second argument. \
-// * The string is then usable in the configuration file to refer to this \
-// * controller. \
-// * When ARGoS reads that string in the configuration file, it knows which \
-// * controller class to instantiate. \
-// * See also the configuration files for an example of how this is used. \
-// */
-
 
 #endif
 

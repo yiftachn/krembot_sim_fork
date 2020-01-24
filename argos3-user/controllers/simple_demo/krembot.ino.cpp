@@ -28,19 +28,16 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
 
+#include <Krembot/controller/krembot_controller.h>
 
-/*
- * This file simulates the .ino file of the krembot.
- * The original structure of this file must be maintained
- * for the simulator to work correctly.
- * Don't create Krembot instance, it is created automatically.
- * Copy and past real robot setup() and loop() code into the functions below
- */
+//DO NOT EDIT THIS MACRO
+KREMBOT_CONTROLLER_HEADER
 
-#include <argos3/core/control_interface/ci_controller.h>
-#include <Krembot/controller/controller.h>
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
 
-
+SandTimer timer;
 
 void setup() {
     krembot.setup();
@@ -52,16 +49,18 @@ void setup() {
 void loop() {
     krembot.loop();
     krembot.Base.drive(50, 0);
+    timer.start(1000);
+    if (timer.finished()) {
+        Particle.publish("one second event", "this will be printed in terminal", PRIVATE);
+        Serial.Println("this will be printed in simulation GUI");
+    }
+
 }
 
-/*
- * This statement notifies ARGoS of the existence of the controller.
- * It binds the class passed as first argument to the string passed as
- * second argument.
- * The string is then usable in the configuration file to refer to this
- * controller.
- * When ARGoS reads that string in the configuration file, it knows which
- * controller class to instantiate.
- * See also the configuration files for an example of how this is used.
- */
-REGISTER_CONTROLLER(Controller, KREMBOT_PROGRAM_NAME)
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+////////////////////////////////////////////////
+
+//DO NOT EDIT THESE MACROS
+KREMBOT_CONTROLLER_FOOTER
+REGISTER_CONTROLLER(MyController, KREMBOT_PROGRAM_NAME)

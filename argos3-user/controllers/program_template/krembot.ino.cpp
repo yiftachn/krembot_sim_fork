@@ -39,6 +39,10 @@
 
 #include <Krembot/controller/krembot_controller.h>
 
+/*
+ * todo: Your #include statements goes here
+ */
+
 //DO NOT EDIT THIS MACRO
 KREMBOT_CONTROLLER_HEADER
 
@@ -47,7 +51,7 @@ KREMBOT_CONTROLLER_HEADER
 ////////////////////////////////////////////////
 
 /*
- * Your global variables goes here
+ * todo: Your global variables goes here
  */
 
 
@@ -55,7 +59,7 @@ void setup() {
     krembot.setup();
 
     /*
-     * Your setup code goes here
+     * todo: Your setup code goes here
      */
 }
 
@@ -63,7 +67,7 @@ void loop() {
     krembot.loop();
 
     /*
-     * Your loop code goes here
+     * todo: Your loop code goes here
      */
 }
 

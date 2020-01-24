@@ -48,9 +48,8 @@ Krembot::Krembot(SerialSim &serial)  :
         Bat{serial},
         Imu{serial},
         Base{serial}
-{
+{ }
 
-}
 void Krembot::init(const std::string & id,
           CCI_DifferentialSteeringActuator * wheels,
           CCI_FootBotProximitySensor * proximity,

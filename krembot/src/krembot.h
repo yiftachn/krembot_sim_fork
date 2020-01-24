@@ -60,9 +60,6 @@
 #include "./krembot/imu_sensor.h"
 #include "./sand_timer/SandTimer.h"
 
-/*
- * All the ARGoS stuff in the 'argos' namespace.
- */
 using namespace argos;
 
 class Krembot {

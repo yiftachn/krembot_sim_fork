@@ -63,6 +63,15 @@ argos3 -c path/to/your/argos/file.argos
 
 In case you see an error telling you that ```libyour_program.so``` could'nt be found, make sure the path you provided to the .so file inside the configuration file is correct. If it is, then read the error carefully - sometimes code linking errors are hiding in this error message, and you might miss them at first glance.
 
+### Editing Krembot Library Code
+For some cases, you may want to edit the krembot library code. After editing the code, cd into krembot/build directory, and compile using
+
+```
+sudo make install
+```
+
+This will compile the code, and then install the updated header files under /usr/local/include/ , and the .so file under /usr/local/bin/
+
 ## Further Documentation
 https://www.argos-sim.info/documentation.php
 https://github.com/ilpincy/argos3

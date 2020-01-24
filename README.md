@@ -9,7 +9,7 @@ An Argos-Sim based simulator for Robotican's Krembot robot
 
 ## Installation
 
-1. Run the installation script:
+Run the installation script:
 
 ```
 ./krembot_sim/krembot/scripts/install.sh
@@ -65,7 +65,9 @@ In case you see an error telling you that ```libyour_program.so``` could'nt be f
 
 ## Further Documentation
 https://www.argos-sim.info/documentation.php
+
 https://github.com/ilpincy/argos3
+
 https://github.com/ilpincy/argos3-examples
 
 

@@ -41,13 +41,13 @@ using namespace argos;
 CBumpers::CBumpers() {
     m_bumpers.reserve(NUM_OF_BUMPERS);
     m_bumpers.push_back(&m_bump_front);
-    m_bumpers.push_back(&m_bump_front_right);
-    m_bumpers.push_back(&m_bump_right);
-    m_bumpers.push_back(&m_bump_rear_right);
-    m_bumpers.push_back(&m_bump_rear);
-    m_bumpers.push_back(&m_bump_rear_left);
-    m_bumpers.push_back(&m_bump_left);
     m_bumpers.push_back(&m_bump_front_left);
+    m_bumpers.push_back(&m_bump_left);
+    m_bumpers.push_back(&m_bump_rear_left);
+    m_bumpers.push_back(&m_bump_rear);
+    m_bumpers.push_back(&m_bump_rear_right);
+    m_bumpers.push_back(&m_bump_right);
+    m_bumpers.push_back(&m_bump_front_right);
 }
 
 

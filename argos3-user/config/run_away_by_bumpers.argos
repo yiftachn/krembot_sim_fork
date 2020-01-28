@@ -25,7 +25,7 @@
     -->
     <experiment length="0"
                 ticks_per_second="10"
-                random_seed="124" />
+                random_seed="124"/>
   </framework>
 
   <!-- *************** -->

@@ -33,6 +33,7 @@
 
 #include "krembot_controller.h"
 #include <argos3/core/utility/configuration/argos_configuration.h>
+#include <argos3/core/simulator/simulator.h>
 
 void KrembotController::Init(TConfigurationNode& t_node) {
     //actuators

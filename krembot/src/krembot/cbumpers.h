@@ -62,13 +62,13 @@ private:
      * krembot API
      */
     BumperState m_bump_front {"|   FRONT   |", 0};
-    BumperState m_bump_front_right {"|FRONT RIGHT|", 1};
-    BumperState m_bump_right {"|   RIGHT   |", 2};
-    BumperState m_bump_rear_right {"|REAR  RIGHT|", 3};
+    BumperState m_bump_front_left {"|FRONT LEFT|", 1};
+    BumperState m_bump_left {"|   LEFT   |", 2};
+    BumperState m_bump_rear_left {"|REAR  LEFT|", 3};
     BumperState m_bump_rear {"|   REAR    |", 4};
-    BumperState m_bump_rear_left {"| REAR LEFT |", 5};
-    BumperState m_bump_left {"|   LEFT    |", 6};
-    BumperState m_bump_front_left {"|FRONT LEFT |", 7};
+    BumperState m_bump_rear_right {"| REAR RIGHT |", 5};
+    BumperState m_bump_right {"|   RIGHT    |", 6};
+    BumperState m_bump_front_right {"|FRONT RIGHT |", 7};
 
     /*
      * Calculate bumper's state based on proximity sensor

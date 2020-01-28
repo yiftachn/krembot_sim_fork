@@ -36,13 +36,13 @@
 bool BumpersRes::isAnyPressed() const
 {
     if(front == BumperState::PRESSED ||
-        front_right == BumperState::PRESSED ||
-        right == BumperState::PRESSED ||
-        rear_right == BumperState::PRESSED ||
-        rear == BumperState::PRESSED ||
-        rear_left == BumperState::PRESSED ||
+        front_left == BumperState::PRESSED ||
         left == BumperState::PRESSED ||
-        front_left == BumperState::PRESSED)
+        rear_left == BumperState::PRESSED ||
+        rear == BumperState::PRESSED ||
+        rear_right == BumperState::PRESSED ||
+        right == BumperState::PRESSED ||
+        front_right == BumperState::PRESSED)
     {
         return true;
     }
@@ -51,11 +51,11 @@ bool BumpersRes::isAnyPressed() const
 
 void BumpersRes::fillFromStates(const std::vector<BumperState *> & states) {
     front = states.at(0)->getState();
-    front_right = states.at(1)->getState();
-    right = states.at(2)->getState();
-    rear_right = states.at(3)->getState();
+    front_left = states.at(1)->getState();
+    left = states.at(2)->getState();
+    rear_left = states.at(3)->getState();
     rear = states.at(4)->getState();
-    rear_left = states.at(5)->getState();
-    left = states.at(6)->getState();
-    front_left = states.at(7)->getState();
+    rear_right = states.at(5)->getState();
+    right = states.at(6)->getState();
+    front_right = states.at(7)->getState();
 }

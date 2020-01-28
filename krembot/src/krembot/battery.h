@@ -36,14 +36,11 @@
 
 #include <cstdint>
 #include <chrono>
-#include "../particle_app/serial.h"
 
 class Battery
 {
 private:
     std::chrono::steady_clock::time_point m_startTime;
-    SerialSim & Serial;
-
 
     /*
      * return battery time left.
@@ -54,7 +51,7 @@ private:
 
 public:
 
-    Battery(SerialSim & serial);
+    Battery();
     float readBatLvl(); //lvl in Volt
     uint8_t getBatLvl(); //lvl in %
     bool isFull();

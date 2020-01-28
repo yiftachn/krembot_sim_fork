@@ -40,7 +40,6 @@
  */
 
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.h>
-#include "../particle_app/serial.h"
 
 struct ImuData
 {
@@ -68,10 +67,8 @@ class IMUSensor
 {
 private:
     argos::CCI_FootBotImuSensor * m_Imu = nullptr;
-    SerialSim & Serial;
 
 public:
-    IMUSensor(SerialSim & serial) : Serial {serial} { }
 
     void init(argos::CCI_FootBotImuSensor * imu);
 

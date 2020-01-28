@@ -41,8 +41,6 @@
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_proximity_sensor.h>
 #include <argos3/plugins/robots/generic/control_interface/ci_colored_blob_omnidirectional_camera_sensor.h>
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_light_sensor.h>
-#include "../particle_app/serial.h"
-
 
 /* RGBA sensor location and ID number:
  *
@@ -89,8 +87,6 @@ private:
     uint8_t m_index = 0;
     std::string m_name = "";
 
-    SerialSim & Serial;
-
     argos::CRange<argos::CRadians> m_ColorSensorAngularRange;
     argos::CCI_FootBotProximitySensor * m_cProximity = nullptr;
     argos::CCI_FootBotLightSensor * m_Light = nullptr;
@@ -108,7 +104,7 @@ private:
 
 public:
 
-    RGBASensor(SerialSim & serial);
+    RGBASensor();
 
     void init(const std::string name,
                uint8_t index,

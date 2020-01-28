@@ -36,7 +36,6 @@
 
 #include <cstdint>
 #include <argos3/plugins/robots/generic/control_interface/ci_differential_steering_actuator.h>
-#include "../particle_app/serial.h"
 
 class MobileBase
 {
@@ -44,11 +43,8 @@ class MobileBase
 private:
     const uint8_t MAX_ARGOS_SPEED = 5;
     argos::CCI_DifferentialSteeringActuator * m_pcWheels = nullptr;
-    SerialSim & Serial;
 
 public:
-
-    MobileBase(SerialSim & serial) : Serial {serial} { }
 
     void init(argos::CCI_DifferentialSteeringActuator* wheel);
 

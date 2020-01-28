@@ -42,7 +42,6 @@
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_proximity_sensor.h>
 #include "cbumpers_result.h"
 #include "bumper_state.h"
-#include "../particle_app/serial.h"
 
 class CBumpers
 {
@@ -71,8 +70,6 @@ private:
     BumperState m_bump_left {"|   LEFT    |", 6};
     BumperState m_bump_front_left {"|FRONT LEFT |", 7};
 
-    SerialSim & Serial;
-
     /*
      * Calculate bumper's state based on proximity sensor
      */
@@ -80,7 +77,7 @@ private:
 
 public:
 
-    CBumpers(SerialSim & serial);
+    CBumpers();
 
     void init(argos::CCI_FootBotProximitySensor * proximity);
 

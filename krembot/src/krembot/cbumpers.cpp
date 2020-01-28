@@ -34,11 +34,11 @@
 
 #include "cbumpers.h"
 #include <argos3/core/utility/math/angles.h>
-
+#include "../application.h"
 
 using namespace argos;
 
-CBumpers::CBumpers(SerialSim & serial) : Serial { serial } {
+CBumpers::CBumpers() {
     m_bumpers.reserve(NUM_OF_BUMPERS);
     m_bumpers.push_back(&m_bump_front);
     m_bumpers.push_back(&m_bump_front_right);

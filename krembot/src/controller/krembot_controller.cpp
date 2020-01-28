@@ -56,7 +56,4 @@ void KrembotController::Init(TConfigurationNode& t_node) {
             m_pcCamera,
             m_pcImu
     );
-
-    Particle.setName(GetId());
-
 }

@@ -33,11 +33,11 @@
 
 #include "rgba_sensor.h"
 #include "utils.h"
+#include "../application.h"
 
 using namespace argos;
 
-RGBASensor::RGBASensor(SerialSim & serial) :
-         Serial{serial},
+RGBASensor::RGBASensor() :
         // sensors limits in cm (according to Robotican)
         m_ProxRange{20, 255},
         m_DistRange{6.96, 25.51} { }

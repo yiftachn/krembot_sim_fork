@@ -2,6 +2,9 @@
 * Copyright (c) 2019, Elhay Rauper.
 * All rights reserved.
 *
+* This code API is based on Robotican's Krembot library, which can be found here:
+ * https://github.com/robotican/krembot
+*
 * Redistribution and use in source and binary forms, with or without
 * modification, are permitted provided that the following conditions are met:
 *
@@ -28,39 +31,16 @@
 * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 *******************************************************************************/
 
-#include <Krembot/controller/krembot_controller.h>
+#ifndef KREMBOT_APPLICATION_H
+#define KREMBOT_APPLICATION_H
 
-//DO NOT EDIT THIS MACRO
-KREMBOT_CONTROLLER_HEADER
+#define KREMBOT_SIM
 
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-////////////////////////////////////////////////
+#include "particle_app/serial.h"
+#include "particle_app/particle_string.h"
+#include "particle_app/particle_observer.h"
+#include "particle_app/timing.h"
 
-SandTimer timer;
+static SerialSim Serial;
 
-void setup() {
-    krembot.setup();
-
-    // turn on LEDs in green
-    krembot.Led.write(0, 255, 0);
-}
-
-void loop() {
-    krembot.loop();
-    krembot.Base.drive(50, 0);
-    timer.start(1000);
-    if (timer.finished()) {
-        Particle.publish("one second event", "this will be printed in terminal", PRIVATE);
-        Serial.Println("this will be printed in simulation GUI");
-    }
-
-}
-
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-
-//DO NOT EDIT THESE MACROS
-KREMBOT_CONTROLLER_FOOTER
-REGISTER_CONTROLLER(MyController, KREMBOT_PROGRAM_NAME)
+#endif //KREMBOT_APPLICATION_H

@@ -33,7 +33,7 @@
 
 #include <iostream>
 #include "battery.h"
-
+#include "../application.h"
 
 #define MAX_BAT_LVL 4.12
 #define MIN_BAT_LVL 3.3
@@ -43,7 +43,7 @@
 
 using namespace std::chrono;
 
-Battery::Battery(SerialSim & serial) : Serial {serial}{
+Battery::Battery() {
     // register battery start time upon construction
     m_startTime = steady_clock::now();
 }

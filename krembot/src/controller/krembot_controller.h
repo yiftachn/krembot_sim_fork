@@ -57,7 +57,6 @@ using namespace argos;
 class KrembotController : public CCI_Controller {
 
 public:
-    KrembotController() : krembot {Serial} { }
 
     virtual ~KrembotController() = default;
 
@@ -92,7 +91,6 @@ public:
      */
     virtual void Destroy() {}
 
-
 private:
 
 
@@ -110,10 +108,6 @@ private:
     CCI_FootBotImuSensor* m_pcImu = nullptr;
 
 protected:
-    ParticleObserver Particle;
-
-    SerialSim Serial;
-
     Krembot krembot;
 };
 
@@ -124,15 +118,17 @@ protected:
 
 #define KREMBOT_CONTROLLER_FOOTER \
 public: \
+ParticleObserver Particle; \
 ~MyController() = default; \
 void Init(TConfigurationNode& t_node) override { \
 KrembotController::Init(t_node); \
 if ( ! krembot.isInitialized() ) { \
 throw std::runtime_error("krembot.ino.cpp: krembot wasn't initialized in controller"); \
 } \
+Particle.setName(krembot.getName()); \
 setup(); \
-}; \
-void ControlStep() override { loop(); }; \
+} \
+void ControlStep() override { loop(); } \
 }; \
 
 #endif

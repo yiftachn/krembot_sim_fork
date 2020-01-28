@@ -33,23 +33,6 @@
 
 #include "src/krembot.h"
 
-
-Krembot::Krembot(SerialSim &serial)  :
-        Serial {serial},
-        RgbaFront {serial},
-        RgbaRear{serial},
-        RgbaRight{serial},
-        RgbaLeft{serial},
-        RgbaFrontRight{serial},
-        RgbaFrontLeft{serial},
-        RgbaRearRight{serial},
-        RgbaRearLeft{serial},
-        Bumpers{serial},
-        Bat{serial},
-        Imu{serial},
-        Base{serial}
-{ }
-
 void Krembot::init(const std::string & id,
           CCI_DifferentialSteeringActuator * wheels,
           CCI_FootBotProximitySensor * proximity,

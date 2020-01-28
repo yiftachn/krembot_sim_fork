@@ -33,6 +33,7 @@
 
 #include "imu_sensor.h"
 #include "utils.h"
+#include "../application.h"
 
 using namespace argos;
 

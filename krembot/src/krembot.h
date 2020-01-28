@@ -50,15 +50,16 @@
 /* Definition of the foot-bot imu sensor */
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.h>
 
-
 #include <argos3/core/utility/math/vector2.h>
-#include "./krembot/mobile_base.h"
-#include "./krembot/rgba_sensor.h"
-#include "./krembot/rgb_led.h"
-#include "./krembot/cbumpers.h"
-#include "./krembot/battery.h"
-#include "./krembot/imu_sensor.h"
-#include "./sand_timer/SandTimer.h"
+
+#include "application.h"
+#include "krembot/mobile_base.h"
+#include "krembot/rgba_sensor.h"
+#include "krembot/rgb_led.h"
+#include "krembot/cbumpers.h"
+#include "krembot/battery.h"
+#include "krembot/imu_sensor.h"
+#include "sand_timer/SandTimer.h"
 
 using namespace argos;
 
@@ -68,7 +69,6 @@ private:
 
     std::string m_name = "";
     bool m_initialized = false;
-    SerialSim & Serial;
 
 public:
 
@@ -85,8 +85,6 @@ public:
     Battery Bat;
     RGBLed Led;
     IMUSensor Imu;
-
-    Krembot(SerialSim & serial);
 
     void init(const std::string & id,
               CCI_DifferentialSteeringActuator * wheels,

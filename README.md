@@ -45,13 +45,13 @@ There are 3 main directories in the package:
 6. Go into the controllers directory again (step 1), open CMakeLists.txt inside that directory, and add your directory name to the list with ```add_subdirectory``` command. Save and close.
 
 ### Compiling the Controller
-We are ready to compile your code, so go into ```./krembot_sim/argos3-user/controllers/build```, and write ```make``` in the termial
+We are ready to compile your code, so go into ```./krembot_sim/argos3-user/build```, and write ```make``` in the termial
 
 ### Creating New Argos Configuration File
 1. Cd into  ```./krembot_sim/argos3-user/config/```
 2. Create a copy of the ```program_template.argos``` file, and give it the same name you gave your program inside your controllers CMakeFiles.txt
 3. Replace ```program_template``` everywhere in the file with your program name from step 2
-4. In line 53 provide full path to your controller .so file. This file can be found in ```contollers/build/your_program``` directory after building your code.
+4. In line 53 provide full path to your controller .so file. This file can be found in ```argos3-user/build/your_program``` directory after building your code.
 5. Further changes in this file can be made to configure simulation. The file is well-documented, so it should be relavily easy. More documentation can be found at https://www.argos-sim.info/documentation.php
 
 ### Running Your Controller
@@ -71,6 +71,20 @@ sudo make install
 ```
 
 This will compile the code, and then install the updated header files under /usr/local/include/ , and the .so file under /usr/local/bin/
+
+### Known Issues
+#### Particle Library
+Particle library is big. This simulator supports only few basic features of it.
+
+#### Particle.publish()
+
+***tl;dr***
+```Particle.publish()``` API is only accessible from krembot.ino.cpp file.
+
+In real Photon chip, a single instance of Particle object is created, which contains information about the Photon chip. Each robot have its own memory space, which isn't shared with other robots. Argos achieves similar results by creating and running controller instances. Particle's API to publish message is ```Particle.publish```, this means that we have to create a global Particle object in order to allow all client's code to call this API. Doing this will cause all controller's (and in turn Krembot) instances to use the same Particle object, which is incorrect since Particle have to hold internal data about a specific krembot instance (such as ID). 
+
+However, it's possible to create Particle object as part of the controller, such that for each instance a new Particle instance will be created with a specific krembot data. This implemetation solves the problem, but also means the user is limited to use this API only inside krembot.ino.cpp file.
+
 
 ## Further Documentation
 https://www.argos-sim.info/documentation.php

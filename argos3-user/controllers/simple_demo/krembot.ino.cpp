@@ -31,7 +31,7 @@
 #include <Krembot/controller/krembot_controller.h>
 
 //DO NOT EDIT THIS MACRO
-KREMBOT_CONTROLLER_HEADER
+KREMBOT_CONTROLLER_HEADER(CONTROLLER_NAME)
 
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
@@ -62,5 +62,5 @@ void loop() {
 ////////////////////////////////////////////////
 
 //DO NOT EDIT THESE MACROS
-KREMBOT_CONTROLLER_FOOTER
-REGISTER_CONTROLLER(MyController, KREMBOT_PROGRAM_NAME)
+KREMBOT_CONTROLLER_FOOTER(CONTROLLER_NAME, CONTROLLER_LABEL)
+

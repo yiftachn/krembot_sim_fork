@@ -3,8 +3,10 @@ set (CMAKE_CXX_STANDARD 11)
 #todo user: rename program
 set(PROGRAM_NAME "run_away_by_bumpers")
 
-add_definitions(-DKREMBOT_PROGRAM_NAME="${PROGRAM_NAME}_controller")
-
+add_definitions(
+        -DCONTROLLER_NAME=${PROGRAM_NAME}_controller
+        -DCONTROLLER_LABEL="${PROGRAM_NAME}_controller"
+)
 set(SRC_FILES
         krembot.ino.cpp)
 

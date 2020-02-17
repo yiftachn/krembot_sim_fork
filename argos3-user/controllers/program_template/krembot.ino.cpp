@@ -43,12 +43,13 @@
  * todo: Your #include statements goes here
  */
 
-//DO NOT EDIT THIS MACRO
-KREMBOT_CONTROLLER_HEADER
 
-////////////////////////////////////////////////
-////////////////////////////////////////////////
-////////////////////////////////////////////////
+//DO NOT EDIT THIS MACRO
+KREMBOT_CONTROLLER_HEADER(CONTROLLER_NAME)
+
+//////////////////////////////////////////////
+//////////////////////////////////////////////
+//////////////////////////////////////////////
 
 /*
  * todo: Your global variables goes here
@@ -75,21 +76,8 @@ void loop() {
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
-
-//DO NOT EDIT THESE MACROS
-KREMBOT_CONTROLLER_FOOTER
-///* \
-// * This statement notifies ARGoS of the existence of the controller. \
-// * It binds the class passed as first argument to the string passed as \
-// * second argument. \
-// * The string is then usable in the configuration file to refer to this \
-// * controller. \
-// * When ARGoS reads that string in the configuration file, it knows which \
-// * controller class to instantiate. \
-// * See also the configuration files for an example of how this is used. \
-// */
-REGISTER_CONTROLLER(MyController, KREMBOT_PROGRAM_NAME)
-
+////DO NOT EDIT THESE MACROS
+KREMBOT_CONTROLLER_FOOTER(CONTROLLER_NAME, CONTROLLER_LABEL)
 
 
 

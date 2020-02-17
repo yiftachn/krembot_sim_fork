@@ -49,14 +49,10 @@ class ParticleObserver {
 private:
     std::string m_name {};
 
-    inline void setName(const std::string & name) { m_name = name; }
-
-    friend class MyController;
-
 public:
     void publish(const String & eventName, const String & content, int flags);
     void publish(const char * eventName, int flags);
-
+    inline void setName(const std::string & name) { m_name = name; }
     void subscribe(const String & topic, std::function<void(const char*, const char*)> & func);
 };
 

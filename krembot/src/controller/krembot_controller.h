@@ -112,14 +112,13 @@ protected:
 };
 
 
-#define KREMBOT_CONTROLLER_HEADER \
-    class MyController : public KrembotController{
+#define KREMBOT_CONTROLLER_HEADER(CLASS_NAME) \
+    class CLASS_NAME : public KrembotController{
 
-
-#define KREMBOT_CONTROLLER_FOOTER \
+#define KREMBOT_CONTROLLER_FOOTER(CLASS_NAME, PROGRAM_NAME) \
 public: \
 ParticleObserver Particle; \
-~MyController() = default; \
+~CLASS_NAME() = default; \
 void Init(TConfigurationNode& t_node) override { \
 KrembotController::Init(t_node); \
 if ( ! krembot.isInitialized() ) { \
@@ -129,7 +128,20 @@ Particle.setName(krembot.getName()); \
 setup(); \
 } \
 void ControlStep() override { loop(); } \
-}; \
+};\
+/* \
+ * This statement notifies ARGoS of the existence of the controller. \
+ * It binds the class passed as first argument to the string passed as \
+ * second argument. \
+ * The string is then usable in the configuration file to refer to this \
+ * controller. \
+ * When ARGoS reads that string in the configuration file, it knows which \
+ * controller class to instantiate. \
+ * See also the configuration files for an example of how this is used. \
+ */\
+REGISTER_CONTROLLER(CLASS_NAME, PROGRAM_NAME)
+
+
 
 #endif
 

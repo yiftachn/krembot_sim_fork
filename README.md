@@ -1,6 +1,8 @@
 # Krembot Simulator
 An Argos-Sim based simulator for Robotican's Krembot robot 
 
+![](demo.gif)
+
 ## Note:
 
 * This simulation was tested and intended to work under Ubuntu 16.04.6 LTS

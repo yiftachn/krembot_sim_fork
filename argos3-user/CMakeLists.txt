@@ -40,16 +40,12 @@ if(GALIB_FOUND)
   include_directories(${GALIB_INCLUDE_DIRS})
 endif(GALIB_FOUND)
 
-# Find Lua
-#find_package(Lua52 REQUIRED)
-
 # Set ARGoS include dir
 include_directories(${CMAKE_SOURCE_DIR} ${ARGOS_INCLUDE_DIRS} )
 
 # Set ARGoS link dir
 link_directories(${ARGOS_LIBRARY_DIRS})
 
-#${LUA_INCLUDE_DIR} ${LUA_INCLUDE_DIR}
 include_directories(${CMAKE_SOURCE_DIR} ${KREMBOT_INCLUDE_DIRS} )
 link_directories(${KREMBOT_LIBRARY_DIRS})
 

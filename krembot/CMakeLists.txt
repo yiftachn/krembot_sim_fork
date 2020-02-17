@@ -55,8 +55,6 @@ configure_file(
 		${CMAKE_SOURCE_DIR}/scripts/krembot.pc
 		@ONLY)
 
-#target_include_directories(krembot PRIVATE src/)
-
 target_link_libraries(Krembot
   argos3core_simulator
   argos3plugin_simulator_footbot

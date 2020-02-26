@@ -38,6 +38,7 @@ namespace argos {
 
 #include <argos3/core/control_interface/ci_sensor.h>
 #include <argos3/core/utility/math/angles.h>
+#include <argos3/plugins/robots/generic/control_interface/ci_proximity_sensor.h>
 
 namespace argos {
 
@@ -47,6 +48,7 @@ namespace argos {
 
       struct SReading {
          Real Value;
+         CCI_ProximitySensor::intersec_t::Type Type;
          CRadians Angle;
 
          SReading() :

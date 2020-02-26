@@ -15,7 +15,7 @@ namespace argos {
    /****************************************/
    /****************************************/
 
-   const std::vector<Real>& CCI_ProximitySensor::GetReadings() const {
+   const std::vector<CCI_ProximitySensor::intersec_t>& CCI_ProximitySensor::GetReadings() const {
      return m_tReadings;
    }
 

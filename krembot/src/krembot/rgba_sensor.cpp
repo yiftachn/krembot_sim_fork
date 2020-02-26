@@ -37,6 +37,8 @@
 
 using namespace argos;
 
+using intersect_t = CCI_ProximitySensor::intersec_t;
+
 RGBASensor::RGBASensor() :
         // sensors limits in cm (according to Robotican)
         m_ProxRange{20, 255},
@@ -91,7 +93,7 @@ RGBAResult RGBASensor::readRGBA()
      * The reading from the footbot proximity sensor shows -1 when there's no intersection in sesnor's range
      * In the real krembot this process is done the opposite way (distance is calculated out of proximity)
      */
-    const Real rawProximity = m_cProximity->GetReadings()[m_index].Value;
+    const auto rawProximity = m_cProximity->GetReadings()[m_index];
     /*
      * No proximity intersection. In other words: no object in sensor's range
      * This can happend in 2 cases:
@@ -107,10 +109,10 @@ RGBAResult RGBASensor::readRGBA()
      * it should return maximum range instead of real distance to intersected robot. For other
      * types of entities return real distance.
      */
-    if (rawProximity == -1) { // intersected entity is another robot
+    if (rawProximity.Type == intersect_t::ROBOT) { // intersected entity is another robot
         result.Distance = m_DistRange.GetMax();
         fprintf(stderr, "%s robot\n", m_name.c_str());
-    } else if (rawProximity == -2) { // no intersection
+    } else if (rawProximity.Type == intersect_t::NONE) { // no intersection
         if (m_ProxState == ProxState::NEAR) {
             result.Distance = m_DistRange.GetMin();
         } else { // far
@@ -118,7 +120,7 @@ RGBAResult RGBASensor::readRGBA()
         }
     } else { // intersection with object other than robot in sensor's range
         fprintf(stderr, "%s wall\n", m_name.c_str());
-        result.Distance = rawProximity * 100; // convert meters to cm
+        result.Distance = rawProximity.Value * 100; // convert meters to cm
         const float halfDistRange = m_DistRange.GetMax()/2.0;
         if (result.Distance >= halfDistRange) {
             m_ProxState = ProxState::FAR;

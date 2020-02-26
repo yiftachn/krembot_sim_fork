@@ -74,9 +74,10 @@ namespace argos {
 
    /**
     * Elhay: Changes were made to this function to return -1 instead of 0 for no-intersection reads
-    * Intersected entity is another footbot - distance = -1
-    * No intersection - distance = -2
-    * Intersected entity is not another footbot - distance = distance from entity
+    * cases:
+    * Intersected entity is another footbot
+    * No intersection
+    * Intersected entity is not another footbot
     */
    void CProximityDefaultSensor::Update() {
       /* Ray used for scanning the environment for obstacles */
@@ -100,33 +101,35 @@ namespace argos {
          if(GetClosestEmbodiedEntityIntersectedByRay(sIntersection,
                                                      cScanningRay,
                                                      *m_pcEmbodiedEntity)) {
+             /* There is an intersection */
+
              /**
               * According to the client, the real robot proximity seonsor returns maximum range
               * when intersected object is another robot, and not a wall or some other object.
               * To simulate that, if intersected entity is another footbot, return -2
               */
              if (sIntersection.IntersectedEntity->GetRootEntity().GetTypeDescription() == "foot-bot") {
-                 m_tReadings[i] = -1.0f;
+                 m_tReadings[i].type = CCI_ProximitySensor::intersec_t::Type::ROBOT;
              } else {
-                 /* There is an intersection */
-                 if (m_bShowRays) {
-                     m_pcControllableEntity->AddIntersectionPoint(cScanningRay,
-                                                                  sIntersection.TOnRay);
-                     m_pcControllableEntity->AddCheckedRay(true, cScanningRay);
-                 }
-                 m_tReadings[i] = cScanningRay.GetDistance(sIntersection.TOnRay);
+                 m_tReadings[i].type = CCI_ProximitySensor::intersec_t::Type::OTHER;
              }
+             if (m_bShowRays) {
+                 m_pcControllableEntity->AddIntersectionPoint(cScanningRay,
+                                                              sIntersection.TOnRay);
+                 m_pcControllableEntity->AddCheckedRay(true, cScanningRay);
+             }
+             m_tReadings[i].prox = cScanningRay.GetDistance(sIntersection.TOnRay);
          }
          else {
             /* No intersection */
-            m_tReadings[i] = -2.0f;
+            m_tReadings[i].type = CCI_ProximitySensor::intersec_t::Type::NONE;
             if(m_bShowRays) {
                m_pcControllableEntity->AddCheckedRay(false, cScanningRay);
             }
          }
          /* Apply noise to the sensor */
          if(m_bAddNoise) {
-            m_tReadings[i] += m_pcRNG->Uniform(m_cNoiseRange);
+            m_tReadings[i].prox += m_pcRNG->Uniform(m_cNoiseRange);
          }
       }
    }
@@ -136,7 +139,7 @@ namespace argos {
 
    void CProximityDefaultSensor::Reset() {
       for(UInt32 i = 0; i < GetReadings().size(); ++i) {
-         m_tReadings[i] = 0.0f;
+         m_tReadings[i] = {0.0f, CCI_ProximitySensor::intersec_t::Type::NONE};
       }
    }
 

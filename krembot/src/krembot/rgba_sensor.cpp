@@ -111,7 +111,6 @@ RGBAResult RGBASensor::readRGBA()
      */
     if (rawProximity.Type == intersect_t::ROBOT) { // intersected entity is another robot
         result.Distance = m_DistRange.GetMax();
-        fprintf(stderr, "%s robot\n", m_name.c_str());
     } else if (rawProximity.Type == intersect_t::NONE) { // no intersection
         if (m_ProxState == ProxState::NEAR) {
             result.Distance = m_DistRange.GetMin();
@@ -119,7 +118,6 @@ RGBAResult RGBASensor::readRGBA()
             result.Distance = m_DistRange.GetMax();
         }
     } else { // intersection with object other than robot in sensor's range
-        fprintf(stderr, "%s wall\n", m_name.c_str());
         result.Distance = rawProximity.Value * 100; // convert meters to cm
         const float halfDistRange = m_DistRange.GetMax()/2.0;
         if (result.Distance >= halfDistRange) {

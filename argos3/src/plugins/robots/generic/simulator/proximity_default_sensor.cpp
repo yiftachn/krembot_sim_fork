@@ -118,7 +118,6 @@ namespace argos {
                                                               sIntersection.TOnRay);
                  m_pcControllableEntity->AddCheckedRay(true, cScanningRay);
              }
-             m_tReadings[i].prox = cScanningRay.GetDistance(sIntersection.TOnRay);
          }
          else {
             /* No intersection */
@@ -127,6 +126,7 @@ namespace argos {
                m_pcControllableEntity->AddCheckedRay(false, cScanningRay);
             }
          }
+         m_tReadings[i].prox = cScanningRay.GetDistance(sIntersection.TOnRay);
          /* Apply noise to the sensor */
          if(m_bAddNoise) {
             m_tReadings[i].prox += m_pcRNG->Uniform(m_cNoiseRange);

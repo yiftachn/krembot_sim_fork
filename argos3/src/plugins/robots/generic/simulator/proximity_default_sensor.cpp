@@ -74,6 +74,9 @@ namespace argos {
 
    /**
     * Elhay: Changes were made to this function to return -1 instead of 0 for no-intersection reads
+    * Intersected entity is another footbot - distance = -1
+    * No intersection - distance = -2
+    * Intersected entity is not another footbot - distance = distance from entity
     */
    void CProximityDefaultSensor::Update() {
       /* Ray used for scanning the environment for obstacles */
@@ -97,17 +100,26 @@ namespace argos {
          if(GetClosestEmbodiedEntityIntersectedByRay(sIntersection,
                                                      cScanningRay,
                                                      *m_pcEmbodiedEntity)) {
-            /* There is an intersection */
-            if(m_bShowRays) {
-               m_pcControllableEntity->AddIntersectionPoint(cScanningRay,
-                                                            sIntersection.TOnRay);
-               m_pcControllableEntity->AddCheckedRay(true, cScanningRay);
-            }
-            m_tReadings[i] = cScanningRay.GetDistance(sIntersection.TOnRay);
+             /**
+              * According to the client, the real robot proximity seonsor returns maximum range
+              * when intersected object is another robot, and not a wall or some other object.
+              * To simulate that, if intersected entity is another footbot, return -2
+              */
+             if (sIntersection.IntersectedEntity->GetRootEntity().GetTypeDescription() == "foot-bot") {
+                 m_tReadings[i] = -1.0f;
+             } else {
+                 /* There is an intersection */
+                 if (m_bShowRays) {
+                     m_pcControllableEntity->AddIntersectionPoint(cScanningRay,
+                                                                  sIntersection.TOnRay);
+                     m_pcControllableEntity->AddCheckedRay(true, cScanningRay);
+                 }
+                 m_tReadings[i] = cScanningRay.GetDistance(sIntersection.TOnRay);
+             }
          }
          else {
             /* No intersection */
-            m_tReadings[i] = -1.0f;
+            m_tReadings[i] = -2.0f;
             if(m_bShowRays) {
                m_pcControllableEntity->AddCheckedRay(false, cScanningRay);
             }

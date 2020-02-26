@@ -102,14 +102,22 @@ RGBAResult RGBASensor::readRGBA()
      * see -1, it means we are in case 1. , otherwise case 2. The same principal is applied for CBumpers
      * This method assumes that krembot is place at least 1 cm from any other object at the very beginning
      * of the simulation run. Otherwise the first m_ProxState=FAR is not correct
+     *
+     * To match client requirements: if robot proximity sensor intersect another footbot in range,
+     * it should return maximum range instead of real distance to intersected robot. For other
+     * types of entities return real distance.
      */
-    if (rawProximity == -1) {
+    if (rawProximity == -1) { // intersected entity is another robot
+        result.Distance = m_DistRange.GetMax();
+        fprintf(stderr, "%s robot\n", m_name.c_str());
+    } else if (rawProximity == -2) { // no intersection
         if (m_ProxState == ProxState::NEAR) {
             result.Distance = m_DistRange.GetMin();
         } else { // far
             result.Distance = m_DistRange.GetMax();
         }
-    } else { // intersection in sensor's range
+    } else { // intersection with object other than robot in sensor's range
+        fprintf(stderr, "%s wall\n", m_name.c_str());
         result.Distance = rawProximity * 100; // convert meters to cm
         const float halfDistRange = m_DistRange.GetMax()/2.0;
         if (result.Distance >= halfDistRange) {

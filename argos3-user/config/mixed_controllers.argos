@@ -17,7 +17,7 @@
   <controllers>
     <!-- CONTROLLER # 1 -->
     <simple_demo_controller id="simple_demo" 
-                                  library="/home/eli/ws/krembot_sim/argos3-user/build/controllers/simple_demo/libsimple_demo.so">
+                                  library="/home/edenha/krembot_sim/argos3-user/build/controllers/simple_demo/libsimple_demo.so">
 
       <actuators>
         <differential_steering implementation="default" />
@@ -36,7 +36,7 @@
 
     <!-- CONTROLLER # 2 -->
     <run_away_by_bumpers_controller id="run_away_by_bumpers"
-                                  library="/home/eli/ws/krembot_sim/argos3-user/build/controllers/run_away_by_bumpers/librun_away_by_bumpers.so"> 
+                                  library="/home/edenha/krembot_sim/argos3-user/build/controllers/run_away_by_bumpers/librun_away_by_bumpers.so"> 
       <actuators>
         <differential_steering implementation="default" />
         <leds implementation="default" medium="leds" />

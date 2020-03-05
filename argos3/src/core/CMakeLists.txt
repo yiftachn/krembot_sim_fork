@@ -1,3 +1,5 @@
+remove_definitions(-DARGOS_WITH_LUA)
+
 #
 # Headers
 #

@@ -101,10 +101,10 @@ find_package(ASCIIDoc)
 # Check for Lua 5.2
 #
 find_package(Lua52)
-if(LUA52_FOUND)
-  set(ARGOS_WITH_LUA ON)
-  include_directories(${LUA_INCLUDE_DIR})
-endif(LUA52_FOUND)
+#if(LUA52_FOUND)
+#  set(ARGOS_WITH_LUA ON)
+#  include_directories(${LUA_INCLUDE_DIR})
+#endif(LUA52_FOUND)
 
 #
 # Configure PhysX library linking

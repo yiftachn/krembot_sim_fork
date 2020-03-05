@@ -50,7 +50,7 @@
           controller.
     -->
     <simple_demo_controller id="simple_demo"
-                                  library="/home/eli/ws/krembot_sim/argos3-user/build/controllers/simple_demo/libsimple_demo.so">
+                                  library="/home/edenha/krembot_sim/argos3-user/build/controllers/simple_demo/libsimple_demo.so">
       <!--
           The <actuators> section contains a list of the actuators used by
           this controller.

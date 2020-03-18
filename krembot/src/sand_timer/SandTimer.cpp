@@ -32,19 +32,35 @@
 *******************************************************************************/
 
 
+#include <cstdio>
+#include <argos3/core/simulator/simulator.h>
 #include "SandTimer.h"
 
-using namespace std::chrono;
+using namespace argos;
 
 SandTimer::SandTimer()
 {
     started_ = false;
-    period_ = 1000;
+    setPeriod(1000);
 }
 
-void SandTimer::setPeriod(unsigned long period)
-{
-    period_ = period;
+uint32_t SandTimer::now() {
+    return CSimulator::GetInstance().GetSimulationClock();
+}
+
+uint32_t SandTimer::millis() {
+    //convert simulation ticks to millis
+    float clock_tick = CSimulator::GetInstance().GetPhysicsEngines()[0]->GetSimulationClockTick();
+    float millis_per_simulation_tick = clock_tick * 1000;
+    return now() * millis_per_simulation_tick;
+}
+
+void SandTimer::setPeriod(unsigned long period) {
+    // convert milliseconds period to simulation ticks
+    float clock_tick = CSimulator::GetInstance().GetPhysicsEngines()[0]->GetSimulationClockTick();
+    float millis_per_simulation_tick = clock_tick * 1000;
+    period_ = period / millis_per_simulation_tick;
+//    fprintf(stderr, "clock_tick: %f, millis_per_simulation_tick: %f, period_: %d\n", clock_tick, millis_per_simulation_tick, period_);
 }
 
 /* start timer. if already started, do nothing */
@@ -52,8 +68,8 @@ void SandTimer::start(unsigned long period)
 {
     if (!started_)
     {
-        period_ = period;
-        start_time_ = steady_clock::now();
+        setPeriod(period);
+        start_time_ = now();
         started_ = true;
     }
 }
@@ -62,14 +78,14 @@ void SandTimer::start()
 {
     if (!started_)
     {
-        start_time_ = steady_clock::now();
+        start_time_ = now();
         started_ = true;
     }
 }
 /* override original start time, and start timer again */
 void SandTimer::startOver()
 {
-    start_time_ = steady_clock::now();
+    start_time_ = now();
     if (!started_)
         started_ = true;
 }
@@ -79,8 +95,9 @@ bool SandTimer::finished()
 {
     if (started_)
     {
-        end_time_ = steady_clock::now();
-        const float elaspedTime = std::chrono::duration_cast<std::chrono::milliseconds>(end_time_ - start_time_).count();
+        end_time_ = now();
+        const float elaspedTime = end_time_ - start_time_;
+//        fprintf(stderr, "elapsed: %f, period: %d, sim clock: %d\n", elaspedTime, period_, CSimulator::GetInstance().GetSimulationClock());
         if (elaspedTime >= period_)
         {
             started_ = false;

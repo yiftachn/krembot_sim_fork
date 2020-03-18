@@ -33,19 +33,17 @@
 
 #include "timing.h"
 
-
+#include "../sand_timer/SandTimer.h"
 #include <chrono>
 #include <thread>
 
 using namespace std::chrono;
 
 void delay(int millis) {
+    //todo: insert error message to not use this function
     std::this_thread::sleep_for(milliseconds(millis));
 }
 
 long millis() {
-    milliseconds ms = duration_cast< milliseconds >(
-            system_clock::now().time_since_epoch()
-    );
-    return ms.count();
+    return SandTimer::now();
 }

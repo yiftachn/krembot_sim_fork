@@ -105,6 +105,8 @@ namespace argos {
          return *m_pcSpace;
       }
 
+       UInt32 GetSimulationClock() const ;
+
       /**
        * Returns a reference to a physics engine.
        * @param str_id The id of the wanted physics engine.

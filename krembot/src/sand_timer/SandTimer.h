@@ -34,14 +34,18 @@
 #ifndef SAND_TIMER_H
 #define SAND_TIMER_H
 
-#include <chrono>
+#include <cstdint>
+
+/**
+ * Milliseconds timer
+ */
 
 class SandTimer
 {
 private:
-    std::chrono::steady_clock::time_point start_time_;
-    std::chrono::steady_clock::time_point end_time_;
-    unsigned long period_ = 0;
+    uint32_t start_time_;
+    uint32_t end_time_;
+    uint32_t period_ = 0;
     bool started_ = false;
 
 public:
@@ -53,6 +57,8 @@ public:
     bool finished();
     void reset();
     bool isRunning();
+    static uint32_t now();
+    static uint32_t millis();
 };
 
 #endif

@@ -282,6 +282,10 @@ namespace argos {
       m_pcSpace->Update();
    }
 
+    UInt32 CSimulator::GetSimulationClock() const {
+        return m_pcSpace->GetSimulationClock();
+    }
+
    /****************************************/
    /****************************************/
 

@@ -51,8 +51,9 @@ CBumpers::CBumpers() {
 }
 
 
-void CBumpers::init(CCI_FootBotProximitySensor * proximity) {
+void CBumpers::init(CCI_FootBotProximitySensor * proximity, const MobileBase & base) {
     m_cProximity = proximity;
+    m_base = &base;
 }
 
 void CBumpers::CalcNewBumperStateBasedOnProximity(const Real &proximity, BumperState & bumper) {
@@ -62,7 +63,9 @@ void CBumpers::CalcNewBumperStateBasedOnProximity(const Real &proximity, BumperS
     // readings are ignored.
 
     if (intersectionRange.WithinMinBoundIncludedMaxBoundIncluded(proximity)) { // we have proximity intersection, and inside bumper's range
-        bumper = BumperState::PRESSED;
+        if (m_base->linearSpeed() != 0) {
+            bumper = BumperState::PRESSED;
+        }
     } else if (intersectionRange.GetMax() > 0.005) {
         bumper = BumperState::UNPRESSED;
     }

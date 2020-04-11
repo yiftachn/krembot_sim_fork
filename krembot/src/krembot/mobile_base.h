@@ -44,6 +44,9 @@ private:
     const uint8_t MAX_ARGOS_SPEED = 5;
     argos::CCI_DifferentialSteeringActuator * m_pcWheels = nullptr;
 
+    int8_t m_linear = 0;
+    int8_t m_angular = 0;
+
 public:
 
     void init(argos::CCI_DifferentialSteeringActuator* wheel);
@@ -56,6 +59,9 @@ public:
      * Mock-up functions
      */
     void standby() {};
+
+    int8_t linearSpeed() const { return m_linear; }
+    int8_t angularSpeed() const { return m_angular; }
 
 };
 

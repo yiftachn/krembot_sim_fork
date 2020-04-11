@@ -42,6 +42,7 @@
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_proximity_sensor.h>
 #include "cbumpers_result.h"
 #include "bumper_state.h"
+#include "mobile_base.h"
 
 class CBumpers
 {
@@ -53,6 +54,7 @@ private:
 
 
     argos::CCI_FootBotProximitySensor * m_cProximity = nullptr;
+    const MobileBase * m_base = nullptr;
 
     static const uint8_t NUM_OF_BUMPERS = 8;
 
@@ -79,7 +81,7 @@ public:
 
     CBumpers();
 
-    void init(argos::CCI_FootBotProximitySensor * proximity);
+    void init(argos::CCI_FootBotProximitySensor * proximity, const MobileBase & base);
 
     BumpersRes read();
     void print();

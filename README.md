@@ -75,8 +75,14 @@ sudo make install
 This will compile the code, and then install the updated header files under /usr/local/include/ , and the .so file under /usr/local/bin/
 
 ### Known Issues
+
 #### Particle Library
-Particle library is big. This simulator supports only few basic features of it.
+
+Particle library contain lots of APIs. It's impossible (nor necessary) to support all of them as part of the scope of this project. Hence, this simulator supports only few basic features of it.
+
+#### delay() function
+
+delay shouldn't be used (on both real hardware and simulator) because during the delay time the robot can't keep sensing or acting on the inviorment. Instead, a timer should be used (each delay can be easily replaced by a timer). Further more, implementation of such function in Argos simulation will cause more issues like frozen GUI, and eventually unresponsive application. Therefore delay() function is not supported by the simulator. Instead, a timer library called "Sand Timer" is provided, and can be used in the same way it is used in real Krembot.
 
 #### Particle.publish()
 
@@ -87,6 +93,17 @@ In real Photon chip, a single instance of Particle object is created, which cont
 
 However, it's possible to create Particle object as part of the controller, such that for each instance a new Particle instance will be created with a specific krembot data. This implemetation solves the problem, but also means the user is limited to use this API only inside krembot.ino.cpp file.
 
+### Sensors Behavior 
+
+Some sensors behave diffrently than normal, in order to immitate real hardware sensors, which also work that way. (This is not a simulation limitation, but a requirement)
+
+#### Proximity (IR) Sensor 
+
+Normally, this sensor should measure the distance to the closest object in front of it. Real Krembot hardware return maximum distance when another krembot is in front of the sensor, and distance from object when something other than krembot is in front. The same behavior is implemented in the simulator. 
+
+#### Bumpers 
+
+Normally, this sensor should return "true" whenever the bumper is close enough to an object. Real Krembot hardware bumper is only pressed when it is pressed with a certain amount of force. The same behavior is implemented in the simulator. 
 
 ## Further Documentation
 https://www.argos-sim.info/documentation.php

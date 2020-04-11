@@ -43,7 +43,7 @@ void Krembot::init(const std::string & id,
 {
     m_name = id;
     Base.init(wheels);
-    Bumpers.init(proximity);
+    Bumpers.init(proximity, Base);
     Imu.init(imu);
     Led.init(leds);
     RgbaFront.init("RgbaFront", 0, proximity, light, colorCam);

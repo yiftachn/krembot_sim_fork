@@ -39,9 +39,11 @@ void MobileBase::init(argos::CCI_DifferentialSteeringActuator* wheels) {
 }
 
 bool MobileBase::drive(int8_t linear_spd, int8_t angular_spd) {
+    m_linear = linear_spd;
+    m_angular = angular_spd;
 
     if (m_pcWheels == nullptr) {
-
+        throw std::runtime_error("Krembot MobileBase: m_pcWheels is not initialized");
     }
 
     argos::CRange<int> speedRange(-100, 100);

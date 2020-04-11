@@ -95,15 +95,15 @@ However, it's possible to create Particle object as part of the controller, such
 
 ### Sensors Behavior 
 
-Some sensors behave diffrently than normal, in order to immitate real hardware sensors, which also work that way. (This is not a simulation limitation, but a requirement)
+Some of the Krembot sensors behave diffrently in reality than normally expected. Those sensors are simulated in the same way (This is not a simulation limitation, but a requirement)
 
 #### Proximity (IR) Sensor 
 
-Normally, this sensor should measure the distance to the closest object in front of it. Real Krembot hardware return maximum distance when another krembot is in front of the sensor, and distance from object when something other than krembot is in front. The same behavior is implemented in the simulator. 
+Normally, this sensor should measure the distance to the closest object in front of it. Real Krembot hardware return maximum distance when another krembot is in front of the sensor, and distance to object for something other than krembot. The same behavior is implemented in the simulator. 
 
 #### Bumpers 
 
-Normally, this sensor should return "true" whenever the bumper is close enough to an object. Real Krembot hardware bumper is only pressed when it is pressed with a certain amount of force. The same behavior is implemented in the simulator. 
+Normally, this sensor should return "true" whenever the bumper is close enough to an object. Real Krembot hardware bumper is only pressed when a certain amount of force is applied to it. The same behavior is implemented in the simulator. 
 
 ## Further Documentation
 https://www.argos-sim.info/documentation.php

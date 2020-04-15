@@ -17,6 +17,14 @@ Run the installation script:
 ./krembot_sim/krembot/scripts/install.sh
 ```
 
+## Uninstall
+
+Run the uninstall script:
+
+```
+./krembot_sim/krembot/scripts/uninstall.sh
+```
+
 
 ## Sourcing setup_env.sh
 

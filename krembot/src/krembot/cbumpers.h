@@ -49,9 +49,13 @@ class CBumpers
 
 private:
 
+    enum class BumperPosition {
+        SIDES,
+        FRONT,
+        REAR
+    };
+
     std::vector<BumperState *> m_bumpers;
-
-
 
     argos::CCI_FootBotProximitySensor * m_cProximity = nullptr;
     const MobileBase * m_base = nullptr;
@@ -75,7 +79,9 @@ private:
     /*
      * Calculate bumper's state based on proximity sensor
      */
-    void CalcNewBumperStateBasedOnProximity(const argos::Real & proximity, BumperState & bumper);
+    void CalcNewBumperStateBasedOnProximity(const argos::Real & proximity, BumperState & bumper) const ;
+
+    BumperPosition GetBumperPosition(const BumperState & bumper) const ;
 
 public:
 

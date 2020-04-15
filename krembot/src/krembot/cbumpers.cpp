@@ -56,18 +56,47 @@ void CBumpers::init(CCI_FootBotProximitySensor * proximity, const MobileBase & b
     m_base = &base;
 }
 
-void CBumpers::CalcNewBumperStateBasedOnProximity(const Real &proximity, BumperState & bumper) {
-    static const CRange<double> intersectionRange {0, 0.009};
-    // in case there is no intersection, leave bumper with previous state.
-    // in cases where footbot is too close to object reading is -1, those
-    // readings are ignored.
+CBumpers::BumperPosition CBumpers::GetBumperPosition(const BumperState &bumper) const {
+    switch(bumper.getIndex()) {
+        case 0: return BumperPosition ::FRONT;
+        case 1: return BumperPosition ::FRONT;
+        case 2: return BumperPosition ::SIDES;
+        case 3: return BumperPosition ::REAR;
+        case 4: return BumperPosition ::REAR;
+        case 5: return BumperPosition ::REAR;
+        case 6: return BumperPosition ::SIDES;
+        case 7: return BumperPosition ::FRONT;
+        default:
+            throw std::runtime_error("CBumpers: invalid bumper index");
+    }
+}
 
-    if (intersectionRange.WithinMinBoundIncludedMaxBoundIncluded(proximity)) { // we have proximity intersection, and inside bumper's range
-        if (m_base->linearSpeed() != 0) {
+void CBumpers::CalcNewBumperStateBasedOnProximity(const Real &proximity, BumperState & bumper) const {
+    static const CRange<double> intersectionRange {0, 0.027};
+
+    /**
+     * in cases where footbot is too close to object reading is -1 - those
+     * readings are ignored.
+     *
+     * Bumper is considered to be pressed iff one of the following conditions
+     * are met:
+     * 1. linear speed is not 0, and side bumper is pressed
+     * 2. linear speed is positive and front bumper is pressed
+     * 3. linear speed is negative and rear bumper is pressed
+     */
+
+    bumper = BumperState::UNPRESSED;
+    auto bumpPos = GetBumperPosition(bumper);
+    if (intersectionRange.WithinMinBoundIncludedMaxBoundIncluded(proximity) &&
+            (m_base->linearSpeed() != 0))
+    { // we have proximity intersection, and inside bumper's range
+        if (bumpPos == BumperPosition::SIDES) {
+            bumper = BumperState::PRESSED;
+        } else if (m_base->linearSpeed() > 0 && bumpPos == BumperPosition::FRONT) {
+            bumper = BumperState::PRESSED;
+        } else if (m_base->linearSpeed() < 0 && bumpPos == BumperPosition::REAR) {
             bumper = BumperState::PRESSED;
         }
-    } else if (intersectionRange.GetMax() > 0.005) {
-        bumper = BumperState::UNPRESSED;
     }
 }
 

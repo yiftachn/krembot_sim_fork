@@ -75,8 +75,8 @@ void CBumpers::CalcNewBumperStateBasedOnProximity(const Real &proximity, BumperS
     static const CRange<double> intersectionRange {0, 0.027};
 
     /**
-     * in cases where footbot is too close to object reading is -1 - those
-     * readings are ignored.
+     * in cases where footbot is too close to an object (pass the contact point)
+     * bumper will not press (argos bug)
      *
      * Bumper is considered to be pressed iff one of the following conditions
      * are met:

@@ -99,11 +99,6 @@ RGBAResult RGBASensor::readRGBA()
      * This can happend in 2 cases:
      * 1. We are too close to an object (simulator bug)
      * 2. We are too far from an object
-     * To identify which case we are dealing with, a check is made for each calculation to tell if we
-     * are in a "far" or "near" range relative to the closest object. If we are in the near range and then
-     * see -1, it means we are in case 1. , otherwise case 2. The same principal is applied for CBumpers
-     * This method assumes that krembot is place at least 1 cm from any other object at the very beginning
-     * of the simulation run. Otherwise the first m_ProxState=FAR is not correct
      *
      * To match client requirements: if robot proximity sensor intersect another footbot in range,
      * it should return maximum range instead of real distance to intersected robot. For other

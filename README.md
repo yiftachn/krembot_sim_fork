@@ -64,6 +64,25 @@ We are ready to compile your code, so go into ```./krembot_sim/argos3-user/build
 4. In line 53 provide full path to your controller .so file. This file can be found in ```argos3-user/build/your_program``` directory after building your code.
 5. Further changes in this file can be made to configure simulation. The file is well-documented, so it should be relavily easy. More documentation can be found at https://www.argos-sim.info/documentation.php
 
+### Using Multiple Controllers in The Same Configuration File
+To simulate flashing different .ino programs to different group of krembots it is possible to execute multiple controllers, where each Krembot or group of krembots execute a specific conroller. 
+
+An example can be found in argos3-user/config/mixed_controllers.argos file. 
+Let's go over the lines in the configuration file that enable running multiple controllers:
+
+The place to list our controllers is under the "controller" tag at line 17. In this example two controllers are listed: 
+1. line 19: "simple_demo"
+2. line 38: "run_away_by_bumpers"
+Listing these controllers here is mandatory, so we set our Krembots to execute them later in this file.
+
+Now that we have the controllers, all there's left to do is to specify what controller should be executed by the Krembots in the arena.
+Under the "arena" tag at line 58, two Krembots are listed (krembot_0 at line 74 and krembot_1 at line 79). More Krembot can be created in the same way - copy and paste the krembot block, but pay attention and avoid copy-paste mistakes: the krembot ID (id tag) must be unique, so edit it accordingally. 
+
+Under each of the Krembots (foot-bot tag) there is a "controller" tag. Under this tag you should specify the controller ID you wish to execute on this Krembot. In this example krembot_0 will execute controller "simple_demo" and krembot_1 execute "run_away_by_bumpers". You might set each of the listed Krembots to execute any of the listed controllers. Any combination of controllers and Krembots can be created this way.
+
+Run this configuration file and notice how the two Krembots in the arena behave differntly based on the program they execute.
+
+
 ### Running Your Controller
 In order to run argos simulation, your should use ```argos3``` command along with ```-c``` flag and the path to your program .argos configuration file. Before you use this command, make sure you sourced the setup_env.sh file (see instructions above). 
 
@@ -109,6 +128,8 @@ Some of the Krembot sensors behave diffrently in reality than normally expected.
 
 Normally, this sensor should measure the distance to the closest object in front of it. Real Krembot hardware return maximum distance when another krembot is in front of the sensor, and distance to object for something other than krembot. The same behavior is implemented in the simulator. 
 
+Argos bug - Proximity sensor will not detect intersection with another object if it is too close to it (passed contact point). This influence both proximity and bumpers which are implemented based on this sensor.
+
 #### Bumpers 
 
 Normally, this sensor should return "true" whenever the bumper is close enough to an object. Real Krembot hardware bumper is only pressed when a certain amount of force is applied to it. The same behavior is implemented in the simulator. 
@@ -119,7 +140,6 @@ https://www.argos-sim.info/documentation.php
 https://github.com/ilpincy/argos3
 
 https://github.com/ilpincy/argos3-examples
-
 
 
 

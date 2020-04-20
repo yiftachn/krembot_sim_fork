@@ -38,6 +38,13 @@
 
 #include <iostream>
 
+/**
+ * Simulate Particle.Publish() - generate a similar message to the one that
+ * is printed in Particle cloud platform.
+ * @param eventName
+ * @param content
+ * @param flags - stub field - does nothing
+ */
 void ParticleObserver::publish(const String & eventName, const String & content, int flags) {
     if (m_name.empty()) {
         return;
@@ -50,10 +57,21 @@ void ParticleObserver::publish(const String & eventName, const String & content,
             m_name.c_str()
     );
 }
+
+/**
+ * Same as publish function above, but content field will be printed as "null"
+ * @param eventName
+ * @param flags
+ */
 void ParticleObserver::publish(const char * eventName, int flags) {
     publish(eventName, "null", flags);
 }
 
-void subscribe(const String & topic, std::function<void(const char*, const char*)> & func) {
+/**
+ * Stub function
+ * @param topic
+ * @param func
+ */
+void ParticleObserver::subscribe(const String & topic, std::function<void(const char*, const char*)> & func) {
 
 }

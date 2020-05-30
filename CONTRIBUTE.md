@@ -5,7 +5,10 @@ This file was written for future contributors. It assumes that before reading th
 The Krembot simulation is mostly based on the Argos simulator. This is why It's highly recommended that you learn all there is to know about Argos before getting into contributing to this simulator (refer to [README.md](README.md) for resources).
 ARGoS was chosen to use as a foundation for Krembot simulator as it is a multi-physics robot simulator. It can simulate large-scale swarms of robots of any kind efficiently. You can customize ARGoS by adding new plug-ins. 
 
-One of the requirements for Krembot simulator is to use the exact same API as the real Krembot library. Argos expose its own interface to control the robots, so writing an adapter for Krembot APIs was necessary. [The adapter](api_flow.jpeg) expose Krembot API to the user, and converts it to an Argos interface "behind the scenes".
+One of the requirements for Krembot simulator is to use the exact same API as the real Krembot library. Argos expose its own interface to control the robots, so writing an adapter for Krembot APIs was necessary. The adapter expose Krembot API to the user, and converts it to an Argos interface "behind the scenes":
+
+![](api_flow.jpeg)
+
 In addition, Argos provides a simulated robot called "footboot" out of the box. This robot looks similar to "Krembot", so it is used to simulate the Krembot. This required some changes in the position of the footboot sensors to match those of the Krembot.
 - The Argos code base is under ```./krembot_sim/argos3/```. The original repository can be found [here](https://github.com/ilpincy/argos3)
 - The krembot adapter is under ```./krembot_sim/krembot/```.

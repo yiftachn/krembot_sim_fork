@@ -6,6 +6,7 @@ set(PROGRAM_NAME "program_template")
 add_definitions(
         -DCONTROLLER_NAME=${PROGRAM_NAME}_controller
         -DCONTROLLER_LABEL="${PROGRAM_NAME}_controller"
+        -DKREMBOT_SIM
 )
 
 set(SRC_FILES
@@ -20,3 +21,4 @@ target_link_libraries(${PROGRAM_NAME}
   argos3core_simulator
   argos3plugin_simulator_footbot
   argos3plugin_simulator_genericrobot)
+

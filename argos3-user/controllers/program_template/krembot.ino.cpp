@@ -37,16 +37,23 @@
  * Copy and past real robot setup() and loop() code into the functions below
  */
 
+# ifdef KREMBOT_SIM
 #include <Krembot/controller/krembot_controller.h>
+# else
+#include "Krembot/krembot.h"
+# endif
 
 /*
  * todo: Your #include statements goes here
  */
 
-
+# ifdef KREMBOT_SIM
 //DO NOT EDIT THIS MACRO
 KREMBOT_CONTROLLER_HEADER(CONTROLLER_NAME)
-
+# else
+    //Only one instance of krembot object should be declared
+    Krembot krembot;
+#endif
 //////////////////////////////////////////////
 //////////////////////////////////////////////
 //////////////////////////////////////////////
@@ -77,7 +84,8 @@ void loop() {
 ////////////////////////////////////////////////
 ////////////////////////////////////////////////
 ////DO NOT EDIT THESE MACROS
+# ifdef KREMBOT_SIM
 KREMBOT_CONTROLLER_FOOTER(CONTROLLER_NAME, CONTROLLER_LABEL)
-
+# endif
 
 

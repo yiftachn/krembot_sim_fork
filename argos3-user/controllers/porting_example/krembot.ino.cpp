@@ -67,7 +67,6 @@ void setup() {
 
 void loop() {
     krembot.loop();
-
     myCode.doSomething();
 }
 

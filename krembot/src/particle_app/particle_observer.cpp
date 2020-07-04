@@ -42,7 +42,7 @@
  * Simulate Particle.Publish() - generate a similar message to the one that
  * is printed in Particle cloud platform.
  * @param eventName
- * @param content
+ * @param content - stub field - does nothing
  * @param flags - stub field - does nothing
  */
 void ParticleObserver::publish(const String & eventName, const String & content, int flags) {
@@ -52,8 +52,8 @@ void ParticleObserver::publish(const String & eventName, const String & content,
     char dateBuff[utils::datetime::ISO_8601_TIME_DATE_SIZE];
     utils::datetime::GetIso8601DateTime(dateBuff, utils::datetime::ISO_8601_TIME_DATE_SIZE);
     fprintf(stderr,"{\"data\":\"%s\",\"ttl\":\"60\",\"published_at\":\"%s\",\"coreid\":\"%s\"}\n",
+            eventName.str().c_str(),
             dateBuff,
-            content.str().c_str(),
             m_name.c_str()
     );
 }

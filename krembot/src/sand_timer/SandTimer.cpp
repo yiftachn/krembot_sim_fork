@@ -38,38 +38,37 @@
 
 using namespace argos;
 
-SandTimer::SandTimer()
-{
-    started_ = false;
-    setPeriod(1000);
+millis_time_t SandTimer::ticks_per_sec_{0};
+
+SandTimer::SandTimer() {
+    // get the number of simulation ticks per second
+    ticks_per_sec_ = CSimulator::GetInstance().GetTicksPerSec();
 }
 
-uint32_t SandTimer::now() {
-    return CSimulator::GetInstance().GetSimulationClock();
+/**
+ * Convert simulation ticks to millis. If simulation is in fast forward, this function
+ * will return shorter times accordingly to allow for identical physical behaviour
+ * @return simulation time milliseconds
+ */
+millis_time_t SandTimer::millis() {
+    return CSimulator::GetInstance().GetSimulationClock() / ticks_per_sec_ * 1000.0f;
 }
 
-uint32_t SandTimer::millis() {
-    //convert simulation ticks to millis
-    float clock_tick = CSimulator::GetInstance().GetPhysicsEngines()[0]->GetSimulationClockTick();
-    float millis_per_simulation_tick = clock_tick * 1000;
-    return now() * millis_per_simulation_tick;
-}
-
-void SandTimer::setPeriod(unsigned long period) {
+void SandTimer::setPeriod(millis_time_t period) {
     // convert milliseconds period to simulation ticks
     float clock_tick = CSimulator::GetInstance().GetPhysicsEngines()[0]->GetSimulationClockTick();
     float millis_per_simulation_tick = clock_tick * 1000;
     period_ = period / millis_per_simulation_tick;
-//    fprintf(stderr, "clock_tick: %f, millis_per_simulation_tick: %f, period_: %d\n", clock_tick, millis_per_simulation_tick, period_);
+//    fprintf(stderr, "clock_tick: %f, millis_per_simulation_tick: %f, period_: %lu\n", clock_tick, millis_per_simulation_tick, period_);
 }
 
 /* start timer. if already started, do nothing */
-void SandTimer::start(unsigned long period)
+void SandTimer::start(millis_time_t period)
 {
     if (!started_)
     {
         setPeriod(period);
-        start_time_ = now();
+        start_time_ = millis();
         started_ = true;
     }
 }
@@ -78,14 +77,14 @@ void SandTimer::start()
 {
     if (!started_)
     {
-        start_time_ = now();
+        start_time_ = millis();
         started_ = true;
     }
 }
 /* override original start time, and start timer again */
 void SandTimer::startOver()
 {
-    start_time_ = now();
+    start_time_ = millis();
     if (!started_)
         started_ = true;
 }
@@ -95,9 +94,9 @@ bool SandTimer::finished()
 {
     if (started_)
     {
-        end_time_ = now();
+        end_time_ = millis();
         const float elaspedTime = end_time_ - start_time_;
-//        fprintf(stderr, "elapsed: %f, period: %d, sim clock: %d\n", elaspedTime, period_, CSimulator::GetInstance().GetSimulationClock());
+//        fprintf(stderr, "elapsed: %f, period: %lu, sim clock: %d\n", elaspedTime, period_, CSimulator::GetInstance().GetSimulationClock());
         if (elaspedTime >= period_)
         {
             started_ = false;
@@ -106,9 +105,3 @@ bool SandTimer::finished()
     return !started_;
 }
 
-void SandTimer::reset() {started_ = false;}
-
-bool SandTimer::isRunning()
-{
-    return started_;
-}

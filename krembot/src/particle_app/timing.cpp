@@ -45,5 +45,5 @@ void delay(int millis) {
 }
 
 long millis() {
-    return SandTimer::now();
+    return SandTimer::millis();
 }

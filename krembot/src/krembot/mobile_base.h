@@ -41,7 +41,15 @@ class MobileBase
 {
 
 private:
-    const uint8_t MAX_ARGOS_SPEED = 5;
+    /*
+     * This is what we get if we turn right/left for 800 millis in 75% speed (according to
+     * run_away_by_bumpers example):
+     * MAX_ARGOS_SPEED = 15 => 90 degs
+     * MAX_ARGOS_SPEED = 30 => 180 degs
+     * The real robots seems to move about 110 degs in this example, so according to that
+     * MAX_ARGOS_SPEED should be ~ 18
+     */
+    const uint8_t MAX_ARGOS_SPEED = 18;
     argos::CCI_DifferentialSteeringActuator * m_pcWheels = nullptr;
 
     int8_t m_linear = 0;

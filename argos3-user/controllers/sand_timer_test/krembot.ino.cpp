@@ -43,7 +43,7 @@
 #include "Krembot/krembot.h"
 # endif
 
-#include "my_code/MyCode.h"
+#include <chrono>
 
 # ifdef KREMBOT_SIM
 //DO NOT EDIT THIS MACRO
@@ -56,19 +56,42 @@ KREMBOT_CONTROLLER_HEADER(CONTROLLER_NAME)
 //////////////////////////////////////////////
 //////////////////////////////////////////////
 
-
-MyCode myCode{krembot};
-
+SandTimer timer;
 
 void setup() {
     krembot.setup();
+    timer.setPeriod(1000);
 }
 
+bool first{true};
+std::chrono::steady_clock::time_point startTime, endTime;
+
+millis_time_t millisStart, millisEnd;
 
 void loop() {
     krembot.loop();
 
-    myCode.doSomething();
+
+    if (first) {
+        first = false;
+        startTime = std::chrono::steady_clock::now();
+        millisStart = millis();
+    }
+
+    endTime = std::chrono::steady_clock::now();
+    millisEnd = millis();
+    const auto realDuration = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count();
+    if (realDuration >= 1000) {
+        const auto krembotDiff = millisEnd - millisStart;
+        fprintf(stderr, "chrono time difference = %lu [millis], krembot millis diff = %d [millis]\n", realDuration, krembotDiff);
+        startTime = std::chrono::steady_clock::now();
+        millisStart = millis();
+    }
+
+    timer.start();
+    if (timer.finished()) {
+        fprintf(stderr, "timer finished\n");
+    }
 }
 
 

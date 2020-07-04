@@ -4,5 +4,6 @@ add_subdirectory(program_template)
 add_subdirectory(run_away_by_bumpers)
 add_subdirectory(simple_demo)
 add_subdirectory(porting_example)
+add_subdirectory(sand_timer_test)
 #user todo: add here new controller's sub-directories
 

@@ -40,25 +40,28 @@
  * Milliseconds timer
  */
 
+using millis_time_t = uint32_t;
+
 class SandTimer
 {
 private:
-    uint32_t start_time_;
-    uint32_t end_time_;
-    uint32_t period_ = 0;
-    bool started_ = false;
+    millis_time_t start_time_{0};
+    millis_time_t end_time_{0};
+    millis_time_t period_ {1000};
+    bool started_ {false};
+    static millis_time_t ticks_per_sec_;
+
 
 public:
     SandTimer();
-    void start(unsigned long period);
+    void start(millis_time_t period);
     void start();
-    void setPeriod(unsigned long period);
+    void setPeriod(millis_time_t period);
     void startOver();
     bool finished();
-    void reset();
-    bool isRunning();
-    static uint32_t now();
-    static uint32_t millis();
+    static millis_time_t millis();
+    inline void reset() {started_ = false;}
+    inline bool isRunning() const { return started_; }
 };
 
 #endif

@@ -372,18 +372,17 @@ namespace argos {
          }
          m_pcRNG = CRandom::CreateRNG("argos");
          /* Set the simulation clock tick length */
-         UInt32 unTicksPerSec;
          GetNodeAttribute(tExperiment,
                           "ticks_per_second",
-                          unTicksPerSec);
-         CPhysicsEngine::SetSimulationClockTick(1.0 / static_cast<Real>(unTicksPerSec));
+                          m_unTicksPerSec);
+         CPhysicsEngine::SetSimulationClockTick(1.0 / static_cast<Real>(m_unTicksPerSec));
          /* Set the maximum simulation duration (in seconds) */
          Real fExpLength;
          GetNodeAttributeOrDefault<Real>(tExperiment,
                                          "length",
                                          fExpLength,
                                          0.0f);
-         m_unMaxSimulationClock = fExpLength * unTicksPerSec;
+         m_unMaxSimulationClock = fExpLength * m_unTicksPerSec;
          LOG << "[INFO] Total experiment length in clock ticks = "
              << (m_unMaxSimulationClock ? ToString(m_unMaxSimulationClock) : "unlimited")
              << std::endl;

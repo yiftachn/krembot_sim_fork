@@ -43,9 +43,10 @@ To avoid sourcing the file for every new terminal manually, you can add the sour
 1. [Create and run new krembot program](new_program.md)
 2. [Use multiple controllers in the same program](multi_controllers.md)
 3. [Porting files from real Krembot to simulator, and vice-versa](porting.md) 
-4. [Contribute](CONTRIBUTE.md)
-5. [Known issues](known_issues.md)
-6. To learn more about controllers, configuration files and how argos works, refer to Argos documentation:
+4. [Calibrating wheels speed](wheels_calib.md) 
+5. [Contribute](CONTRIBUTE.md)
+6. [Known issues](known_issues.md)
+7. To learn more about controllers, configuration files and how argos works, refer to Argos documentation:
 https://www.argos-sim.info/documentation.php
 
 https://github.com/ilpincy/argos3

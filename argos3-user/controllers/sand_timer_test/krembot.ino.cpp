@@ -83,7 +83,7 @@ void loop() {
     const auto realDuration = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count();
     if (realDuration >= 1000) {
         const auto krembotDiff = millisEnd - millisStart;
-        fprintf(stderr, "chrono time difference = %lu [millis], krembot millis diff = %d [millis]\n", realDuration, krembotDiff);
+        fprintf(stderr, "chrono time difference = %lu [millis], krembot millis diff = %f [millis]\n", realDuration, krembotDiff);
         startTime = std::chrono::steady_clock::now();
         millisStart = millis();
     }

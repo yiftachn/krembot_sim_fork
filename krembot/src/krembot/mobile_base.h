@@ -42,14 +42,12 @@ class MobileBase
 
 private:
     /*
-     * This is what we get if we turn right/left for 800 millis in 75% speed (according to
-     * run_away_by_bumpers example):
-     * MAX_ARGOS_SPEED = 15 => 90 degs
-     * MAX_ARGOS_SPEED = 30 => 180 degs
-     * The real robots seems to move about 110 degs in this example, so according to that
-     * MAX_ARGOS_SPEED should be ~ 18
+     * According to lab experiment with real Krembots hardware, it took about ~500 millis
+     * in full speed (100%) to complete a 180 degrees turn.
+     * The wheels speed below was calibrated accordingly
      */
-    const uint8_t MAX_ARGOS_SPEED = 18;
+    const uint8_t MAX_ARGOS_SPEED = 36;
+
     argos::CCI_DifferentialSteeringActuator * m_pcWheels = nullptr;
 
     int8_t m_linear = 0;

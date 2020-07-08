@@ -40,7 +40,8 @@
 using namespace std::chrono;
 
 void delay(int millis) {
-    //todo: insert error message to not use this function
+    fprintf(stderr, "Krembot/timing.cpp: WARNING: using delay function is "
+                    "not recommended and might cause bad side-effects. Consider using SandTimer instead\n");
     std::this_thread::sleep_for(milliseconds(millis));
 }
 

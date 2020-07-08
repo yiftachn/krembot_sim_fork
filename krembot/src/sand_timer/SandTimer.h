@@ -40,7 +40,7 @@
  * Milliseconds timer
  */
 
-using millis_time_t = uint32_t;
+using millis_time_t = float;
 
 class SandTimer
 {
@@ -56,10 +56,10 @@ public:
     SandTimer();
     void start(millis_time_t period);
     void start();
-    void setPeriod(millis_time_t period);
     void startOver();
     bool finished();
     static millis_time_t millis();
+    inline void setPeriod(millis_time_t period) { period_ = period; }
     inline void reset() {started_ = false;}
     inline bool isRunning() const { return started_; }
 };

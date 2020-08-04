@@ -1,7 +1,7 @@
 # Krembot Simulator
 
 A physics-based 3D simulator for Robotican's Krembot robot.  Original code by 
-Elhay Rauper for Bar Ilan University and the [ISF Smart Swarms](http://www.smart-swarm.org) center.  Uses and modifies (and adds to) the [Argos multi-robot simulator](https://www.argos-sim.info/).
+Elhay Rauper for Bar Ilan University and the [ISF Smart Swarms](http://www.smart-swarms.org) center.  Uses and modifies (and adds to) the [Argos multi-robot simulator](https://www.argos-sim.info/).
 
 ![](demo.gif)
 

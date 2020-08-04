@@ -1,4 +1,12 @@
 *build*/
 .idea/
-doc/
 cmake-build-debug/
+*.swp
+*~
+*.o
+ctags
+tags
+GTAGS
+GRTAGS
+GPATH
+

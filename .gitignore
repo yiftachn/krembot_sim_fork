@@ -1,4 +1,5 @@
 *build*/
+argos3/doc/api/
 .idea/
 cmake-build-debug/
 *.swp

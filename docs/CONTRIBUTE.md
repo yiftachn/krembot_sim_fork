@@ -30,5 +30,12 @@ Most of the support can be done in the Krembot adapter, as long as Argos support
 ## Fixing bugs
 Some bugs are [known](known_issues.md) and can't be fixed (easily) because of simulator limitations or requirements. In general bugs can originate in user controller, Krembot adapter or Argos code. In order to isolate it, it is recommended to debug the controller, then the adapter, and only then the simulator.
 
+### Editing Krembot Library Code
+For some cases, you may want to edit the krembot library code. After editing the code, cd into krembot/build directory, and compile using
 
+```
+sudo make install
+```
+
+This will compile the code, and then install the updated header files under /usr/local/include/ , and the .so file under /usr/local/bin/
 

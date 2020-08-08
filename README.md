@@ -11,6 +11,14 @@ Elhay Rauper for Bar Ilan University and the [ISF Smart Swarms](http://www.smart
 
 * Whenever `krembot_sim` directory mentioned in this README file, it referes to the root directory of this package.
 
+## Directories Tree
+
+There are 3 main directories in the package:
+
+1. ***argos3*** - contain argos simulation files
+2. ***krembot*** - contain krembot library simulation files
+3. ***argos3-user*** - this folder is an example workspace for creating krembot programs. You copy it to your own workspace (see [Creating New Programs](docs/new_program.md).
+
 ## Installation
 
 Run the installation script:

@@ -56,11 +56,11 @@ bool MobileBase::drive(int8_t linear_spd, int8_t angular_spd) {
 
     // convert speed to 0-100 percentage
     const float range_max = static_cast<float>(speedRange.GetMax());
-    int linear_scale = int((linear_spd / range_max) * MAX_ARGOS_SPEED);
-    int angular_scale = int((angular_spd / range_max) * MAX_ARGOS_SPEED);
+    double linear_scale = double((linear_spd / range_max) * MAX_ARGOS_SPEED_LINEAR);
+    double angular_scale = double((angular_spd / range_max) * MAX_ARGOS_SPEED_ANGULAR);
 
-    int left_cmd = linear_scale - angular_scale;
-    int right_cmd = linear_scale + angular_scale;
+    double left_cmd = linear_scale - angular_scale;
+    double right_cmd = linear_scale + angular_scale;
 
     if (m_pcWheels != nullptr) {
         m_pcWheels->SetLinearVelocity(left_cmd, right_cmd);

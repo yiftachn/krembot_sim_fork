@@ -44,7 +44,7 @@
 # endif
 
 /*
- * todo: Your #include statements goes here
+ * todo: Your #include statements go here
  */
 
 # ifdef KREMBOT_SIM
@@ -59,7 +59,7 @@ KREMBOT_CONTROLLER_HEADER(CONTROLLER_NAME)
 //////////////////////////////////////////////
 
 /*
- * todo: Your global variables goes here
+ * todo: Your global variables go here
  */
 
 

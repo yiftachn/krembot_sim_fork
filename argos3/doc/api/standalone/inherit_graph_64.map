@@ -1,5 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$a00131.html" title="argos::CEntityOperation\l\&lt; CPointMass3DOperationRemove\lEntity, CPointMass3DEngine,\l SOperationOutcome \&gt;" alt="" coords="5,5,233,76"/>
-<area shape="rect" id="node2" href="$a00204.html" title="argos::CPointMass3DOperation\l\&lt; CPointMass3DOperationRemoveEntity \&gt;" alt="" coords="281,20,556,61"/>
-<area shape="rect" id="node3" href="$a00206.html" title="argos::CPointMass3DOperation\lRemoveEntity" alt="" coords="604,20,811,61"/>
-</map>

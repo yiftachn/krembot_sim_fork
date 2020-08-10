@@ -1,6 +1,0 @@
-<map id="argos::CSpace" name="argos::CSpace">
-<area shape="rect" id="node3" href="$a00309.html" title="argos::CSpaceMultiThread\lBalanceLength" alt="" coords="385,5,563,47"/>
-<area shape="rect" id="node4" href="$a00310.html" title="argos::CSpaceMultiThread\lBalanceQuantity" alt="" coords="385,71,563,112"/>
-<area shape="rect" id="node5" href="$a00311.html" title="argos::CSpaceNoThreads" alt="" coords="387,137,561,163"/>
-<area shape="rect" id="node2" href="$a00011.html" title="This class is the base of all XML&#45;configurable ARGoS interface. " alt="" coords="5,71,180,112"/>
-</map>

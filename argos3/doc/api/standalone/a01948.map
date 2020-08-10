@@ -1,6 +1,0 @@
-<map id="argos::CFootBotDistanceScannerRotZOnlySensor" name="argos::CFootBotDistanceScannerRotZOnlySensor">
-<area shape="rect" id="node2" href="$a00303.html" title="The basic interface for a simulated sensor. " alt="" coords="5,177,176,203"/>
-<area shape="rect" id="node3" href="$a00048.html" title="argos::CCI_FootBotDistance\lScannerSensor" alt="" coords="201,169,391,211"/>
-<area shape="rect" id="node4" href="$a00075.html" title="The basic interface for all sensors. " alt="" coords="229,95,363,121"/>
-<area shape="rect" id="node5" href="$a00011.html" title="This class is the base of all XML&#45;configurable ARGoS interface. " alt="" coords="209,5,383,47"/>
-</map>

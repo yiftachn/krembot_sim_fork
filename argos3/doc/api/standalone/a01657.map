@@ -1,4 +1,0 @@
-<map id="argos::CBatteryDischargeModelMotion" name="argos::CBatteryDischargeModelMotion">
-<area shape="rect" id="node2" href="$a00014.html" title="The discharge model dictates how the battery discharges over time. " alt="" coords="6,95,179,136"/>
-<area shape="rect" id="node3" href="$a00011.html" title="This class is the base of all XML&#45;configurable ARGoS interface. " alt="" coords="5,5,180,47"/>
-</map>

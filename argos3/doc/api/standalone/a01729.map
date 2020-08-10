@@ -1,5 +1,0 @@
-<map id="argos::CCI_EyeBotProximitySensor" name="argos::CCI_EyeBotProximitySensor">
-<area shape="rect" id="node4" href="$a00135.html" title="argos::CEyeBotProximityDefault\lSensor" alt="" coords="5,259,217,300"/>
-<area shape="rect" id="node2" href="$a00075.html" title="The basic interface for all sensors. " alt="" coords="44,95,179,121"/>
-<area shape="rect" id="node3" href="$a00011.html" title="This class is the base of all XML&#45;configurable ARGoS interface. " alt="" coords="24,5,199,47"/>
-</map>

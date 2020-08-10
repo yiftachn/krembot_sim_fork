@@ -1,6 +1,0 @@
-<map id="argos::CFootBotProximityDefaultSensor" name="argos::CFootBotProximityDefaultSensor">
-<area shape="rect" id="node2" href="$a00054.html" title="argos::CCI_FootBotProximity\lSensor" alt="" coords="5,169,200,211"/>
-<area shape="rect" id="node3" href="$a00075.html" title="The basic interface for all sensors. " alt="" coords="35,95,170,121"/>
-<area shape="rect" id="node4" href="$a00011.html" title="This class is the base of all XML&#45;configurable ARGoS interface. " alt="" coords="15,5,190,47"/>
-<area shape="rect" id="node5" href="$a00303.html" title="The basic interface for a simulated sensor. " alt="" coords="224,177,395,203"/>
-</map>

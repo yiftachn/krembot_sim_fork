@@ -1,4 +1,0 @@
-<map id="argos::CPointMass3DFootBotModel" name="argos::CPointMass3DFootBotModel">
-<area shape="rect" id="node2" href="$a00203.html" title="argos::CPointMass3DModel" alt="" coords="11,80,197,107"/>
-<area shape="rect" id="node3" href="$a00193.html" title="argos::CPhysicsModel" alt="" coords="27,5,181,32"/>
-</map>

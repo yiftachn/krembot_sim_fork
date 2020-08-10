@@ -1,4 +1,0 @@
-var a00912 =
-[
-    [ "REGISTER_VISUALIZATION", "a00912.html#a92cc7cf7b0d623b18502838849b576fd", null ]
-];

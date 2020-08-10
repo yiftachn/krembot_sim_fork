@@ -1,6 +1,0 @@
-<map id="plugins/robots/foot&#45;bot/simulator/footbot_turret_entity.h" name="plugins/robots/foot&#45;bot/simulator/footbot_turret_entity.h">
-<area shape="rect" id="node2" href="$a00595.html" title="plugins/robots/foot\l&#45;bot/simulator/dynamics2d\l_footbot_model.cpp" alt="" coords="5,109,180,165"/>
-<area shape="rect" id="node3" href="$a00605.html" title="plugins/robots/foot\l&#45;bot/simulator/footbot\l_entity.cpp" alt="" coords="204,109,349,165"/>
-<area shape="rect" id="node4" href="$a00621.html" title="plugins/robots/foot\l&#45;bot/simulator/footbot\l_turret_entity.cpp" alt="" coords="373,109,519,165"/>
-<area shape="rect" id="node5" href="$a00627.html" title="plugins/robots/foot\l&#45;bot/simulator/qtopengl\l_footbot.cpp" alt="" coords="543,109,698,165"/>
-</map>

@@ -1,6 +1,0 @@
-var a00563 =
-[
-    [ "UPDATE", "a00563.html#acc87d83df62d9f95fb7916e095ded9b4", null ],
-    [ "REGISTER_ENTITY", "a00563.html#a2b11f43486473f872c53671cc51ae93f", null ],
-    [ "REGISTER_STANDARD_SPACE_OPERATIONS_ON_COMPOSABLE", "a00563.html#a31bb4bfadc15af5494950c5791079236", null ]
-];

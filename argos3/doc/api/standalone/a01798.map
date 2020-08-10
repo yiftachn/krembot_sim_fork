@@ -1,5 +1,0 @@
-<map id="argos::CCI_RadiosActuator" name="argos::CCI_RadiosActuator">
-<area shape="rect" id="node4" href="$a00284.html" title="argos::CRadiosDefaultActuator" alt="" coords="5,244,209,271"/>
-<area shape="rect" id="node2" href="$a00030.html" title="The basic interface for all actuators. " alt="" coords="36,95,179,121"/>
-<area shape="rect" id="node3" href="$a00011.html" title="This class is the base of all XML&#45;configurable ARGoS interface. " alt="" coords="20,5,195,47"/>
-</map>

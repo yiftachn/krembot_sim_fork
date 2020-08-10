@@ -1,9 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node2" href="$a00340.html" title="argos::CCameraSensorDirectional\lLEDDetectorAlgorithm::CUpdateOperation" alt="" coords="276,71,545,112"/>
-<area shape="rect" id="node3" href="$a00339.html" title="argos::CCameraSensorLEDDetector\lAlgorithm::CUpdateOperation" alt="" coords="293,5,528,47"/>
-<area shape="rect" id="node4" href="$a00012.html" title="argos::CCameraSensorSimulated\lAlgorithm::CBaseUpdateOperation" alt="" coords="5,267,228,308"/>
-<area shape="rect" id="node5" href="$a00338.html" title="argos::CCameraSensorTagDetector\lAlgorithm::CUpdateOperation" alt="" coords="295,267,526,308"/>
-<area shape="rect" id="node6" href="$a00189.html" title="The operation to perform on each entity found in range. " alt="" coords="33,136,201,177"/>
-<area shape="rect" id="node7" href="$a00186.html" title="argos::COmnidirectionalCamera\lLEDCheckOperation" alt="" coords="307,201,515,243"/>
-<area shape="rect" id="node8" href="$a00191.html" title="argos::CPerspectiveCamera\lLEDCheckOperation" alt="" coords="317,136,504,177"/>
-</map>

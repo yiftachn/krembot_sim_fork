@@ -1,6 +1,0 @@
-<map id="argos::CDifferentialSteeringDefaultActuator" name="argos::CDifferentialSteeringDefaultActuator">
-<area shape="rect" id="node2" href="$a00302.html" title="The basic interface for a simulated actuator. " alt="" coords="5,177,184,203"/>
-<area shape="rect" id="node3" href="$a00041.html" title="argos::CCI_DifferentialSteering\lActuator" alt="" coords="209,169,413,211"/>
-<area shape="rect" id="node4" href="$a00030.html" title="The basic interface for all actuators. " alt="" coords="239,95,382,121"/>
-<area shape="rect" id="node5" href="$a00011.html" title="This class is the base of all XML&#45;configurable ARGoS interface. " alt="" coords="223,5,398,47"/>
-</map>

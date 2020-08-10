@@ -1,7 +1,0 @@
-<map id="argos::CDynamics2DStretchableObjectModel" name="argos::CDynamics2DStretchableObjectModel">
-<area shape="rect" id="node5" href="$a00097.html" title="argos::CDynamics2DBoxModel" alt="" coords="5,341,212,367"/>
-<area shape="rect" id="node6" href="$a00098.html" title="argos::CDynamics2DCylinder\lModel" alt="" coords="236,333,432,375"/>
-<area shape="rect" id="node2" href="$a00110.html" title="Base class for object models with a single body. " alt="" coords="129,155,313,196"/>
-<area shape="rect" id="node3" href="$a00105.html" title="The base class for models in the dynamics 2D engine. " alt="" coords="129,80,312,107"/>
-<area shape="rect" id="node4" href="$a00193.html" title="argos::CPhysicsModel" alt="" coords="143,5,298,32"/>
-</map>

@@ -1,0 +1,25 @@
+var a00213 =
+[
+    [ "CPrototypeEntity", "a00213.html#a10676572ccd8a547a51d88cc80192781", null ],
+    [ "~CPrototypeEntity", "a00213.html#acaaa06a9df4b372c259f9154d2d08953", null ],
+    [ "ENABLE_VTABLE", "a00213.html#ad132c9871b0bcea7712d4295c43e93ee", null ],
+    [ "GetControllableEntity", "a00213.html#a1b5d2f4e99b10b491276b361cdd18578", null ],
+    [ "GetDirectionalLEDEquippedEntity", "a00213.html#adc953334a3b15294058446c55b006063", null ],
+    [ "GetEmbodiedEntity", "a00213.html#af24e1c73e7b755dc885e8e379787c5eb", null ],
+    [ "GetJointEquippedEntity", "a00213.html#a72ce957630b74a38969cc9c8624cde44", null ],
+    [ "GetLEDEquippedEntity", "a00213.html#a7c9c3494fb65066e16913058d89d702d", null ],
+    [ "GetLinkEquippedEntity", "a00213.html#afd91489268b3b6d9a12d33e6a3dd7002", null ],
+    [ "GetMagnetEquippedEntity", "a00213.html#ac2fe566d68647ff2b818fa60cfa49fa1", null ],
+    [ "GetProximitySensorEquippedEntity", "a00213.html#ac58008d66f629f4e0c409eb46a1d7dd9", null ],
+    [ "GetRadioEquippedEntity", "a00213.html#a7d225766e4b84f39c29a059bf1a878c1", null ],
+    [ "GetTagEquippedEntity", "a00213.html#ace6870010ced042c4a281b66753cdae2", null ],
+    [ "GetTypeDescription", "a00213.html#a846d4e573fae89d142162f68497be365", null ],
+    [ "HasControllableEntity", "a00213.html#a83105c8ce4fbe21fe7a7d8a4cac19ee5", null ],
+    [ "HasDirectionalLEDEquippedEntity", "a00213.html#ab5b32d626a5294941fad04716d558041", null ],
+    [ "HasLEDEquippedEntity", "a00213.html#a673153021c9790c2eee5bfd6be28582f", null ],
+    [ "HasMagnetEquippedEntity", "a00213.html#a06ca625cf81a5a5ccd05c0f0dd51dfd9", null ],
+    [ "HasProximitySensorEquippedEntity", "a00213.html#a435b64804e446a7963e77c46ccb04eab", null ],
+    [ "HasRadioEquippedEntity", "a00213.html#aa73601a9a00d3119b5ff604907cf6707", null ],
+    [ "HasTagEquippedEntity", "a00213.html#a3d5cdaa76859276cc1186eaf3bdebc7a", null ],
+    [ "Init", "a00213.html#ac55d8f1975869d43c48b5285b05c87d2", null ]
+];

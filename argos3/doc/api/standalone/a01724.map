@@ -1,0 +1,5 @@
+<map id="argos::CCI_DirectionalLEDsActuator" name="argos::CCI_DirectionalLEDsActuator">
+<area shape="rect" id="node4" href="$a00095.html" title="argos::CDirectionalLEDsDefault\lActuator" alt="" coords="5,259,215,300"/>
+<area shape="rect" id="node2" href="$a00030.html" title="The basic interface for all actuators. " alt="" coords="39,95,181,121"/>
+<area shape="rect" id="node3" href="$a00011.html" title="This class is the base of all XML&#45;configurable ARGoS interface. " alt="" coords="23,5,197,47"/>
+</map>

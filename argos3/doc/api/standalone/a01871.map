@@ -1,0 +1,4 @@
+<map id="argos::CDynamics2DOperationAddEntity" name="argos::CDynamics2DOperationAddEntity">
+<area shape="rect" id="node2" href="$a00107.html" title="argos::CDynamics2DOperation\l\&lt; CDynamics2DOperationAddEntity \&gt;" alt="" coords="344,13,589,54"/>
+<area shape="rect" id="node3" href="$a00131.html" title="argos::CEntityOperation\l\&lt; CDynamics2DOperationAddEntity,\l CDynamics2DEngine, SOperationOutcome \&gt;" alt="" coords="5,5,296,61"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="argos::CCI_PrototypeJointsSensor" name="argos::CCI_PrototypeJointsSensor">
+<area shape="rect" id="node4" href="$a00217.html" title="argos::CPrototypeJointsDefault\lSensor" alt="" coords="5,259,211,300"/>
+<area shape="rect" id="node2" href="$a00075.html" title="The basic interface for all sensors. " alt="" coords="41,95,175,121"/>
+<area shape="rect" id="node3" href="$a00011.html" title="This class is the base of all XML&#45;configurable ARGoS interface. " alt="" coords="21,5,195,47"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="argos::CSpaceOperationAddCRABEquippedEntity" name="argos::CSpaceOperationAddCRABEquippedEntity">
+<area shape="rect" id="node2" href="$a00319.html" title="argos::CSpaceOperationAdd\lEntity" alt="" coords="15,199,203,240"/>
+<area shape="rect" id="node3" href="$a00312.html" title="argos::CSpaceOperation\l\&lt; CSpaceOperationAddEntity \&gt;" alt="" coords="5,109,212,151"/>
+<area shape="rect" id="node4" href="$a00131.html" title="argos::CEntityOperation\l\&lt; CSpaceOperationAddEntity,\l CSpace, void \&gt;" alt="" coords="9,5,208,61"/>
+</map>

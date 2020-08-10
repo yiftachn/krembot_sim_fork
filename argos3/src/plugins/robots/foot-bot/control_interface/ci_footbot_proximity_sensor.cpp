@@ -22,7 +22,6 @@ namespace argos {
    /****************************************/
    /****************************************/
 
-   //TODO: Eden -> bug!
    CCI_FootBotProximitySensor::CCI_FootBotProximitySensor() :
       m_tReadings(8) {
       for(size_t i = 0; i < 8; ++i) {

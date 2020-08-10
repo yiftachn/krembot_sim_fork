@@ -1,0 +1,25 @@
+var a00279 =
+[
+    [ "TList", "a00279.html#adc848e86c9d993ba91604d0e8d3c47f3", null ],
+    [ "CRadioEntity", "a00279.html#adffeabc1415539d37821a2628a0539d7", null ],
+    [ "CRadioEntity", "a00279.html#a126ab4c91d96bbd1a57affc529283fef", null ],
+    [ "~CRadioEntity", "a00279.html#aa95e26c7d0947fd4a97d79b374847cf9", null ],
+    [ "Destroy", "a00279.html#aa2ea50a7bfafc6c6d3fb4af0857c9f86", null ],
+    [ "ENABLE_VTABLE", "a00279.html#a17626d6958d96ce6708aa12b40ae9b96", null ],
+    [ "GetData", "a00279.html#a8c11e5b87e567e748f66415b452194d8", null ],
+    [ "GetData", "a00279.html#a4bdaeceb857dcb25d242f9f65a062cab", null ],
+    [ "GetMedium", "a00279.html#a620c4fbcc4804b8705eab5c06431bd50", null ],
+    [ "GetRange", "a00279.html#ad3dd1aab32def00b883f186fe312eaa7", null ],
+    [ "GetTypeDescription", "a00279.html#a4dc7b2af2ababa8810c74981624dfeb0", null ],
+    [ "HasData", "a00279.html#a2c3ac9d2f37bcbd6d1d23bacf0005826", null ],
+    [ "HasMedium", "a00279.html#af71c6b4197141c45cba94edf1d6979b5", null ],
+    [ "Init", "a00279.html#a7aa0f8c7e74fe49dd6040ceb1326d2a3", null ],
+    [ "ReceiveData", "a00279.html#ab80cdaceb8c677bfea8cbe0cacb195a2", null ],
+    [ "Reset", "a00279.html#a7e7f8da4293b6ee27d74969f08e65eb0", null ],
+    [ "SetEnabled", "a00279.html#a47096fd23eb5d2fe59fec46f71d4cec1", null ],
+    [ "SetMedium", "a00279.html#a357a8b3673ae196d9ca38a6fbe665ebf", null ],
+    [ "SetRange", "a00279.html#a10698b29fcd28b6a5c53199290e248be", null ],
+    [ "m_fRange", "a00279.html#a9d133cf84b100e6f147209a3dab74197", null ],
+    [ "m_pcMedium", "a00279.html#a4940dafc39e0435c74fa6e514b8a1096", null ],
+    [ "m_vecData", "a00279.html#a61daf7cb172d29fa01c4ef0510016300", null ]
+];

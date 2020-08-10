@@ -1,0 +1,6 @@
+<map id="argos::CFootBotBaseGroundRotZOnlySensor" name="argos::CFootBotBaseGroundRotZOnlySensor">
+<area shape="rect" id="node2" href="$a00046.html" title="argos::CCI_FootBotBaseGround\lSensor" alt="" coords="5,169,216,211"/>
+<area shape="rect" id="node3" href="$a00075.html" title="The basic interface for all sensors. " alt="" coords="43,95,178,121"/>
+<area shape="rect" id="node4" href="$a00011.html" title="This class is the base of all XML&#45;configurable ARGoS interface. " alt="" coords="23,5,198,47"/>
+<area shape="rect" id="node5" href="$a00303.html" title="The basic interface for a simulated sensor. " alt="" coords="240,177,411,203"/>
+</map>

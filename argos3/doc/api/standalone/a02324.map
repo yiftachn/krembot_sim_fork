@@ -1,0 +1,6 @@
+<map id="argos::CTagsDefaultActuator" name="argos::CTagsDefaultActuator">
+<area shape="rect" id="node2" href="$a00302.html" title="The basic interface for a simulated actuator. " alt="" coords="5,169,184,196"/>
+<area shape="rect" id="node3" href="$a00076.html" title="argos::CCI_TagsActuator" alt="" coords="208,169,379,196"/>
+<area shape="rect" id="node4" href="$a00030.html" title="The basic interface for all actuators. " alt="" coords="222,95,365,121"/>
+<area shape="rect" id="node5" href="$a00011.html" title="This class is the base of all XML&#45;configurable ARGoS interface. " alt="" coords="206,5,381,47"/>
+</map>

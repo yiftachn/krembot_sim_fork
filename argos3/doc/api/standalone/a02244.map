@@ -1,0 +1,6 @@
+<map id="argos::CRangeAndBearingMediumSensor" name="argos::CRangeAndBearingMediumSensor">
+<area shape="rect" id="node2" href="$a00303.html" title="The basic interface for a simulated sensor. " alt="" coords="5,177,176,203"/>
+<area shape="rect" id="node3" href="$a00074.html" title="argos::CCI_RangeAndBearing\lSensor" alt="" coords="201,169,399,211"/>
+<area shape="rect" id="node4" href="$a00075.html" title="The basic interface for all sensors. " alt="" coords="233,95,367,121"/>
+<area shape="rect" id="node5" href="$a00011.html" title="This class is the base of all XML&#45;configurable ARGoS interface. " alt="" coords="213,5,387,47"/>
+</map>

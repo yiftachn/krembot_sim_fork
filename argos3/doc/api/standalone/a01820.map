@@ -1,0 +1,21 @@
+<map id="argos::CComposableEntity" name="argos::CComposableEntity">
+<area shape="rect" id="node5" href="$a00021.html" title="argos::CBoxEntity" alt="" coords="652,5,781,32"/>
+<area shape="rect" id="node6" href="$a00085.html" title="argos::CCylinderEntity" alt="" coords="639,56,794,83"/>
+<area shape="rect" id="node7" href="$a00093.html" title="A container of CDirectionalLEDEntity. " alt="" coords="609,107,824,149"/>
+<area shape="rect" id="node8" href="$a00132.html" title="argos::CEPuckEntity" alt="" coords="644,173,789,200"/>
+<area shape="rect" id="node9" href="$a00133.html" title="argos::CEyeBotEntity" alt="" coords="642,224,791,251"/>
+<area shape="rect" id="node10" href="$a00144.html" title="argos::CFootBotEntity" alt="" coords="641,275,793,301"/>
+<area shape="rect" id="node11" href="$a00164.html" title="A container of CLEDEntity. " alt="" coords="623,325,810,352"/>
+<area shape="rect" id="node12" href="$a00178.html" title="A container of CMagnetEntity. " alt="" coords="615,376,818,403"/>
+<area shape="rect" id="node13" href="$a00183.html" title="argos::CMiniQuadrotorEntity" alt="" coords="623,427,810,453"/>
+<area shape="rect" id="node14" href="$a00213.html" title="argos::CPrototypeEntity" alt="" coords="635,477,798,504"/>
+<area shape="rect" id="node15" href="$a00214.html" title="argos::CPrototypeJointEntity" alt="" coords="621,528,812,555"/>
+<area shape="rect" id="node16" href="$a00215.html" title="argos::CPrototypeJointEquipped\lEntity" alt="" coords="611,579,822,621"/>
+<area shape="rect" id="node17" href="$a00219.html" title="argos::CPrototypeLinkEquipped\lEntity" alt="" coords="613,645,820,686"/>
+<area shape="rect" id="node18" href="$a00282.html" title="A container of CRadioEntity. " alt="" coords="619,711,814,737"/>
+<area shape="rect" id="node19" href="$a00326.html" title="argos::CSpiriEntity" alt="" coords="651,761,783,788"/>
+<area shape="rect" id="node20" href="$a00332.html" title="A container of CTagEntity. " alt="" coords="625,812,808,839"/>
+<area shape="rect" id="node2" href="$a00130.html" title="The basic entity type. " alt="" coords="228,401,335,428"/>
+<area shape="rect" id="node3" href="$a00011.html" title="This class is the base of all XML&#45;configurable ARGoS interface. " alt="" coords="5,361,180,402"/>
+<area shape="rect" id="node4" href="$a00347.html" title="argos::EnableVTableFor\l\&lt; CEntity \&gt;" alt="" coords="11,426,174,467"/>
+</map>

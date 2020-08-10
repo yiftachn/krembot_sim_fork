@@ -1,0 +1,9 @@
+<map id="argos::CSpaceOperationRemoveEntity" name="argos::CSpaceOperationRemoveEntity">
+<area shape="rect" id="node4" href="$a00320.html" title="argos::CSpaceOperationRemove\lCDirectionalLEDEntity" alt="" coords="820,5,1035,47"/>
+<area shape="rect" id="node5" href="$a00321.html" title="argos::CSpaceOperationRemove\lCLEDEntity" alt="" coords="820,71,1035,112"/>
+<area shape="rect" id="node6" href="$a00322.html" title="argos::CSpaceOperationRemove\lCRABEquippedEntity" alt="" coords="820,136,1035,177"/>
+<area shape="rect" id="node7" href="$a00323.html" title="argos::CSpaceOperationRemove\lCRadioEntity" alt="" coords="820,201,1035,243"/>
+<area shape="rect" id="node8" href="$a00324.html" title="argos::CSpaceOperationRemove\lCTagEntity" alt="" coords="820,267,1035,308"/>
+<area shape="rect" id="node2" href="$a00312.html" title="argos::CSpaceOperation\l\&lt; CSpaceOperationRemoveEntity \&gt;" alt="" coords="277,136,509,177"/>
+<area shape="rect" id="node3" href="$a00131.html" title="argos::CEntityOperation\l\&lt; CSpaceOperationRemoveEntity,\l CSpace, void \&gt;" alt="" coords="5,129,229,185"/>
+</map>

@@ -48,13 +48,8 @@
 void ParticleObserver::publish(const String & eventName, const String & content, int flags) {
     if (m_name.empty()) {
         return;
-    }
-//    char dateBuff[utils::datetime::ISO_8601_TIME_DATE_SIZE];
-//    utils::datetime::GetIso8601DateTime(dateBuff, utils::datetime::ISO_8601_TIME_DATE_SIZE);
-//    const int sim_clock = CSimulator::GetInstance().GetSimulationClock();
+      }
     int sim_clock = millis() / 1000;
-//    fprintf(stderr,"%d",sim_clock);
-//    std::string dataBuff = simClockToDataBuff(sim_clock);
     int milisec = sim_clock % 10;
     sim_clock = sim_clock / 10;
     int sec = sim_clock % 60;
@@ -62,7 +57,7 @@ void ParticleObserver::publish(const String & eventName, const String & content,
     int hours = (sim_clock / 60) / 60;
     char dateBuff[30];
     snprintf(dateBuff, sizeof(dateBuff), "2020-07-01T%02d:%02d:%02d.%d00Z", hours, min, sec, milisec);
-    //2019-04-10T13:15:52.087Z
+    //the wanted format: 2019-04-10T13:15:52.087Z
     fprintf(stderr,"event: %s\ndata: {\"data\":\"%s\",\"ttl\":\"60\",\"published_at\":\"%s\",\"coreid\":\"%s\"}\n",
             eventName.str().c_str(),
             content.str().c_str(),

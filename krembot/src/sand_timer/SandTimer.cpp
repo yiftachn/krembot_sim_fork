@@ -52,9 +52,6 @@ SandTimer::SandTimer() {
  */
 millis_time_t SandTimer::millis() {
     const float sim_clock = CSimulator::GetInstance().GetSimulationClock();
-//     fprintf (stderr, "sim clock %f, ticks: %f\n", sim_clock, ticks_per_sec_);
-
-//    return sim_clock / ticks_per_sec_ * 1000.0f;
     return sim_clock * 1000.0f;
 }
 
@@ -101,4 +98,3 @@ bool SandTimer::finished()
     }
     return !started_;
 }
-

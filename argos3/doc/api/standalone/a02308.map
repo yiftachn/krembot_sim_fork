@@ -1,0 +1,6 @@
+<map id="argos::CSpiriEntity" name="argos::CSpiriEntity">
+<area shape="rect" id="node2" href="$a00081.html" title="Basic class for an entity that contains other entities. " alt="" coords="99,169,278,196"/>
+<area shape="rect" id="node3" href="$a00130.html" title="The basic entity type. " alt="" coords="135,95,242,121"/>
+<area shape="rect" id="node4" href="$a00011.html" title="This class is the base of all XML&#45;configurable ARGoS interface. " alt="" coords="5,5,180,47"/>
+<area shape="rect" id="node5" href="$a00347.html" title="argos::EnableVTableFor\l\&lt; CEntity \&gt;" alt="" coords="205,5,367,47"/>
+</map>

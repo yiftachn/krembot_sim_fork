@@ -1,0 +1,8 @@
+<map id="argos::CMedium" name="argos::CMedium">
+<area shape="rect" id="node3" href="$a00094.html" title="argos::CDirectionalLEDMedium" alt="" coords="395,5,601,32"/>
+<area shape="rect" id="node4" href="$a00165.html" title="argos::CLEDMedium" alt="" coords="426,56,570,83"/>
+<area shape="rect" id="node5" href="$a00277.html" title="argos::CRABMedium" alt="" coords="425,107,571,133"/>
+<area shape="rect" id="node6" href="$a00283.html" title="argos::CRadioMedium" alt="" coords="422,157,574,184"/>
+<area shape="rect" id="node7" href="$a00333.html" title="argos::CTagMedium" alt="" coords="428,208,568,235"/>
+<area shape="rect" id="node2" href="$a00011.html" title="This class is the base of all XML&#45;configurable ARGoS interface. " alt="" coords="5,99,180,141"/>
+</map>

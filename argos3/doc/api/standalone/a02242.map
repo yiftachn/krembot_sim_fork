@@ -1,0 +1,6 @@
+<map id="argos::CRangeAndBearingDefaultActuator" name="argos::CRangeAndBearingDefaultActuator">
+<area shape="rect" id="node2" href="$a00302.html" title="The basic interface for a simulated actuator. " alt="" coords="5,177,184,203"/>
+<area shape="rect" id="node3" href="$a00073.html" title="argos::CCI_RangeAndBearing\lActuator" alt="" coords="209,169,407,211"/>
+<area shape="rect" id="node4" href="$a00030.html" title="The basic interface for all actuators. " alt="" coords="237,95,379,121"/>
+<area shape="rect" id="node5" href="$a00011.html" title="This class is the base of all XML&#45;configurable ARGoS interface. " alt="" coords="221,5,395,47"/>
+</map>

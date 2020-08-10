@@ -1,0 +1,5 @@
+<map id="argos::CDynamics3DCylinderModel" name="argos::CDynamics3DCylinderModel">
+<area shape="rect" id="node2" href="$a00127.html" title="argos::CDynamics3DSingle\lBodyObjectModel" alt="" coords="11,155,195,196"/>
+<area shape="rect" id="node3" href="$a00119.html" title="argos::CDynamics3DModel" alt="" coords="12,80,195,107"/>
+<area shape="rect" id="node4" href="$a00193.html" title="argos::CPhysicsModel" alt="" coords="26,5,181,32"/>
+</map>

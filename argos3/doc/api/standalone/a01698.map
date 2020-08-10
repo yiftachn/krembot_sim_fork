@@ -1,0 +1,9 @@
+<map id="argos::CCI_CameraSensorAlgorithm" name="argos::CCI_CameraSensorAlgorithm">
+<area shape="rect" id="node3" href="$a00035.html" title="argos::CCI_CameraSensorDirectional\lLEDDetectorAlgorithm" alt="" coords="517,5,760,47"/>
+<area shape="rect" id="node5" href="$a00036.html" title="argos::CCI_CameraSensorLEDDetector\lAlgorithm" alt="" coords="511,71,767,112"/>
+<area shape="rect" id="node7" href="$a00037.html" title="argos::CCI_CameraSensorTag\lDetectorAlgorithm" alt="" coords="537,136,740,177"/>
+<area shape="rect" id="node2" href="$a00011.html" title="This class is the base of all XML&#45;configurable ARGoS interface. " alt="" coords="5,71,180,112"/>
+<area shape="rect" id="node4" href="$a00024.html" title="This class provides the most general interface to a camera. " alt="" coords="821,5,1043,47"/>
+<area shape="rect" id="node6" href="$a00025.html" title="This class provides the most general interface to a camera. " alt="" coords="815,71,1049,112"/>
+<area shape="rect" id="node8" href="$a00027.html" title="This class provides the most general interface to a camera. " alt="" coords="817,136,1047,177"/>
+</map>

@@ -91,9 +91,6 @@ public:
      */
     virtual void Destroy() {}
 
-
-   inline Krembot* getKrembotPtr() { return &krembot; }
-
 private:
 
 

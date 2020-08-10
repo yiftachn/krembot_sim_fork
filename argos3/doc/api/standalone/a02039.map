@@ -1,0 +1,4 @@
+<map id="argos::CPhysicsEngine::SBoundaryFace" name="argos::CPhysicsEngine::SBoundaryFace">
+<area shape="rect" id="node2" href="$a00373.html" title="A boundary face for top/bottom parts of the volume. " alt="" coords="5,95,164,136"/>
+<area shape="rect" id="node3" href="$a00421.html" title="A boundary face for side parts of the volume. " alt="" coords="188,95,347,136"/>
+</map>

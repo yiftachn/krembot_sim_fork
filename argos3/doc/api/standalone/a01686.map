@@ -1,0 +1,4 @@
+<map id="argos::CCameraSensorTagDetectorAlgorithm::CUpdateOperation" name="argos::CCameraSensorTagDetectorAlgorithm::CUpdateOperation">
+<area shape="rect" id="node2" href="$a00012.html" title="argos::CCameraSensorSimulated\lAlgorithm::CBaseUpdateOperation" alt="" coords="5,5,228,47"/>
+<area shape="rect" id="node3" href="$a00189.html" title="The operation to perform on each entity found in range. " alt="" coords="33,71,201,112"/>
+</map>

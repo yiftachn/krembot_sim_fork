@@ -1,0 +1,5 @@
+<map id="argos::CCI_FootBotDistanceScannerActuator" name="argos::CCI_FootBotDistanceScannerActuator">
+<area shape="rect" id="node4" href="$a00141.html" title="argos::CFootBotDistanceScanner\lDefaultActuator" alt="" coords="5,259,224,300"/>
+<area shape="rect" id="node2" href="$a00030.html" title="The basic interface for all actuators. " alt="" coords="43,95,186,121"/>
+<area shape="rect" id="node3" href="$a00011.html" title="This class is the base of all XML&#45;configurable ARGoS interface. " alt="" coords="27,5,202,47"/>
+</map>

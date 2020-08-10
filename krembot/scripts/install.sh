@@ -24,7 +24,8 @@ set -e
 
 cd $PKG_PATH/argos3
 
-mkdir build_simulator && cd build_simulator
+
+mkdir -p build_simulator && cd build_simulator
 
 echo "Generating argos3 cmake files..." ; echo
 
@@ -48,7 +49,7 @@ echo "Installing krembot..." ; echo
 
 cd $PKG_PATH/krembot
 
-mkdir build && cd build
+mkdir -p build && cd build
 
 echo "Generating krembot cmake files..." ; echo
 
@@ -66,7 +67,7 @@ echo "Compiling argos3-user..." ; echo
 
 cd $PKG_PATH/argos3-user/
 
-mkdir build && cd build
+mkdir -p build && cd build
 
 cmake ..
 

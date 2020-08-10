@@ -45,12 +45,16 @@
         The attributes are:
         - id: a unique a identifier for this controller, to be used in the
           subsequent <arena> section to say which robots use which
-          controller
+        controller.  For example:
+              id="program_template"
         - library: the path to the compiled library containing you
-          controller.
+        controller.  For example:
+              library="/home/eli/ws/krembot_sim/argos3-user/build/controllers/program_template/libprogram_template.so"
+        
     -->
     <program_template_controller id="program_template"
-                                  library="/home/eli/ws/krembot_sim/argos3-user/build/controllers/program_template/libprogram_template.so">
+        library="/home/eli/ws/krembot_sim/argos3-user/build/controllers/program_template/libprogram_template.so">
+    
       <!--
           The <actuators> section contains a list of the actuators used by
           this controller.

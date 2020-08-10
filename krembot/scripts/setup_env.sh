@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-KREMBOT_SIM_PATH="$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )"/../..
+export KREMBOT_SIM_PATH="$( cd "$(dirname ${BASH_SOURCE[0]})"; cd ../../ ; pwd -P )"
 
 #echo "detected KREMBOT_SIM_PATH as $KREMBOT_SIM_PATH"; echo;
 

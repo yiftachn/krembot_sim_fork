@@ -20,6 +20,16 @@ cd
 cp -r $KREMBOT_SIM_PATH/argos3-user krembot_ws
 ````
 
+Re-build your workspace
+
+````
+cd krembot_ws
+rm build
+mkdir build && cd build
+cmake ..
+make
+````
+
 From this point, for these instructions, we will assume your workspace is in $HOME/krembot_ws
 The controller and configuration files are stored in a dedicated directories inside the directory:
 

@@ -49,8 +49,8 @@
         - library: the path to the compiled library containing you
           controller.
     -->
-    <simple_demo_controller id="simple_demo"
-                                  library="/home/edenha/krembot_sim/argos3-user/build/controllers/simple_demo/libsimple_demo.so">
+    <porting_example_controller id="porting_example"
+                                  library="absolute-path-to-krembot_ws/krembot_ws/build/controllers/porting_example/libporting_example.so">
       <!--
           The <actuators> section contains a list of the actuators used by
           this controller.
@@ -72,7 +72,7 @@
       -->
       <actuators>
         <differential_steering implementation="default" />
-	<leds                  implementation="default" medium="leds" />
+  <leds                  implementation="default" medium="leds" />
       </actuators>
       <!--
           The <sensors> section contains a list of the sensors used by
@@ -85,7 +85,7 @@
       <sensors>
         <footbot_proximity implementation="default" show_rays="false" />
         <footbot_light                       implementation="rot_z_only" show_rays="false" />
-	<footbot_imu                       implementation="rpy" />
+  <footbot_imu                       implementation="rpy" />
         <colored_blob_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="true" />
       </sensors>
       <!--
@@ -94,10 +94,10 @@
           The user, writing the controller, defines how it is organized.
           To understand what these parameters are for, check the
           controller's header file in
-          controllers/program_template_controller/program_template_controller.h.
+          controllers/porting_example_controller/porting_example_controller.h.
       -->
       <params alpha="7.5" delta="0.1" velocity="5" />
-    </simple_demo_controller>
+    </porting_example_controller>
 
   </controllers>
 
@@ -150,7 +150,7 @@
     <foot-bot id="fb_0">
       <body position="0,0,0" orientation="0,0,0" />
       <!-- todo: change the controller config name according to the id of your contorller (in line 52) -->
-      <controller config="simple_demo"/>
+      <controller config="porting_example"/>
     </foot-bot>
 
     <!--<foot-bot id="fb_1">

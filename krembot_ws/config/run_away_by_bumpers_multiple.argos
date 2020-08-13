@@ -49,8 +49,9 @@
         - library: the path to the compiled library containing you
           controller.
     -->
-    <porting_example_controller id="porting_example"
-                                  library="/home/eli/ws/krembot_sim/argos3-user/build/controllers/porting_example/libporting_example.so">
+    <!-- user todo: change controller path and id -->
+    <run_away_by_bumpers_controller id="run_away_by_bumpers"
+                                  library="absolute-path-to-krembot_ws/krembot_ws/build/controllers/run_away_by_bumpers/librun_away_by_bumpers.so">
       <!--
           The <actuators> section contains a list of the actuators used by
           this controller.
@@ -72,7 +73,7 @@
       -->
       <actuators>
         <differential_steering implementation="default" />
-  <leds                  implementation="default" medium="leds" />
+	<leds                  implementation="default" medium="leds" />
       </actuators>
       <!--
           The <sensors> section contains a list of the sensors used by
@@ -85,8 +86,8 @@
       <sensors>
         <footbot_proximity implementation="default" show_rays="false" />
         <footbot_light                       implementation="rot_z_only" show_rays="false" />
-  <footbot_imu                       implementation="rpy" />
-        <colored_blob_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="true" />
+	<footbot_imu                       implementation="rpy" />
+        <colored_blob_omnidirectional_camera implementation="rot_z_only" medium="leds" show_rays="false" />
       </sensors>
       <!--
           The <params> section is passed as-is to the controller's Init()
@@ -94,10 +95,10 @@
           The user, writing the controller, defines how it is organized.
           To understand what these parameters are for, check the
           controller's header file in
-          controllers/porting_example_controller/porting_example_controller.h.
+          controllers/program_template_controller/program_template_controller.h.
       -->
       <params alpha="7.5" delta="0.1" velocity="5" />
-    </porting_example_controller>
+    </run_away_by_bumpers_controller>
 
   </controllers>
 
@@ -146,17 +147,26 @@
       <body position="-1,0,0" orientation="0,0,0" />
     </box> 
 
-    <!-- Place a foot-bot in the origin and bind it to the controller -->
-    <foot-bot id="fb_0">
-      <body position="0,0,0" orientation="0,0,0" />
-      <!-- todo: change the controller config name according to the id of your contorller (in line 52) -->
-      <controller config="porting_example"/>
-    </foot-bot>
+  
 
-    <!--<foot-bot id="fb_1">
-      <body position="-0.3,0.0,0" orientation="0,0,0" />
-      <controller config="fdc"/>
-    </foot-bot>  -->
+    <!--
+        You can distribute entities randomly. Here, we distribute
+        10 foot-bots in this way:
+        - the position is uniformly distributed
+        on the ground, in the square whose corners are (-2,-2) and (2,2)
+        - the orientations are non-zero only when rotating around Z and chosen
+        from a gaussian distribution, whose mean is zero degrees and
+        standard deviation is 360 degrees.
+    -->
+    <distribute>
+      <position method="uniform" min="-1,-1,0" max="1,1,0" />
+      <orientation method="gaussian" mean="0,0,0" std_dev="360,0,0" />
+      <entity quantity="20" max_trials="100">
+        <foot-bot id="krembot">
+          <controller config="run_away_by_bumpers" />
+        </foot-bot>
+      </entity>
+    </distribute>
 
   </arena>
 
@@ -209,7 +219,12 @@
       $ argos3 -q visualizations
   -->
   <visualization>
-    <qt-opengl />
+    <qt-opengl>
+      <!-- add id tags to krembots -->
+      <user_functions library="absolute-path-to-krembot_ws/krembot_ws/build/loop_functions/id_loop_functions/libid_loop_functions.so"
+                      label="id_qtuser_functions" />
+    </qt-opengl>
+
   </visualization>
 
 </argos-configuration>

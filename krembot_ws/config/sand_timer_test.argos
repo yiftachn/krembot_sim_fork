@@ -50,7 +50,7 @@
           controller.
     -->
     <sand_timer_test_controller id="sand_timer_test"
-                                  library="/home/eli/ws/krembot_sim/argos3-user/build/controllers/sand_timer_test/libsand_timer_test.so">
+                                  library="/home/eli/ws/krembot_sim/krembot_ws/build/controllers/sand_timer_test/libsand_timer_test.so">
       <!--
           The <actuators> section contains a list of the actuators used by
           this controller.

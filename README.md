@@ -17,7 +17,7 @@ There are 3 main directories in the package:
 
 1. ***argos3*** - contain argos simulation files
 2. ***krembot*** - contain krembot library simulation files
-3. ***argos3-user*** - this folder is an example workspace for creating krembot programs. You copy it to your own workspace (see [Creating New Programs](docs/new_program.md).
+3. ***krembot_ws*** - this folder is an example workspace for creating krembot programs. You copy it to your own workspace (see [Creating New Programs](docs/new_program.md).
 
 ## Installation
 

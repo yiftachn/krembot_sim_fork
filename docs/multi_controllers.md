@@ -1,7 +1,7 @@
 ### Using Multiple Controllers in The Same Configuration File
 To simulate flashing different .ino programs to different group of krembots it is possible to execute multiple controllers, where each Krembot or group of krembots execute a specific conroller. 
 
-An example can be found in argos3-user/config/mixed_controllers.argos file. 
+An example can be found in krembot_ws/config/mixed_controllers.argos file. 
 Let's go over the lines in the configuration file that enable running multiple controllers:
 
 The place to list our controllers is under the "controller" tag at line 17. In this example two controllers are listed: 

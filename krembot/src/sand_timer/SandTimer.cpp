@@ -60,7 +60,8 @@ void SandTimer::start(millis_time_t period)
 {
     if (!started_)
     {
-        setPeriod(period*20);
+        // calibrating “period”
+        setPeriod(period * periodRatio);
         start_time_ = millis();
         started_ = true;
     }

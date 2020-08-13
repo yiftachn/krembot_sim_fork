@@ -38,6 +38,7 @@ void MobileBase::init(argos::CCI_DifferentialSteeringActuator* wheels) {
     m_pcWheels = wheels;
 }
 
+
 bool MobileBase::drive(int8_t linear_spd, int8_t angular_spd) {
     m_linear = linear_spd;
     m_angular = angular_spd;
@@ -54,7 +55,11 @@ bool MobileBase::drive(int8_t linear_spd, int8_t angular_spd) {
         return false;
     }
 
-    // convert speed to 0-100 percentage
+    /* ********************************************************************
+       converting the speeds from realworld scale to simulation scale
+       the function CCI_DifferentialSteeringActuator::SetLinearVelocity gets two "Real" (=double) variables
+       (see krembot_sim/argos3/src/core/utility/datatypes/datatypes.h)
+    ************************************************************************/
     const float range_max = static_cast<float>(speedRange.GetMax());
     double linear_scale = double((linear_spd / range_max) * MAX_ARGOS_SPEED_LINEAR);
     double angular_scale = double((angular_spd / range_max) * MAX_ARGOS_SPEED_ANGULAR);

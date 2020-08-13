@@ -41,6 +41,7 @@
  */
 
 using millis_time_t = float;
+#define periodRatio 20
 
 class SandTimer
 {

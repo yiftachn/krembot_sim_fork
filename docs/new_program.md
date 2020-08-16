@@ -20,14 +20,10 @@ cd
 cp -r $KREMBOT_SIM_PATH/krembot_ws krembot_ws
 ````
 
-Re-build your workspace
+Build your workspace
 
 ````
-cd krembot_ws
-rm build
-mkdir build && cd build
-cmake ..
-make
+./krembot_ws/scripts/compile.sh	
 ````
 
 From this point, for these instructions, we will assume your workspace is in $HOME/krembot_ws

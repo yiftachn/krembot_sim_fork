@@ -76,6 +76,7 @@ make
 echo "Done."; echo
 
 ########################################
+
 echo "Sourcing setup_env.sh, and adding to bashrc file..."; echo
 source $PKG_PATH/krembot/scripts/setup_env.sh
 SETUP_COMMAND="source $PKG_PATH/krembot/scripts/setup_env.sh"
@@ -96,9 +97,6 @@ if [ -z "$PATH_SEARCH" ]; then
 fi
 source ~/.bashrc
 echo "Done."; echo
-
-########################################
-
 
 ########################################
 

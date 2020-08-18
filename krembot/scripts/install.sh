@@ -73,13 +73,28 @@ cmake ..
 
 make
 
-echo "Done." ; echo
+echo "Done."; echo
 
 ########################################
 
 echo "Sourcing setup_env.sh, and adding to bashrc file..."; echo
 source $PKG_PATH/krembot/scripts/setup_env.sh
-echo "source $PKG_PATH/krembot/scripts/setup_env.sh" >> ~/.bashrc
+SETUP_COMMAND="source $PKG_PATH/krembot/scripts/setup_env.sh"
+REGEX_RESULT="`grep -oP 'source\s+.*/krembot/scripts/setup_env.sh' ~/.bashrc || true`"
+PATH_SEARCH="`grep -oP "source\s+${PKG_PATH}/krembot/scripts/setup_env.sh" ~/.bashrc || true`"
+NUM_REGEX=`echo "$REGEX_RESULT" | sed '/^\s*$/d' | wc -l`
+NUM_PATH=`echo "$PATH_SEARCH" |  sed '/^\s*$/d' | wc -l`
+# If there is sourcing of a different path, warn the user.
+YELLOW='\033[1;33m'
+NC='\033[0m'
+if [ -n "$REGEX_RESULT" ] && [ "$NUM_REGEX" != "$NUM_PATH" ]; then
+	echo -e "${YELLOW}Warning: There is a previous package path sourced in bashrc:\n ${REGEX_RESULT}\n Please remove it${NC}"; echo
+fi
+
+# If there is no sourcing of the current path, add it to bashrc.
+if [ -z "$PATH_SEARCH" ]; then
+	echo "$SETUP_COMMAND" >> ~/.bashrc
+fi
 source ~/.bashrc
 echo "Done."; echo
 

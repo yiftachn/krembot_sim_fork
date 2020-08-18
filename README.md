@@ -56,7 +56,7 @@ To avoid sourcing the file for every new terminal manually, you can add the sour
 
 The [docs/](docs/) folder contains documentation. Including the following topics:
 
-1. [Create and run new krembot program](docs/new_program.md)
+1. [Create and run new krembot program](krembot_ws/new_program.md)
 2. [Use multiple controllers in the same program](docs/multi_controllers.md)
 3. [Porting files from real Krembot to simulator, and vice-versa](docs/porting.md) 
 4. [Calibrating wheels speed](docs/wheels_calib.md) 

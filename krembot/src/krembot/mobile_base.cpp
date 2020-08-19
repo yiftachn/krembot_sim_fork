@@ -61,8 +61,8 @@ bool MobileBase::drive(int8_t linear_spd, int8_t angular_spd) {
        (see krembot_sim/argos3/src/core/utility/datatypes/datatypes.h)
     ************************************************************************/
     const float range_max = static_cast<float>(speedRange.GetMax());
-    double linear_scale = double((linear_spd / range_max) * MAX_ARGOS_SPEED_LINEAR);
-    double angular_scale = double((angular_spd / range_max) * MAX_ARGOS_SPEED_ANGULAR);
+    double linear_scale = (linear_spd / range_max) * MAX_ARGOS_SPEED_LINEAR;
+    double angular_scale = (angular_spd / range_max) * MAX_ARGOS_SPEED_ANGULAR;
 
     double left_cmd = linear_scale - angular_scale;
     double right_cmd = linear_scale + angular_scale;

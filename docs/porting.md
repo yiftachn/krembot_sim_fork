@@ -1,12 +1,13 @@
 ## Coding for Simulator
+
 To better explain the following principals, let's look at the ```porting_example``` controller located under the controllers folder.
 As you can see, this is the ```porting_example``` files tree:
 ```
-/home/krembot_sim/argos3-user/controllers/porting_example
-                                            |-krembot.ino.cpp
-                                            '-my_code
-                                                |-MyCode.h
-                                                |-MyCode.cpp
+$HOME/krembot_ws/controllers/porting_example
+                             |-krembot.ino.cpp
+                             '-my_code
+                                   |-MyCode.h
+                                   |-MyCode.cpp
 ```
 The name "MyCode" / "my_code" represents your code directory and files.
 

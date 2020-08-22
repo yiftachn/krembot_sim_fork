@@ -52,7 +52,7 @@ SandTimer::SandTimer() {
  */
 millis_time_t SandTimer::millis() {
     const float sim_clock = CSimulator::GetInstance().GetSimulationClock();
-    return sim_clock * TIME_RATIO;
+    return sim_clock * (1000.0f / ticks_per_sec_);
 }
 
 /* start timer. if already started, do nothing */
@@ -60,6 +60,7 @@ void SandTimer::start(millis_time_t period)
 {
     if (!started_)
     {
+        // calibrating “period”
         setPeriod(period);
         start_time_ = millis();
         started_ = true;

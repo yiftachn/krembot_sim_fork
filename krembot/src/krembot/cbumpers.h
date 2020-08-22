@@ -96,7 +96,7 @@ public:
     // mockup functions
     void publish() {};
     void printCalib() {};
-    bool calib() {return true};
+    bool calib() {return true; };
     uint16_t readRaw() { return 0; };
 
 };

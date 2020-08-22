@@ -47,7 +47,7 @@ private:
      * The wheels speed below was calibrated accordingly
      */
     const uint8_t MAX_ARGOS_SPEED_LINEAR = 25 ;
-    const uint8_t MAX_ARGOS_SPEED_ANGULAR = 22 ; 
+    const uint8_t MAX_ARGOS_SPEED_ANGULAR = 22 ;
 
     argos::CCI_DifferentialSteeringActuator * m_pcWheels = nullptr;
 

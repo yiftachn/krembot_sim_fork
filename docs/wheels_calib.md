@@ -16,11 +16,12 @@ You can change this value if needed in the following file:
 /krembot_sim/krembot/src/krembot/mobile_base.h
 ```
 
+### Time calibration
 The time ratio determine by a variable called 
 ```
-PERIOD_RATIO
+TIME_RATIO
 ```
-which is currently set to 20.
+which is currently set to 50.
 You can change this value if needed in the following file:
 
 ```

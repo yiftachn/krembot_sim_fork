@@ -24,7 +24,7 @@
           message is displayed.
     -->
     <experiment length="0"
-                ticks_per_second="10"
+                ticks_per_second="100"
                 random_seed="124" />
   </framework>
 

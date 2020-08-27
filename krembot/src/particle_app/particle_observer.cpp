@@ -49,8 +49,7 @@ void ParticleObserver::publish(const String & eventName, const String & content,
     if (m_name.empty()) {
         return;
       }
-    int sim_clock = millis();
-    int milisec = sim_clock;
+    int milisec = millis();
     //3600000 milliseconds in an hour
     int hours = sim_clock / 3600000;
     milisec = milisec - 3600000 * hours;

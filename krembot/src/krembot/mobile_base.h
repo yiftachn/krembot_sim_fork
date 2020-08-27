@@ -46,8 +46,8 @@ private:
      * in full speed (100%) to complete a 180 degrees turn.
      * The wheels speed below was calibrated accordingly
      */
-    const uint8_t MAX_ARGOS_SPEED_LINEAR = 46 ;
-    const uint8_t MAX_ARGOS_SPEED_ANGULAR = 46 ;
+    const uint8_t MAX_ARGOS_SPEED_LINEAR = 25 ;
+    const uint8_t MAX_ARGOS_SPEED_ANGULAR = 22 ;
 
     argos::CCI_DifferentialSteeringActuator * m_pcWheels = nullptr;
 

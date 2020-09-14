@@ -93,14 +93,7 @@ private:
     argos::CCI_ColoredBlobOmnidirectionalCameraSensor * m_ColorCam = nullptr;
     argos::CRange<float> m_ProxRange;
     argos::CRange<float> m_DistRange;
-
-    enum class ProxState {
-        NEAR,
-        FAR
-    };
-
-    ProxState m_ProxState {ProxState::FAR};
-
+    
 
 public:
 

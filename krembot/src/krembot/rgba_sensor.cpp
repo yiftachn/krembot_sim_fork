@@ -97,30 +97,19 @@ RGBAResult RGBASensor::readRGBA()
     /*
      * No proximity intersection. In other words: no object in sensor's range
      * This can happend in 2 cases:
-     * 1. We are too close to an object (simulator bug)
+     * 1. We are too close to an object
      * 2. We are too far from an object
      *
-     * To match client requirements: if robot proximity sensor intersect another footbot in range,
+     * To match client requirements: if robot proximity sensor intersect another krembot in range,
      * it should return maximum range instead of real distance to intersected robot. For other
      * types of entities return real distance.
      */
     if (rawProximity.Type == intersect_t::ROBOT) { // intersected entity is another robot
         result.Distance = m_DistRange.GetMax();
     } else if (rawProximity.Type == intersect_t::NONE) { // no intersection
-        if (m_ProxState == ProxState::NEAR) {
-            result.Distance = m_DistRange.GetMin();
-        } else { // far
-            result.Distance = m_DistRange.GetMax();
-        }
+        result.Distance = m_DistRange.GetMax();
     } else { // intersection with object other than robot in sensor's range
         result.Distance = rawProximity.Value * 100; // convert meters to cm
-        const float halfDistRange = m_DistRange.GetMax()/2.0;
-        if (result.Distance >= halfDistRange) {
-            m_ProxState = ProxState::FAR;
-        } else {
-            m_ProxState = ProxState::NEAR;
-        }
-        // truncate value to min and max boundaries
         m_DistRange.TruncValue(result.Distance);
     }
 

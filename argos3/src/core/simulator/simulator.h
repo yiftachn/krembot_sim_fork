@@ -97,7 +97,8 @@ namespace argos {
        */
       static CSimulator& GetInstance();
 
-       UInt32 GetTicksPerSec() const { return m_unTicksPerSec; }
+      UInt32 GetTicksPerSec() const { return m_unTicksPerSec; }
+       
 
       /**
        * Returns a reference to the simulated space.

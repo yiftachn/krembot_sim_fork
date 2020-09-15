@@ -42,11 +42,12 @@ class MobileBase
 
 private:
     /*
-     * According to lab experiment with real Krembots hardware, it took about ~500 millis
+     * According to lab experiment with real Krembots hardware, it took about 480 millis
      * in full speed (100%) to complete a 180 degrees turn.
      * The wheels speed below was calibrated accordingly
      */
-    const uint8_t MAX_ARGOS_SPEED = 36;
+    const uint8_t MAX_ARGOS_SPEED_LINEAR = 25 ;
+    const uint8_t MAX_ARGOS_SPEED_ANGULAR = 22 ;
 
     argos::CCI_DifferentialSteeringActuator * m_pcWheels = nullptr;
 

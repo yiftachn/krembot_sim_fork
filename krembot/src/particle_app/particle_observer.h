@@ -35,7 +35,7 @@
 #define KREMBOT_PARTICLE_OBSERVER_H
 
 #include "particle_string.h"
-
+#include "timing.h"
 #include <functional>
 // definition of publish flags
 #define PRIVATE 0

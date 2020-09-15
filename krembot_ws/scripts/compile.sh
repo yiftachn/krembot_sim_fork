@@ -10,4 +10,3 @@ cmake ..
 make
 
 echo "Done." ; echo
-

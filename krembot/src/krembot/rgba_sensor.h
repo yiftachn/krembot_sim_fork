@@ -51,6 +51,13 @@
  *           4
  */
 
+/* footbot width is 17 cm  and krembot width is 6.5 cm
+ * -> that cause different behavior when the robots based on this information
+ * a temporary solution - sense the distance in the same proportion
+ * and then, return it to the proportions of the original sensor
+ * (so that the robots' code works in the same way)
+ * */
+#define DISTANCE_RATIO_FOOTBOT_KREMBOT 2.4285
 
 struct RGBAResult
 {
@@ -93,7 +100,6 @@ private:
     argos::CCI_ColoredBlobOmnidirectionalCameraSensor * m_ColorCam = nullptr;
     argos::CRange<float> m_ProxRange;
     argos::CRange<float> m_DistRange;
-    
 
 public:
 
@@ -125,6 +131,7 @@ public:
      * Mock-up functions
      */
     inline void publish() { }
+
 
 };
 

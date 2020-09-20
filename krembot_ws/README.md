@@ -1,10 +1,7 @@
-# First Time
+# Creating New Krembot Program
 
-Build your workspace
+To create a new program, you'll need to create at least one new controller, and a configuration file.
 
-````
-./krembot_ws/scripts/compile.sh	
-````
 
 From this point, for these instructions, we will assume your workspace is in $HOME/krembot_ws
 The controller and configuration files are stored in a dedicated directories inside the directory:

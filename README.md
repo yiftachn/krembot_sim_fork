@@ -56,12 +56,13 @@ To avoid sourcing the file for every new terminal manually, you can add the sour
 
 The [docs/](docs/) folder contains documentation. Including the following topics:
 
-1. [Create and run new krembot program](docs/new_program.md)
-2. [Use multiple controllers in the same program](docs/multi_controllers.md)
-3. [Porting files from real Krembot to simulator, and vice-versa](docs/porting.md) 
-4. [Calibrating wheels speed](docs/wheels_calib.md) 
-5. [Contribute](docs/CONTRIBUTE.md)
-6. [Known issues](docs/known_issues.md)
+1. [Install Krembot Woekspace](docs/install_workspace.md)
+2. [Create and run new krembot program](krembot_ws/README.md)
+3. [Use multiple controllers in the same program](docs/multi_controllers.md)
+4. [Porting files from real Krembot to simulator, and vice-versa](docs/porting.md) 
+5. [Calibrating wheels speed](docs/wheels_calib.md) 
+6. [Contribute](docs/CONTRIBUTE.md)
+7. [Known issues](docs/known_issues.md)
 
 To learn more about controllers, configuration files and how argos works, refer to [Argos documentation](https://www.argos-sim.info/documentation.php), the [Argos github repository](https://github.com/ilpincy/argos3), and the [Argos robot examples](https://github.com/ilpincy/argos3-examples).
 

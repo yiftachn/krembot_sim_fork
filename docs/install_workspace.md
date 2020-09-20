@@ -1,9 +1,5 @@
-# Creating New Krembot Program
 
-To create a new program, you'll need to create at least one new controller, and a configuration file.
-
-
-## First Time
+# Install Krembot Workspace
 
 The first time you use the simulator to run your own krembot program, you will need to create your own
 folder, in your own home directory. Our recommendation is to use a separate git repository for your work,
@@ -20,5 +16,12 @@ cd
 cp -r $KREMBOT_SIM_PATH/krembot_ws krembot_ws
 ````
 
-After, follow the instraction on the workspace README.
 
+
+Build your workspace
+
+````
+./krembot_ws/scripts/compile.sh	
+````
+
+After, follow the instraction in the workspace README.

@@ -161,6 +161,7 @@
     <distribute>
       <position method="uniform" min="-1,-1,0" max="1,1,0" />
       <orientation method="gaussian" mean="0,0,0" std_dev="360,0,0" />
+      <!--quantity : sets the number of robots -->
       <entity quantity="20" max_trials="100">
         <foot-bot id="krembot">
           <controller config="run_away_by_bumpers" />

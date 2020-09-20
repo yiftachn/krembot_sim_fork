@@ -44,6 +44,14 @@
 #include "bumper_state.h"
 #include "mobile_base.h"
 
+/* footbot width is 17 cm  and krembot width is 6.5 cm
+ * -> that cause different behavior when the robots based on this information
+ * a temporary solution - sense the distance in the same proportion
+ * and then, return it to the proportions of the original sensor
+ * (so that the robots' code works in the same way)
+ * */
+#define DISTANCE_RATIO_FOOTBOT_KREMBOT 2.4285
+
 class CBumpers
 {
 

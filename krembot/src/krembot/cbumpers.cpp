@@ -72,7 +72,7 @@ CBumpers::BumperPosition CBumpers::GetBumperPosition(const BumperState &bumper) 
 }
 
 void CBumpers::CalcNewBumperStateBasedOnProximity(const Real &proximity, BumperState & bumper) const {
-    static const CRange<double> intersectionRange {0, 0.1}; //change it to 0.1 cm (instead of 2.7)
+    static const CRange<double> intersectionRange {0, 2.7}; 
 
     /**
      * in cases where footbot is too close to an object (pass the contact point)

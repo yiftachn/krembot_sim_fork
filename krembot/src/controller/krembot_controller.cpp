@@ -42,8 +42,6 @@ void KrembotController::Init(TConfigurationNode& t_node) {
     m_pcLEDs = GetActuator<CCI_LEDsActuator>("leds");
 
     //seonsors
-    m_pcProximity1 = GetSensor<CProximityDefaultSensor>("proximity");
-    m_pcProximity1->Init(t_node);
     m_pcProximity = GetSensor<CCI_FootBotProximitySensor>("footbot_proximity");
     m_pcLight = GetSensor<CCI_FootBotLightSensor>("footbot_light");
     m_pcImu = GetSensor<CCI_FootBotImuSensor>("footbot_imu");

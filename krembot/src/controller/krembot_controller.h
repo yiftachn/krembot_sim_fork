@@ -43,7 +43,6 @@
 #include <argos3/plugins/robots/generic/control_interface/ci_colored_blob_omnidirectional_camera_sensor.h>
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_light_sensor.h>
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.h>
-#include <argos3/plugins/robots/generic/simulator/proximity_default_sensor.h>
 
 
 #include "../krembot.h"
@@ -100,7 +99,6 @@ private:
 
     /* Pointer to the foot-bot proximity sensor */
     CCI_FootBotProximitySensor* m_pcProximity = nullptr;
-    CProximityDefaultSensor* m_pcProximity1 = nullptr;
 
     /* Pointer to the foot-bot light sensor */
     CCI_FootBotLightSensor* m_pcLight = nullptr;

@@ -110,8 +110,8 @@ RGBAResult RGBASensor::readRGBA()
         result.Distance = m_DistRange.GetMax();
     } else { // intersection with object other than robot in sensor's range
         result.Distance = rawProximity.Value * 100; // convert meters to cm
-        //divide by DISTANCE_RATIO_FOOTBOT_KREMBOT in order to return it to the proportions of the original sensor
-        result.Distance = result.Distance / DISTANCE_RATIO_FOOTBOT_KREMBOT;
+        //divide by DISTANCE_RATIO_KREMBOT in order to return it to the proportions of the original sensor
+        result.Distance = result.Distance / DISTANCE_RATIO_KREMBOT;
         m_DistRange.TruncValue(result.Distance);
     }
 

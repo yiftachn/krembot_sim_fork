@@ -50,7 +50,7 @@
  * and then, return it to the proportions of the original sensor
  * (so that the robots' code works in the same way)
  * */
-#define DISTANCE_RATIO_FOOTBOT_KREMBOT 2.4285
+#define DISTANCE_RATIO_KREMBOT 3.846153846
 
 class CBumpers
 {

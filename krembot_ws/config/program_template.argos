@@ -45,16 +45,12 @@
         The attributes are:
         - id: a unique a identifier for this controller, to be used in the
           subsequent <arena> section to say which robots use which
-        controller.  For example:
-              id="program_template"
+          controller
         - library: the path to the compiled library containing you
-        controller.  For example:
-              library="/home/eli/ws/krembot_sim/argos3-user/build/controllers/program_template/libprogram_template.so"
-        
+          controller.
     -->
     <program_template_controller id="program_template"
-        library="/home/eli/ws/krembot_sim/argos3-user/build/controllers/program_template/libprogram_template.so">
-    
+                                  library="absolute-path-to-krembot_ws/krembot_ws/build/controllers/program_template/libprogram_template.so">
       <!--
           The <actuators> section contains a list of the actuators used by
           this controller.
@@ -156,11 +152,6 @@
       <!-- todo: change the controller config name according to the id of your contorller (in line 52) -->
       <controller config="program_template"/>
     </foot-bot>
-
-    <!--<foot-bot id="fb_1">
-      <body position="-0.3,0.0,0" orientation="0,0,0" />
-      <controller config="fdc"/>
-    </foot-bot>  -->
 
   </arena>
 

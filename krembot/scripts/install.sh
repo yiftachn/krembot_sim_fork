@@ -61,19 +61,6 @@ sudo make install
 
 echo "Done." ; echo
 
-########################################
-
-echo "Compiling argos3-user..." ; echo
-
-cd $PKG_PATH/argos3-user/
-
-mkdir -p build && cd build
-
-cmake ..
-
-make
-
-echo "Done."; echo
 
 ########################################
 

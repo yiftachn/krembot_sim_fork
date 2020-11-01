@@ -13,7 +13,7 @@ In addition, Argos provides a simulated robot called "footbot" out of the box. T
 
 - The Argos code base is under ```./krembot_sim/argos3/```. The original repository can be found [here](https://github.com/ilpincy/argos3)
 - The krembot adapter is under ```./krembot_sim/krembot/```.
-- The user folder is under ```./krembot_sim/argos3-user/```. This folder is based on the original [Argos examples repository](https://github.com/ilpincy/argos3-examples). The directory content and name was changed to simplify things, and to make it obvious that in most cases this is the only folder the user should deal with.
+- The user folder is under ```./krembot_sim/krembot_ws/```. This folder is based on the original [Argos examples repository](https://github.com/ilpincy/argos3-examples). The directory content and name was changed to simplify things, and to make it obvious that in most cases this is the only folder the user should deal with.
 
 ## Changes in Argos
 Some of the Krembot abilities were natively supported by Argos, but some are not. This required changes in Argos code base to make it suitable for our needs. Here is a list of some of the main changes done inside the Argos code base (you can see the detailed changes in git commits history):

@@ -7,6 +7,14 @@
 #ifndef FOOTBOT_ENTITY_H
 #define FOOTBOT_ENTITY_H
 
+/* footbot width is 17 cm  and krembot width is 6.5 cm
+ * -> that cause different behavior when the robots based on this information
+ * a temporary solution - sense the distance in the same proportion
+ * and then, return it to the proportions of the original sensor
+ * (so that the robots' code works in the same way)
+ * */
+#define DISTANCE_RATIO_KREMBOT 3.846153846
+
 namespace argos {
    class CBatteryEquippedEntity;
    class CControllableEntity;

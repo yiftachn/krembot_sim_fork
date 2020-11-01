@@ -32,25 +32,29 @@ namespace argos {
    /****************************************/
 
    static const Real BODY_RADIUS                = 0.085036758f;
-   static const Real BODY_HEIGHT                = 0.146899733f;
+    static const Real BODY_HEIGHT                = 0.146899733f;
+//    krembot Dimensions
+//   static const Real BODY_RADIUS                = 0.035036758f;
+//   static const Real BODY_HEIGHT                = 0.106899733f;
 
-   static const Real LED_RING_RADIUS            = BODY_RADIUS + 0.005;
+    static const Real LED_RING_RADIUS            = BODY_RADIUS + 0.005;
 
-   static const Real INTERWHEEL_DISTANCE        = 0.14f;
-   static const Real HALF_INTERWHEEL_DISTANCE   = INTERWHEEL_DISTANCE * 0.5f;
-   static const Real WHEEL_RADIUS               = 0.029112741f;
+    static const Real INTERWHEEL_DISTANCE        = 0.14f;
+    static const Real HALF_INTERWHEEL_DISTANCE   = INTERWHEEL_DISTANCE * 0.5f;
+    static const Real WHEEL_RADIUS               = 0.029112741f;
 
-   static const Real PROXIMITY_SENSOR_RING_ELEVATION       = 0.06f;
-   static const Real PROXIMITY_SENSOR_RING_RADIUS          = BODY_RADIUS;
-   static const CRadians PROXIMITY_SENSOR_RING_START_ANGLE = CRadians(0);//((ARGOS_PI / 12.0f) * 0.5f);
-   static const Real PROXIMITY_SENSOR_RING_RANGE           = 0.2551f;
-   static const UInt32 NUM_OF_PROXIMITY_SENSORS               = 8;
+    static const Real PROXIMITY_SENSOR_RING_ELEVATION       = 0.06f;
+    static const Real PROXIMITY_SENSOR_RING_RADIUS          = BODY_RADIUS;
+    static const CRadians PROXIMITY_SENSOR_RING_START_ANGLE = CRadians(0);//((ARGOS_PI / 12.0f) * 0.5f);
+    //divide by DISTANCE_RATIO_KREMBOT in order to sense the distance in the same proportion
+    static const Real PROXIMITY_SENSOR_RING_RANGE           = 0.2551f * DISTANCE_RATIO_KREMBOT;
+    static const UInt32 NUM_OF_PROXIMITY_SENSORS               = 8;
 
-   static const Real LED_RING_ELEVATION         = 0.085f;
-   static const Real RAB_ELEVATION              = 0.1f;
-   static const Real BEACON_ELEVATION           = 0.174249733f;
+    static const Real LED_RING_ELEVATION         = 0.085f;
+    static const Real RAB_ELEVATION              = 0.1f;
+    static const Real BEACON_ELEVATION           = 0.174249733f;
 
-   static const Real GRIPPER_ELEVATION          = LED_RING_ELEVATION;
+    static const Real GRIPPER_ELEVATION          = LED_RING_ELEVATION;
 
 //   static const CRadians LED_ANGLE_SLICE        = CRadians(ARGOS_PI / 8.0);
 //   static const CRadians HALF_LED_ANGLE_SLICE   = LED_ANGLE_SLICE * 0.5f;
@@ -59,7 +63,7 @@ namespace argos {
     static const UInt32 NUM_OF_LEDS                 = 8;
 
 
-   static const Real OMNIDIRECTIONAL_CAMERA_ELEVATION = LED_RING_ELEVATION;//0.288699733f;
+    static const Real OMNIDIRECTIONAL_CAMERA_ELEVATION = LED_RING_ELEVATION;//0.288699733f;
 
    /****************************************/
    /****************************************/

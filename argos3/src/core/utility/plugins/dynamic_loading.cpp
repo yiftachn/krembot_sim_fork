@@ -188,6 +188,8 @@ namespace argos {
       /* Get variable ARGOS_PLUGIN_PATH from the environment */
       if(::getenv("ARGOS_PLUGIN_PATH") != NULL) {
          /* Add value of the variable to list of paths to check */
+         fprintf(stderr, "ARGOS_PLUGIN_PATH problem\n");
+         throw ("ARGOS_PLUGIN_PATH problem");
          strPluginPath = std::string(::getenv("ARGOS_PLUGIN_PATH")) + ":" + strPluginPath;
       }
       /* Add : at the end to make parsing easier */

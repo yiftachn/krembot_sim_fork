@@ -96,8 +96,10 @@ private:
 
     /* Pointer to the differential steering actuator */
     CCI_DifferentialSteeringActuator* m_pcWheels = nullptr;
+
     /* Pointer to the foot-bot proximity sensor */
     CCI_FootBotProximitySensor* m_pcProximity = nullptr;
+
     /* Pointer to the foot-bot light sensor */
     CCI_FootBotLightSensor* m_pcLight = nullptr;
     /* Pointer to the LEDs actuator */

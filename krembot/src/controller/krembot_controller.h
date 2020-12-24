@@ -93,13 +93,10 @@ public:
 
 private:
 
-
     /* Pointer to the differential steering actuator */
     CCI_DifferentialSteeringActuator* m_pcWheels = nullptr;
-
     /* Pointer to the foot-bot proximity sensor */
     CCI_FootBotProximitySensor* m_pcProximity = nullptr;
-
     /* Pointer to the foot-bot light sensor */
     CCI_FootBotLightSensor* m_pcLight = nullptr;
     /* Pointer to the LEDs actuator */
@@ -117,20 +114,30 @@ protected:
 #define KREMBOT_CONTROLLER_HEADER(CLASS_NAME) \
     class CLASS_NAME : public KrembotController{
 
-#define KREMBOT_CONTROLLER_FOOTER(CLASS_NAME, PROGRAM_NAME) \
-public: \
-ParticleObserver Particle; \
-~CLASS_NAME() = default; \
-void Init(TConfigurationNode& t_node) override { \
-KrembotController::Init(t_node); \
-if ( ! krembot.isInitialized() ) { \
-throw std::runtime_error("krembot.ino.cpp: krembot wasn't initialized in controller"); \
-} \
-Particle.setName(krembot.getName()); \
-setup(); \
-} \
-void ControlStep() override { loop(); } \
-};\
+#define KREMBOT_CONTROLLER_FOOTER(CLASS_NAME, PROGRAM_NAME)                                         \
+public:                                                                                             \
+    ParticleObserver Particle;                                                                      \
+    ~CLASS_NAME() = default;                                                                        \
+                                                                                                    \
+    void Init(TConfigurationNode& t_node) override {                                                \
+        KrembotController::Init(t_node);                                                            \
+        if ( ! krembot.isInitialized() ) {                                                          \
+            throw std::runtime_error("krembot.ino.cpp: krembot wasn't initialized in controller");  \
+        }                                                                                           \
+        Particle.setName(krembot.getName());                                                        \
+        setup();                                                                                    \
+    }                                                                                               \
+                                                                                                    \
+    void ControlStep() override {                                                                   \
+        loop();                                                                                     \
+    }                                                                                               \
+                                                                                                    \
+    void Reset() override {                                                                         \
+        KrembotController::Reset();                                                                 \
+        setup();                                                                                    \
+    }                                                                                               \
+};                                                                                                  \
+                                                                                                    \
 /* \
  * This statement notifies ARGoS of the existence of the controller. \
  * It binds the class passed as first argument to the string passed as \
@@ -143,9 +150,4 @@ void ControlStep() override { loop(); } \
  */\
 REGISTER_CONTROLLER(CLASS_NAME, PROGRAM_NAME)
 
-
-
 #endif
-
-
-

@@ -57,18 +57,8 @@ using namespace argos;
 class KrembotController : public CCI_Controller {
 
 public:
-//    KrembotController(){
-//        fprintf(stderr, "in KrembotController ctor\n");
-//    }
-//    virtual ~KrembotController() {
-//        fprintf(stderr, "in KrembotController dis-ctor\n");
-//    }
-
-    /*
-     * This function initializes the controller.
-     * The 't_node' variable points to the <parameters> section in the XML
-     * file in the <controllers><footbot_diffusion_controller> section.
-     */
+    virtual ~KrembotController() = default;
+    
     virtual void Init(TConfigurationNode& t_node);
 
     /*

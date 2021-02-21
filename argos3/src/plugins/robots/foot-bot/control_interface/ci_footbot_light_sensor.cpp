@@ -24,8 +24,8 @@ namespace argos {
 
     // TODO : CHANGE IN FOOTBOT CODE
    CCI_FootBotLightSensor::CCI_FootBotLightSensor() :
-      m_tReadings(8) {
-      for(size_t i = 0; i < 8; ++i) {
+      m_tReadings(NUM_OF_SENSORS) {
+      for(size_t i = 0; i < NUM_OF_SENSORS; ++i) {
          m_tReadings[i].Angle = START_ANGLE + i * SPACING;
          m_tReadings[i].Angle.SignedNormalize();
       }

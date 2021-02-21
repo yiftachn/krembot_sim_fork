@@ -83,7 +83,8 @@ namespace argos {
       m_pcRABEquippedEntity(nullptr),
       m_pcWheeledEntity(nullptr),
       m_pcWiFiEquippedEntity(nullptr),
-      m_pcBatteryEquippedEntity(nullptr) {
+      m_pcBatteryEquippedEntity(nullptr),
+      m_pcImuEquippedEntity(nullptr){
    }
 
    /****************************************/
@@ -116,7 +117,8 @@ namespace argos {
       m_pcRABEquippedEntity(nullptr),
       m_pcWheeledEntity(nullptr),
       m_pcWiFiEquippedEntity(nullptr),
-      m_pcBatteryEquippedEntity(nullptr) {
+      m_pcBatteryEquippedEntity(nullptr),
+      m_pcImuEquippedEntity(nullptr){
       try {
          /*
           * Create and init components
@@ -262,6 +264,10 @@ namespace argos {
          /* Battery equipped entity */
          m_pcBatteryEquippedEntity = new CBatteryEquippedEntity(this, "battery_0", str_bat_model);
          AddComponent(*m_pcBatteryEquippedEntity);
+          /* Imu equipped entity */
+          m_pcImuEquippedEntity = new CImuEquippedEntity(this, "imu");
+          AddComponent(*m_pcImuEquippedEntity);
+
          /* Controllable entity
             It must be the last one, for actuators/sensors to link to composing entities correctly */
          m_pcControllableEntity = new CControllableEntity(this, "controller_0");
@@ -449,6 +455,9 @@ namespace argos {
          if(NodeExists(t_tree, "battery"))
             m_pcBatteryEquippedEntity->Init(GetNode(t_tree, "battery"));
          AddComponent(*m_pcBatteryEquippedEntity);
+          /* Imu equipped entity */
+          m_pcImuEquippedEntity = new CImuEquippedEntity(this, "imu");
+          AddComponent(*m_pcImuEquippedEntity);
          /* Controllable entity
             It must be the last one, for actuators/sensors to link to composing entities correctly */
          m_pcControllableEntity = new CControllableEntity(this);
@@ -485,6 +494,7 @@ namespace argos {
       UPDATE(m_pcRABEquippedEntity);
       UPDATE(m_pcLEDEquippedEntity);
       UPDATE(m_pcBatteryEquippedEntity);
+      UPDATE(m_pcImuEquippedEntity);
    }
 
    /****************************************/

@@ -38,11 +38,12 @@
 
 using namespace argos;
 
-millis_time_t SandTimer::ticks_per_sec_{0};
+millis_time_t SandTimer::ticks_per_sec_{0.0f};
 
 SandTimer::SandTimer() {
     // get the number of simulation ticks per second
-    ticks_per_sec_ = CSimulator::GetInstance().GetTicksPerSec();
+//    ticks_per_sec_ = CSimulator::GetInstance().GetTicksPerSec();
+    ticks_per_sec_ =10;
 }
 
 /**
@@ -51,8 +52,9 @@ SandTimer::SandTimer() {
  * @return simulation time milliseconds
  */
 millis_time_t SandTimer::millis() {
-    const float sim_clock = CSimulator::GetInstance().GetSimulationClock();
-    return sim_clock * (1000.0f / ticks_per_sec_);
+    const Real sim_clock = CSimulator::GetInstance().GetSimulationClock();
+//    const Real sim_clock = 500;
+    return (millis_time_t)(sim_clock * (1000.0f / ticks_per_sec_));
 }
 
 /* start timer. if already started, do nothing */
@@ -90,7 +92,7 @@ bool SandTimer::finished()
     if (started_)
     {
         end_time_ = millis();
-        const float elaspedTime = end_time_ - start_time_;
+        const Real elaspedTime = end_time_ - start_time_;
 //        fprintf(stderr, "start: %f, end: %f, elapsed: %f, period: %f\n", start_time_, end_time_, elaspedTime, period_);
         if (elaspedTime >= period_)
         {

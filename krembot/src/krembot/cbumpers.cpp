@@ -72,7 +72,7 @@ CBumpers::BumperPosition CBumpers::GetBumperPosition(const BumperState &bumper) 
 }
 
 void CBumpers::CalcNewBumperStateBasedOnProximity(const Real &proximity, BumperState & bumper) const {
-    static const CRange<double> intersectionRange {0, 2.7};
+    static const CRange<Real> intersectionRange {0, 2.7};
 
     /**
      * in cases where footbot is too close to an object (pass the contact point)
@@ -108,9 +108,9 @@ BumpersRes CBumpers::read()
 
     for (int bumper_idx = 0; bumper_idx < NUM_OF_BUMPERS; ++bumper_idx) {
         auto & bumper = m_bumpers.at(bumper_idx);
-        float distance = m_cProximity->GetReadings()[bumper_idx].Value * 100; // convert meters to cm
+        Real distance = m_cProximity->GetReadings()[bumper_idx].Value * 100; // convert meters to cm
         //divide by DISTANCE_RATIO_KREMBOT in order to return it to the proportions of the original sensor
-        distance = distance / DISTANCE_RATIO_KREMBOT;
+        distance = distance / DISTANCE_RATIO;
         CalcNewBumperStateBasedOnProximity(
                 distance, *bumper
         );
@@ -131,4 +131,8 @@ void CBumpers::print()
         }
     }
     Serial.Println("");
+}
+
+void CBumpers::countDown(uint8_t duration) {
+
 }

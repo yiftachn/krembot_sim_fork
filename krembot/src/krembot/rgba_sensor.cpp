@@ -37,7 +37,7 @@
 
 using namespace argos;
 
-using intersect_t = CCI_ProximitySensor::intersec_t;
+//using intersect_t = CCI_ProximitySensor::intersec_t;
 
 RGBASensor::RGBASensor() :
         // sensors limits in cm (according to Robotican)
@@ -59,8 +59,8 @@ void RGBASensor::init(const std::string name,
     // create virtual boundaries for each sensor
     // sensors are located around Krembot, seperated by 45 degrees from each other
     // so, upper and lower boundaries for each sensor is its location +- 22.5 degrees (half spacing)
-    const float rgbaSensorSpacing = index * (M_PI / 4.0f); //45 deg
-    const float rangeOffset = (M_PI / 8.0f); //22.5 deg
+    const Real rgbaSensorSpacing = index * (M_PI / 4.0f); //45 deg
+    const Real rangeOffset = (M_PI / 8.0f); //22.5 deg
 
     CRadians boundary1( utils::WrapToPi( rgbaSensorSpacing + rangeOffset ) );
     CRadians boundary2( utils::WrapToPi( rgbaSensorSpacing - rangeOffset ) );
@@ -94,25 +94,21 @@ RGBAResult RGBASensor::readRGBA()
      * In the real krembot this process is done the opposite way (distance is calculated out of proximity)
      */
     const auto rawProximity = m_cProximity->GetReadings()[m_index];
-    /*
-     * No proximity intersection. In other words: no object in sensor's range
-     * This can happend in 2 cases:
-     * 1. We are too close to an object
-     * 2. We are too far from an object
-     *
-     * To match client requirements: if robot proximity sensor intersect another krembot in range,
-     * it should return maximum range instead of real distance to intersected robot. For other
-     * types of entities return real distance.
-     */
-    if (rawProximity.Type == intersect_t::ROBOT) { // intersected entity is another robot
-        result.Distance = m_DistRange.GetMax();
-    } else if (rawProximity.Type == intersect_t::NONE) { // no intersection
-        result.Distance = m_DistRange.GetMax();
-    } else { // intersection with object other than robot in sensor's range
-        result.Distance = rawProximity.Value * 100; // convert meters to cm
-        //divide by DISTANCE_RATIO_KREMBOT in order to return it to the proportions of the original sensor
-        result.Distance = result.Distance / DISTANCE_RATIO_KREMBOT;
-        m_DistRange.TruncValue(result.Distance);
+
+    result.Distance = rawProximity.Value * 100; // convert meters to cm
+    //divide by DISTANCE_RATIO_KREMBOT in order to return it to the proportions of the original sensor
+    if (rawProximity.IsRobot == true)
+    {
+        result.Distance = 25.5f;
+    }
+    else
+    {
+        result.Distance = (float)(result.Distance / DISTANCE_RATIO_KREMBOT);
+        if (result.Distance > 25.6f)
+        {
+            fprintf(stderr,"=============result.Distance = %f ==== > 25.5f\n=============", result.Distance);
+            throw ("result.Distance > 25.6f");
+        }
     }
 
     /*
@@ -121,20 +117,22 @@ RGBAResult RGBASensor::readRGBA()
      * 2. Krembot's proximity min value is read when distance is at max value
      * 3. The max and min values are located on the first lines of this file
      */
-    float krembotProx = {
+    Real krembotProx = {
             (result.Distance - m_DistRange.GetMin()) *
             (m_ProxRange.GetMax() - m_ProxRange.GetMin()) /
             (m_DistRange.GetMax() - m_DistRange.GetMin()) +
             m_ProxRange.GetMin()
     };
-    result.Proximity = krembotProx;
+
+    result.Proximity = (uint16_t)krembotProx;
 
     // Calculate ambient
-    result.Ambient = m_Light->GetReadings()[m_index].Value * 100;
+
+    result.Ambient = (uint8_t)(m_Light->GetReadings()[m_index].Value * 100);
 
     // Calculate colors
     const auto & cameraBlobReadings = m_ColorCam->GetReadings().BlobList;
-
+    Real prevDistance = 1000;
     for (const auto & reading : cameraBlobReadings) {
 
         bool updateColors = false;
@@ -143,22 +141,34 @@ RGBAResult RGBASensor::readRGBA()
         {
             if ( (reading->Angle >= CRadians(0) && reading->Angle < m_ColorSensorAngularRange.GetMax()) ||
                  (reading->Angle <= CRadians(0) && reading->Angle > m_ColorSensorAngularRange.GetMin()) ) {
-                updateColors = true;
+
+                if(prevDistance > reading->Distance) //this blob is closer
+                {
+                    updateColors = true;
+                }
             }
         } else if (m_index == 4) {
             if ( (reading->Angle >= -CRadians(ARGOS_PI) && reading->Angle < m_ColorSensorAngularRange.GetMin()) ||
                  (reading->Angle <= CRadians(ARGOS_PI) && reading->Angle > m_ColorSensorAngularRange.GetMax()) ) {
-                updateColors = true;
+                if(prevDistance > reading->Distance) //this blob is closer
+                {
+                    updateColors = true;
+                }
             }
         } else if (m_ColorSensorAngularRange.WithinMinBoundIncludedMaxBoundIncluded(reading->Angle)) {
-            updateColors = true;
+
+            if(prevDistance > reading->Distance) //this blob is closer
+            {
+                updateColors = true;
+            }
         }
 
         if (updateColors) {
 
-            result.Green = reading->Color.GetGreen();
-            result.Red = reading->Color.GetRed();
-            result.Blue = reading->Color.GetBlue();
+            result.Green = (uint16_t)reading->Color.GetGreen();
+            result.Red = (uint16_t)reading->Color.GetRed();
+            result.Blue = (uint16_t)reading->Color.GetBlue();
+            prevDistance = reading->Distance;
         }
     }
 
@@ -210,7 +220,7 @@ Colors RGBASensor::readColor()
 HSVResult RGBASensor::rgbToHSV(RGBAResult in)
 {
     HSVResult out;
-    double min, max, delta;
+    Real min, max, delta;
 
     min = in.Red < in.Green ? in.Red : in.Green;
     min = min  < in.Blue ? min  : in.Blue;

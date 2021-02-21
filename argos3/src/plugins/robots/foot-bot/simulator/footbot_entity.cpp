@@ -20,9 +20,6 @@
 #include <argos3/plugins/simulator/entities/perspective_camera_equipped_entity.h>
 #include <argos3/plugins/simulator/entities/proximity_sensor_equipped_entity.h>
 #include <argos3/plugins/simulator/entities/wifi_equipped_entity.h>
-//#include <argos3/plugins/simulator/entities/light_entity.h>
-#include <argos3/plugins/simulator/entities/imu_equipped_entity.h>
-
 #include "footbot_distance_scanner_equipped_entity.h"
 #include "footbot_turret_entity.h"
 
@@ -30,62 +27,63 @@ namespace argos {
 
    /****************************************/
    /****************************************/
+   /*********** TODO :: change in footbot code
+        krembot Dimensions
+        static const Real BODY_RADIUS                = 0.035036758f;
+        static const Real BODY_HEIGHT                = 0.106899733f;
+    *******************************************************/
+   #define DISTANCE_RATIO_KREMBOT 2.427072676   // footbot-BODY_RADIUS / krembot-BODY_RADIUS
 
    static const Real BODY_RADIUS                = 0.085036758f;
-    static const Real BODY_HEIGHT                = 0.146899733f;
-//    krembot Dimensions
-//   static const Real BODY_RADIUS                = 0.035036758f;
-//   static const Real BODY_HEIGHT                = 0.106899733f;
+   static const Real BODY_HEIGHT                = 0.146899733f;
 
-    static const Real LED_RING_RADIUS            = BODY_RADIUS + 0.005;
+   static const Real LED_RING_RADIUS            = BODY_RADIUS + 0.005;
 
-    static const Real INTERWHEEL_DISTANCE        = 0.14f;
-    static const Real HALF_INTERWHEEL_DISTANCE   = INTERWHEEL_DISTANCE * 0.5f;
-    static const Real WHEEL_RADIUS               = 0.029112741f;
+   static const Real INTERWHEEL_DISTANCE        = 0.14f;
+   static const Real HALF_INTERWHEEL_DISTANCE   = INTERWHEEL_DISTANCE * 0.5f;
+   static const Real WHEEL_RADIUS               = 0.029112741f;
 
-    static const Real PROXIMITY_SENSOR_RING_ELEVATION       = 0.06f;
-    static const Real PROXIMITY_SENSOR_RING_RADIUS          = BODY_RADIUS;
-    static const CRadians PROXIMITY_SENSOR_RING_START_ANGLE = CRadians(0);//((ARGOS_PI / 12.0f) * 0.5f);
-    //divide by DISTANCE_RATIO_KREMBOT in order to sense the distance in the same proportion
-    static const Real PROXIMITY_SENSOR_RING_RANGE           = 0.2551f * DISTANCE_RATIO_KREMBOT;
-    static const UInt32 NUM_OF_PROXIMITY_SENSORS               = 8;
+   static const Real PROXIMITY_SENSOR_RING_ELEVATION       = 0.06f;
+   static const Real PROXIMITY_SENSOR_RING_RADIUS          = BODY_RADIUS;
+   static const CRadians PROXIMITY_SENSOR_RING_START_ANGLE = CRadians(0);
+   static const Real PROXIMITY_SENSOR_RING_RANGE           = 0.2551f * DISTANCE_RATIO_KREMBOT;
+    static const UInt32 NUM_OF_SENSORS                      = 8;
 
-    static const Real LED_RING_ELEVATION         = 0.085f;
-    static const Real RAB_ELEVATION              = 0.1f;
-    static const Real BEACON_ELEVATION           = 0.174249733f;
+   static const Real LED_RING_ELEVATION         = 0.085f;
+   static const Real RAB_ELEVATION              = 0.1f;
+   static const Real BEACON_ELEVATION           = 0.174249733f;
 
-    static const Real GRIPPER_ELEVATION          = LED_RING_ELEVATION;
+   static const Real GRIPPER_ELEVATION          = LED_RING_ELEVATION;
 
-//   static const CRadians LED_ANGLE_SLICE        = CRadians(ARGOS_PI / 8.0);
-//   static const CRadians HALF_LED_ANGLE_SLICE   = LED_ANGLE_SLICE * 0.5f;
+   static const CRadians LED_ANGLE_SLICE        = CRadians(ARGOS_PI / 8.0);
+   static const CRadians HALF_LED_ANGLE_SLICE   = LED_ANGLE_SLICE * 0.5f;
 
     static const CRadians LED_START_ANGLE           = CRadians(0 );
     static const UInt32 NUM_OF_LEDS                 = 8;
 
-
-    static const Real OMNIDIRECTIONAL_CAMERA_ELEVATION = LED_RING_ELEVATION;//0.288699733f;
+   static const Real OMNIDIRECTIONAL_CAMERA_ELEVATION = 0.288699733f;
+    static const Real OMNIDIRECTIONAL_CAMERA_RING_RANGE =  PROXIMITY_SENSOR_RING_RANGE;
 
    /****************************************/
    /****************************************/
 
    CFootBotEntity::CFootBotEntity() :
-      CComposableEntity(NULL),
-      m_pcControllableEntity(NULL),
-      m_pcDistanceScannerEquippedEntity(NULL),
-      m_pcTurretEntity(NULL),
-      m_pcEmbodiedEntity(NULL),
-      m_pcGripperEquippedEntity(NULL),
-      m_pcGroundSensorEquippedEntity(NULL),
-      m_pcLEDEquippedEntity(NULL),
-      m_pcLightSensorEquippedEntity(NULL),
-      m_pcOmnidirectionalCameraEquippedEntity(NULL),
-      m_pcPerspectiveCameraEquippedEntity(NULL),
-      m_pcProximitySensorEquippedEntity(NULL),
-      m_pcRABEquippedEntity(NULL),
-      m_pcWheeledEntity(NULL),
-      m_pcWiFiEquippedEntity(NULL),
-      m_pcBatteryEquippedEntity(NULL),
-      m_pcImuEquippedEntity(NULL){
+      CComposableEntity(nullptr),
+      m_pcControllableEntity(nullptr),
+      m_pcDistanceScannerEquippedEntity(nullptr),
+      m_pcTurretEntity(nullptr),
+      m_pcEmbodiedEntity(nullptr),
+      m_pcGripperEquippedEntity(nullptr),
+      m_pcGroundSensorEquippedEntity(nullptr),
+      m_pcLEDEquippedEntity(nullptr),
+      m_pcLightSensorEquippedEntity(nullptr),
+      m_pcOmnidirectionalCameraEquippedEntity(nullptr),
+      m_pcPerspectiveCameraEquippedEntity(nullptr),
+      m_pcProximitySensorEquippedEntity(nullptr),
+      m_pcRABEquippedEntity(nullptr),
+      m_pcWheeledEntity(nullptr),
+      m_pcWiFiEquippedEntity(nullptr),
+      m_pcBatteryEquippedEntity(nullptr) {
    }
 
    /****************************************/
@@ -103,23 +101,22 @@ namespace argos {
                                   const CRadians& c_perspcam_aperture,
                                   Real f_perspcam_focal_length,
                                   Real f_perspcam_range) :
-      CComposableEntity(NULL, str_id),
-      m_pcControllableEntity(NULL),
-      m_pcDistanceScannerEquippedEntity(NULL),
-      m_pcTurretEntity(NULL),
-      m_pcEmbodiedEntity(NULL),
-      m_pcGripperEquippedEntity(NULL),
-      m_pcGroundSensorEquippedEntity(NULL),
-      m_pcLEDEquippedEntity(NULL),
-      m_pcLightSensorEquippedEntity(NULL),
-      m_pcOmnidirectionalCameraEquippedEntity(NULL),
-      m_pcPerspectiveCameraEquippedEntity(NULL),
-      m_pcProximitySensorEquippedEntity(NULL),
-      m_pcRABEquippedEntity(NULL),
-      m_pcWheeledEntity(NULL),
-      m_pcWiFiEquippedEntity(NULL),
-      m_pcBatteryEquippedEntity(NULL),
-      m_pcImuEquippedEntity(NULL){
+      CComposableEntity(nullptr, str_id),
+      m_pcControllableEntity(nullptr),
+      m_pcDistanceScannerEquippedEntity(nullptr),
+      m_pcTurretEntity(nullptr),
+      m_pcEmbodiedEntity(nullptr),
+      m_pcGripperEquippedEntity(nullptr),
+      m_pcGroundSensorEquippedEntity(nullptr),
+      m_pcLEDEquippedEntity(nullptr),
+      m_pcLightSensorEquippedEntity(nullptr),
+      m_pcOmnidirectionalCameraEquippedEntity(nullptr),
+      m_pcPerspectiveCameraEquippedEntity(nullptr),
+      m_pcProximitySensorEquippedEntity(nullptr),
+      m_pcRABEquippedEntity(nullptr),
+      m_pcWheeledEntity(nullptr),
+      m_pcWiFiEquippedEntity(nullptr),
+      m_pcBatteryEquippedEntity(nullptr) {
       try {
          /*
           * Create and init components
@@ -129,7 +126,6 @@ namespace argos {
           * Better to put this first, because many other entities need this one
           */
          m_pcEmbodiedEntity = new CEmbodiedEntity(this, "body_0", c_position, c_orientation);
-
          AddComponent(*m_pcEmbodiedEntity);
          SAnchor& cTurretAnchor = m_pcEmbodiedEntity->AddAnchor("turret");
          CQuaternion cPerspCamOrient(b_perspcam_front ? CRadians::ZERO : -CRadians::PI_OVER_TWO,
@@ -154,6 +150,7 @@ namespace argos {
 //         m_pcLEDEquippedEntity->AddLED(
 //            CVector3(0.0f, 0.0f, BEACON_ELEVATION),
 //            cTurretAnchor);
+
          /* Proximity sensor equipped entity */
          m_pcProximitySensorEquippedEntity =
             new CProximitySensorEquippedEntity(this, "proximity_0");
@@ -163,7 +160,7 @@ namespace argos {
             PROXIMITY_SENSOR_RING_RADIUS,
             PROXIMITY_SENSOR_RING_START_ANGLE,
             PROXIMITY_SENSOR_RING_RANGE,
-            NUM_OF_PROXIMITY_SENSORS,
+            NUM_OF_SENSORS,
             m_pcEmbodiedEntity->GetOriginAnchor());
          /* Light sensor equipped entity */
          m_pcLightSensorEquippedEntity =
@@ -174,7 +171,7 @@ namespace argos {
             PROXIMITY_SENSOR_RING_RADIUS,
             PROXIMITY_SENSOR_RING_START_ANGLE,
             PROXIMITY_SENSOR_RING_RANGE,
-            NUM_OF_PROXIMITY_SENSORS,
+            NUM_OF_SENSORS,
             m_pcEmbodiedEntity->GetOriginAnchor());
          /* Gripper equipped entity */
          m_pcGripperEquippedEntity =
@@ -265,9 +262,6 @@ namespace argos {
          /* Battery equipped entity */
          m_pcBatteryEquippedEntity = new CBatteryEquippedEntity(this, "battery_0", str_bat_model);
          AddComponent(*m_pcBatteryEquippedEntity);
-         /* Imu equipped entity */
-          m_pcImuEquippedEntity = new CImuEquippedEntity(this, "imu");
-          AddComponent(*m_pcImuEquippedEntity);
          /* Controllable entity
             It must be the last one, for actuators/sensors to link to composing entities correctly */
          m_pcControllableEntity = new CControllableEntity(this, "controller_0");
@@ -318,6 +312,7 @@ namespace argos {
 //         m_pcLEDEquippedEntity->AddLED(
 //            CVector3(0.0f, 0.0f, BEACON_ELEVATION),
 //            cTurretAnchor);
+
          /* Proximity sensor equipped entity */
          m_pcProximitySensorEquippedEntity =
             new CProximitySensorEquippedEntity(this, "proximity_0");
@@ -327,7 +322,7 @@ namespace argos {
             PROXIMITY_SENSOR_RING_RADIUS,
             PROXIMITY_SENSOR_RING_START_ANGLE,
             PROXIMITY_SENSOR_RING_RANGE,
-            NUM_OF_PROXIMITY_SENSORS,
+            NUM_OF_SENSORS,
             m_pcEmbodiedEntity->GetOriginAnchor());
          /* Light sensor equipped entity */
          m_pcLightSensorEquippedEntity =
@@ -338,7 +333,7 @@ namespace argos {
             PROXIMITY_SENSOR_RING_RADIUS,
             PROXIMITY_SENSOR_RING_START_ANGLE,
             PROXIMITY_SENSOR_RING_RANGE,
-            NUM_OF_PROXIMITY_SENSORS,
+            NUM_OF_SENSORS,
             m_pcEmbodiedEntity->GetOriginAnchor());
          /* Gripper equipped entity */
          m_pcGripperEquippedEntity =
@@ -405,9 +400,13 @@ namespace argos {
                                    *m_pcEmbodiedEntity,
                                    CVector3(0.0f, 0.0f, RAB_ELEVATION));
          AddComponent(*m_pcRABEquippedEntity);
+
          /* Omnidirectional camera equipped entity */
-         CDegrees cAperture(70.0f);
-         GetNodeAttributeOrDefault(t_tree, "omnidirectional_camera_aperture", cAperture, cAperture);
+//         CDegrees cAperture(70.0f);
+//          To FIX the range of the omnidirection camera:
+          CDegrees cAperture = ToDegrees(ATan2(OMNIDIRECTIONAL_CAMERA_RING_RANGE, OMNIDIRECTIONAL_CAMERA_ELEVATION));
+
+          GetNodeAttributeOrDefault(t_tree, "omnidirectional_camera_aperture", cAperture, cAperture);
          m_pcOmnidirectionalCameraEquippedEntity =
             new COmnidirectionalCameraEquippedEntity(this,
                                                      "omnidirectional_camera_0",
@@ -450,9 +449,6 @@ namespace argos {
          if(NodeExists(t_tree, "battery"))
             m_pcBatteryEquippedEntity->Init(GetNode(t_tree, "battery"));
          AddComponent(*m_pcBatteryEquippedEntity);
-          /* Imu equipped entity */
-          m_pcImuEquippedEntity = new CImuEquippedEntity(this, "imu");
-          AddComponent(*m_pcImuEquippedEntity);
          /* Controllable entity
             It must be the last one, for actuators/sensors to link to composing entities correctly */
          m_pcControllableEntity = new CControllableEntity(this);
@@ -489,7 +485,6 @@ namespace argos {
       UPDATE(m_pcRABEquippedEntity);
       UPDATE(m_pcLEDEquippedEntity);
       UPDATE(m_pcBatteryEquippedEntity);
-      UPDATE(m_pcImuEquippedEntity);
    }
 
    /****************************************/

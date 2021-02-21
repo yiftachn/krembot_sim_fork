@@ -114,7 +114,7 @@ public:
      */
     inline void setup() { }
 
-    inline void loop() { }
+   inline void loop() {}
 };
 
 #endif

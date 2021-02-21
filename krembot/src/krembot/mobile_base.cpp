@@ -56,16 +56,16 @@ bool MobileBase::drive(int8_t linear_spd, int8_t angular_spd) {
     }
 
     /* ********************************************************************
-       converting the speeds from realworld scale to simulation scale
-       the function CCI_DifferentialSteeringActuator::SetLinearVelocity gets two "Real" (=double) variables
+       converting the speeds from real-world scale to simulation scale
+       the function CCI_DifferentialSteeringActuator::SetLinearVelocity gets two "Real" (=double/Real) variables
        (see krembot_sim/argos3/src/core/utility/datatypes/datatypes.h)
     ************************************************************************/
-    const float range_max = static_cast<float>(speedRange.GetMax());
-    double linear_scale = (linear_spd / range_max) * MAX_ARGOS_SPEED_LINEAR;
-    double angular_scale = (angular_spd / range_max) * MAX_ARGOS_SPEED_ANGULAR;
+    const Real range_max = static_cast<Real>(speedRange.GetMax());
+    Real linear_scale = (linear_spd / range_max) * MAX_ARGOS_SPEED_LINEAR;
+    Real angular_scale = (angular_spd / range_max) * MAX_ARGOS_SPEED_ANGULAR;
 
-    double left_cmd = linear_scale - angular_scale;
-    double right_cmd = linear_scale + angular_scale;
+    Real left_cmd = linear_scale - angular_scale;
+    Real right_cmd = linear_scale + angular_scale;
 
     if (m_pcWheels != nullptr) {
         m_pcWheels->SetLinearVelocity(left_cmd, right_cmd);

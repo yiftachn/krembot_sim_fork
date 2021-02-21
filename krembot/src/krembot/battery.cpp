@@ -50,7 +50,7 @@ Battery::Battery() {
 
 float Battery::timeRatio() {
     const auto & elapsedMinutes = duration_cast<std::chrono::minutes>(steady_clock::now() - m_startTime).count();
-    float timeLeftMinutes = BATTERY_CAPACITY_MINUTES - elapsedMinutes;
+    float timeLeftMinutes = (float)(BATTERY_CAPACITY_MINUTES - elapsedMinutes);
     if (timeLeftMinutes < 0 ) {
         timeLeftMinutes = 0;
     }
@@ -58,14 +58,14 @@ float Battery::timeRatio() {
 }
 
 float Battery::readBatLvl() {
-    return (timeRatio() * (MAX_BAT_LVL - MIN_BAT_LVL)) + MIN_BAT_LVL;
+    return (float)((timeRatio() * (MAX_BAT_LVL - MIN_BAT_LVL)) + MIN_BAT_LVL);
 }
 
 bool Battery::isFull() { return (timeRatio() == 1); }
 
 uint8_t Battery::getBatLvl() { return timeRatio() * 100; }
 
-float Battery::getBatVolt() { return timeRatio() * 100.0; }
+float Battery::getBatVolt() { return (float)(timeRatio() * 100.0); }
 
 void Battery::print()
 {

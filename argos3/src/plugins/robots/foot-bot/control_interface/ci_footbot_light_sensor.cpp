@@ -14,13 +14,15 @@ namespace argos {
 
    /****************************************/
    /****************************************/
-
+     // TODO : CHANGE IN FOOTBOT CODE
    static CRadians SPACING = CRadians(ARGOS_PI / 4.0f);
    static CRadians START_ANGLE = CRadians(0);
 
    /****************************************/
    /****************************************/
 
+
+    // TODO : CHANGE IN FOOTBOT CODE
    CCI_FootBotLightSensor::CCI_FootBotLightSensor() :
       m_tReadings(8) {
       for(size_t i = 0; i < 8; ++i) {

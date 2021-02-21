@@ -34,6 +34,9 @@
 
 
 #include <cstdio>
+#include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_proximity_sensor.h>
+
+using namespace argos;
 
 namespace utils {
     /*

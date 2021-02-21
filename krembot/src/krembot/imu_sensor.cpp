@@ -53,9 +53,9 @@ ImuData IMUSensor::read()
 
     // Convert to degrees and multiply by -1 to flip circle
     // from anti clock-wise positive to clock-wise positive
-    const float rollDeg =       -1 * ToDegrees(readings.Roll).GetValue();
-    const float pitchDeg =      -1 * ToDegrees(readings.Pitch).GetValue();
-    const float yawDeg =        -1 * ToDegrees(readings.Yaw).GetValue();
+    const float rollDeg =       (float)(-1 * ToDegrees(readings.Roll).GetValue());
+    const float pitchDeg =      (float)(-1 * ToDegrees(readings.Pitch).GetValue());
+    const float yawDeg =        (float)(-1 * ToDegrees(readings.Yaw).GetValue());
 
     // Convert data from -180-180 to 0-360 range and return
     return ImuData(

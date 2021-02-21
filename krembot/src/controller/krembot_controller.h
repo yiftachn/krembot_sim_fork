@@ -57,8 +57,12 @@ using namespace argos;
 class KrembotController : public CCI_Controller {
 
 public:
-
-    virtual ~KrembotController() = default;
+//    KrembotController(){
+//        fprintf(stderr, "in KrembotController ctor\n");
+//    }
+//    virtual ~KrembotController() {
+//        fprintf(stderr, "in KrembotController dis-ctor\n");
+//    }
 
     /*
      * This function initializes the controller.

@@ -39,12 +39,6 @@ namespace argos {
                  const CVector3& c_position,
                  const CColor& c_color);
 
-       CLEDEntity(CComposableEntity* pc_parent,
-                  const std::string& str_id,
-                  const CVector3& c_position,
-                  const CColor& c_color,
-                  const Real& c_intensity);
-
       virtual ~CLEDEntity() {}
 
       virtual void Init(TConfigurationNode& t_tree);
@@ -121,13 +115,8 @@ namespace argos {
        */
       void SetMedium(CLEDMedium& c_medium);
 
-       inline Real GetIntensity() const {
+      inline Real GetIntensity() const {
            return m_fIntensity;
-       }
-
-       inline void SetIntensity(Real f_intensity) {
-           m_fIntensity = f_intensity;
-           // todo: set alpha too? (with m_cColor.SetAlpha())
        }
 
    protected:
@@ -135,10 +124,7 @@ namespace argos {
       CColor m_cColor;
       CColor m_cInitColor;
       CLEDMedium* m_pcMedium;
-
-   protected:
-
-       Real m_fIntensity;
+      Real m_fIntensity;
 
    };
 

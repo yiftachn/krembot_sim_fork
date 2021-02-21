@@ -18,27 +18,14 @@ namespace argos {
    class CCI_ProximitySensor : public CCI_Sensor {
 
    public:
-       struct intersec_t {
-           enum Type {
-               NONE = 0,
-               ROBOT,
-               OTHER
-           };
-           Real prox = 0;
-           /**
-            * true if intersected entity is robot
-            */
-           Type type = NONE;
-
-           void operator=(const intersec_t & other) {
-               this->prox = other.prox;
-               this->type = other.type;
-           }
+       struct proxData{
+           Real val;
+           bool isRobot;
        };
 
       virtual ~CCI_ProximitySensor() {}
 
-      const std::vector<intersec_t>& GetReadings() const;
+      const std::vector<proxData>& GetReadings() const;
 
 #ifdef ARGOS_WITH_LUA
       virtual void CreateLuaState(lua_State* pt_lua_state);
@@ -48,7 +35,7 @@ namespace argos {
 
    protected:
 
-      std::vector<intersec_t> m_tReadings;
+      std::vector<proxData> m_tReadings;
 
    };
 

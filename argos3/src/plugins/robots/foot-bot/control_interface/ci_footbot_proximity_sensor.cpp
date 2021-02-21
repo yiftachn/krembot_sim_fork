@@ -16,6 +16,7 @@ namespace argos {
    /****************************************/
    /****************************************/
 
+   // TODO:: changed
    static CRadians SPACING = CRadians(ARGOS_PI / 4.0f);
    static CRadians START_ANGLE = CRadians(0);
 

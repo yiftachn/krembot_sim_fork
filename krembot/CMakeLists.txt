@@ -41,13 +41,13 @@ add_library(Krembot MODULE
 		src/sand_timer/SandTimer.cpp
 
 		## particle application ##
-        src/particle_app/serial.cpp
+		src/particle_app/serial.cpp
 		src/particle_app/particle_string.cpp
 		src/particle_app/timing.cpp
 		src/particle_app/particle_observer.cpp
 
 		## controller ##
-        src/controller/krembot_controller.cpp)
+		src/controller/krembot_controller.cpp)
 
 #set_target_properties(krembot PROPERTIES PUBLIC_HEADER src/krembot.h src/mobile_base.h)
 
@@ -58,9 +58,9 @@ configure_file(
 		@ONLY)
 
 target_link_libraries(Krembot
-  argos3core_simulator
-  argos3plugin_simulator_footbot
-  argos3plugin_simulator_genericrobot)
+		argos3core_simulator
+		argos3plugin_simulator_footbot
+		argos3plugin_simulator_genericrobot)
 
 install(TARGETS Krembot
 		LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}

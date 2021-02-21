@@ -21,6 +21,8 @@ namespace argos {
 #include <argos3/core/simulator/space/space.h>
 #include <argos3/core/simulator/sensor.h>
 
+#define DISTANCE_RATIO_KREMBOT 2.427072676   // footbot-BODY_RADIUS / krembot-BODY_RADIUS
+
 namespace argos {
 
    class CProximityDefaultSensor : public CSimulatedSensor,
@@ -46,6 +48,22 @@ namespace argos {
        * @returns A value in the range [0:1], where 0 means that the object is too far to be sensed, and 1 means the object is so close that it saturates the sensor.
        */
       virtual Real CalculateReading(Real f_distance);
+
+      /**
+       * Returns true if the rays must be shown in the GUI.
+       * @return true if the rays must be shown in the GUI.
+       */
+      inline bool IsShowRays() {
+         return m_bShowRays;
+      }
+
+      /**
+       * Sets whether or not the rays must be shown in the GUI.
+       * @param b_show_rays true if the rays must be shown, false otherwise
+       */
+      inline void SetShowRays(bool b_show_rays) {
+         m_bShowRays = b_show_rays;
+      }
 
    protected:
 

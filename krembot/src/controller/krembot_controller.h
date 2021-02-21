@@ -58,7 +58,7 @@ class KrembotController : public CCI_Controller {
 
 public:
     virtual ~KrembotController() = default;
-    
+
     virtual void Init(TConfigurationNode& t_node);
 
     /*

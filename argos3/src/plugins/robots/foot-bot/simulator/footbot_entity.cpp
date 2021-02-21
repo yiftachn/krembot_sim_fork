@@ -22,6 +22,7 @@
 #include <argos3/plugins/simulator/entities/wifi_equipped_entity.h>
 #include "footbot_distance_scanner_equipped_entity.h"
 #include "footbot_turret_entity.h"
+#include <argos3/plugins/simulator/entities/imu_equipped_entity.h>
 
 namespace argos {
 

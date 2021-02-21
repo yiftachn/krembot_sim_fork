@@ -51,7 +51,7 @@ namespace argos {
              itRadio != itRadio.end();
              ++itRadio) {
             /* Initialise the radio using the XML */
-            CRadioEntity* pcRadio = new CRadioEntity(this);
+            auto* pcRadio = new CRadioEntity(this);
             pcRadio->Init(*itRadio);
             CVector3 cOffset;
             GetNodeAttribute(*itRadio, "position", cOffset);
@@ -66,7 +66,7 @@ namespace argos {
              * 3. the "body" is an embodied entity
              * If any of the above is false, this line will bomb out.
              */
-            CEmbodiedEntity& cBody = GetParent().GetComponent<CEmbodiedEntity>("body");
+            auto& cBody = GetParent().GetComponent<CEmbodiedEntity>("body");
             /* Add the radio to this container */
             m_vecInstances.emplace_back(*pcRadio, cBody.GetAnchor(strAnchorId), cOffset);
             AddComponent(*pcRadio);
@@ -106,13 +106,14 @@ namespace argos {
    /****************************************/
    /****************************************/
 
-   void CRadioEquippedEntity::AddRadio(const CVector3& c_offset,
+   void CRadioEquippedEntity::AddRadio(const std::string& str_id,
+                                       const CVector3& c_offset,
                                        SAnchor& s_anchor,
                                        Real f_transmit_range) {
       /* create the new radio entity */
-      CRadioEntity* pcRadio =
+      auto* pcRadio =
          new CRadioEntity(this,
-                          "radio_" + std::to_string(m_vecInstances.size()),
+                          str_id,
                           f_transmit_range);
       /* add it to the instances vector */
       m_vecInstances.emplace_back(*pcRadio,

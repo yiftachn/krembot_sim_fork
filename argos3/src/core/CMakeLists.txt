@@ -1,5 +1,3 @@
-remove_definitions(-DARGOS_WITH_LUA)
-
 #
 # Headers
 #
@@ -300,7 +298,6 @@ if(ARGOS_BUILD_FOR_SIMULATOR)
   install(
     FILES
     ${CMAKE_SOURCE_DIR}/cmake/ARGoSCheckQTOpenGL.cmake
-    ${CMAKE_SOURCE_DIR}/cmake/FindLua52.cmake
     DESTINATION
     share/argos3/cmake)
   #

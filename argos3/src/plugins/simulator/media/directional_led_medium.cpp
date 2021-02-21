@@ -32,9 +32,9 @@ namespace argos {
          if(strPosIndexMethod == "grid") {
             size_t punGridSize[3];
             if(!NodeAttributeExists(t_tree, "grid_size")) {
-               punGridSize[0] = cArenaSize.GetX();
-               punGridSize[1] = cArenaSize.GetY();
-               punGridSize[2] = cArenaSize.GetZ();
+               punGridSize[0] = static_cast<UInt32>(cArenaSize.GetX());
+               punGridSize[1] = static_cast<UInt32>(cArenaSize.GetY());
+               punGridSize[2] = static_cast<UInt32>(cArenaSize.GetZ());
             }
             else {
                std::string strPosGridSize;
@@ -93,6 +93,7 @@ namespace argos {
 
    void CDirectionalLEDMedium::AddEntity(CDirectionalLEDEntity& c_entity) {
       m_pcDirectionalLEDEntityIndex->AddEntity(c_entity);
+      m_pcDirectionalLEDEntityIndex->Update();
    }
 
    /****************************************/
@@ -100,6 +101,7 @@ namespace argos {
 
    void CDirectionalLEDMedium::RemoveEntity(CDirectionalLEDEntity& c_entity) {
       m_pcDirectionalLEDEntityIndex->RemoveEntity(c_entity);
+      m_pcDirectionalLEDEntityIndex->Update();
    }
 
    /****************************************/

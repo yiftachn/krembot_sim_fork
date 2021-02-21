@@ -23,8 +23,8 @@ namespace argos {
       m_fBoxAngularFriction(1.49),
       m_fCylinderLinearFriction(1.49),
       m_fCylinderAngularFriction(1.49),
-      m_ptSpace(NULL),
-      m_ptGroundBody(NULL),
+      m_ptSpace(nullptr),
+      m_ptGroundBody(nullptr),
       m_fElevation(0.0f) {
    }
 
@@ -76,9 +76,9 @@ namespace argos {
             SHAPE_GRIPPABLE,
             BeginCollisionBetweenGripperAndGrippable,
             ManageCollisionBetweenGripperAndGrippable,
-            NULL,
-            NULL,
-            NULL);
+            nullptr,
+            nullptr,
+            nullptr);
       }
       catch(CARGoSException& ex) {
          THROW_ARGOSEXCEPTION_NESTED("Error initializing the dynamics 2D engine \"" << GetId() << "\"", ex);
@@ -89,7 +89,7 @@ namespace argos {
    /****************************************/
 
    void CDynamics2DEngine::Reset() {
-      for(CDynamics2DModel::TMap::iterator it = m_tPhysicsModels.begin();
+      for(auto it = m_tPhysicsModels.begin();
           it != m_tPhysicsModels.end(); ++it) {
          it->second->Reset();
       }
@@ -101,20 +101,20 @@ namespace argos {
 
    void CDynamics2DEngine::Update() {
       /* Update the physics state from the entities */
-      for(CDynamics2DModel::TMap::iterator it = m_tPhysicsModels.begin();
+      for(auto it = m_tPhysicsModels.begin();
           it != m_tPhysicsModels.end(); ++it) {
          it->second->UpdateFromEntityStatus();
       }
       /* Perform the step */
       for(size_t i = 0; i < GetIterations(); ++i) {
-         for(CDynamics2DModel::TMap::iterator it = m_tPhysicsModels.begin();
+         for(auto it = m_tPhysicsModels.begin();
              it != m_tPhysicsModels.end(); ++it) {
             it->second->UpdatePhysics();
          }
          cpSpaceStep(m_ptSpace, GetPhysicsClockTick());
       }
       /* Update the simulated space */
-      for(CDynamics2DModel::TMap::iterator it = m_tPhysicsModels.begin();
+      for(auto it = m_tPhysicsModels.begin();
           it != m_tPhysicsModels.end(); ++it) {
          it->second->UpdateEntityStatus();
       }
@@ -125,7 +125,7 @@ namespace argos {
 
    void CDynamics2DEngine::Destroy() {
       /* Empty the physics model map */
-      for(CDynamics2DModel::TMap::iterator it = m_tPhysicsModels.begin();
+      for(auto it = m_tPhysicsModels.begin();
           it != m_tPhysicsModels.end(); ++it) {
          delete it->second;
       }
@@ -192,7 +192,7 @@ namespace argos {
                f_t));
       }
    }
-   
+
    void CDynamics2DEngine::CheckIntersectionWithRay(TEmbodiedEntityIntersectionData& t_data,
                                                     const CRay3& c_ray) const {
       /* Query all hits along the ray */
@@ -230,7 +230,7 @@ namespace argos {
    /****************************************/
 
    void CDynamics2DEngine::AddPhysicsModel(const std::string& str_id,
-                                            CDynamics2DModel& c_model) {
+                                           CDynamics2DModel& c_model) {
       m_tPhysicsModels[str_id] = &c_model;
    }
 
@@ -238,7 +238,7 @@ namespace argos {
    /****************************************/
 
    void CDynamics2DEngine::RemovePhysicsModel(const std::string& str_id) {
-      CDynamics2DModel::TMap::iterator it = m_tPhysicsModels.find(str_id);
+      auto it = m_tPhysicsModels.find(str_id);
       if(it != m_tPhysicsModels.end()) {
          delete it->second;
          m_tPhysicsModels.erase(it);
@@ -265,8 +265,7 @@ namespace argos {
                            "    ...\n"
                            "  </physics_engines>\n\n"
                            "The 'id' attribute is necessary and must be unique among the physics engines.\n"
-                           "It is used in the subsequent section <arena_physics> to assign entities to\n"
-                           "physics engines. If two engines share the same id, initialization aborts.\n\n"
+                           "If two engines share the same id, initialization aborts.\n\n"
                            "OPTIONAL XML CONFIGURATION\n\n"
                            "It is possible to set how many iterations this physics engine performs between\n"
                            "each simulation step. By default, this physics engine performs 10 steps every\n"
@@ -299,7 +298,7 @@ namespace argos {
                            "syntax (all attributes are optional):\n\n"
                            "  <physics_engines>\n"
                            "    ...\n"
-                           "    <dynamics2d id=\"dyn2d\"\n"
+                           "    <dynamics2d id=\"dyn2d\">\n"
                            "      <friction box_linear_friction=\"1.0\"\n"
                            "                box_angular_friction=\"2.0\"\n"
                            "                cylinder_linear_friction=\"3.0\"\n"
@@ -326,25 +325,86 @@ namespace argos {
                            "The attributes 'max_force' and 'max_torque' are both optional, and they take the\n"
                            "robot-specific default if not set. Check the code of the dynamics2d model of the\n"
                            "robot you're using to know the default values.\n\n"
-                           "By default, this engine uses the bounding-box tree method for collision shape\n"
-                           "indexing. This method is the default in Chipmunk and it works well most of the\n"
-                           "times. However, if you are running simulations with hundreds or thousands of\n"
-                           "identical robots, a different shape collision indexing is available: the spatial\n"
-                           "hash. The spatial hash is a grid stored in a hashmap. To get the max out of this\n"
-                           "indexing method, you must set two parameters: the cell size and the suggested\n"
-                           "minimum number of cells in the space. According to the documentation of\n"
-                           "Chipmunk, the cell size should correspond to the size of the bounding box of the\n"
-                           "most common object in the simulation; the minimum number of cells should be at\n"
-                           "least 10x the number of objects managed by the physics engine. To use this\n"
-                           "indexing method, use this syntax (all attributes are mandatory):\n\n"
+                           "Multiple physics engines can also be used. If multiple physics engines are used,\n"
+                           "the disjoint union of the area within the arena assigned to each engine must cover\n"
+                           "the entire arena without overlapping. If the entire arena is not covered, robots can\n"
+                           "\"escape\" the configured physics engines and cause a fatal exception (this is not an\n"
+                           "issue when a single physics engine is used, because the engine covers the entire arena\n"
+                           "by default). To use multiple physics engines, use the following syntax (all attributes\n"
+                           "are mandatory):\n\n"
+
                            "  <physics_engines>\n"
                            "    ...\n"
-                           "    <dynamics2d id=\"dyn2d\"\n"
-                           "      <spatial_hash cell_size=\"1.0\"\n"
-                           "                    cell_num=\"2.0\" />\n"
+                           "    <dynamics2d id=\"dyn2d0\">\n"
+                           "      <boundaries>\n"
+                           "        <top height=\"1.0\"/>\n"
+                           "        <botton height=\"0.0\"/>\n"
+                           "        <sides>\n"
+                           "          <vertex point=\"0.0, 0.0\"/>\n"
+                           "          <vertex point=\"4.0, 0.0\"/>\n"
+                           "          <vertex point=\"4.0, 4.0\"/>\n"
+                           "          <vertex point=\"0.0, 4.0\"/>\n"
+                           "        </sides>\n"
+                           "      </boundaries>\n"
+                           "    </dynamics2d>\n"
+                           "    <dynamics2d id=\"dyn2d1\">\n"
+                           "     ..."
                            "    </dynamics2d>\n"
                            "    ...\n"
-                           "  </physics_engines>\n"
+                           "  </physics_engines>\n\n"
+
+                           "The 'top' and 'bottom' nodes are relevant for 3D physics engines. For 2D\n"
+                           "engines, it safe to set their height to 1.0 and 0.0, respectively. A physics\n"
+                           "engine can be defined having any number of sides >= 3, as long as the sides form\n"
+                           "a closed polygon in the 2D plane. The vertices must be declared in\n"
+                           "counter-clockwise order.  In the above example, the physics engine \"dyn2d0\" is\n"
+                           "assigned to the area within the arena with lower-left coordinates (0,0) and\n"
+                           "upper-right coordinates (4,4) and vertices are specified in counter clockwise\n"
+                           "order: south-east, south-west, north-west, north-east.\n\n"
+                           "OPTIMIZATION HINTS\n\n"
+                           "1. A single physics engine is generally sufficient for small swarms (say <= 50\n"
+                           "   robots) within a reasonably small arena to obtain faster than real-time\n"
+                           "   performance with optimized code. For larger swarms and/or large arenas,\n"
+                           "   multiple engines should be used for maximum performance.\n\n"
+                           "2. In general, using the same number of ARGoS threads as physics engines gives\n"
+                           "   maximum performance (1-thread per engine per CPU core).\n\n"
+                           "3. Using multiple engines in simulations with any of the following\n"
+                           "   characteristics generally incurs more overhead (due to thread context\n"
+                           "   switching) than the performance benefits from multiple engines:\n"
+                           "   - Small swarms\n"
+                           "   - Small arenas\n"
+                           "   - Less available ARGoS threads than assigned physics engines\n"
+                           "   - Less available CPU cores than assigned ARGoS threads\n\n"
+                           "4. A good starting strategy for physics engine boundary assignment is to assign\n"
+                           "   each physics engine the same amount of area within the arena. This will be\n"
+                           "   sufficient for most cases. Depending on the nature of the simulation, using\n"
+                           "   non-homogeneous physics engine sizes may yield increased performance. An\n"
+                           "   example would be a narrow hallway between larger open areas in the arena--the\n"
+                           "   hallway will likely experience increased robot density and assigning more\n"
+                           "   physics engines to that area than the relatively unpopulated open areas may\n"
+                           "   increase performance.\n\n"
+                           "5. By default, this engine uses the bounding-box tree method for collision shape\n"
+                           "   indexing. This method is the default in Chipmunk and it works well most of\n"
+                           "   the times. However, if you are running simulations with hundreds or thousands\n"
+                           "   of identical robots, a different shape collision indexing is available: the\n"
+                           "   spatial hash. The spatial hash is a grid stored in a hashmap. To get the max\n"
+                           "   out of this indexing method, you must set two parameters: the cell size and\n"
+                           "   the suggested minimum number of cells in the space. According to the\n"
+                           "   documentation of Chipmunk, the cell size should correspond to the size of the\n"
+                           "   bounding box of the most common object in the simulation; the minimum number\n"
+                           "   of cells should be at least 10x the number of objects managed by the physics\n"
+                           "   engine. To use this indexing method, use this syntax (all attributes are\n"
+                           "   mandatory):\n\n"
+                           "   <physics_engines>\n"
+                           "     ...\n"
+                           "     <dynamics2d id=\"dyn2d\">\n"
+                           "       <spatial_hash>\n"
+                           "         <cell_size=\"1.0\"/>\n"
+                           "         <cell_num=\"2.0\"/>\n"
+                           "       </spatial_hash>\n"
+                           "     </dynamics2d>\n"
+                           "     ...\n"
+                           "   </physics_engines>\n"
                            ,
                            "Usable"
       );

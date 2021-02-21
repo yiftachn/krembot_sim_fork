@@ -52,9 +52,9 @@ namespace argos {
    /****************************************/
 
    CEyeBotLightRotZOnlySensor::CEyeBotLightRotZOnlySensor() :
-      m_pcEmbodiedEntity(NULL),
+      m_pcEmbodiedEntity(nullptr),
       m_bShowRays(false),
-      m_pcRNG(NULL),
+      m_pcRNG(nullptr),
       m_bAddNoise(false),
       m_cSpace(CSimulator::GetInstance().GetSpace()) {}
 
@@ -67,6 +67,9 @@ namespace argos {
          m_pcControllableEntity = &(c_entity.GetComponent<CControllableEntity>("controller"));
          m_pcLightEntity = &(c_entity.GetComponent<CLightSensorEquippedEntity>("light_sensors"));
          m_pcLightEntity->Enable();
+
+         /* sensor is enabled by default */
+         Enable();
       }
       catch(CARGoSException& ex) {
          THROW_ARGOSEXCEPTION_NESTED("Can't set robot for the eye-bot light default sensor", ex);
@@ -102,6 +105,10 @@ namespace argos {
    /****************************************/
    
    void CEyeBotLightRotZOnlySensor::Update() {
+      /* sensor is disabled--nothing to do */
+      if (IsDisabled()) {
+        return;
+      }
       /* Erase readings */
       for(size_t i = 0; i < m_tReadings.size(); ++i) {
          m_tReadings[i].Value = 0.0f;
@@ -126,7 +133,7 @@ namespace argos {
        *    NOTE: the readings are additive
        * 4. go through the sensors and clamp their values
        */
-      for(CSpace::TMapPerType::iterator it = mapLights.begin();
+      for(auto it = mapLights.begin();
           it != mapLights.end();
           ++it) {
          /* Get a reference to the light */
@@ -160,7 +167,7 @@ namespace argos {
                 * Increase magnitude of result of division to ensure correct rounding
                 */
                Real fIdx = (cAngleLightWrtEyebot - SENSOR_HALF_SPACING) / SENSOR_SPACING;
-               SInt32 nReadingIdx = (fIdx > 0) ? fIdx + 0.5f : fIdx - 0.5f;
+               SInt32 nReadingIdx = static_cast<SInt32>((fIdx > 0) ? fIdx + 0.5f : fIdx - 0.5f);
                /* Set the actual readings */
                Real fReading = cRobotToLight.Length();
                /*

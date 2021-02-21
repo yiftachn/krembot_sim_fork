@@ -33,16 +33,16 @@ namespace argos {
       CRandom::CRNG* pcRNG = CLuaUtility::GetDeviceInstance<CRandom::CRNG>(pt_state, "random");
       /* Perform wanted action */
       if(lua_gettop(pt_state) == 0) {
-         /* Return random number */
-         lua_pushnumber(pt_state, pcRNG->Bernoulli());
+         /* Return random result */
+         lua_pushboolean(pt_state, pcRNG->Bernoulli());
          return 1;
       }
       else {
          /* Check parameter */
          luaL_checktype(pt_state, 1, LUA_TNUMBER);
          /* Return random number */
-         lua_pushnumber(pt_state,
-                        pcRNG->Bernoulli(lua_tonumber(pt_state, 1)));
+         lua_pushboolean(pt_state,
+                         pcRNG->Bernoulli(lua_tonumber(pt_state, 1)));
          return 1;
       }
       /* Can't reach this point */
@@ -131,6 +131,21 @@ namespace argos {
       return 1;
    }
 
+   int LuaRNGPoisson(lua_State* pt_state) {
+      /* Check number of parameters */
+      if(lua_gettop(pt_state) != 1) {
+         return luaL_error(pt_state, "robot.random.poisson() expects 1 argument");
+      }
+      /* Get RNG instance */
+      CRandom::CRNG* pcRNG = CLuaUtility::GetDeviceInstance<CRandom::CRNG>(pt_state, "random");
+      /* Check parameter */
+      luaL_checktype(pt_state, 1, LUA_TNUMBER);
+      /* Return random number */
+      lua_pushinteger(pt_state,
+                     pcRNG->Poisson(lua_tonumber(pt_state, 1)));
+      return 1;
+   }
+
    int LuaRNGGaussian(lua_State* pt_state) {
       /* Check number of parameters */
       if(lua_gettop(pt_state) != 1 && lua_gettop(pt_state) != 2) {
@@ -166,9 +181,15 @@ namespace argos {
    bool CLuaUtility::LoadScript(lua_State* pt_state,
                                 const std::string& str_filename) {
       if(luaL_loadfile(pt_state, str_filename.c_str())) {
+         LOGERR << "[FATAL] Error loading \"" << str_filename
+                << "\"" << std::endl;
          return false;
       }
       if(lua_pcall(pt_state, 0, 0, 0)) {
+         LOGERR << "[FATAL] Error executing \"" << str_filename
+                << "\"" << std::endl;
+         LOGERR << "[FATAL] " << lua_tostring(pt_state, -1)
+                << std::endl;
          return false;
       }
       return true;
@@ -181,6 +202,10 @@ namespace argos {
                                      const std::string& str_function) {
       lua_getglobal(pt_state, str_function.c_str());
       if(lua_pcall(pt_state, 0, 0, 0)) {
+         LOGERR << "[FATAL] Error calling \"" << str_function
+                << "\"" << std::endl;
+         LOGERR << "[FATAL] " << lua_tostring(pt_state, -1)
+                << std::endl;
          return false;
       }
       return true;
@@ -290,6 +315,7 @@ namespace argos {
       AddToTable(pt_state, "uniform", &LuaRNGUniform);
       AddToTable(pt_state, "uniform_int", &LuaRNGUniformInt);
       AddToTable(pt_state, "exponential", &LuaRNGExponential);
+      AddToTable(pt_state, "poisson", &LuaRNGPoisson);
       AddToTable(pt_state, "gaussian", &LuaRNGGaussian);
       CloseRobotStateTable(pt_state);
    }
@@ -445,11 +471,9 @@ namespace argos {
    void CLuaUtility::AddToTable(lua_State* pt_state,
                                 const std::string& str_key,
                                 const CVector2& c_data) {
-      StartTable(pt_state, str_key);
-      SetMetatable(pt_state, CLuaVector2::GetMetatableKey());
-      AddToTable(pt_state, "x", c_data.GetX());
-      AddToTable(pt_state, "y", c_data.GetY());
-      EndTable(pt_state);
+      lua_pushstring          (pt_state, str_key.c_str());
+      CLuaVector2::PushVector2(pt_state, c_data);
+      lua_settable            (pt_state, -3);
    }
    
    /****************************************/
@@ -458,11 +482,9 @@ namespace argos {
    void CLuaUtility::AddToTable(lua_State* pt_state,
                                 int n_key,
                                 const CVector2& c_data) {
-      StartTable(pt_state, n_key);
-      SetMetatable(pt_state, CLuaVector2::GetMetatableKey());
-      AddToTable(pt_state, "x", c_data.GetX());
-      AddToTable(pt_state, "y", c_data.GetY());
-      EndTable(pt_state);
+      lua_pushnumber          (pt_state, n_key);
+      CLuaVector2::PushVector2(pt_state, c_data);
+      lua_settable            (pt_state, -3);
    }
    
    /****************************************/
@@ -471,12 +493,9 @@ namespace argos {
    void CLuaUtility::AddToTable(lua_State* pt_state,
                                 const std::string& str_key,
                                 const CVector3& c_data) {
-      StartTable(pt_state, str_key               );
-      SetMetatable(pt_state, CLuaVector3::GetMetatableKey());
-      AddToTable(pt_state, "x", c_data.GetX());
-      AddToTable(pt_state, "y", c_data.GetY());
-      AddToTable(pt_state, "z", c_data.GetZ());
-      EndTable(pt_state);
+      lua_pushstring          (pt_state, str_key.c_str());
+      CLuaVector3::PushVector3(pt_state, c_data);
+      lua_settable            (pt_state, -3);
    }
    
    /****************************************/
@@ -485,13 +504,11 @@ namespace argos {
    void CLuaUtility::AddToTable(lua_State* pt_state,
                                 int n_key,
                                 const CVector3& c_data) {
-      StartTable(pt_state, n_key);
-      SetMetatable(pt_state, CLuaVector3::GetMetatableKey());
-      AddToTable(pt_state, "x", c_data.GetX());
-      AddToTable(pt_state, "y", c_data.GetY());
-      AddToTable(pt_state, "z", c_data.GetZ());
-      EndTable(pt_state);
+      lua_pushnumber          (pt_state, n_key);
+      CLuaVector3::PushVector3(pt_state, c_data);
+      lua_settable            (pt_state, -3);
    }
+
    
    /****************************************/
    /****************************************/
@@ -499,13 +516,9 @@ namespace argos {
    void CLuaUtility::AddToTable(lua_State* pt_state,
                                 const std::string& str_key,
                                 const CQuaternion& c_data) {
-      StartTable(pt_state, str_key);
-      SetMetatable(pt_state, CLuaQuaternion::GetMetatableKey());
-      AddToTable(pt_state, "w", c_data.GetW());
-      AddToTable(pt_state, "x", c_data.GetX());
-      AddToTable(pt_state, "y", c_data.GetY());
-      AddToTable(pt_state, "z", c_data.GetZ());
-      EndTable(pt_state);
+      lua_pushstring                (pt_state, str_key.c_str());
+      CLuaQuaternion::PushQuaternion(pt_state, c_data);
+      lua_settable                  (pt_state, -3);
    }
    
    /****************************************/
@@ -514,13 +527,9 @@ namespace argos {
    void CLuaUtility::AddToTable(lua_State* pt_state,
                                 int n_key,
                                 const CQuaternion& c_data) {
-      StartTable(pt_state, n_key);
-      SetMetatable(pt_state, CLuaQuaternion::GetMetatableKey());
-      AddToTable(pt_state, "w", c_data.GetW());
-      AddToTable(pt_state, "x", c_data.GetX());
-      AddToTable(pt_state, "y", c_data.GetY());
-      AddToTable(pt_state, "z", c_data.GetZ());
-      EndTable(pt_state);
+      lua_pushnumber                (pt_state, n_key);
+      CLuaQuaternion::PushQuaternion(pt_state, c_data);
+      lua_settable                  (pt_state, -3);
    }
    
    /****************************************/
@@ -530,7 +539,6 @@ namespace argos {
                                 const std::string& str_key,
                                 const CColor& c_data) {
       StartTable(pt_state, str_key                   );
-      AddToTable(pt_state, "_type", static_cast<lua_Number>(EARGoSType::CColor));
       AddToTable(pt_state, "red",   c_data.GetRed()  );
       AddToTable(pt_state, "green", c_data.GetGreen());
       AddToTable(pt_state, "blue",  c_data.GetBlue() );
@@ -544,7 +552,6 @@ namespace argos {
                                 int n_key,
                                 const CColor& c_data) {
       StartTable(pt_state, n_key                     );
-      AddToTable(pt_state, "_type", static_cast<lua_Number>(EARGoSType::CColor));
       AddToTable(pt_state, "red",   c_data.GetRed()  );
       AddToTable(pt_state, "green", c_data.GetGreen());
       AddToTable(pt_state, "blue",  c_data.GetBlue() );

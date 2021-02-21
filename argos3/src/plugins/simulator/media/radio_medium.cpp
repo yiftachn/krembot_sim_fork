@@ -32,9 +32,9 @@ namespace argos {
          if(strPosIndexMethod == "grid") {
             size_t punGridSize[3];
             if(!NodeAttributeExists(t_tree, "grid_size")) {
-               punGridSize[0] = cArenaSize.GetX();
-               punGridSize[1] = cArenaSize.GetY();
-               punGridSize[2] = cArenaSize.GetZ();
+               punGridSize[0] = static_cast<size_t>(cArenaSize.GetX());
+               punGridSize[1] = static_cast<size_t>(cArenaSize.GetY());
+               punGridSize[2] = static_cast<size_t>(cArenaSize.GetZ());
             }
             else {
                std::string strPosGridSize;
@@ -94,6 +94,7 @@ namespace argos {
 
    void CRadioMedium::AddEntity(CRadioEntity& c_entity) {
       m_pcRadioEntityIndex->AddEntity(c_entity);
+      m_pcRadioEntityIndex->Update();
    }
 
    /****************************************/
@@ -101,6 +102,7 @@ namespace argos {
 
    void CRadioMedium::RemoveEntity(CRadioEntity& c_entity) {
       m_pcRadioEntityIndex->RemoveEntity(c_entity);
+      m_pcRadioEntityIndex->Update();
    }
 
    /****************************************/

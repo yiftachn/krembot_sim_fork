@@ -16,8 +16,8 @@ namespace argos {
    /****************************************/
 
    CPositioningDefaultSensor::CPositioningDefaultSensor() :
-      m_pcEmbodiedEntity(NULL),
-      m_pcRNG(NULL),
+      m_pcEmbodiedEntity(nullptr),
+      m_pcRNG(nullptr),
       m_bAddNoise(false) {}
 
    /****************************************/
@@ -45,6 +45,8 @@ namespace argos {
             m_bAddNoise = true;
             m_pcRNG = CRandom::CreateRNG("argos");
          }
+         /* sensor is enabled by default */
+         Enable();
       }
       catch(CARGoSException& ex) {
          THROW_ARGOSEXCEPTION_NESTED("Initialization error in default positioning sensor", ex);
@@ -55,6 +57,10 @@ namespace argos {
    /****************************************/
    
    void CPositioningDefaultSensor::Update() {
+      /* sensor is disabled--nothing to do */
+      if (IsDisabled()) {
+        return;
+      }
       m_sReading.Position = m_pcEmbodiedEntity->GetOriginAnchor().Position;
       if(m_bAddNoise) {
          m_sReading.Position += CVector3(m_pcRNG->Uniform(m_cPosNoiseRange),
@@ -88,9 +94,13 @@ namespace argos {
                    "Carlo Pinciroli [ilpincy@gmail.com]",
                    "1.0",
                    "A generic positioning sensor.",
+
                    "This sensor returns the current position and orientation of a robot. This sensor\n"
                    "can be used with any robot, since it accesses only the body component. In\n"
                    "controllers, you must include the ci_positioning_sensor.h header.\n\n"
+
+                   "This sensor is enabled by default.\n\n"
+
                    "REQUIRED XML CONFIGURATION\n\n"
                    "  <controllers>\n"
                    "    ...\n"
@@ -105,7 +115,9 @@ namespace argos {
                    "    </my_controller>\n"
                    "    ...\n"
                    "  </controllers>\n\n"
+
                    "OPTIONAL XML CONFIGURATION\n\n"
+
                    "It is possible to add uniform noise to the sensor, thus matching the\n"
                    "characteristics of a real robot better. You can add noise through the\n"
                    "attributes 'pos_noise_range', 'angle_noise_range', and 'axis_noise_range'.\n"
@@ -114,6 +126,7 @@ namespace argos {
                    "(values expressed in degrees). Attribute 'axis_noise_range' sets the noise for\n"
                    "the rotation axis. Angle and axis are used to calculate a quaternion, which is\n"
                    "the actual returned value for rotation.\n\n"
+
                    "  <controllers>\n"
                    "    ...\n"
                    "    <my_controller ...>\n"
@@ -130,8 +143,11 @@ namespace argos {
                    "    </my_controller>\n"
                    "    ...\n"
                    "  </controllers>\n\n"
+
                    "OPTIONAL XML CONFIGURATION\n\n"
+
                    "None.\n",
+
                    "Usable"
 		  );
 

@@ -80,7 +80,7 @@ namespace argos {
              * 3. the "body" is an embodied entity
              * If any of the above is false, this line will bomb out.
              */
-            CEmbodiedEntity& cBody = GetParent().GetComponent<CEmbodiedEntity>("body");
+            auto& cBody = GetParent().GetComponent<CEmbodiedEntity>("body");
             if(it->Value() == "sensor") {
                CVector3 cPos, cDir;
                Real fRange;
@@ -163,7 +163,7 @@ namespace argos {
       for(UInt32 i = 0; i < un_num_sensors; ++i) {
          cAngle = c_start_angle + i * cSensorSpacing;
          cAngle.SignedNormalize();
-         cPos.Set(f_radius, 0.0f, 0.0);
+         cPos.Set(f_radius, 0.0f, 0.0f);
          cPos.RotateZ(cAngle);
          cPos += c_center;
          cDir.Set(f_range, 0.0f, 0.0f);

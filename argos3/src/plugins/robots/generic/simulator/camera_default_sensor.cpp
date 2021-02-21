@@ -96,7 +96,7 @@ namespace argos {
                CCameraSensorSimulatedAlgorithm* pcAlgorithm = 
                   CFactory<CCameraSensorSimulatedAlgorithm>::New(itAlgorithm->Value());
                /* check that algorithm inherits from a control interface */
-               CCI_CameraSensorAlgorithm* pcCIAlgorithm = 
+               auto* pcCIAlgorithm = 
                   dynamic_cast<CCI_CameraSensorAlgorithm*>(pcAlgorithm);
                if(pcCIAlgorithm == nullptr) {
                   THROW_ARGOSEXCEPTION("Algorithm \"" << itAlgorithm->Value() << 
@@ -118,13 +118,18 @@ namespace argos {
       catch(CARGoSException& ex) {
          THROW_ARGOSEXCEPTION_NESTED("Error initializing camera sensor", ex);
       }
-      Update();
+      /* sensor is disabled by default */
+      Disable();
    }
 
    /****************************************/
    /****************************************/
 
    void CCameraDefaultSensor::Update() {
+      /* sensor is disabled--nothing to do */
+      if (IsDisabled()) {
+        return;
+      }
       /* vector of controller rays */
       std::vector<std::pair<bool, CRay3> >& vecCheckedRays =
          m_pcControllableEntity->GetCheckedRays();
@@ -245,6 +250,7 @@ namespace argos {
                    "cameras", "default",
                    "Michael Allwright [allsey87@gmail.com]",
                    "1.0",
+
                    "A generic multi-camera sensor capable of running various algorithms",
                    "The generic multi-camera sensor can be attached to any composable entity in\n"
                    "ARGoS that contains an embodied entity with at least one anchor. The sensor\n"
@@ -253,6 +259,10 @@ namespace argos {
                    "that algorithms can project a feature in the simulation on to the virtual\n"
                    "sensor and store its 2D pixel coordinates as a reading. The implementation\n"
                    "of algorithms that behave differently, however, is also possible.\n\n"
+
+                   "This sensor is disabled by default, and must be enabled before it can be\n"
+                   "used.\n\n"
+
                    "REQUIRED XML CONFIGURATION\n\n"
                    "  <controllers>\n"
                    "    ...\n"
@@ -267,11 +277,14 @@ namespace argos {
                    "    </my_controller>\n"
                    "    ...\n"
                    "  </controllers>\n\n"
+
                    "OPTIONAL XML CONFIGURATION\n\n"
+
                    "It is possible to draw the frustum of each camera sensor in the OpenGL\n"
                    "visualization. This can be useful for sensor debugging but also to understand\n"
                    "what's wrong in your controller. To turn this functionality on, add the\n"
                    "attribute \"show_frustum\" as follows:\n\n"
+
                    "  <controllers>\n"
                    "    ...\n"
                    "    <my_controller ...>\n"
@@ -285,11 +298,13 @@ namespace argos {
                    "    </my_controller>\n"
                    "    ...\n"
                    "  </controllers>\n\n"
+
                    "To add a camera to the plugin, create a camera node as shown in the following\n"
                    "example. A camera is defined by its range (how close and how far the camera\n"
                    "can see), its anchor and its position and orientation offsets from that\n"
                    "that anchor, its focal length and principal point (which define the\n"
                    "projection matrix), and its resolution.\n\n"
+
                    "  <controllers>\n"
                    "    ...\n"
                    "    <my_controller ...>\n"
@@ -308,6 +323,7 @@ namespace argos {
                    "    </my_controller>\n"
                    "    ...\n"
                    "  </controllers>\n\n"
+
                    "To run an algorithm on the camera sensor, simply add the algorithm as a node\n"
                    "under the camera node. At the time of writing, three algorithms are available\n"
                    "by default: led_detector, directional_led_detector, and tag_detector. Each of\n"
@@ -315,6 +331,7 @@ namespace argos {
                    "target entities are indexed. By setting the show_rays attribute to true, you\n"
                    "can see whether or not a target was partially occluded by another object in\n"
                    "the simulation. For example:\n\n"
+
                    "  <controllers>\n"
                    "    ...\n"
                    "    <my_controller ...>\n"
@@ -335,5 +352,6 @@ namespace argos {
                    "    </my_controller>\n"
                    "    ...\n"
                    "  </controllers>\n",
+
                    "Usable");
 }

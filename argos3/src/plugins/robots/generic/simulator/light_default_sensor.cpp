@@ -24,7 +24,7 @@ namespace argos {
 
    CLightDefaultSensor::CLightDefaultSensor() :
       m_bShowRays(false),
-      m_pcRNG(NULL),
+      m_pcRNG(nullptr),
       m_bAddNoise(false),
       m_cSpace(CSimulator::GetInstance().GetSpace()) {}
 
@@ -66,12 +66,18 @@ namespace argos {
       catch(CARGoSException& ex) {
          THROW_ARGOSEXCEPTION_NESTED("Initialization error in default light sensor", ex);
       }
+      /* sensor is enabled by default */
+      Enable();
    }
 
    /****************************************/
    /****************************************/
    
    void CLightDefaultSensor::Update() {
+      /* sensor is disabled--nothing to do */
+      if (IsDisabled()) {
+        return;
+      }
       /* Erase readings */
       for(size_t i = 0; i < m_tReadings.size(); ++i)  m_tReadings[i] = 0.0f;
       /* Ray used for scanning the environment for obstacles */
@@ -81,7 +87,7 @@ namespace argos {
       /* Buffers to contain data about the intersection */
       SEmbodiedEntityIntersectionItem sIntersection;
       /* Get the map of light entities */
-      CSpace::TMapPerTypePerId::iterator itLights = m_cSpace.GetEntityMapPerTypePerId().find("light");
+      auto itLights = m_cSpace.GetEntityMapPerTypePerId().find("light");
       if (itLights != m_cSpace.GetEntityMapPerTypePerId().end()) {
          CSpace::TMapPerType& mapLights = itLights->second;
          /* Go through the sensors */
@@ -91,7 +97,7 @@ namespace argos {
             cRayStart.Rotate(m_pcLightEntity->GetSensor(i).Anchor.Orientation);
             cRayStart += m_pcLightEntity->GetSensor(i).Anchor.Position;
             /* Go through all the light entities */
-            for(CSpace::TMapPerType::iterator it = mapLights.begin();
+            for(auto it = mapLights.begin();
                 it != mapLights.end();
                 ++it) {
                /* Get a reference to the light */
@@ -168,6 +174,7 @@ namespace argos {
                    "Carlo Pinciroli [ilpincy@gmail.com]",
                    "1.0",
                    "A generic light sensor.",
+
                    "This sensor accesses a set of light sensors. The sensors all return a value\n"
                    "between 0 and 1, where 0 means nothing within range and 1 means the perceived\n"
                    "light saturates the sensor. Values between 0 and 1 depend on the distance of\n"
@@ -180,6 +187,9 @@ namespace argos {
                    "reading is calculated as the sum of the individual readings due to each light.\n"
                    "In other words, light wave interference is not taken into account. In\n"
                    "controllers, you must include the ci_light_sensor.h header.\n\n"
+
+                   "This sensor is enabled by default.\n\n"
+
                    "REQUIRED XML CONFIGURATION\n\n"
                    "  <controllers>\n"
                    "    ...\n"
@@ -194,7 +204,9 @@ namespace argos {
                    "    </my_controller>\n"
                    "    ...\n"
                    "  </controllers>\n\n"
+
                    "OPTIONAL XML CONFIGURATION\n\n"
+
                    "It is possible to draw the rays shot by the light sensor in the OpenGL\n"
                    "visualization. This can be useful for sensor debugging but also to understand\n"
                    "what's wrong in your controller. In OpenGL, the rays are drawn in cyan when\n"
@@ -216,10 +228,12 @@ namespace argos {
                    "    </my_controller>\n"
                    "    ...\n"
                    "  </controllers>\n\n"
+
                    "It is possible to add uniform noise to the sensors, thus matching the\n"
                    "characteristics of a real robot better. This can be done with the attribute\n"
                    "\"noise_level\", whose allowed range is in [-1,1] and is added to the calculated\n"
                    "reading. The final sensor reading is always normalized in the [0-1] range.\n\n"
+
                    "  <controllers>\n"
                    "    ...\n"
                    "    <my_controller ...>\n"
@@ -234,8 +248,17 @@ namespace argos {
                    "    </my_controller>\n"
                    "    ...\n"
                    "  </controllers>\n\n"
-                   "OPTIONAL XML CONFIGURATION\n\n"
-                   "None.\n",
+
+                   "OPTIMIZATION HINTS\n\n"
+
+                   "1. For small swarms, enabling the light sensor (and therefore causing ARGoS to\n"
+                   "   update its readings each timestep) unconditionally does not impact performance too\n"
+                   "   much. For large swarms, it can impact performance, and selectively\n"
+                   "   enabling/disabling the light sensor according to when each individual robot needs it\n"
+                   "   (e.g., only when it is returning to the nest from foraging) can increase performance\n"
+                   "   by only requiring ARGoS to update the readings for a robot on the timesteps will be\n"
+                   "   used.\n",
+
                    "Usable"
 		  );
 

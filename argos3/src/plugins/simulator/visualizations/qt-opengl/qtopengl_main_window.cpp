@@ -47,53 +47,48 @@ namespace argos {
    public:
 
       CQTOpenGLLayout() :
-         m_pcQTOpenGLItem(NULL) {
+         m_pcQTOpenGLItem(nullptr) {
          setContentsMargins(0, 0, 0, 0);
       }
 
       virtual ~CQTOpenGLLayout() {
-         if(m_pcQTOpenGLItem != NULL) {
+         if(m_pcQTOpenGLItem != nullptr) {
             delete m_pcQTOpenGLItem;
          }
       }
 
       virtual void addItem(QLayoutItem* item) {
-         if(m_pcQTOpenGLItem != NULL) {
+         if(m_pcQTOpenGLItem != nullptr) {
             delete m_pcQTOpenGLItem;
          }
          m_pcQTOpenGLItem = item;
       }
       virtual int count() const {
-         return (m_pcQTOpenGLItem != NULL) ? 1 : 0;
+         return (m_pcQTOpenGLItem != nullptr) ? 1 : 0;
       }
 
       virtual QLayoutItem* itemAt(int index) const {
-         return (index == 0) ? m_pcQTOpenGLItem : NULL;
+         return (index == 0) ? m_pcQTOpenGLItem : nullptr;
       }
 
       virtual QLayoutItem* takeAt(int index) {
          if(index == 0) {
             QLayoutItem* pcRetVal = m_pcQTOpenGLItem;
-            m_pcQTOpenGLItem = NULL;
+            m_pcQTOpenGLItem = nullptr;
             return pcRetVal;
          }
          else {
-            return NULL;
+            return nullptr;
          }
-      }
-
-      virtual QSize minimumSize () const {
-         return QSize(320,240);
       }
 
       virtual QSize sizeHint () const {
          return QSize(640,480);
       }
-
       virtual void setGeometry(const QRect& r) {
          /* Set the layout geometry */
          QLayout::setGeometry(r);
-         if(m_pcQTOpenGLItem != NULL) {
+         if(m_pcQTOpenGLItem != nullptr) {
             /* Calculate the candidate sizes for the QTOpenGL widget */
             /* One is height-driven */
             QRect cCandidate1(r.x(), r.y(), (r.height() * 4) / 3, r.height());
@@ -125,7 +120,7 @@ namespace argos {
    /****************************************/
 
    CQTOpenGLMainWindow::CQTOpenGLMainWindow(TConfigurationNode& t_tree) :
-      m_pcUserFunctions(NULL) {
+      m_pcUserFunctions(nullptr) {
       /* Main window settings */
       std::string strTitle;
       GetNodeAttributeOrDefault<std::string>(t_tree, "title", strTitle, "ARGoS v" ARGOS_VERSION "-" ARGOS_RELEASE);
@@ -163,8 +158,12 @@ namespace argos {
       /* Should we play instantly? */
       bool bAutoPlay = false;
       GetNodeAttributeOrDefault(t_tree, "autoplay", bAutoPlay, bAutoPlay);
-      if(bAutoPlay) {
-         PlayExperiment();
+      if (bAutoPlay) {
+        if (m_pcOpenGLWidget->GetFrameGrabData().HeadlessGrabbing) {
+          FastForwardExperiment();
+        } else {
+          PlayExperiment();
+        }
       }
    }
 
@@ -189,36 +188,12 @@ namespace argos {
       cSettings.beginGroup("MainWindow");
       resize(cSettings.value("size", QSize(640,480)).toSize());
       move(cSettings.value("position", QPoint(0,0)).toPoint());
-      if(cSettings.contains("icon_dir")) {
-         m_strIconDir = cSettings.value("icon_dir").toString();
-         if(m_strIconDir.at(m_strIconDir.length()-1) != '/') {
-            m_strIconDir.append("/");
-         }
-      }
-      else {
-         m_strIconDir = QString::fromStdString(CSimulator::GetInstance().GetInstallationDirectory());
-         m_strIconDir += "/include/argos3/plugins/simulator/visualizations/qt-opengl/icons/";
-      }
-      if(cSettings.contains("texture_dir")) {
-         m_strTextureDir = cSettings.value("texture_dir").toString();
-         if(m_strTextureDir.at(m_strTextureDir.length()-1) != '/') {
-            m_strTextureDir.append("/");
-         }
-      }
-      else {
-         m_strTextureDir = QString::fromStdString(CSimulator::GetInstance().GetInstallationDirectory());
-         m_strTextureDir += "/include/argos3/plugins/simulator/visualizations/qt-opengl/textures/";
-      }
-      if(cSettings.contains("model_dir")) {
-         m_strModelDir = cSettings.value("model_dir").toString();
-         if(m_strModelDir.at(m_strModelDir.length()-1) != '/') {
-            m_strModelDir.append("/");
-         }
-      }
-      else {
-         m_strModelDir = QString::fromStdString(CSimulator::GetInstance().GetInstallationDirectory());
-         m_strModelDir += "/include/argos3/plugins/simulator/visualizations/qt-opengl/models/";
-      }
+      m_strIconDir = QString::fromStdString(CSimulator::GetInstance().GetInstallationDirectory());
+      m_strIconDir += "/include/argos3/plugins/simulator/visualizations/qt-opengl/icons/";
+      m_strTextureDir = QString::fromStdString(CSimulator::GetInstance().GetInstallationDirectory());
+      m_strTextureDir += "/include/argos3/plugins/simulator/visualizations/qt-opengl/textures/";
+      m_strModelDir = QString::fromStdString(CSimulator::GetInstance().GetInstallationDirectory());
+      m_strModelDir += "/include/argos3/plugins/simulator/visualizations/qt-opengl/models/";
       cSettings.endGroup();
    }
 
@@ -241,9 +216,6 @@ namespace argos {
       cSettings.setValue("docks", saveState());
       cSettings.setValue("size", size());
       cSettings.setValue("position", pos());
-      cSettings.setValue("icon_dir", m_strIconDir);
-      cSettings.setValue("texture_dir", m_strTextureDir);
-      cSettings.setValue("model_dir", m_strModelDir);
       cSettings.endGroup();
    }
 
@@ -431,7 +403,7 @@ namespace argos {
       m_pcFocalLength->setDecimals(1);
       m_pcFocalLength->setSingleStep(1.0f);
       m_pcFocalLength->setRange(1.0f, 999.0f);
-      m_pcFocalLength->setValue(m_pcOpenGLWidget->GetCamera().GetSetting(0).LensFocalLength * 1000.0f);
+      m_pcFocalLength->setValue(m_pcOpenGLWidget->GetCamera().GetPlacement(0).LensFocalLength * 1000.0f);
       m_pcCameraToolBar->addWidget(m_pcFocalLength);
       addToolBar(Qt::LeftToolBarArea, m_pcCameraToolBar);
    }
@@ -475,14 +447,30 @@ namespace argos {
       m_pcOpenGLWidget = new CQTOpenGLWidget(pcPlaceHolder, *this, *m_pcUserFunctions);
       m_pcOpenGLWidget->setFormat(cFormat);
       m_pcOpenGLWidget->setCursor(QCursor(Qt::OpenHandCursor));
-      m_pcOpenGLWidget->GetCamera().Init(t_tree);
+      if(NodeExists(t_tree, "camera")) {
+         TConfigurationNode& tCameraNode = GetNode(t_tree, "camera");
+         m_pcOpenGLWidget->GetCamera().Init(tCameraNode);
+      }
       m_pcOpenGLWidget->GetFrameGrabData().Init(t_tree);
+
+      /* Set headless grabbing frame size after it has been parsed */
+      if (m_pcOpenGLWidget->GetFrameGrabData().HeadlessGrabbing) {
+        setMinimumSize(m_pcOpenGLWidget->GetFrameGrabData().Size);
+        m_pcOpenGLWidget->SetDrawFrameEvery(
+            m_pcOpenGLWidget->GetFrameGrabData().HeadlessFrameRate);
+      } else {
+        setMinimumSize(QSize(320, 240));
+      }
       /* Invert mouse controls? */
       bool bInvertMouse;
       GetNodeAttributeOrDefault(t_tree, "invert_mouse", bInvertMouse, false);
       m_pcOpenGLWidget->SetInvertMouse(bInvertMouse);
+      /* Show boundary walls? */
+      bool bShowBoundary;
+      GetNodeAttributeOrDefault(t_tree, "show_boundary", bShowBoundary, true);
+      m_pcOpenGLWidget->SetShowBoundary(bShowBoundary);
       /* Set the window as the central widget */
-      CQTOpenGLLayout* pcQTOpenGLLayout = new CQTOpenGLLayout();
+      auto* pcQTOpenGLLayout = new CQTOpenGLLayout();
       pcQTOpenGLLayout->addWidget(m_pcOpenGLWidget);
       pcPlaceHolder->setLayout(pcQTOpenGLLayout);
       setCentralWidget(pcPlaceHolder);
@@ -799,6 +787,13 @@ namespace argos {
       /* Change state and emit signal */
       m_eExperimentState = EXPERIMENT_DONE;
       emit ExperimentDone();
+
+      /*
+       * Invisible window does not close automatically when simulation finishes
+       */
+      if (m_pcOpenGLWidget->GetFrameGrabData().HeadlessGrabbing) {
+        qApp->exit();
+      }
    }
 
    /****************************************/
@@ -890,7 +885,7 @@ namespace argos {
 
    void CQTOpenGLMainWindow::CameraXMLPopUp() {
       /* Set the text window up */
-      QTextEdit* pcXMLOutput = new QTextEdit();
+      auto* pcXMLOutput = new QTextEdit();
       /* Calculate the geometry of the window so that it's 1/4 of the main window
          and placed in the exact center of it */
       QRect cGeom = geometry();
@@ -902,8 +897,8 @@ namespace argos {
       /* You can't modify its contents (but can copy-paste them) */
       pcXMLOutput->setReadOnly(true);
       /* Set nice document name and window title */
-      pcXMLOutput->setDocumentTitle("ARGoS XML camera config");
-      pcXMLOutput->setWindowTitle("ARGoS XML camera config");
+      pcXMLOutput->setDocumentTitle("Active camera configuration");
+      pcXMLOutput->setWindowTitle("Active camera configuration");
       /* Set the actual text to visualize */
       pcXMLOutput->setPlainText(GetCameraXMLData());
       /* Finally, show the resulting window */
@@ -939,30 +934,27 @@ namespace argos {
    /****************************************/
 
    QString CQTOpenGLMainWindow::GetCameraXMLData() {
-      QString strResult("<camera>\n");
+      QString strResult("<camera>\n  <placements>\n");
       /* Get a reference to the camera */
       CQTOpenGLCamera& cCamera = m_pcOpenGLWidget->GetCamera();
-      for(UInt32 i = 0; i < 12; ++i) {
-         /* Get its position and target */
-         const CQTOpenGLCamera::SSettings& sSettings = cCamera.GetSetting(i);
-         const CVector3& cPos = sSettings.Position;
-         const CVector3& cLookAt = sSettings.Target;
-         const CVector3& cUp = sSettings.Up;
-         strResult.append(
-            QString("   <placement idx=\"%1\" position=\"%2,%3,%4\" look_at=\"%5,%6,%7\" up=\"%8,%9,%10\" lens_focal_length=\"%11\" />\n")
-            .arg(i)
-            .arg(cPos.GetX())
-            .arg(cPos.GetY())
-            .arg(cPos.GetZ())
-            .arg(cLookAt.GetX())
-            .arg(cLookAt.GetY())
-            .arg(cLookAt.GetZ())
-            .arg(cUp.GetX())
-            .arg(cUp.GetY())
-            .arg(cUp.GetZ())
-            .arg(sSettings.LensFocalLength * 1000.0f));
-      }
-      strResult.append("</camera>\n");
+      /* Get its position and target */
+      const CQTOpenGLCamera::SPlacement& sPlacement = cCamera.GetActivePlacement();
+      const CVector3& cPos = sPlacement.Position;
+      const CVector3& cLookAt = sPlacement.Target;
+      const CVector3& cUp = sPlacement.Up;
+      strResult.append(
+         QString("    <placement index=\"0\" position=\"%2,%3,%4\" look_at=\"%5,%6,%7\" up=\"%8,%9,%10\" lens_focal_length=\"%11\" />\n")
+         .arg(cPos.GetX())
+         .arg(cPos.GetY())
+         .arg(cPos.GetZ())
+         .arg(cLookAt.GetX())
+         .arg(cLookAt.GetY())
+         .arg(cLookAt.GetZ())
+         .arg(cUp.GetX())
+         .arg(cUp.GetY())
+         .arg(cUp.GetZ())
+         .arg(sPlacement.LensFocalLength * 1000.0f));
+      strResult.append("  </placements>\n</camera>\n");
       return strResult;
    }
 
@@ -1068,7 +1060,7 @@ namespace argos {
 
    void CQTOpenGLMainWindow::SwitchCamera(QAction* pc_action) {
       emit CameraSwitched(pc_action->data().toInt());
-      m_pcFocalLength->setValue(m_pcOpenGLWidget->GetCamera().GetActiveSettings().LensFocalLength * 1000.0f);
+      m_pcFocalLength->setValue(m_pcOpenGLWidget->GetCamera().GetActivePlacement().LensFocalLength * 1000.0f);
    }
 
    /****************************************/

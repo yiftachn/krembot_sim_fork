@@ -11,7 +11,7 @@
 #include <argos3/core/simulator/entity/embodied_entity.h>
 #include <argos3/plugins/simulator/physics_engines/dynamics3d/dynamics3d_model.h>
 #include <argos3/plugins/simulator/physics_engines/dynamics3d/dynamics3d_plugin.h>
-#include <argos3/plugins/simulator/physics_engines/dynamics3d/bullet/BulletCollision/NarrowPhaseCollision/btRaycastCallback.h>
+
 #include <algorithm>
 
 namespace argos {
@@ -71,17 +71,18 @@ namespace argos {
 
    void CDynamics3DEngine::Reset() {
       /* Remove and reset all physics models */
-      for(CDynamics3DModel::TMap::iterator itModel = std::begin(m_tPhysicsModels);
+      for(auto itModel = std::begin(m_tPhysicsModels);
           itModel != std::end(m_tPhysicsModels);
           ++itModel) {
          /* Remove model from plugins */
-         for(CDynamics3DPlugin::TMap::iterator itPlugin = std::begin(m_tPhysicsPlugins);
+         for(auto itPlugin = std::begin(m_tPhysicsPlugins);
              itPlugin != std::end(m_tPhysicsPlugins);
              ++itPlugin) {
             itPlugin->second->UnregisterModel(*itModel->second);
          }
-         /* Reset the model */
+         /* Remove model from world */
          itModel->second->RemoveFromWorld(m_cWorld);
+         /* Reset the model */
          itModel->second->Reset();
       }
       /* Run the destructors on bullet's components */
@@ -102,14 +103,14 @@ namespace argos {
       /* Provide the same random seed to the solver */
       m_cSolver.setRandSeed(m_pcRNG->Uniform(m_cRandomSeedRange));
       /* Reset the plugins */
-      for(CDynamics3DPlugin::TMap::iterator itPlugin = std::begin(m_tPhysicsPlugins);
+      for(auto itPlugin = std::begin(m_tPhysicsPlugins);
           itPlugin != std::end(m_tPhysicsPlugins);
           ++itPlugin) {
          itPlugin->second->Reset();
       }
       /* Set up the call back for the plugins */
       m_cWorld.setInternalTickCallback([] (btDynamicsWorld* pc_world, btScalar f_time_step) {
-         CDynamics3DEngine* pc_engine = static_cast<CDynamics3DEngine*>(pc_world->getWorldUserInfo());
+         auto* pc_engine = static_cast<CDynamics3DEngine*>(pc_world->getWorldUserInfo());
          pc_world->clearForces();
          for(std::pair<const std::string, CDynamics3DPlugin*>& c_plugin :
              pc_engine->GetPhysicsPlugins()) {
@@ -117,11 +118,11 @@ namespace argos {
          }
       }, static_cast<void*>(this), true);
       /* Add the models back into the engine */
-      for(CDynamics3DModel::TMap::iterator itModel = std::begin(m_tPhysicsModels);
+      for(auto itModel = std::begin(m_tPhysicsModels);
           itModel != std::end(m_tPhysicsModels);
           ++itModel) {
          /* Add model to plugins */
-         for(CDynamics3DPlugin::TMap::iterator itPlugin = std::begin(m_tPhysicsPlugins);
+         for(auto itPlugin = std::begin(m_tPhysicsPlugins);
              itPlugin != std::end(m_tPhysicsPlugins);
              ++itPlugin) {
             itPlugin->second->RegisterModel(*itModel->second);
@@ -134,17 +135,17 @@ namespace argos {
          m_cWorld.getMultiBodyConstraint(i)->finalizeMultiDof();
       }
    }
-   
+
    /****************************************/
    /****************************************/
 
    void CDynamics3DEngine::Destroy() {
       /* Destroy all physics models */
-      for(CDynamics3DModel::TMap::iterator itModel = std::begin(m_tPhysicsModels);
+      for(auto itModel = std::begin(m_tPhysicsModels);
           itModel != std::end(m_tPhysicsModels);
           ++itModel) {
          /* Remove model from the plugins first */
-         for(CDynamics3DPlugin::TMap::iterator itPlugin = std::begin(m_tPhysicsPlugins);
+         for(auto itPlugin = std::begin(m_tPhysicsPlugins);
              itPlugin != std::end(m_tPhysicsPlugins);
              ++itPlugin) {
             itPlugin->second->UnregisterModel(*itModel->second);
@@ -154,7 +155,7 @@ namespace argos {
          delete itModel->second;
       }
       /* Destroy all plug-ins */
-      for(CDynamics3DPlugin::TMap::iterator itPlugin = std::begin(m_tPhysicsPlugins);
+      for(auto itPlugin = std::begin(m_tPhysicsPlugins);
           itPlugin != std::end(m_tPhysicsPlugins);
           ++itPlugin) {
          itPlugin->second->Destroy();
@@ -168,9 +169,9 @@ namespace argos {
    /****************************************/
    /****************************************/
 
-   void CDynamics3DEngine::Update() {      
+   void CDynamics3DEngine::Update() {
       /* Update the physics state from the entities */
-      for(CDynamics3DModel::TMap::iterator it = m_tPhysicsModels.begin();
+      for(auto it = m_tPhysicsModels.begin();
           it != std::end(m_tPhysicsModels); ++it) {
          it->second->UpdateFromEntityStatus();
       }
@@ -179,7 +180,7 @@ namespace argos {
                               GetIterations(),
                               GetPhysicsClockTick());
       /* Update the simulated space */
-      for(CDynamics3DModel::TMap::iterator it = std::begin(m_tPhysicsModels);
+      for(auto it = std::begin(m_tPhysicsModels);
           it != std::end(m_tPhysicsModels);
           ++it) {
          it->second->UpdateEntityStatus();
@@ -190,22 +191,22 @@ namespace argos {
          m_cWorld.serialize(&cSerializer);
          std::ofstream cDebugOutput(m_strDebugFilename);
          if(cDebugOutput.is_open()) {
-            cDebugOutput.write(reinterpret_cast<const char*>(cSerializer.getBufferPointer()), 
+            cDebugOutput.write(reinterpret_cast<const char*>(cSerializer.getBufferPointer()),
                                cSerializer.getCurrentBufferSize());
          }
       }
    }
-   
+
    /****************************************/
    /****************************************/
-   
+
    void CDynamics3DEngine::CheckIntersectionWithRay(TEmbodiedEntityIntersectionData& t_data,
                                                     const CRay3& c_ray) const {
       /* Convert the start and end ray vectors to the bullet coordinate system */
       btVector3 cRayStart(c_ray.GetStart().GetX(), c_ray.GetStart().GetZ(), -c_ray.GetStart().GetY());
       btVector3 cRayEnd(c_ray.GetEnd().GetX(), c_ray.GetEnd().GetZ(), -c_ray.GetEnd().GetY());
       btCollisionWorld::ClosestRayResultCallback cResult(cRayStart, cRayEnd);
-      /* The default flag/algorithm 'kF_UseSubSimplexConvexCastRaytest' is too approximate for 
+      /* The default flag/algorithm 'kF_UseSubSimplexConvexCastRaytest' is too approximate for
          our purposes */
       cResult.m_flags |= btTriangleRaycastCallback::kF_UseGjkConvexCastRaytest;
       /* Run the ray test */
@@ -213,7 +214,7 @@ namespace argos {
       /* Examine the results */
       if (cResult.hasHit() && cResult.m_collisionObject->getUserPointer() != nullptr) {
          Real f_t = (cResult.m_hitPointWorld - cRayStart).length() / c_ray.GetLength();
-         CDynamics3DModel* pcModel =
+         auto* pcModel =
             static_cast<CDynamics3DModel*>(cResult.m_collisionObject->getUserPointer());
          t_data.push_back(SEmbodiedEntityIntersectionItem(&(pcModel->GetEmbodiedEntity()), f_t));
       }
@@ -221,11 +222,11 @@ namespace argos {
 
    /****************************************/
    /****************************************/
-   
+
    size_t CDynamics3DEngine::GetNumPhysicsModels() {
       return m_tPhysicsModels.size();
    }
-     
+
    /****************************************/
    /****************************************/
 
@@ -245,7 +246,7 @@ namespace argos {
          (*this, c_entity);
       return cOutcome.Value;
    }
-  
+
    /****************************************/
    /****************************************/
 
@@ -254,7 +255,7 @@ namespace argos {
       /* Add model to world */
       c_model.AddToWorld(m_cWorld);
       /* Notify the plugins of the added model */
-      for(CDynamics3DPlugin::TMap::iterator itPlugin = std::begin(m_tPhysicsPlugins);
+      for(auto itPlugin = std::begin(m_tPhysicsPlugins);
           itPlugin != std::end(m_tPhysicsPlugins);
           ++itPlugin) {
          itPlugin->second->RegisterModel(c_model);
@@ -267,10 +268,10 @@ namespace argos {
    /****************************************/
 
    void CDynamics3DEngine::RemovePhysicsModel(const std::string& str_id) {
-      CDynamics3DModel::TMap::iterator itModel = m_tPhysicsModels.find(str_id);
+      auto itModel = m_tPhysicsModels.find(str_id);
       if(itModel != std::end(m_tPhysicsModels)) {
          /* Notify the plugins of model removal */
-         for(CDynamics3DPlugin::TMap::iterator itPlugin = std::begin(m_tPhysicsPlugins);
+         for(auto itPlugin = std::begin(m_tPhysicsPlugins);
              itPlugin != std::end(m_tPhysicsPlugins);
              ++itPlugin) {
             itPlugin->second->UnregisterModel(*(itModel->second));
@@ -283,7 +284,7 @@ namespace argos {
          m_tPhysicsModels.erase(itModel);
       }
       else {
-         THROW_ARGOSEXCEPTION("The model \"" << str_id << 
+         THROW_ARGOSEXCEPTION("The model \"" << str_id <<
                               "\" was not found in the dynamics 3D engine \"" <<
                               GetId() << "\"");
       }
@@ -301,14 +302,14 @@ namespace argos {
    /****************************************/
 
    void CDynamics3DEngine::RemovePhysicsPlugin(const std::string& str_id) {
-      CDynamics3DPlugin::TMap::iterator it = m_tPhysicsPlugins.find(str_id);
+      auto it = m_tPhysicsPlugins.find(str_id);
       if(it != std::end(m_tPhysicsPlugins)) {
          delete it->second;
          m_tPhysicsPlugins.erase(it);
       }
       else {
-         THROW_ARGOSEXCEPTION("The plugin \"" << str_id << 
-                              "\" was not found in the dynamics 3D engine \"" << 
+         THROW_ARGOSEXCEPTION("The plugin \"" << str_id <<
+                              "\" was not found in the dynamics 3D engine \"" <<
                               GetId() << "\"");
       }
    }
@@ -323,21 +324,29 @@ namespace argos {
                            "A 3D dynamics physics engine",
                            "This physics engine is a 3D dynamics engine based on the Bullet Physics SDK\n"
                            "(https://github.com/bulletphysics/bullet3).\n\n"
+
                            "REQUIRED XML CONFIGURATION\n\n"
                            "  <physics_engines>\n"
                            "    ...\n"
                            "    <dynamics3d id=\"dyn3d\" />\n"
                            "    ...\n"
                            "  </physics_engines>\n\n"
+
                            "The 'id' attribute is necessary and must be unique among the physics engines.\n\n"
+
+                           "Multiple physics engines of this type cannot be used, and defining '<boundaries>'\n"
+                           "as a child tag under the '<dynamics3d>' tree will result in an initialization error.\n\n"
+
                            "OPTIONAL XML CONFIGURATION\n\n"
+
                            "It is possible to change the default friction used in the simulation from\n"
                            "its initial value of 1.0 using the default_friction attribute as shown\n"
                            "below. For debugging purposes, it is also possible to provide a filename\n"
                            "via the debug_file attribute which will cause the Bullet world to be\n"
-                           "serialized and written out to a file at the end of each step. This file\n"
-                           "can then be opened using the Bullet example browser and can provide useful\n"
+                           "serialized and written out to a file at the end of each step. This file can\n"
+                           "then be opened using the Bullet example browser and can provide useful\n"
                            "insights into the stability of a simulation.\n\n"
+
                            "  <physics_engines>\n"
                            "    ...\n"
                            "    <dynamics3d id=\"dyn3d\"\n"
@@ -345,6 +354,7 @@ namespace argos {
                            "                debug_file=\"dynamics3d.bullet\"/>\n"
                            "    ...\n"
                            "  </physics_engines>\n\n"
+
                            "The physics engine supports a number of plugins that add features to the\n"
                            "simulation. In the example below, a floor plane has been added which has a\n"
                            "height of 1 cm and the dimensions of the floor as specified by the arena\n"
@@ -358,6 +368,7 @@ namespace argos {
                            "'max_distance' attribute is an optional optimization that sets the maximum\n"
                            "distance at which two magnetic dipoles will interact with each other. In\n"
                            "the example below, this distance has been set to 4 cm.\n\n"
+
                            "  <physics_engines>\n"
                            "    ...\n"
                            "    <dynamics3d id=\"dyn3d\" default_friction=\"2.0\">\n"
@@ -367,7 +378,8 @@ namespace argos {
                            "    </dynamics3d>\n"
                            "    ...\n"
                            "  </physics_engines>\n\n",
-                           "Usable"
+
+                           "Usable (multiple engines not supported)"
       );
 
    /****************************************/

@@ -54,9 +54,9 @@ include(${CMAKE_SOURCE_DIR}/cmake/ARGoSPackaging.cmake)
 # Create config file with settings that must be accessed from C++
 #
 configure_file(
-  ${CMAKE_SOURCE_DIR}/core/config.h.in
-  ${CMAKE_BINARY_DIR}/core/config.h
-  @ONLY)
+        ${CMAKE_SOURCE_DIR}/core/config.h.in
+        ${CMAKE_BINARY_DIR}/core/config.h
+        @ONLY)
 install(FILES ${CMAKE_BINARY_DIR}/core/config.h DESTINATION include/argos3/core)
 
 #
@@ -65,8 +65,8 @@ install(FILES ${CMAKE_BINARY_DIR}/core/config.h DESTINATION include/argos3/core)
 #
 if(NOT EXISTS ${CMAKE_BINARY_DIR}/argos3)
   execute_process(
-    COMMAND ln -s . argos3
-    WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+          COMMAND ln -s . argos3
+          WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
 endif(NOT EXISTS ${CMAKE_BINARY_DIR}/argos3)
 
 #
@@ -88,18 +88,18 @@ include(${CMAKE_SOURCE_DIR}/cmake/ARGoSCreateDocs.cmake)
 # It is placed in the same directory as the argos3 executable
 #
 configure_file(
-  ${CMAKE_SOURCE_DIR}/scripts/gdbinit.in
-  ${CMAKE_BINARY_DIR}/core/.gdbinit
-  @ONLY)
+        ${CMAKE_SOURCE_DIR}/scripts/gdbinit.in
+        ${CMAKE_BINARY_DIR}/core/.gdbinit
+        @ONLY)
 
 #
 # Create setup_envsh file for bash support
 # It is placed in the base build directory
 #
 configure_file(
-  ${CMAKE_SOURCE_DIR}/scripts/setup_env.sh.in
-  ${CMAKE_BINARY_DIR}/setup_env.sh
-  @ONLY)
+        ${CMAKE_SOURCE_DIR}/scripts/setup_env.sh.in
+        ${CMAKE_BINARY_DIR}/setup_env.sh
+        @ONLY)
 
 #
 # Install extra stuff
@@ -107,16 +107,16 @@ configure_file(
 if(ARGOS_INSTALL_LDSOCONF)
   # Configuration file for /etc/ld.so.conf.d/
   configure_file(
-    ${CMAKE_SOURCE_DIR}/scripts/argos3.conf.in
-    ${CMAKE_BINARY_DIR}/argos3.conf
-    @ONLY)
+          ${CMAKE_SOURCE_DIR}/scripts/argos3.conf.in
+          ${CMAKE_BINARY_DIR}/argos3.conf
+          @ONLY)
   install(FILES ${CMAKE_BINARY_DIR}/argos3.conf DESTINATION /etc/ld.so.conf.d)
 endif(ARGOS_INSTALL_LDSOCONF)
 # Configuration file for pkg-config
 configure_file(
-  ${CMAKE_SOURCE_DIR}/scripts/argos3.pc.in
-  ${CMAKE_BINARY_DIR}/argos3_${ARGOS_BUILD_FOR}.pc
-  @ONLY)
+        ${CMAKE_SOURCE_DIR}/scripts/argos3.pc.in
+        ${CMAKE_BINARY_DIR}/argos3_${ARGOS_BUILD_FOR}.pc
+        @ONLY)
 install(FILES ${CMAKE_BINARY_DIR}/argos3_${ARGOS_BUILD_FOR}.pc DESTINATION lib/pkgconfig)
 # Bash completion file
 install(FILES ${CMAKE_SOURCE_DIR}/scripts/argos3_bash_completion.sh DESTINATION share/argos3)

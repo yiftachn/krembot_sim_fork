@@ -94,22 +94,22 @@ RGBAResult RGBASensor::readRGBA() {
      */
     const auto rawProximity = m_cProximity->GetReadings()[m_index];
 
-    //* the REAL krembots IR returns max val (25.5) when there is other robot in front
-//    if (rawProximity.IsRobot == true)
-//    {
-//        result.Distance = 25.5f;
-//    }
-//    else
-//    {
-//        }
+      /* the REAL krembots IR returns max val (25.5) when there is other robot in front*/
+     if (rawProximity.IsRobot == true)
+     {
+         result.Distance = 25.5f;
+     }
+     else
+     {
+         result.Distance = footbotDistanceToKrembotDistanceProximity(rawProximity.Value);
+         if (result.Distance > 25.6f)
+         {
+             fprintf(stderr,"=============result.Distance = %f ==== > 25.5f\n=============", result.Distance);
+             throw ("result.Distance > 25.6f");
+         }
+      }
 
-    result.Distance = footbotDistanceToKrembotDistanceProximity(rawProximity.Value);
 
-    if (result.Distance > 25.6f)
-    {
-        fprintf(stderr,"=============result.Distance = %f ==== > 25.5f\n=============", result.Distance);
-        throw ("result.Distance > 25.6f");
-    }
 
     /*
      * Calculate proximity out of distance using the following rules:
@@ -355,4 +355,3 @@ void RGBASensor::print() {
     printHSV();
     printColor();
 }
-

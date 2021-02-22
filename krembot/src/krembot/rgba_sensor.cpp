@@ -40,15 +40,15 @@ using namespace argos;
 //using intersect_t = CCI_ProximitySensor::intersec_t;
 
 RGBASensor::RGBASensor() :
-        // sensors limits in cm (according to Robotican)
+// sensors limits in cm (according to Robotican)
         m_ProxRange{20, 255},
         m_DistRange{6.96, 25.51} { }
 
 void RGBASensor::init(const std::string name,
-                        uint8_t index,
-                        CCI_FootBotProximitySensor * proximity,
-                        CCI_FootBotLightSensor * light,
-                        CCI_ColoredBlobOmnidirectionalCameraSensor * colorCam)
+                      uint8_t index,
+                      CCI_FootBotProximitySensor * proximity,
+                      CCI_FootBotLightSensor * light,
+                      CCI_ColoredBlobOmnidirectionalCameraSensor * colorCam)
 {
     m_name = name;
     m_index = index;
@@ -72,7 +72,8 @@ void RGBASensor::init(const std::string name,
     }
 }
 
-RGBAResult RGBASensor::readRGBA() {
+RGBAResult RGBASensor::readRGBA()
+{
     if (m_cProximity == nullptr) {
         throw std::invalid_argument("m_cProximity wasn't initialized");
     }
@@ -94,22 +95,21 @@ RGBAResult RGBASensor::readRGBA() {
      */
     const auto rawProximity = m_cProximity->GetReadings()[m_index];
 
-      /* the REAL krembots IR returns max val (25.5) when there is other robot in front*/
-     if (rawProximity.IsRobot == true)
-     {
-         result.Distance = 25.5f;
-     }
-     else
-     {
-         result.Distance = footbotDistanceToKrembotDistanceProximity(rawProximity.Value);
-         if (result.Distance > 25.6f)
-         {
-             fprintf(stderr,"=============result.Distance = %f ==== > 25.5f\n=============", result.Distance);
-             throw ("result.Distance > 25.6f");
-         }
-      }
-
-
+    result.Distance = rawProximity.Value * 100; // convert meters to cm
+    //divide by DISTANCE_RATIO_KREMBOT in order to return it to the proportions of the original sensor
+    if (rawProximity.IsRobot == true)
+    {
+        result.Distance = 25.5f;
+    }
+    else
+    {
+        result.Distance = (float)(result.Distance / DISTANCE_RATIO_KREMBOT);
+        if (result.Distance > 25.6f)
+        {
+            fprintf(stderr,"=============result.Distance = %f ==== > 25.5f\n=============", result.Distance);
+            throw ("result.Distance > 25.6f");
+        }
+    }
 
     /*
      * Calculate proximity out of distance using the following rules:
@@ -133,7 +133,6 @@ RGBAResult RGBASensor::readRGBA() {
     // Calculate colors
     const auto & cameraBlobReadings = m_ColorCam->GetReadings().BlobList;
     Real prevDistance = 1000;
-    bool updated = false;
     for (const auto & reading : cameraBlobReadings) {
 
         bool updateColors = false;
@@ -170,31 +169,10 @@ RGBAResult RGBASensor::readRGBA() {
             result.Red = (uint16_t)reading->Color.GetRed();
             result.Blue = (uint16_t)reading->Color.GetBlue();
             prevDistance = reading->Distance;
-            updated = true;
         }
     }
 
-    if(updated && result.Distance > 25)
-    {
-        float preDistanceKrembot = footbotDistanceToKrembotDistanceColorCam(prevDistance);
-        result.Distance = preDistanceKrembot;
-    }
-
     return result;
-}
-
-float RGBASensor::footbotDistanceToKrembotDistanceProximity(argos::Real footbot_distance)
-{
-    float krembot_distance = (float)footbot_distance * 100; // meter to cm
-    krembot_distance = krembot_distance / DISTANCE_RATIO_KREMBOT; // to fix ratio
-    return krembot_distance;
-}
-
-float RGBASensor::footbotDistanceToKrembotDistanceColorCam(argos::Real footbot_distance)
-{
-    float krembot_distance = (float)footbot_distance - 8.5036758 ; // " the distance in cms from the robot center"
-    krembot_distance = krembot_distance / DISTANCE_RATIO_KREMBOT; // to fix ratio
-    return krembot_distance;
 }
 
 HSVResult RGBASensor::readHSV()
@@ -213,11 +191,10 @@ Colors RGBASensor::readColor()
     {
         return Colors::None;
     }
-    // TODO: NOT SURE WHY IS IT HERE
-//    else if(rgbaIn.Distance < 12 && rgbaIn.Ambient < 200)
-//    {
-//        return Colors::None;
-//    }
+    else if(rgbaIn.Distance < 12 && rgbaIn.Ambient < 200)
+    {
+        return Colors::None;
+    }
 
     else
     {

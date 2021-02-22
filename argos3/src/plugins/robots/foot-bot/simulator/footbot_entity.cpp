@@ -29,14 +29,19 @@ namespace argos {
    /****************************************/
    /****************************************/
    /*********** TODO :: change in footbot code
-        krembot Dimensions
-        static const Real BODY_RADIUS                = 0.035036758f;
-        static const Real BODY_HEIGHT                = 0.106899733f;
-    *******************************************************/
-   #define DISTANCE_RATIO_KREMBOT 2.427072676   // footbot-BODY_RADIUS / krembot-BODY_RADIUS
+        krembot Dimensions  ************************************/
+//        static const Real KREMBOT_BODY_RADIUS                = 0.0325f; //width 6.5 cm
+//        static const Real KREMBOT_BODY_HEIGHT                = 0.106f;
+    /*******************************************************/
 
-   static const Real BODY_RADIUS                = 0.085036758f;
+   #define DISTANCE_RATIO_KREMBOT 2.616515631
+
+   static const Real BODY_RADIUS                = 0.085036758f; //width 17 cm
    static const Real BODY_HEIGHT                = 0.146899733f;
+
+   //************************added*******************
+   // static const Real  DISTANCE_RATIO_KREMBOT  = BODY_RADIUS / KREMBOT_BODY_RADIUS;   // footbot-BODY_RADIUS / krembot-BODY_RADIUS
+   //*************************************************/
 
    static const Real LED_RING_RADIUS            = BODY_RADIUS + 0.005;
 
@@ -412,7 +417,6 @@ namespace argos {
 //         CDegrees cAperture(70.0f);
 //          To FIX the range of the omnidirection camera:
           CDegrees cAperture = ToDegrees(ATan2(OMNIDIRECTIONAL_CAMERA_RING_RANGE, OMNIDIRECTIONAL_CAMERA_ELEVATION));
-
           GetNodeAttributeOrDefault(t_tree, "omnidirectional_camera_aperture", cAperture, cAperture);
          m_pcOmnidirectionalCameraEquippedEntity =
             new COmnidirectionalCameraEquippedEntity(this,

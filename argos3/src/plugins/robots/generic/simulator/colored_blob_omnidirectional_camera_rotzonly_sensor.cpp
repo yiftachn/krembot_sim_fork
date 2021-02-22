@@ -61,6 +61,7 @@ namespace argos {
                                     m_cLEDRelativePos.GetY());
             if(Abs(m_cLEDRelativePos.GetX()) < m_fGroundHalfRange &&
                Abs(m_cLEDRelativePos.GetY()) < m_fGroundHalfRange &&
+                    m_cLEDRelativePosXY.Length() < m_fGroundHalfRange && // added to prevent thing out of (circular) range
                m_cLEDRelativePos.GetZ() < m_cCameraPos.GetZ() &&
                !GetClosestEmbodiedEntityIntersectedByRay(m_sIntersectionItem,
                                                          m_cOcclusionCheckRay,

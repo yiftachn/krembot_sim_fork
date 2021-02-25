@@ -416,7 +416,8 @@ namespace argos {
          /* Omnidirectional camera equipped entity */
 //         CDegrees cAperture(70.0f);
 //          To FIX the range of the omnidirection camera:
-          CDegrees cAperture = ToDegrees(ATan2(OMNIDIRECTIONAL_CAMERA_RING_RANGE, OMNIDIRECTIONAL_CAMERA_ELEVATION));
+          Real omnidirectionalCamRange = OMNIDIRECTIONAL_CAMERA_RING_RANGE + (1.5 * BODY_RADIUS);  //" the distance in cms from the robot center (8.5 is the footbot radius)"
+          CDegrees cAperture = ToDegrees(ATan2(omnidirectionalCamRange, OMNIDIRECTIONAL_CAMERA_ELEVATION));
           GetNodeAttributeOrDefault(t_tree, "omnidirectional_camera_aperture", cAperture, cAperture);
          m_pcOmnidirectionalCameraEquippedEntity =
             new COmnidirectionalCameraEquippedEntity(this,

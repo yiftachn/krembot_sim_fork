@@ -221,12 +221,12 @@ namespace argos {
          }
          /* Apply noise to the sensors */
          if(m_bAddNoise) {
-            for(size_t i = 0; i < 24; ++i) {
+            for(size_t i = 0; i < m_tReadings.size(); ++i) {
                m_tReadings[i].Value += m_pcRNG->Uniform(m_cNoiseRange);
             }
          }
          /* Trunc the reading between 0 and 1 */
-         for(size_t i = 0; i < 24; ++i) {
+         for(size_t i = 0; i < m_tReadings.size(); ++i) {
             SENSOR_RANGE.TruncValue(m_tReadings[i].Value);
          }
       }

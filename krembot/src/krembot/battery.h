@@ -34,8 +34,13 @@
 #ifndef BATTERY_H
 #define BATTERY_H
 
+
 #include <cstdint>
 #include <chrono>
+#include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_proximity_sensor.h>
+
+
+using namespace argos;
 
 class Battery
 {

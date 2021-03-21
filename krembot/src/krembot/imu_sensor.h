@@ -41,6 +41,8 @@
 
 #include <argos3/plugins/robots/foot-bot/control_interface/ci_footbot_imu_sensor.h>
 
+using namespace argos;
+
 struct ImuData
 {
     float roll = 0,

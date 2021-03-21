@@ -15,7 +15,7 @@ namespace argos {
    /****************************************/
    /****************************************/
 
-   const std::vector<CCI_ProximitySensor::intersec_t>& CCI_ProximitySensor::GetReadings() const {
+   const std::vector<CCI_ProximitySensor::proxData>& CCI_ProximitySensor::GetReadings() const {
      return m_tReadings;
    }
 
@@ -25,9 +25,9 @@ namespace argos {
 #ifdef ARGOS_WITH_LUA
    void CCI_ProximitySensor::CreateLuaState(lua_State* pt_lua_state) {
       CLuaUtility::OpenRobotStateTable(pt_lua_state, "proximity");
-//      for(size_t i = 0; i < m_tReadings.size(); ++i) {
-//         CLuaUtility::AddToTable(pt_lua_state, i+1, m_tReadings[i]);
-//      }
+      for(size_t i = 0; i < m_tReadings.size(); ++i) {
+         CLuaUtility::AddToTable(pt_lua_state, i+1, m_tReadings[i]);
+      }
       CLuaUtility::CloseRobotStateTable(pt_lua_state);
    }
 #endif
@@ -38,11 +38,11 @@ namespace argos {
 #ifdef ARGOS_WITH_LUA
    void CCI_ProximitySensor::ReadingsToLuaState(lua_State* pt_lua_state) {
       lua_getfield(pt_lua_state, -1, "proximity");
-//      for(size_t i = 0; i < m_tReadings.size(); ++i) {
-//         lua_pushnumber(pt_lua_state, i+1           );
-//         lua_pushnumber(pt_lua_state, m_tReadings[i]);
-//         lua_settable  (pt_lua_state, -3            );
-//      }
+      for(size_t i = 0; i < m_tReadings.size(); ++i) {
+         lua_pushnumber(pt_lua_state, i+1           );
+         lua_pushnumber(pt_lua_state, m_tReadings[i]);
+         lua_settable  (pt_lua_state, -3            );
+      }
       lua_pop(pt_lua_state, 1);
    }
 #endif

@@ -7,14 +7,6 @@
 #ifndef FOOTBOT_ENTITY_H
 #define FOOTBOT_ENTITY_H
 
-/* footbot width is 17 cm  and krembot width is 6.5 cm
- * -> that cause different behavior when the robots based on this information
- * a temporary solution - sense the distance in the same proportion
- * and then, return it to the proportions of the original sensor
- * (so that the robots' code works in the same way)
- * */
-#define DISTANCE_RATIO_KREMBOT 3.846153846
-
 namespace argos {
    class CBatteryEquippedEntity;
    class CControllableEntity;
@@ -31,7 +23,7 @@ namespace argos {
    class CProximitySensorEquippedEntity;
    class CRABEquippedEntity;
    class CWiFiEquippedEntity;
-   class CImuEquippedEntity;
+    class CImuEquippedEntity;
 }
 
 #include <argos3/core/simulator/entity/composable_entity.h>
@@ -65,9 +57,13 @@ namespace argos {
       virtual void Init(TConfigurationNode& t_tree);
       virtual void Reset();
       virtual void UpdateComponents();
-      
+
       inline CControllableEntity& GetControllableEntity() {
          return *m_pcControllableEntity;
+      }
+
+      inline const CControllableEntity& GetControllableEntity() const {
+        return *m_pcControllableEntity;
       }
 
       inline CFootBotDistanceScannerEquippedEntity& GetDistanceScannerEquippedEntity() {
@@ -127,7 +123,9 @@ namespace argos {
       }
 
        inline CImuEquippedEntity& GetImuEquippedEntity() {
+
            return *m_pcImuEquippedEntity;
+
        }
 
       virtual std::string GetTypeDescription() const {

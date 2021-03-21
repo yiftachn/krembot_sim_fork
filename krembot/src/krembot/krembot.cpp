@@ -39,7 +39,7 @@ void Krembot::init(const std::string & id,
           CCI_LEDsActuator * leds,
           CCI_FootBotLightSensor * light,
           CCI_ColoredBlobOmnidirectionalCameraSensor * colorCam,
-          CCI_FootBotImuSensor * imu)
+                   CCI_FootBotImuSensor * imu)
 {
     m_name = id;
     Base.init(wheels);
@@ -61,5 +61,6 @@ void Krembot::init(const std::string & id,
 std::string Krembot::getId() {
     return std::to_string(std::tr1::hash<std::string>()(m_name));
 }
+
 
 

@@ -57,15 +57,17 @@
  * and then, return it to the proportions of the original sensor
  * (so that the robots' code works in the same way)
  * */
-#define DISTANCE_RATIO_KREMBOT 3.846153846
+#define DISTANCE_RATIO_KREMBOT 2.427072676   // footbot-BODY_RADIUS / krembot-BODY_RADIUS
+
+using namespace argos;
 
 struct RGBAResult
 {
-    uint16_t Ambient = 0;   /**< The Ambience of the light, (0-65535)*/
+    uint8_t Ambient = 0;   /**< The Ambience of the light, (0-65535)*/
     uint16_t Red = 0;       /**< The Red value of the light, (0-65535)*/
     uint16_t Green = 0;     /**< The Green value of the light, (0-65535)*/
     uint16_t Blue = 0;      /**< The Blue value of the light, (0-65535)*/
-    uint8_t Proximity = 0;  /**< The Raw value of the proximity sensor, (0-255)*/
+    uint16_t Proximity = 0;  /**< The Raw value of the proximity sensor, (0-255)*/
     float Distance = 0;     /**< The calculated distance to the object, in cm*/
     bool AmbientError = false;
     bool RedError = false;
@@ -98,8 +100,8 @@ private:
     argos::CCI_FootBotProximitySensor * m_cProximity = nullptr;
     argos::CCI_FootBotLightSensor * m_Light = nullptr;
     argos::CCI_ColoredBlobOmnidirectionalCameraSensor * m_ColorCam = nullptr;
-    argos::CRange<float> m_ProxRange;
-    argos::CRange<float> m_DistRange;
+    argos::CRange<Real> m_ProxRange;
+    argos::CRange<Real> m_DistRange;
 
 public:
 
@@ -131,6 +133,11 @@ public:
      * Mock-up functions
      */
     inline void publish() { }
+
+    argos::CCI_ColoredBlobOmnidirectionalCameraSensor * getCamPtr()
+    {
+        return m_ColorCam;
+    }
 
 
 };

@@ -18,7 +18,8 @@ namespace argos {
    /****************************************/
 
    static CRange<Real> SENSOR_RANGE(0.0f, 1.0f);
-   static CRadians SENSOR_SPACING      = CRadians(ARGOS_PI / 4);
+    // CHANGED FROM ORIGINAL FOOTBOT CODE
+   static CRadians SENSOR_SPACING      = CRadians(ARGOS_PI / 4.0f);
    static CRadians SENSOR_HALF_SPACING = SENSOR_SPACING * 0.5;
 
    /****************************************/
@@ -52,9 +53,9 @@ namespace argos {
    /****************************************/
 
    CFootBotLightRotZOnlySensor::CFootBotLightRotZOnlySensor() :
-      m_pcEmbodiedEntity(NULL),
+      m_pcEmbodiedEntity(nullptr),
       m_bShowRays(false),
-      m_pcRNG(NULL),
+      m_pcRNG(nullptr),
       m_bAddNoise(false),
       m_cSpace(CSimulator::GetInstance().GetSpace()) {}
 
@@ -67,11 +68,13 @@ namespace argos {
          m_pcControllableEntity = &(c_entity.GetComponent<CControllableEntity>("controller"));
          m_pcLightEntity = &(c_entity.GetComponent<CLightSensorEquippedEntity>("light_sensors"));
          m_pcLightEntity->Enable();
+
+          // CHANGED FROM ORIGINAL FOOTBOT CODE
+          m_cRobot = &c_entity;
       }
       catch(CARGoSException& ex) {
          THROW_ARGOSEXCEPTION_NESTED("Can't set robot for the foot-bot light default sensor", ex);
       }
-      m_cRobot = &c_entity;
    }
 
    /****************************************/
@@ -93,6 +96,9 @@ namespace argos {
             m_pcRNG = CRandom::CreateRNG("argos");
          }
          m_tReadings.resize(m_pcLightEntity->GetNumSensors());
+
+         /* sensor is enabled by default */
+         Enable();
       }
       catch(CARGoSException& ex) {
          THROW_ARGOSEXCEPTION_NESTED("Initialization error in rot_z_only light sensor", ex);
@@ -101,11 +107,12 @@ namespace argos {
 
    /****************************************/
    /****************************************/
-   /**
-  * Elhay: Changes were made to this function to detect led source light (instead of
-    * media source light)
-  */
+   
    void CFootBotLightRotZOnlySensor::Update() {
+      /* sensor is disabled--nothing to do */
+      if (IsDisabled()) {
+        return;
+      }
       /* Erase readings */
       for(size_t i = 0; i < m_tReadings.size(); ++i) {
          m_tReadings[i].Value = 0.0f;
@@ -122,93 +129,74 @@ namespace argos {
       /* Buffers to contain data about the intersection */
       SEmbodiedEntityIntersectionItem sIntersection;
       /* List of light entities */
-      CSpace::TMapPerTypePerId::iterator itLights = m_cSpace.GetEntityMapPerTypePerId().find("led"/*"light"*/);
-      if (itLights != m_cSpace.GetEntityMapPerTypePerId().end()) {
-         CSpace::TMapPerType& mapLights = itLights->second;
-         /*
-       * 1. go through the list of light entities in the scene
-       * 2. check if a light is occluded
-       * 3. if it isn't, distribute the reading across the sensors
-       *    NOTE: the readings are additive
-       * 4. go through the sensors and clamp their values
-       */
-         for(CSpace::TMapPerType::iterator it = mapLights.begin();
-             it != mapLights.end();
-             ++it) {
-            /* Get a reference to the light */
-             /*CLightEntity*/ CLEDEntity& cLight = *(any_cast</*CLightEntity*/ CLEDEntity  *>(it->second));
-             //fprintf(stderr, "id: %s", cLight.GetParent().GetParent().GetId().c_str());
-             if (cLight.GetParent().GetParent().GetId() == m_cRobot->GetId()) { //elhay: if light is coming from our robot, disregard
-                 continue;
-             }
-             /* Consider the light only if it has non zero intensity */
-             if(cLight.GetIntensity() > 0.0f) {
-               /* Set the ray end */
-               cOcclusionCheckRay.SetEnd(cLight.GetPosition());
-               /* Check occlusion between the foot-bot and the light */
-               if(! GetClosestEmbodiedEntityIntersectedByRay(sIntersection,
-                                                             cOcclusionCheckRay,
-                                                             *m_pcEmbodiedEntity)) {
-                  /* The light is not occluded */
-                  if(m_bShowRays) {
-                     m_pcControllableEntity->AddCheckedRay(false, cOcclusionCheckRay);
-                  }
-                  /* Get the distance between the light and the foot-bot */
-                  cOcclusionCheckRay.ToVector(cRobotToLight);
-                  /*
-                   * Linearly scale the distance with the light intensity
-                   * The greater the intensity, the smaller the distance
-                   */
-                  cRobotToLight /= cLight.GetIntensity();
-                  /* Get the angle wrt to foot-bot rotation */
-                  cAngleLightWrtFootbot = cRobotToLight.GetZAngle();
-                  cAngleLightWrtFootbot -= cOrientationZ;
-                  /*
-                   * Find closest sensor index to point at which ray hits footbot body
-                   * Rotate whole body by half a sensor spacing (corresponding to placement of first sensor)
-                   * Division says how many sensor spacings there are between first sensor and point at which ray hits footbot body
-                   * Increase magnitude of result of division to ensure correct rounding
-                   */
-                  Real fIdx = (cAngleLightWrtFootbot /*- SENSOR_HALF_SPACING*/) / SENSOR_SPACING;
-                  SInt32 nReadingIdx = (fIdx > 0) ? fIdx + 0.5f : fIdx - 0.5f;
-//                   fprintf(stderr, "fidx: %f\n", fIdx);
-//                   fprintf(stderr, "nReadingIdx: %d\n", nReadingIdx);
 
-//                   if (nReadingIdx == -1) { //elhay: fix for case where light is straigh f/w
-//                       nReadingIdx = 0;
-//                   }
-                  /* Set the actual readings */
-                  Real fReading = cRobotToLight.Length();
-//                   fprintf(stderr, "fReading: %f\n", fReading);
-                  /*
-                   * Take 6 readings before closest sensor and 6 readings after - thus we
-                   * process sensors that are with 180 degrees of intersection of light
-                   * ray with robot body
-                   */
-                  for(SInt32 nIndexOffset = -1; nIndexOffset < 2; ++nIndexOffset) {
-                     UInt32 unIdx = Modulo(nReadingIdx + nIndexOffset, 8);
-//                      fprintf(stderr, "nIndexOffset: %d\n", nIndexOffset);
-//                      fprintf(stderr, "unIdx: %d\n", unIdx);
-//                      fprintf(stderr, "cAngleLightWrtFootbot: %f\n", ToDegrees(cAngleLightWrtFootbot));
-//                      fprintf(stderr, "m_tReadings[unIdx].Angle: %f\n", ToDegrees(m_tReadings[unIdx].Angle));
+       // CHANGED FROM ORIGINAL FOOTBOT CODE
+       auto itLights = m_cSpace.GetEntityMapPerTypePerId().find("light");
+       if (itLights != m_cSpace.GetEntityMapPerTypePerId().end()) {
+           CSpace::TMapPerType& mapLights = itLights->second;
+           /*
+         * 1. go through the list of light entities in the scene
+         * 2. check if a light is occluded
+         * 3. if it isn't, distribute the reading across the sensors
+         *    NOTE: the readings are additive
+         * 4. go through the sensors and clamp their values
+         */
+           for(auto it = mapLights.begin();
+               it != mapLights.end();
+               ++it) {
+               /* Get a reference to the light */
+               CLightEntity& cLight = *(any_cast<CLightEntity*>(it->second));
+               // TODO:: light entity has no parent
+//               if (cLight.GetParent().GetParent().GetId() == m_cRobot->GetId()) { //elhay: if light is coming from our robot, disregard
+//                   continue;
+//               }
+               /* Consider the light only if it has non zero intensity */
+               if(cLight.GetIntensity() > 0.0f) {
+                   /* Set the ray end */
+                   cOcclusionCheckRay.SetEnd(cLight.GetPosition());
+                   /* Check occlusion between the foot-bot and the light */
+                   if(! GetClosestEmbodiedEntityIntersectedByRay(sIntersection,
+                                                                 cOcclusionCheckRay,
+                                                                 *m_pcEmbodiedEntity)) {
+                       /* The light is not occluded */
+                       if(m_bShowRays) {
+                           m_pcControllableEntity->AddCheckedRay(false, cOcclusionCheckRay);
+                       }
+                       /* Get the distance between the light and the foot-bot */
+                       cOcclusionCheckRay.ToVector(cRobotToLight);
+                       /*
+                        * Linearly scale the distance with the light intensity
+                        * The greater the intensity, the smaller the distance
+                        */
+                       cRobotToLight /= cLight.GetIntensity();
+                      /* Get the angle wrt to foot-bot rotation */
+                      cAngleLightWrtFootbot = cRobotToLight.GetZAngle();
+                      cAngleLightWrtFootbot -= cOrientationZ;
+                      /*
+                       * Find closest sensor index to point at which ray hits footbot body
+                       * Rotate whole body by half a sensor spacing (corresponding to placement of first sensor)
+                       * Division says how many sensor spacings there are between first sensor and point at which ray hits footbot body
+                       * Increase magnitude of result of division to ensure correct rounding
+                       */
+                      Real fIdx = (cAngleLightWrtFootbot) / SENSOR_SPACING;
+                      SInt32 nReadingIdx = static_cast<SInt32>((fIdx > 0) ? fIdx + 0.5f : fIdx - 0.5f);
+                      /* Set the actual readings */
+                      Real fReading = cRobotToLight.Length();
+                      /*
+                       * Take 6 readings before closest sensor and 6 readings after - thus we
+                       * process sensors that are with 180 degrees of intersection of light
+                       * ray with robot body
+                       */
+                   for(SInt32 nIndexOffset = -1; nIndexOffset < 2; ++nIndexOffset) {
+                       UInt32 unIdx = Modulo(nReadingIdx + nIndexOffset, 8);
                      CRadians cAngularDistanceFromOptimalLightReceptionPoint = Abs((cAngleLightWrtFootbot - m_tReadings[unIdx].Angle).SignedNormalize());
-
-
                      /*
                       * ComputeReading gives value as if sensor was perfectly in line with
                       * light ray. We then linearly decrease actual reading from 1 (dist
                       * 0) to 0 (dist PI/2)
                       */
-
-//                      fprintf(stderr, "cAngularDistanceFromOptimalLightReceptionPoint: %f\n", cAngularDistanceFromOptimalLightReceptionPoint.GetValue());
-//                      fprintf(stderr, "ComputeReading(fReading): %f\n", ComputeReading(fReading));
-//                      fprintf(stderr, "ScaleReading(cAngularDistanceFromOptimalLightReceptionPoint: %f\n", ScaleReading(cAngularDistanceFromOptimalLightReceptionPoint));
-
                      m_tReadings[unIdx].Value += ComputeReading(fReading) * ScaleReading(cAngularDistanceFromOptimalLightReceptionPoint);
-
-//                      fprintf(stderr, "Value: %f\n----\n", m_tReadings[unIdx].Value);
                   }
-
                }
                else {
                   /* The ray is occluded */
@@ -221,12 +209,12 @@ namespace argos {
          }
          /* Apply noise to the sensors */
          if(m_bAddNoise) {
-            for(size_t i = 0; i < m_tReadings.size(); ++i) {
+            for(size_t i = 0; i <  m_tReadings.size(); ++i) {
                m_tReadings[i].Value += m_pcRNG->Uniform(m_cNoiseRange);
             }
          }
          /* Trunc the reading between 0 and 1 */
-         for(size_t i = 0; i < m_tReadings.size(); ++i) {
+         for(size_t i = 0; i <  m_tReadings.size(); ++i) {
             SENSOR_RANGE.TruncValue(m_tReadings[i].Value);
          }
       }

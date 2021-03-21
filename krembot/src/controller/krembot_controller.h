@@ -57,7 +57,6 @@ using namespace argos;
 class KrembotController : public CCI_Controller {
 
 public:
-
     virtual ~KrembotController() = default;
 
     /*

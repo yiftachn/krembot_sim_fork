@@ -68,7 +68,7 @@ namespace argos {
    void CEyeBotProximityDefaultSensor::Update() {
       m_pcProximityImpl->Update();
       for(size_t i = 0; i < 24; ++i) {
-         m_tReadings[i].Value = m_pcProximityImpl->GetReadings()[i].prox;
+         m_tReadings[i].Value = m_pcProximityImpl->GetReadings()[i].val;
       }
    }
 

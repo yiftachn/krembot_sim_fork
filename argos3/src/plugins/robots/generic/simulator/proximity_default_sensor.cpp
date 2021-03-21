@@ -22,9 +22,9 @@ namespace argos {
    /****************************************/
 
    CProximityDefaultSensor::CProximityDefaultSensor() :
-      m_pcEmbodiedEntity(NULL),
+      m_pcEmbodiedEntity(nullptr),
       m_bShowRays(false),
-      m_pcRNG(NULL),
+      m_pcRNG(nullptr),
       m_bAddNoise(false),
       m_cSpace(CSimulator::GetInstance().GetSpace()) {}
 
@@ -67,19 +67,18 @@ namespace argos {
       catch(CARGoSException& ex) {
          THROW_ARGOSEXCEPTION_NESTED("Initialization error in default proximity sensor", ex);
       }
+      /* This sensor is enabled by default */
+      Enable();
    }
 
    /****************************************/
    /****************************************/
 
-   /**
-    * Elhay: Changes were made to this function to return -1 instead of 0 for no-intersection reads
-    * cases:
-    * Intersected entity is another footbot
-    * No intersection
-    * Intersected entity is not another footbot
-    */
    void CProximityDefaultSensor::Update() {
+      /* sensor is disabled--nothing to do */
+      if (IsDisabled()) {
+        return;
+      }
       /* Ray used for scanning the environment for obstacles */
       CRay3 cScanningRay;
       CVector3 cRayStart, cRayEnd;
@@ -93,44 +92,43 @@ namespace argos {
          cRayStart += m_pcProximityEntity->GetSensor(i).Anchor.Position;
          cRayEnd = m_pcProximityEntity->GetSensor(i).Offset;
          cRayEnd += m_pcProximityEntity->GetSensor(i).Direction;
-         cRayEnd.Rotate(m_pcProximityEntity->GetSensor(i).Anchor.Orientation);
+         cRayEnd.Rotate(m_pcProximityEntity->GetSensor( i).Anchor.Orientation);
          cRayEnd += m_pcProximityEntity->GetSensor(i).Anchor.Position;
          cScanningRay.Set(cRayStart,cRayEnd);
          /* Compute reading */
          /* Get the closest intersection */
-         if(GetClosestEmbodiedEntityIntersectedByRay(sIntersection,
-                                                     cScanningRay,
-                                                     *m_pcEmbodiedEntity)) {
-             /* There is an intersection */
 
-             /**
-              * According to the client, the real robot proximity seonsor returns maximum range
-              * when intersected object is another robot, and not a wall or some other object.
-              * To simulate that, if intersected entity is another footbot, return -2
-              */
-             if (sIntersection.IntersectedEntity->GetRootEntity().GetTypeDescription() == "foot-bot") {
-                 m_tReadings[i].type = CCI_ProximitySensor::intersec_t::Type::ROBOT;
-             } else {
-                 m_tReadings[i].type = CCI_ProximitySensor::intersec_t::Type::OTHER;
-             }
-             if (m_bShowRays) {
-                 m_pcControllableEntity->AddIntersectionPoint(cScanningRay,
-                                                              sIntersection.TOnRay);
-                 m_pcControllableEntity->AddCheckedRay(true, cScanningRay);
-             }
+          // CHANGED FROM ORIGINAL FOOTBOT CODE
+         bool intersected = GetClosestEmbodiedEntityIntersectedByRay(sIntersection,
+                                                                     cScanningRay,
+                                                                     *m_pcEmbodiedEntity);
+
+          m_tReadings[i].isRobot = false;
+         if(intersected) {
+            /* There is an intersection */
+
+             m_tReadings[i].isRobot = sIntersection.IntersectedEntity->GetRootEntity().GetTypeDescription() == "foot-bot";
+
+             if(m_bShowRays) {
+               m_pcControllableEntity->AddIntersectionPoint(cScanningRay,
+                                                            sIntersection.TOnRay);
+               m_pcControllableEntity->AddCheckedRay(true, cScanningRay);
+            }
+            m_tReadings[i].val = cScanningRay.GetDistance(sIntersection.TOnRay);
          }
-         else {
+         else{
             /* No intersection */
-            m_tReadings[i].type = CCI_ProximitySensor::intersec_t::Type::NONE;
+            m_tReadings[i].val = 0.255f * DISTANCE_RATIO_KREMBOT ; // in meters
             if(m_bShowRays) {
                m_pcControllableEntity->AddCheckedRay(false, cScanningRay);
             }
          }
-         m_tReadings[i].prox = cScanningRay.GetDistance(sIntersection.TOnRay);
          /* Apply noise to the sensor */
          if(m_bAddNoise) {
-            m_tReadings[i].prox += m_pcRNG->Uniform(m_cNoiseRange);
+            m_tReadings[i].val += m_pcRNG->Uniform(m_cNoiseRange);
          }
+         /* Trunc the reading between 0 and 1 */
+//         UNIT.TruncValue(m_tReadings[i]);
       }
    }
 
@@ -139,7 +137,8 @@ namespace argos {
 
    void CProximityDefaultSensor::Reset() {
       for(UInt32 i = 0; i < GetReadings().size(); ++i) {
-         m_tReadings[i] = {0.0f, CCI_ProximitySensor::intersec_t::Type::NONE};
+         m_tReadings[i].val = 0.0f;
+         m_tReadings[i].isRobot = false;
       }
    }
 
@@ -147,6 +146,7 @@ namespace argos {
    /****************************************/
 
    Real CProximityDefaultSensor::CalculateReading(Real f_distance) {
+       // CHANGED FROM ORIGINAL FOOTBOT CODE
       return f_distance;
    }
 
@@ -158,12 +158,17 @@ namespace argos {
                    "Carlo Pinciroli [ilpincy@gmail.com]",
                    "1.0",
                    "A generic proximity sensor.",
+
                    "This sensor accesses a set of proximity sensors. The sensors all return a value\n"
                    "between 0 and 1, where 0 means nothing within range and 1 means an external\n"
                    "object is touching the sensor. Values between 0 and 1 depend on the distance of\n"
                    "the occluding object, and are calculated as value=exp(-distance). In\n"
                    "controllers, you must include the ci_proximity_sensor.h header.\n\n"
+
+                   "This sensor is enabled by default.\n\n"
+
                    "REQUIRED XML CONFIGURATION\n\n"
+
                    "  <controllers>\n"
                    "    ...\n"
                    "    <my_controller ...>\n"
@@ -177,7 +182,9 @@ namespace argos {
                    "    </my_controller>\n"
                    "    ...\n"
                    "  </controllers>\n\n"
+
                    "OPTIONAL XML CONFIGURATION\n\n"
+
                    "It is possible to draw the rays shot by the proximity sensor in the OpenGL\n"
                    "visualization. This can be useful for sensor debugging but also to understand\n"
                    "what's wrong in your controller. In OpenGL, the rays are drawn in cyan when\n"
@@ -185,6 +192,7 @@ namespace argos {
                    "obstructed, a black dot is drawn where the intersection occurred.\n"
                    "To turn this functionality on, add the attribute \"show_rays\" as in this\n"
                    "example:\n\n"
+
                    "  <controllers>\n"
                    "    ...\n"
                    "    <my_controller ...>\n"
@@ -199,10 +207,12 @@ namespace argos {
                    "    </my_controller>\n"
                    "    ...\n"
                    "  </controllers>\n\n"
+
                    "It is possible to add uniform noise to the sensors, thus matching the\n"
                    "characteristics of a real robot better. This can be done with the attribute\n"
                    "\"noise_level\", whose allowed range is in [-1,1] and is added to the calculated\n"
                    "reading. The final sensor reading is always normalized in the [0-1] range.\n\n"
+
                    "  <controllers>\n"
                    "    ...\n"
                    "    <my_controller ...>\n"
@@ -217,6 +227,7 @@ namespace argos {
                    "    </my_controller>\n"
                    "    ...\n"
                    "  </controllers>\n\n",
+
                    "Usable"
 		  );
 

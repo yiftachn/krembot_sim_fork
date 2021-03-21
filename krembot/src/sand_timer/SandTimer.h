@@ -40,15 +40,16 @@
  * Milliseconds timer
  */
 
+
 using millis_time_t = float;
 #define PERIOD_RATIO 2
 
 class SandTimer
 {
 private:
-    millis_time_t start_time_{0};
-    millis_time_t end_time_{0};
-    millis_time_t period_ {1000};
+    millis_time_t start_time_{0.0f};
+    millis_time_t end_time_{0.0f};
+    millis_time_t period_ {1000.0f};
     bool started_ {false};
     static millis_time_t ticks_per_sec_;
 

@@ -29,7 +29,7 @@ namespace argos {
          m_cControllableEntity(c_controllable_entity),
          m_bShowRays(b_show_rays),
          m_fDistanceNoiseStdDev(f_noise_std_dev),
-         m_pcRNG(NULL) {
+         m_pcRNG(nullptr) {
          m_pcRootSensingEntity = &m_cEmbodiedEntity.GetParent();
          if(m_fDistanceNoiseStdDev > 0.0f) {
             m_pcRNG = CRandom::CreateRNG("argos");
@@ -120,12 +120,11 @@ namespace argos {
    /****************************************/
 
    CColoredBlobOmnidirectionalCameraRotZOnlySensor::CColoredBlobOmnidirectionalCameraRotZOnlySensor() :
-      m_bEnabled(false),
-      m_pcOmnicamEntity(NULL),
-      m_pcControllableEntity(NULL),
-      m_pcEmbodiedEntity(NULL),
-      m_pcLEDIndex(NULL),
-      m_pcEmbodiedIndex(NULL),
+      m_pcOmnicamEntity(nullptr),
+      m_pcControllableEntity(nullptr),
+      m_pcEmbodiedEntity(nullptr),
+      m_pcLEDIndex(nullptr),
+      m_pcEmbodiedIndex(nullptr),
       m_bShowRays(false) {
    }
 
@@ -175,33 +174,36 @@ namespace argos {
       catch(CARGoSException& ex) {
          THROW_ARGOSEXCEPTION_NESTED("Error initializing the colored blob omnidirectional camera rotzonly sensor", ex);
       }
+      /* sensor is disabled by default */
+      Disable();
    }
 
    /****************************************/
    /****************************************/
-    /**
-     * Elhay: Changes were made to this function to increase the range of the colores camera
-     */
-   void CColoredBlobOmnidirectionalCameraRotZOnlySensor::Update() {
 
-      if(m_bEnabled) {
-         /* Increase data counter */
-         ++m_sReadings.Counter;
-         /* Calculate range on the ground */
-         CVector3 cCameraPos = m_pcOmnicamEntity->GetOffset();
-         cCameraPos += m_pcEmbodiedEntity->GetOriginAnchor().Position;
-         Real fGroundHalfRange = cCameraPos.GetZ() * Tan(m_pcOmnicamEntity->GetAperture());
-         /* Prepare the operation */
-//         fprintf(stderr, "range: %f", fGroundHalfRange);
-         m_pcOperation->Setup(fGroundHalfRange + 0.3); //elhay: added 0.3 m for increased range. original range is 0.233536
-         /* Go through LED entities in box range */
-         m_pcLEDIndex->ForEntitiesInBoxRange(
-            CVector3(cCameraPos.GetX(),
-                     cCameraPos.GetY(),
-                     cCameraPos.GetZ() * 0.5f),
-            CVector3(fGroundHalfRange, fGroundHalfRange, cCameraPos.GetZ() * 0.5f),
-            *m_pcOperation);
+   void CColoredBlobOmnidirectionalCameraRotZOnlySensor::Update() {
+      /* sensor is disabled--nothing to do */
+      if (IsDisabled()) {
+        return;
       }
+
+      /* Increase data counter */
+      ++m_sReadings.Counter;
+      /* Calculate range on the ground */
+      CVector3 cCameraPos = m_pcOmnicamEntity->GetOffset();
+      cCameraPos += m_pcEmbodiedEntity->GetOriginAnchor().Position;
+      Real fGroundHalfRange = cCameraPos.GetZ() * Tan(m_pcOmnicamEntity->GetAperture());
+      /* Prepare the operation */
+
+      // CHANGED FROM ORIGINAL FOOTBOT CODE
+      m_pcOperation->Setup(fGroundHalfRange);
+      /* Go through LED entities in box range */
+      m_pcLEDIndex->ForEntitiesInBoxRange(
+         CVector3(cCameraPos.GetX(),
+                  cCameraPos.GetY(),
+                  cCameraPos.GetZ() * 0.5f),
+         CVector3(fGroundHalfRange, fGroundHalfRange, cCameraPos.GetZ() * 0.5f),
+         *m_pcOperation);
    }
 
    /****************************************/
@@ -224,7 +226,7 @@ namespace argos {
 
    void CColoredBlobOmnidirectionalCameraRotZOnlySensor::Enable() {
       m_pcOmnicamEntity->Enable();
-      m_bEnabled = true;
+      CCI_Sensor::Enable();
    }
 
    /****************************************/
@@ -232,7 +234,7 @@ namespace argos {
 
    void CColoredBlobOmnidirectionalCameraRotZOnlySensor::Disable() {
       m_pcOmnicamEntity->Disable();
-      m_bEnabled = false;
+      CCI_Sensor::Disable();
    }
 
    /****************************************/
@@ -242,12 +244,18 @@ namespace argos {
                    "colored_blob_omnidirectional_camera", "rot_z_only",
                    "Carlo Pinciroli [ilpincy@gmail.com]",
                    "1.0",
+
                    "A generic omnidirectional camera sensor to detect colored blobs.",
                    "This sensor accesses an omnidirectional camera that detects colored blobs. The\n"
                    "sensor returns a list of blobs, each defined by a color and a position with\n"
                    "respect to the robot reference point on the ground. In controllers, you must\n"
                    "include the ci_colored_blob_omnidirectional_camera_sensor.h header.\n\n"
+
+                   "This sensor is disabled by default, and must be enabled before it can be\n"
+                   "used.\n\n"
+
                    "REQUIRED XML CONFIGURATION\n\n"
+
                    "  <controllers>\n"
                    "    ...\n"
                    "    <my_controller ...>\n"
@@ -262,9 +270,12 @@ namespace argos {
                    "    </my_controller>\n"
                    "    ...\n"
                    "  </controllers>\n\n"
+
                    "The 'medium' attribute must be set to the id of the leds medium declared in the\n"
                    "<media> section.\n\n"
+
                    "OPTIONAL XML CONFIGURATION\n\n"
+
                    "It is possible to draw the rays shot by the camera sensor in the OpenGL\n"
                    "visualization. This can be useful for sensor debugging but also to understand\n"
                    "what's wrong in your controller. In OpenGL, the rays are drawn in cyan when\n"
@@ -272,6 +283,7 @@ namespace argos {
                    "obstructed, a black dot is drawn where the intersection occurred.\n"
                    "To turn this functionality on, add the attribute \"show_rays\" as in this\n"
                    "example:\n\n"
+
                    "  <controllers>\n"
                    "    ...\n"
                    "    <my_controller ...>\n"
@@ -287,6 +299,7 @@ namespace argos {
                    "    </my_controller>\n"
                    "    ...\n"
                    "  </controllers>\n\n"
+
                    "It is possible to add uniform noise to the blobs, thus matching the\n"
                    "characteristics of a real robot better. This can be done with the attribute\n"
                    "\"noise_std_dev\".\n\n"
@@ -304,7 +317,17 @@ namespace argos {
                    "      ...\n"
                    "    </my_controller>\n"
                    "    ...\n"
-                   "  </controllers>\n",
+                   "  </controllers>\n\n"
+
+                   "OPTIMIZATION HINTS\n\n"
+
+                   "1. For small swarms, enabling the sensor (and therefore causing ARGoS to\n"
+                   "   update its readings each timestep) unconditionally does not impact performance too\n"
+                   "   much. For large swarms, it can impact performance, and selectively\n"
+                   "   enabling/disabling the sensor according to when each individual robot needs it\n"
+                   "   (e.g., only when it is looking for an LED equipped entity) can increase performance\n"
+                   "   by only requiring ARGoS to update the readings on timesteps they will be used.\n",
+
                    "Usable"
 		  );
 

@@ -27,7 +27,7 @@ namespace argos {
 
    /****************************************/
    /****************************************/
-   /*********** TODO :: change in footbot code
+   /*********** CHANGED FROM ORIGINAL FOOTBOT CODE
         krembot Dimensions
         static const Real BODY_RADIUS                = 0.035036758f;
         static const Real BODY_HEIGHT                = 0.106899733f;

@@ -58,7 +58,12 @@ class KrembotController : public CCI_Controller {
 
 public:
     virtual ~KrembotController() = default;
-    
+
+    /*
+     * This function initializes the controller.
+     * The 't_node' variable points to the <parameters> section in the XML
+     * file in the <controllers><footbot_diffusion_controller> section.
+     */
     virtual void Init(TConfigurationNode& t_node);
 
     /*

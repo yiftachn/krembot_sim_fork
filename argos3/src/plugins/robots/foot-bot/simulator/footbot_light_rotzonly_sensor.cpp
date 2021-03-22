@@ -18,7 +18,7 @@ namespace argos {
    /****************************************/
 
    static CRange<Real> SENSOR_RANGE(0.0f, 1.0f);
-    // TODO : CHANGE IN FOOTBOT CODE
+    // CHANGED FROM ORIGINAL FOOTBOT CODE
    static CRadians SENSOR_SPACING      = CRadians(ARGOS_PI / 4.0f);
    static CRadians SENSOR_HALF_SPACING = SENSOR_SPACING * 0.5;
 
@@ -69,7 +69,7 @@ namespace argos {
          m_pcLightEntity = &(c_entity.GetComponent<CLightSensorEquippedEntity>("light_sensors"));
          m_pcLightEntity->Enable();
 
-          // TODO : CHANGE IN FOOTBOT CODE
+          // CHANGED FROM ORIGINAL FOOTBOT CODE
           m_cRobot = &c_entity;
       }
       catch(CARGoSException& ex) {
@@ -130,7 +130,7 @@ namespace argos {
       SEmbodiedEntityIntersectionItem sIntersection;
       /* List of light entities */
 
-       // TODO : CHANGE IN FOOTBOT CODE
+       // CHANGED FROM ORIGINAL FOOTBOT CODE
        auto itLights = m_cSpace.GetEntityMapPerTypePerId().find("light");
        if (itLights != m_cSpace.GetEntityMapPerTypePerId().end()) {
            CSpace::TMapPerType& mapLights = itLights->second;

@@ -83,7 +83,7 @@ namespace argos {
       CSpace& m_cSpace;
 
 
-       // TODO : CHANGE IN FOOTBOT CODE
+       // CHANGED FROM ORIGINAL FOOTBOT CODE
        CComposableEntity * m_cRobot; // elhay
    };
 

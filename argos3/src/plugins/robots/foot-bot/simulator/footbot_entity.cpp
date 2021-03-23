@@ -30,12 +30,11 @@ namespace argos {
    /****************************************/
    /*********** CHANGED FROM ORIGINAL FOOTBOT CODE
         krembot Dimensions
-        static const Real BODY_RADIUS                = 0.035036758f;
+        static const Real BODY_RADIUS                = 0.035036758f; //width 6.5 cm
         static const Real BODY_HEIGHT                = 0.106899733f;
     *******************************************************/
-   #define DISTANCE_RATIO_KREMBOT 2.427072676   // footbot-BODY_RADIUS / krembot-BODY_RADIUS
 
-   #define DISTANCE_RATIO_KREMBOT 2.616515631
+   #define DISTANCE_RATIO_KREMBOT 2.616515631 // footbot-BODY_RADIUS(=17) / krembot-BODY_RADIUS(=6.5)
 
    static const Real BODY_RADIUS                = 0.085036758f; //width 17 cm
    static const Real BODY_HEIGHT                = 0.146899733f;

@@ -98,7 +98,7 @@ namespace argos {
          /* Compute reading */
          /* Get the closest intersection */
 
-          // TODO:: ADDED
+          // CHANGED FROM ORIGINAL FOOTBOT CODE
          bool intersected = GetClosestEmbodiedEntityIntersectedByRay(sIntersection,
                                                                      cScanningRay,
                                                                      *m_pcEmbodiedEntity);
@@ -146,7 +146,7 @@ namespace argos {
    /****************************************/
 
    Real CProximityDefaultSensor::CalculateReading(Real f_distance) {
-       // TODO :: changed
+       // CHANGED FROM ORIGINAL FOOTBOT CODE
       return f_distance;
    }
 

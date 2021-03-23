@@ -196,7 +196,7 @@ namespace argos {
       Real fGroundHalfRange = cCameraPos.GetZ() * Tan(m_pcOmnicamEntity->GetAperture());
       /* Prepare the operation */
 
-      // TODO : change in argos code - add 0.3 to increase the range - shouldn't be here
+      // CHANGED FROM ORIGINAL FOOTBOT CODE
       m_pcOperation->Setup(fGroundHalfRange);
       /* Go through LED entities in box range */
       m_pcLEDIndex->ForEntitiesInBoxRange(

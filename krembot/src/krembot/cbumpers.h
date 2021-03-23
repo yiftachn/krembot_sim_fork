@@ -50,7 +50,7 @@
  * and then, return it to the proportions of the original sensor
  * (so that the robots' code works in the same way)
  * */
-#define DISTANCE_RATIO 2.427072676
+#define DISTANCE_RATIO 2.616515631
 
 using namespace argos;
 

@@ -40,15 +40,15 @@ using namespace argos;
 //using intersect_t = CCI_ProximitySensor::intersec_t;
 
 RGBASensor::RGBASensor() :
-        // sensors limits in cm (according to Robotican)
+// sensors limits in cm (according to Robotican)
         m_ProxRange{20, 255},
         m_DistRange{6.96, 25.51} { }
 
 void RGBASensor::init(const std::string name,
-                        uint8_t index,
-                        CCI_FootBotProximitySensor * proximity,
-                        CCI_FootBotLightSensor * light,
-                        CCI_ColoredBlobOmnidirectionalCameraSensor * colorCam)
+                      uint8_t index,
+                      CCI_FootBotProximitySensor * proximity,
+                      CCI_FootBotLightSensor * light,
+                      CCI_ColoredBlobOmnidirectionalCameraSensor * colorCam)
 {
     m_name = name;
     m_index = index;
@@ -332,4 +332,3 @@ void RGBASensor::print() {
     printHSV();
     printColor();
 }
-

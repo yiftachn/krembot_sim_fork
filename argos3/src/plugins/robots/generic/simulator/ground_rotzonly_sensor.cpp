@@ -23,10 +23,10 @@ namespace argos {
    /****************************************/
 
    CGroundRotZOnlySensor::CGroundRotZOnlySensor() :
-      m_pcEmbodiedEntity(NULL),
-      m_pcFloorEntity(NULL),
-      m_pcGroundSensorEntity(NULL),
-      m_pcRNG(NULL),
+      m_pcEmbodiedEntity(nullptr),
+      m_pcFloorEntity(nullptr),
+      m_pcGroundSensorEntity(nullptr),
+      m_pcRNG(nullptr),
       m_bAddNoise(false),
       m_cSpace(CSimulator::GetInstance().GetSpace()) {}
 
@@ -62,12 +62,18 @@ namespace argos {
       catch(CARGoSException& ex) {
          THROW_ARGOSEXCEPTION_NESTED("Initialization error in rotzonly ground sensor", ex);
       }
+      /* sensor is enabled by default */
+      Enable();
    }
 
    /****************************************/
    /****************************************/
-   
+
    void CGroundRotZOnlySensor::Update() {
+      /* sensor is disabled--nothing to do */
+      if (IsDisabled()) {
+        return;
+      }
       /*
        * We make the assumption that the robot is rotated only wrt to Z
        */
@@ -125,11 +131,15 @@ namespace argos {
                    "Carlo Pinciroli [ilpincy@gmail.com]",
                    "1.0",
                    "A generic ground sensor (optimized for 2D).",
+
                    "This sensor accesses a set of ground sensors. The sensors all return a value\n"
                    "between 0 and 1, where 0 means black and 1 means white. Depending on the type\n"
                    "of ground sensor, readings can either take 0 or 1 as value (bw sensors) or a\n"
                    "value in between (grayscale sensors). In controllers, you must include the\n"
                    "ci_ground_sensor.h header.\n\n"
+
+                   "This sensor is enabled by default.\n\n"
+
                    "REQUIRED XML CONFIGURATION\n\n"
                    "  <controllers>\n"
                    "    ...\n"
@@ -144,7 +154,9 @@ namespace argos {
                    "    </my_controller>\n"
                    "    ...\n"
                    "  </controllers>\n\n"
+
                    "OPTIONAL XML CONFIGURATION\n\n"
+
                    "It is possible to add uniform noise to the sensors, thus matching the\n"
                    "characteristics of a real robot better. This can be done with the attribute\n"
                    "\"noise_level\", whose allowed range is in [-1,1] and is added to the calculated\n"
@@ -162,9 +174,8 @@ namespace argos {
                    "      ...\n"
                    "    </my_controller>\n"
                    "    ...\n"
-                   "  </controllers>\n\n"
-                   "OPTIONAL XML CONFIGURATION\n\n"
-                   "None.\n",
+                   "  </controllers>\n\n",
+
                    "Usable"
 		  );
 

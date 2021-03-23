@@ -22,10 +22,10 @@ namespace argos {
    /****************************************/
 
    CRangeAndBearingMediumSensor::CRangeAndBearingMediumSensor() :
-      m_pcRangeAndBearingEquippedEntity(NULL),
+      m_pcRangeAndBearingEquippedEntity(nullptr),
       m_fDistanceNoiseStdDev(0.0f),
       m_fPacketDropProb(0.0f),
-      m_pcRNG(NULL),
+      m_pcRNG(nullptr),
       m_cSpace(CSimulator::GetInstance().GetSpace()),
       m_bShowRays(false) {}
 
@@ -61,18 +61,22 @@ namespace argos {
          m_pcRangeAndBearingMedium = &(CSimulator::GetInstance().GetMedium<CRABMedium>(strMedium));
          /* Assign RAB entity to the medium */
          m_pcRangeAndBearingEquippedEntity->SetMedium(*m_pcRangeAndBearingMedium);
-         /* Enable the RAB equipped entity */
-         m_pcRangeAndBearingEquippedEntity->Enable();
       }
       catch(CARGoSException& ex) {
          THROW_ARGOSEXCEPTION_NESTED("Error initializing the range and bearing medium sensor", ex);
       }
+      /* sensor is enabled by default */
+      Enable();
    }
 
    /****************************************/
    /****************************************/
 
    void CRangeAndBearingMediumSensor::Update() {
+      /* sensor is disabled--nothing to do */
+      if (IsDisabled()) {
+        return;
+      }
       /** TODO: there's a more efficient way to implement this */
       /* Delete old readings */
       m_tReadings.clear();
@@ -86,7 +90,7 @@ namespace argos {
       for(CSet<CRABEquippedEntity*>::iterator it = setRABs.begin();
           it != setRABs.end(); ++it) {
          /* Should we drop this packet? */
-         if(m_pcRNG == NULL || /* No noise to apply */
+         if(m_pcRNG == nullptr || /* No noise to apply */
             !(m_fPacketDropProb > 0.0f &&
               m_pcRNG->Bernoulli(m_fPacketDropProb)) /* Packet is not dropped */
             ) {
@@ -149,6 +153,22 @@ namespace argos {
       m_tReadings.clear();
    }
 
+
+   /****************************************/
+   /****************************************/
+   void CRangeAndBearingMediumSensor::Enable() {
+     m_pcRangeAndBearingEquippedEntity->Enable();
+     CCI_Sensor::Enable();
+   }
+
+   /****************************************/
+   /****************************************/
+
+   void CRangeAndBearingMediumSensor::Disable() {
+     m_pcRangeAndBearingEquippedEntity->Disable();
+     CCI_Sensor::Disable();
+   }
+
    /****************************************/
    /****************************************/
 
@@ -164,6 +184,7 @@ namespace argos {
                    "Carlo Pinciroli [ilpincy@gmail.com]",
                    "1.0",
                    "The range-and-bearing sensor.",
+
                    "This sensor allows robots to perform situated communication, i.e., a form of\n"
                    "wireless communication whereby the receiver also knows the location of the\n"
                    "sender with respect to its own frame of reference.\n"
@@ -174,6 +195,9 @@ namespace argos {
                    "range-and-bearing actuator.\n"
                    "To use this sensor, in controllers you must include the\n"
                    "ci_range_and_bearing_sensor.h header.\n\n"
+
+                   "This sensor is enabled by default.\n\n"
+
                    "REQUIRED XML CONFIGURATION\n\n"
                    "  <controllers>\n"
                    "    ...\n"
@@ -189,15 +213,19 @@ namespace argos {
                    "    </my_controller>\n"
                    "    ...\n"
                    "  </controllers>\n\n"
+
                    "The 'medium' attribute must be set to the id of the range-and-bearing medium\n"
                    "declared in the <media> section.\n\n"
+
                    "OPTIONAL XML CONFIGURATION\n\n"
+
                    "It is possible to draw the rays shot by the range-and-bearing sensor in the\n"
                    "OpenGL visualization. This can be useful for sensor debugging but also to\n"
                    "understand what's wrong in your controller. In OpenGL, the rays are drawn in\n"
                    "cyan when two robots are communicating.\n"
                    "To turn this functionality on, add the attribute \"show_rays\" as in this\n"
                    "example:\n\n"
+
                    "  <controllers>\n"
                    "    ...\n"
                    "    <my_controller ...>\n"
@@ -213,6 +241,7 @@ namespace argos {
                    "    </my_controller>\n"
                    "    ...\n"
                    "  </controllers>\n\n"
+
                    "It is possible to add noise to the readings, thus matching the characteristics\n"
                    "of a real robot better. Noise is implemented as a random vector added to the\n"
                    "vector joining two communicating robots. For the random vector, the inclination\n"
@@ -220,6 +249,7 @@ namespace argos {
                    "and the length is drawn from a Gaussian distribution. The standard deviation of\n"
                    "the Gaussian distribution is expressed in meters and set by the user through\n"
                    "the attribute 'noise_std_dev' as shown in this example:\n\n"
+
                    "  <controllers>\n"
                    "    ...\n"
                    "    <my_controller ...>\n"
@@ -235,9 +265,11 @@ namespace argos {
                    "    </my_controller>\n"
                    "    ...\n"
                    "  </controllers>\n\n"
+
                    "In addition, it is possible to specify the probability that a packet gets lost\n"
                    "even though the robot should have received it (i.e., packet dropping). To set\n"
                    "this probability, use the attribute 'packet_drop_prob' as shown in the example:\n"
+
                    "  <controllers>\n"
                    "    ...\n"
                    "    <my_controller ...>\n"
@@ -253,6 +285,7 @@ namespace argos {
                    "    </my_controller>\n"
                    "    ...\n"
                    "  </controllers>\n" ,
+
                    "Usable");
    
 }

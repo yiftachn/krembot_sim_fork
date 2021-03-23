@@ -53,7 +53,7 @@ namespace argos {
              itLED != itLED.end();
              ++itLED) {
             /* Initialise the LED using the XML */
-            CDirectionalLEDEntity* pcLED = new CDirectionalLEDEntity(this);
+            auto* pcLED = new CDirectionalLEDEntity(this);
             pcLED->Init(*itLED);
             CVector3 cPositionOffset;
             GetNodeAttribute(*itLED, "position", cPositionOffset);
@@ -70,7 +70,7 @@ namespace argos {
              * 3. the "body" is an embodied entity
              * If any of the above is false, this line will bomb out.
              */
-            CEmbodiedEntity& cBody =
+            auto& cBody =
                GetParent().GetComponent<CEmbodiedEntity>("body");
             /* Add the LED to this container */
             m_vecInstances.emplace_back(*pcLED,
@@ -90,15 +90,16 @@ namespace argos {
    /****************************************/
    /****************************************/
 
-   void CDirectionalLEDEquippedEntity::AddLED(const CVector3& c_position,
+   void CDirectionalLEDEquippedEntity::AddLED(const std::string& str_id,
+                                              const CVector3& c_position,
                                               const CQuaternion& c_orientation,
                                               SAnchor& s_anchor,
                                               const CRadians& c_observable_angle,
                                               const CColor& c_color) {
       /* create the new directional LED entity */
-      CDirectionalLEDEntity* pcLED =
+      auto* pcLED =
          new CDirectionalLEDEntity(this,
-                                   "directional_led_" + std::to_string(m_vecInstances.size()),
+                                   str_id,
                                    c_position,
                                    c_orientation,
                                    c_observable_angle,

@@ -43,7 +43,7 @@ namespace argos {
          if(strScriptFileName != "") {
             SetLuaScript(strScriptFileName, t_tree);
             if(! m_bIsOK) {
-               THROW_ARGOSEXCEPTION("Error loading Lua script \"" << strScriptFileName << "\": " << lua_tostring(m_ptLuaState, -1));
+               THROW_ARGOSEXCEPTION("Error setting Lua script");
             }
          }
          else {
@@ -116,16 +116,29 @@ namespace argos {
       m_ptLuaState = luaL_newstate();
       /* Load the Lua libraries */
       luaL_openlibs(m_ptLuaState);
+      /* Create and set variables */
+      CreateLuaState();
+      SensorReadingsToLuaState();
+      ParametersToLuaState(t_tree);
+      /* Add the path of the script to package.path */
+      const std::string& strScriptPath =
+         str_script.substr(0, str_script.find_last_of('/'));
+      std::string strPackagePath;
+      strPackagePath += (strScriptPath + "/?.lua;");
+      strPackagePath += (strScriptPath + "/?/init.lua;");
+      lua_getglobal(m_ptLuaState, "package");
+      lua_getfield(m_ptLuaState, -1, "path");
+      strPackagePath += lua_tostring(m_ptLuaState, -1);
+      lua_pop(m_ptLuaState, 1);
+      lua_pushstring(m_ptLuaState, strPackagePath.c_str());
+      lua_setfield(m_ptLuaState, -2, "path");
+      lua_pop(m_ptLuaState, 1);
       /* Load script */
       if(!CLuaUtility::LoadScript(m_ptLuaState, str_script)) {
          m_bIsOK = false;
          return;
       }
       m_strScriptFileName = str_script;
-      /* Create and set variables */
-      CreateLuaState();
-      SensorReadingsToLuaState();
-      ParametersToLuaState(t_tree);
       /* Execute script init function */
       if(!CLuaUtility::CallLuaFunction(m_ptLuaState, "init")) {
          m_bIsOK = false;
@@ -150,9 +163,9 @@ namespace argos {
       /* Register functions */
       CLuaUtility::RegisterLoggerWrapper(m_ptLuaState);
       /* Register metatables */
-      CLuaVector2::RegisterMetatable(m_ptLuaState);
-      CLuaVector3::RegisterMetatable(m_ptLuaState);
-      CLuaQuaternion::RegisterMetatable(m_ptLuaState);
+      CLuaVector2::RegisterType(m_ptLuaState);
+      CLuaVector3::RegisterType(m_ptLuaState);
+      CLuaQuaternion::RegisterType(m_ptLuaState);
       /* Create a table that will contain the state of the robot */
       lua_newtable(m_ptLuaState);
       /* Set the id of the robot */

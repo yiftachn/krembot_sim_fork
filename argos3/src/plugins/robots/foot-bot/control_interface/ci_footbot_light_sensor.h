@@ -40,6 +40,8 @@ namespace argos {
 #include <argos3/core/utility/math/angles.h>
 #include <vector>
 
+#define NUM_OF_Light_SENSORS 8
+
 namespace argos {
 
    class CCI_FootBotLightSensor : public CCI_Sensor {

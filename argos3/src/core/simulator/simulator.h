@@ -97,9 +97,6 @@ namespace argos {
        */
       static CSimulator& GetInstance();
 
-      UInt32 GetTicksPerSec() const { return m_unTicksPerSec; }
-       
-
       /**
        * Returns a reference to the simulated space.
        * @return A reference to the simulated space.
@@ -375,6 +372,7 @@ namespace argos {
        */
       bool IsExperimentFinished() const;
 
+
    private:
 
       void InitFramework(TConfigurationNode& t_tree);
@@ -392,8 +390,6 @@ namespace argos {
       typedef std::map<std::string, TConfigurationNode*> TControllerConfigurationMap;
 
    private:
-
-       UInt32 m_unTicksPerSec;
 
       /**
        * A map <id, XML config> for the controllers.

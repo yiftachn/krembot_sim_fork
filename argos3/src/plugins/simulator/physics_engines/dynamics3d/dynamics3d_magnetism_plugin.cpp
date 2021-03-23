@@ -9,10 +9,8 @@
 #include "dynamics3d_magnetism_plugin.h"
 
 #include <argos3/plugins/simulator/physics_engines/dynamics3d/dynamics3d_model.h>
-#include <algorithm>
 
-#include <argos3/plugins/simulator/physics_engines/dynamics3d/dynamics3d_multi_body_object_model.h>
-#include <argos3/plugins/simulator/physics_engines/dynamics3d/bullet/BulletDynamics/Featherstone/btMultiBodyLink.h>
+#include <algorithm>
 
 namespace argos {
 
@@ -42,7 +40,7 @@ namespace argos {
    /****************************************/
 
    void CDynamics3DMagnetismPlugin::UnregisterModel(CDynamics3DModel& c_model) {
-      std::vector<SMagneticDipole>::iterator itRemove =
+      auto itRemove =
          std::remove_if(std::begin(m_vecDipoles),
                         std::end(m_vecDipoles),
                         [&c_model] (const SMagneticDipole& c_magnetic_dipole) {
@@ -59,10 +57,10 @@ namespace argos {
          /* Nothing to do */
          return;
       }
-      for(std::vector<SMagneticDipole>::iterator itDipole0 = std::begin(m_vecDipoles);
+      for(auto itDipole0 = std::begin(m_vecDipoles);
           itDipole0 != (std::end(m_vecDipoles) - 1);
           ++itDipole0) {
-         for(std::vector<SMagneticDipole>::iterator itDipole1 = std::next(itDipole0, 1);
+         for(auto itDipole1 = std::next(itDipole0, 1);
              itDipole1 != std::end(m_vecDipoles);
              ++itDipole1) {
             const btTransform& cTransformDipole0 = itDipole0->Offset * itDipole0->Body->GetTransform();

@@ -144,6 +144,7 @@ set(ARGOS3_HEADERS_PLUGINS_SIMULATOR_PHYSICS_ENGINES_DYNAMICS3D_BULLET_BULLETCOL
    bullet/BulletCollision/Gimpact/gim_linear_math.h
    bullet/BulletCollision/Gimpact/gim_math.h
    bullet/BulletCollision/Gimpact/gim_memory.h
+   bullet/BulletCollision/Gimpact/gim_pair.h
    bullet/BulletCollision/Gimpact/gim_radixsort.h
    bullet/BulletCollision/Gimpact/gim_tri_collision.h)
 
@@ -215,6 +216,7 @@ set(ARGOS3_HEADERS_PLUGINS_SIMULATOR_PHYSICS_ENGINES_DYNAMICS3D_BULLET_BULLETDYN
    bullet/BulletDynamics/Featherstone/btMultiBodyDynamicsWorld.h
    bullet/BulletDynamics/Featherstone/btMultiBodyFixedConstraint.h
    bullet/BulletDynamics/Featherstone/btMultiBodyGearConstraint.h
+   bullet/BulletDynamics/Featherstone/btMultiBodyInplaceSolverIslandCallback.h
    bullet/BulletDynamics/Featherstone/btMultiBodyJointFeedback.h
    bullet/BulletDynamics/Featherstone/btMultiBodyJointLimitConstraint.h
    bullet/BulletDynamics/Featherstone/btMultiBodyJointMotor.h
@@ -253,10 +255,12 @@ set(ARGOS3_HEADERS_PLUGINS_SIMULATOR_PHYSICS_ENGINES_DYNAMICS3D_BULLET_LINEARMAT
    bullet/LinearMath/btGrahamScan2dConvexHull.h
    bullet/LinearMath/btHashMap.h
    bullet/LinearMath/btIDebugDraw.h
+   bullet/LinearMath/btImplicitQRSVD.h
    bullet/LinearMath/btList.h
    bullet/LinearMath/btMatrix3x3.h
    bullet/LinearMath/btMatrixX.h
    bullet/LinearMath/btMinMax.h
+   bullet/LinearMath/btModifiedGramSchmidt.h
    bullet/LinearMath/btMotionState.h
    bullet/LinearMath/btPolarDecomposition.h
    bullet/LinearMath/btPoolAllocator.h
@@ -264,6 +268,7 @@ set(ARGOS3_HEADERS_PLUGINS_SIMULATOR_PHYSICS_ENGINES_DYNAMICS3D_BULLET_LINEARMAT
    bullet/LinearMath/btQuaternion.h
    bullet/LinearMath/btQuickprof.h
    bullet/LinearMath/btRandom.h
+   bullet/LinearMath/btReducedVector.h
    bullet/LinearMath/btScalar.h
    bullet/LinearMath/btSerializer.h
    bullet/LinearMath/btSpatialAlgebra.h
@@ -440,6 +445,7 @@ set(ARGOS3_SOURCES_PLUGINS_SIMULATOR_PHYSICS_ENGINES_DYNAMICS3D_BULLET
    bullet/LinearMath/btGeometryUtil.cpp
    bullet/LinearMath/btPolarDecomposition.cpp
    bullet/LinearMath/btQuickprof.cpp
+   bullet/LinearMath/btReducedVector.cpp
    bullet/LinearMath/btSerializer.cpp
    bullet/LinearMath/btSerializer64.cpp
    bullet/LinearMath/btThreads.cpp
@@ -455,12 +461,12 @@ if(APPLE)
   set_source_files_properties(
     ${ARGOS3_SOURCES_PLUGINS_SIMULATOR_PHYSICS_ENGINES_DYNAMICS3D_BULLET}
     PROPERTIES
-    COMPILE_FLAGS "-Wno-strict-aliasing -Wno-sign-compare -Wno-unused-function -Wno-unused-variable")
+    COMPILE_FLAGS "-Wno-everything")
 else(APPLE)
   set_source_files_properties(
     ${ARGOS3_SOURCES_PLUGINS_SIMULATOR_PHYSICS_ENGINES_DYNAMICS3D_BULLET}
     PROPERTIES
-    COMPILE_FLAGS "-Wno-strict-aliasing -Wno-sign-compare -Wno-unused-function -Wno-unused-variable -Wno-unused-but-set-variable -Wno-uninitialized -Wno-comment -Wno-misleading-indentation -Wno-maybe-uninitialized -Wno-class-memaccess")
+    COMPILE_FLAGS "-w")
 endif(APPLE)
 
 #

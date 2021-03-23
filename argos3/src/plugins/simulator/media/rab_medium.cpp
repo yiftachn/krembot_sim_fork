@@ -42,9 +42,9 @@ namespace argos {
          if(strPosIndexMethod == "grid") {
             size_t punGridSize[3];
             if(!NodeAttributeExists(t_tree, "grid_size")) {
-               punGridSize[0] = cArenaSize.GetX();
-               punGridSize[1] = cArenaSize.GetY();
-               punGridSize[2] = cArenaSize.GetZ();
+               punGridSize[0] = static_cast<size_t>(cArenaSize.GetX());
+               punGridSize[1] = static_cast<size_t>(cArenaSize.GetY());
+               punGridSize[2] = static_cast<size_t>(cArenaSize.GetZ());
             }
             else {
                std::string strPosGridSize;
@@ -93,7 +93,7 @@ namespace argos {
 
    void CRABMedium::Destroy() {
       delete m_pcRABEquippedEntityIndex;
-      if(m_pcRABEquippedEntityGridUpdateOperation != NULL) {
+      if(m_pcRABEquippedEntityGridUpdateOperation != nullptr) {
          delete m_pcRABEquippedEntityGridUpdateOperation;
       }
    }
@@ -204,6 +204,7 @@ namespace argos {
          std::make_pair<ssize_t, CSet<CRABEquippedEntity*,SEntityComparator> >(
             c_entity.GetIndex(), CSet<CRABEquippedEntity*,SEntityComparator>()));
       m_pcRABEquippedEntityIndex->AddEntity(c_entity);
+      m_pcRABEquippedEntityIndex->Update();
    }
 
    /****************************************/
@@ -211,6 +212,7 @@ namespace argos {
 
    void CRABMedium::RemoveEntity(CRABEquippedEntity& c_entity) {
       m_pcRABEquippedEntityIndex->RemoveEntity(c_entity);
+      m_pcRABEquippedEntityIndex->Update();
       TRoutingTable::iterator it = m_tRoutingTable.find(c_entity.GetIndex());
       if(it != m_tRoutingTable.end())
          m_tRoutingTable.erase(it);

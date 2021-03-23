@@ -170,6 +170,26 @@ namespace argos {
       virtual void EntityDeselected(CEntity& c_entity) {}
 
       /**
+       * Called every time an entity is moved.
+       * @param c_entity The moved entity.
+       * @param c_old_pos The old position of the entity.
+       * @param c_new_pos The new position of the entity.
+       */
+      virtual void EntityMoved(CEntity& c_entity,
+                               const CVector3& c_old_pos,
+                               const CVector3& c_new_pos) {}
+
+      /**
+       * Called every time an entity is rotated.
+       * @param c_entity The rotated entity.
+       * @param c_old_orientation The old orientation of the entity.
+       * @param c_new_orientation The new orientation of the entity.
+       */
+      virtual void EntityRotated(CEntity& c_entity,
+                                 const CQuaternion& c_old_orientation,
+                                 const CQuaternion& c_new_orientation) {}
+
+      /**
        * Returns the currently selected entity, or NULL.
        */
       CEntity* GetSelectedEntity();

@@ -16,6 +16,8 @@ namespace argos {
    class CEmbodiedEntity;
 }
 
+#include <functional>
+
 #include <argos3/core/utility/configuration/base_configurable_resource.h>
 #include <argos3/core/simulator/simulator.h>
 #include <argos3/core/simulator/space/space.h>
@@ -180,6 +182,10 @@ namespace argos {
          return m_cSpace;
       }
 
+      inline const CSpace& GetSpace() const {
+        return m_cSpace;
+      }
+
       /**
        * Moves the entity to the wanted position and orientation.
        * @param c_entity The positional component of the entity to move.
@@ -198,12 +204,14 @@ namespace argos {
        * @param c_position The wanted position.
        * @param c_orientation The wanted orientation.
        * @param b_check_only If <tt>false</tt>, the movement is executed; otherwise, the object is not actually moved.
+       * @param b_ignore_collisions If <tt>false</tt>, collisions are considered; if <tt>true</tt>, collisions are ignored
        * @return <tt>true</tt> if no collisions were detected, <tt>false</tt> otherwise.
        */
       virtual bool MoveEntity(CEmbodiedEntity& c_entity,
                               const CVector3& c_position,
                               const CQuaternion& c_orientation,
-                              bool b_check_only = false);
+                              bool b_check_only = false,
+                              bool b_ignore_collisions = false);
 
       /**
        * Adds the passed entity to the simulation.
@@ -227,6 +235,35 @@ namespace argos {
        * @param c_entity A reference to the entity to remove.
        */
       virtual void RemoveEntity(CEntity& c_entity);
+
+
+     /**
+      * \brief Iterate over all controllable entities currently present in the
+      * arena (including those that are currently disabled) executing the
+      * specified callback on each.
+      *
+      * The specified callback can be executed in a multi-threaded context,
+      * depending on configuration (i.e. how many threads were specified in the
+      * input file) improving simulation efficiency by re-using ARGoS threads
+      * rather than the loop functions having to create/maintain its own thread
+      * pool(s). If multiple ARGoS threads are specified, the following
+      * operations CANNOT be safely performed on the entity passed to each
+      * callback:
+      *
+      * - Entity removal
+      * - Creating a new entity based on the current one
+      *
+      * Furthermore, iteration over controllable entities can be performed AT
+      * MOST twice in one timestep: one time in PreStep(), and one time in
+      * PostStep(). Mutiple iteration attempts in either function will cause a
+      * deadlock due to how iteration is implemented.
+      *
+      * @see PostStep()
+      * @see PreStep()
+      */
+      void IterateOverControllableEntities(const CSpace::TControllableEntityIterCBType& c_cb) const {
+        m_cSpace.IterateOverControllableEntities(c_cb);
+      }
 
    private:
 

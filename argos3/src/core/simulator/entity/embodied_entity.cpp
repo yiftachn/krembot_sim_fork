@@ -19,8 +19,8 @@ namespace argos {
    CEmbodiedEntity::CEmbodiedEntity(CComposableEntity* pc_parent) :
       CEntity(pc_parent),
       m_bMovable(true),
-      m_sBoundingBox(NULL),
-      m_psOriginAnchor(NULL) {}
+      m_sBoundingBox(nullptr),
+      m_psOriginAnchor(nullptr) {}
 
    /****************************************/
    /****************************************/
@@ -32,7 +32,7 @@ namespace argos {
                                     bool b_movable) :
       CEntity(pc_parent, str_id),
       m_bMovable(b_movable),
-      m_sBoundingBox(NULL),
+      m_sBoundingBox(nullptr),
       m_psOriginAnchor(new SAnchor(*this,
                                    "origin",
                                    0,
@@ -51,10 +51,10 @@ namespace argos {
    /****************************************/
 
    CEmbodiedEntity::~CEmbodiedEntity() {
-      if(!m_bMovable && m_sBoundingBox != NULL) {
+      if(!m_bMovable && m_sBoundingBox != nullptr) {
          delete m_sBoundingBox;
       }
-      for(std::map<std::string, SAnchor*>::iterator it = m_mapAnchors.begin();
+      for(auto it = m_mapAnchors.begin();
           it != m_mapAnchors.end(); ++it) {
          /* it->second points to the current anchor */
          delete it->second;
@@ -101,7 +101,7 @@ namespace argos {
       m_psOriginAnchor->Orientation = m_cInitOriginOrientation;
       /* Reset other anchors */
       SAnchor* psAnchor;
-      for(std::map<std::string, SAnchor*>::iterator it = m_mapAnchors.begin();
+      for(auto it = m_mapAnchors.begin();
           it != m_mapAnchors.end(); ++it) {
          /* it->second points to the current anchor */
          psAnchor = it->second;
@@ -132,7 +132,7 @@ namespace argos {
       /* Calculate anchor orientation */
       CQuaternion cOrient = m_psOriginAnchor->Orientation * c_offset_orientation;
       /* Create anchor */
-      SAnchor* psAnchor = new SAnchor(*this,
+      auto* psAnchor = new SAnchor(*this,
                                       str_id,
                                       m_mapAnchors.size(),
                                       c_offset_position,
@@ -149,7 +149,7 @@ namespace argos {
 
    void CEmbodiedEntity::EnableAnchor(const std::string& str_id) {
       /* Lookup the anchor id */
-      std::map<std::string, SAnchor*>::iterator it = m_mapAnchors.find(str_id);
+      auto it = m_mapAnchors.find(str_id);
       /* Found? */
       if(it == m_mapAnchors.end()) {
          THROW_ARGOSEXCEPTION("Embodied entity \"" << GetContext() + GetId() << "\" has no anchor with id " << str_id);
@@ -170,7 +170,7 @@ namespace argos {
       /* Cannot disable the origin anchor */
       if(str_id == "origin") return;
       /* Lookup the anchor id */
-      std::vector<SAnchor*>::iterator it = std::find(m_vecEnabledAnchors.begin(),
+      auto it = std::find(m_vecEnabledAnchors.begin(),
                                                      m_vecEnabledAnchors.end(),
                                                      str_id);
       /* Found? */
@@ -189,7 +189,7 @@ namespace argos {
 
    const SAnchor& CEmbodiedEntity::GetAnchor(const std::string& str_id) const {
       /* Lookup the anchor id */
-      std::map<std::string, SAnchor*>::const_iterator it = m_mapAnchors.find(str_id);
+      auto it = m_mapAnchors.find(str_id);
       /* Found? */
       if(it == m_mapAnchors.end()) {
          THROW_ARGOSEXCEPTION("Embodied entity \"" << GetContext() + GetId() << "\" has no anchor with id " << str_id);
@@ -203,7 +203,7 @@ namespace argos {
 
    SAnchor& CEmbodiedEntity::GetAnchor(const std::string& str_id) {
       /* Lookup the anchor id */
-      std::map<std::string, SAnchor*>::iterator it = m_mapAnchors.find(str_id);
+      auto it = m_mapAnchors.find(str_id);
       /* Found? */
       if(it == m_mapAnchors.end()) {
          THROW_ARGOSEXCEPTION("Embodied entity \"" << GetContext() + GetId() << "\" has no anchor with id " << str_id);
@@ -261,11 +261,11 @@ namespace argos {
    /****************************************/
 
    void CEmbodiedEntity::RemovePhysicsModel(const std::string& str_engine_id) {
-      CPhysicsModel::TMap::iterator itMap = m_tPhysicsModelMap.find(str_engine_id);
+      auto itMap = m_tPhysicsModelMap.find(str_engine_id);
       if(itMap == m_tPhysicsModelMap.end()) {
          THROW_ARGOSEXCEPTION("Entity \"" << GetContext() << GetId() << "\" has no associated entity in physics engine " << str_engine_id);
       }
-      CPhysicsModel::TVector::iterator itVec = std::find(m_tPhysicsModelVector.begin(),
+      auto itVec = std::find(m_tPhysicsModelVector.begin(),
                                                          m_tPhysicsModelVector.end(),
                                                          itMap->second);
       m_tPhysicsModelMap.erase(itMap);
@@ -297,7 +297,7 @@ namespace argos {
    /****************************************/
 
    const CPhysicsModel& CEmbodiedEntity::GetPhysicsModel(const std::string& str_engine_id) const {
-      CPhysicsModel::TMap::const_iterator it = m_tPhysicsModelMap.find(str_engine_id);
+      auto it = m_tPhysicsModelMap.find(str_engine_id);
       if(it == m_tPhysicsModelMap.end()) {
          THROW_ARGOSEXCEPTION("Entity \"" << GetContext() << GetId() << "\" has no associated entity in physics engine \"" << str_engine_id << "\"");
       }
@@ -308,7 +308,7 @@ namespace argos {
    /****************************************/
 
    CPhysicsModel& CEmbodiedEntity::GetPhysicsModel(const std::string& str_engine_id) {
-      CPhysicsModel::TMap::iterator it = m_tPhysicsModelMap.find(str_engine_id);
+      auto it = m_tPhysicsModelMap.find(str_engine_id);
       if(it == m_tPhysicsModelMap.end()) {
          THROW_ARGOSEXCEPTION("Entity \"" << GetContext() << GetId() << "\" has no associated entity in physics engine \"" << str_engine_id << "\"");
       }
@@ -320,7 +320,8 @@ namespace argos {
 
    bool CEmbodiedEntity::MoveTo(const CVector3& c_position,
                                 const CQuaternion& c_orientation,
-                                bool b_check_only) {
+                                bool b_check_only,
+                                bool b_ignore_collisions) {
       /* Can't move an entity with no model associated */
       if(GetPhysicsModelsNum() == 0) return false;
       /* Save current position and orientation */
@@ -330,7 +331,7 @@ namespace argos {
       if(m_bMovable) {
          /* Move entity and check for collisions */
          m_tPhysicsModelVector[0]->MoveTo(c_position, c_orientation);
-         bool bNoCollision = ! m_tPhysicsModelVector[0]->IsCollidingWithSomething();
+         bool bNoCollision = b_ignore_collisions || (! m_tPhysicsModelVector[0]->IsCollidingWithSomething());
          /* Depending on the presence of collisions... */
          if(bNoCollision && !b_check_only) {
             /* No collision and not a simple check */
@@ -350,7 +351,7 @@ namespace argos {
          bool bNoCollision = true;
          for(i = 0; i < m_tPhysicsModelVector.size() && bNoCollision; ++i) {
             m_tPhysicsModelVector[i]->MoveTo(c_position, c_orientation);
-            bNoCollision = !m_tPhysicsModelVector[i]->IsCollidingWithSomething();
+            bNoCollision = b_ignore_collisions || !m_tPhysicsModelVector[i]->IsCollidingWithSomething();
          }
          if(bNoCollision && !b_check_only) {
             /* No collision and not a simple check */
@@ -388,7 +389,7 @@ namespace argos {
          }
          else {
             /* The bounding box is obtained taking the extrema of all the bboxes of all the engines */
-            if(m_sBoundingBox == NULL) {
+            if(m_sBoundingBox == nullptr) {
                m_sBoundingBox = new SBoundingBox();
             }
             *m_sBoundingBox = m_tPhysicsModelVector[0]->GetBoundingBox();
@@ -407,11 +408,11 @@ namespace argos {
          /*
           * No physics engine entity associated
           */
-         if(! m_bMovable && m_sBoundingBox != NULL) {
+         if(! m_bMovable && m_sBoundingBox != nullptr) {
             /* A non-movable entity has its own bounding box, delete it */
             delete m_sBoundingBox;
          }
-         m_sBoundingBox = NULL;
+         m_sBoundingBox = nullptr;
       }
    }
 

@@ -38,6 +38,9 @@ namespace argos {
       catch(CARGoSException& ex) {
          THROW_ARGOSEXCEPTION_NESTED("Can't set robot for the radios default sensor", ex);
       }
+
+      /* sensor is enabled by default */
+      Enable();
    }
 
    /****************************************/
@@ -59,6 +62,10 @@ namespace argos {
    /****************************************/
 
    void CRadiosDefaultSensor::Update() {
+      /* sensor is disabled--nothing to do */
+      if (IsDisabled()) {
+        return;
+      }
       for(size_t i = 0; i < m_pcRadioEquippedEntity->GetInstances().size(); ++i) {
          CRadioEntity& cRadio = m_pcRadioEquippedEntity->GetRadio(i);
          /* Clear data in the interface */
@@ -93,13 +100,18 @@ namespace argos {
                    "radios", "default",
                    "Michael Allwright [allsey87@gmail.com]",
                    "1.0",
+
                    "A generic radio sensor to receive messages from nearby radios.",
                    "This radio sensor implementation allows an arbitary number of messages\n"
                    "containing an arbitary number of bytes to be received from nearby robots. The\n"
                    "implementation is very basic and any concepts such as throughput, addressing,\n"
                    "or formatting of a message's contents is beyond the scope of this sensor's\n"
                    "implementation\n\n"
+
+                   "This sensor is enabled by default.\n\n"
+
                    "REQUIRED XML CONFIGURATION\n\n"
+
                    "  <controllers>\n"
                    "    ...\n"
                    "    <my_controller ...>\n"
@@ -113,10 +125,14 @@ namespace argos {
                    "    </my_controller>\n"
                    "    ...\n"
                    "  </controllers>\n\n"
+
                    "The 'medium' attribute sets the id of the radio medium declared in the <media>\n"
                    "XML section.\n\n"
+
                    "OPTIONAL XML CONFIGURATION\n\n"
+
                    "None.\n",
+
                    "Usable"
    );
 

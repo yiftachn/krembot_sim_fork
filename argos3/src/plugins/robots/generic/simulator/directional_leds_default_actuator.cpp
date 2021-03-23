@@ -22,7 +22,13 @@ namespace argos {
    void CDirectionalLEDsDefaultActuator::SetRobot(CComposableEntity& c_entity) {
       m_pcDirectionalLEDEquippedEntity = 
          &(c_entity.GetComponent<CDirectionalLEDEquippedEntity>("directional_leds"));
-      m_tSettings.resize(m_pcDirectionalLEDEquippedEntity->GetInstances().size());
+      m_tSettings.reserve(m_pcDirectionalLEDEquippedEntity->GetInstances().size());
+      /* populate m_tSettings with the initial configuration */
+      for(const CDirectionalLEDEquippedEntity::SInstance& s_instance :
+          m_pcDirectionalLEDEquippedEntity->GetInstances()) {
+         m_tSettings.push_back(s_instance.LED.GetColor());
+      }
+      m_tInitSettings = m_tSettings;
    }
 
    /****************************************/
@@ -48,7 +54,7 @@ namespace argos {
    /****************************************/
 
    void CDirectionalLEDsDefaultActuator::Reset() {
-      SetAllColors(CColor::BLACK);
+      SetAllColors(m_tInitSettings);
    }
 
    /****************************************/
@@ -59,8 +65,10 @@ namespace argos {
                      "Michael Allwright [allsey87@gmail.com]",
                      "1.0",
                      "The directional LEDs actuator.",
+
                      "This actuator controls a group of directional LEDs. For a complete description\n"
                      "of its usage, refer to the ci_leds_actuator.h file.\n\n"
+
                      "REQUIRED XML CONFIGURATION\n\n"
                      "  <controllers>\n"
                      "    ...\n"
@@ -75,9 +83,12 @@ namespace argos {
                      "    </my_controller>\n"
                      "    ...\n"
                      "  </controllers>\n\n"
+
                      "The 'medium' attribute sets the id of the LED medium declared in the <media>\n"
                      "XML section.\n\n"
+
                      "OPTIONAL XML CONFIGURATION\n\n"
+
                      "None.\n",
                      "Usable"
    );

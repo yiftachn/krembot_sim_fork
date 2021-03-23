@@ -115,9 +115,9 @@ namespace argos {
       for(SInt32 i = 0; i < cDispatcher.getNumManifolds(); i++) {
          const btPersistentManifold* pcContactManifold =
             cDispatcher.getManifoldByIndexInternal(i);
-         const CDynamics3DModel* pcModelA =
+         const auto* pcModelA =
             static_cast<const CDynamics3DModel*>(pcContactManifold->getBody0()->getUserPointer());
-         const CDynamics3DModel* pcModelB =
+         const auto* pcModelB =
             static_cast<const CDynamics3DModel*>(pcContactManifold->getBody1()->getUserPointer());
          /* Ignore self-collisions */
          if(pcModelA == pcModelB) {
@@ -146,11 +146,11 @@ namespace argos {
    /****************************************/
 
    void CDynamics3DModel::UpdateEntityStatus() {
-      /* Update the anchor associated with each body before running the base class's UpdateEntityStatus
-         which updates the bounding box and origin anchor */
+      /* Update the anchor associated with each body */
       for(const std::shared_ptr<CAbstractBody>& ptr_body : m_vecBodies) {
          ptr_body->UpdateAnchor();
       }
+      /* Call CPhysicsModel::UpdateEntityStatus which updates the AABB and origin anchor */
       CPhysicsModel::UpdateEntityStatus();
    }
   

@@ -8,7 +8,6 @@
 #include <argos3/core/simulator/simulator.h>
 #include <argos3/core/simulator/space/space.h>
 #include <argos3/plugins/simulator/media/led_medium.h>
-#include <argos3/plugins/simulator/entities/light_entity.h>
 
 namespace argos {
 
@@ -16,8 +15,8 @@ namespace argos {
    /****************************************/
 
    CLightEntity::CLightEntity() :
-      CLEDEntity(NULL)
-      {}
+      CLEDEntity(nullptr),
+      m_fIntensity(1.0f) {}
       
    /****************************************/
    /****************************************/
@@ -26,11 +25,11 @@ namespace argos {
                               const CVector3& c_position,
                               const CColor& c_color,
                               Real f_intensity) :
-      CLEDEntity(NULL,
+      CLEDEntity(nullptr,
                  str_id,
                  c_position,
-                 c_color,
-                 f_intensity){}
+                 c_color),
+      m_fIntensity(f_intensity) {}
 
    /****************************************/
    /****************************************/
@@ -43,7 +42,7 @@ namespace argos {
          GetNodeAttribute(t_tree, "intensity", m_fIntensity);
          std::string strMedium;
          GetNodeAttribute(t_tree, "medium", strMedium);
-         CLEDMedium& cLEDMedium = CSimulator::GetInstance().GetMedium<CLEDMedium>(strMedium);
+         auto& cLEDMedium = CSimulator::GetInstance().GetMedium<CLEDMedium>(strMedium);
          cLEDMedium.AddEntity(*this);
       }
       catch(CARGoSException& ex) {

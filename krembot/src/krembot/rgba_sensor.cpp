@@ -39,6 +39,8 @@ using namespace argos;
 
 //using intersect_t = CCI_ProximitySensor::intersec_t;
 
+Real RGBASensor::DISTANCE_RATIO_KREMBOT;
+
 RGBASensor::RGBASensor() :
 // sensors limits in cm (according to Robotican)
         m_ProxRange{20, 255},
@@ -276,7 +278,6 @@ HSVResult RGBASensor::rgbToHSV(RGBAResult in)
 }
 
 
-
 void RGBASensor::printRGBA()
 {
     const RGBAResult result = readRGBA();
@@ -331,4 +332,10 @@ void RGBASensor::print() {
     printRGBA();
     printHSV();
     printColor();
+}
+
+
+void RGBASensor::set_DISTANCE_RATIO_KREMBOT(Real _DISTANCE_RATIO_KREMBOT)
+{
+    DISTANCE_RATIO_KREMBOT = _DISTANCE_RATIO_KREMBOT;
 }

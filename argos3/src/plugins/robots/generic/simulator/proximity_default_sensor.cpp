@@ -98,11 +98,11 @@ namespace argos {
          /* Compute reading */
          /* Get the closest intersection */
 
+
           // CHANGED FROM ORIGINAL FOOTBOT CODE
          bool intersected = GetClosestEmbodiedEntityIntersectedByRay(sIntersection,
                                                                      cScanningRay,
                                                                      *m_pcEmbodiedEntity);
-
           m_tReadings[i].isRobot = false;
          if(intersected) {
             /* There is an intersection */
@@ -118,7 +118,11 @@ namespace argos {
          }
          else{
             /* No intersection */
-            m_tReadings[i].val = 0.255f * DISTANCE_RATIO_KREMBOT ; // in meters
+
+             // CHANGED FROM ORIGINAL FOOTBOT CODE
+             Real range = cScanningRay.GetLength();
+
+            m_tReadings[i].val = range; // in meters
             if(m_bShowRays) {
                m_pcControllableEntity->AddCheckedRay(false, cScanningRay);
             }

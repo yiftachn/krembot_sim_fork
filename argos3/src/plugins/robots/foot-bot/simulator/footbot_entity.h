@@ -132,6 +132,9 @@ namespace argos {
          return "foot-bot";
       }
 
+       // CHANGED FROM ORIGINAL FOOTBOT CODE
+      static Real Get_DISTANCE_RATIO_KREMBOT();
+
    private:
 
       CControllableEntity*                   m_pcControllableEntity;

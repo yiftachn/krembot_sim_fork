@@ -57,7 +57,6 @@
  * and then, return it to the proportions of the original sensor
  * (so that the robots' code works in the same way)
  * */
-#define DISTANCE_RATIO_KREMBOT 2.616515631   // footbot-BODY_RADIUS / krembot-BODY_RADIUS
 
 using namespace argos;
 
@@ -104,6 +103,7 @@ private:
     argos::CCI_ColoredBlobOmnidirectionalCameraSensor * m_ColorCam = nullptr;
     argos::CRange<Real> m_ProxRange;
     argos::CRange<Real> m_DistRange;
+    static Real DISTANCE_RATIO_KREMBOT;
 
     float footbotDistanceToKrembotDistanceProximity(argos::Real footbot_distance);
     float footbotDistanceToKrembotDistanceColorCam(argos::Real footbot_distance);
@@ -143,6 +143,10 @@ public:
     {
         return m_ColorCam;
     }
+
+
+    static void set_DISTANCE_RATIO_KREMBOT(Real _DISTANCE_RATIO_KREMBOT);
+
 
 
 };

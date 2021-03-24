@@ -26,22 +26,13 @@
 
 namespace argos {
 
-   /****************************************/
-   /****************************************/
-   /*********** CHANGED FROM ORIGINAL FOOTBOT CODE
-        krembot Dimensions
-        static const Real BODY_RADIUS                = 0.035036758f;
-        static const Real BODY_HEIGHT                = 0.106899733f;
-    *******************************************************/
-   #define DISTANCE_RATIO_KREMBOT 2.427072676   // footbot-BODY_RADIUS / krembot-BODY_RADIUS
-
-   #define DISTANCE_RATIO_KREMBOT 2.616515631
-
    static const Real BODY_RADIUS                = 0.085036758f; //width 17 cm
    static const Real BODY_HEIGHT                = 0.146899733f;
 
-   //************************added*******************
-   // static const Real  DISTANCE_RATIO_KREMBOT  = BODY_RADIUS / KREMBOT_BODY_RADIUS;   // footbot-BODY_RADIUS / krembot-BODY_RADIUS
+   //***********  CHANGED FROM ORIGINAL FOOTBOT CODE
+   static const Real KREMBOT_BODY_RADIUS                = 0.0325f; //width 6.5 cm
+   static const Real KREMBOT_BODY_HEIGHT                = 0.0106899733f;
+   static const Real  DISTANCE_RATIO_KREMBOT  = BODY_RADIUS / KREMBOT_BODY_RADIUS;   // footbot-BODY_RADIUS / krembot-BODY_RADIUS
    //*************************************************/
 
    static const Real LED_RING_RADIUS            = BODY_RADIUS + 0.005;
@@ -504,7 +495,12 @@ namespace argos {
       UPDATE(m_pcImuEquippedEntity);
    }
 
-   /****************************************/
+    // CHANGED FROM ORIGINAL FOOTBOT CODE
+    Real CFootBotEntity::Get_DISTANCE_RATIO_KREMBOT() {
+        return DISTANCE_RATIO_KREMBOT;
+    }
+
+    /****************************************/
    /****************************************/
 
    REGISTER_ENTITY(CFootBotEntity,

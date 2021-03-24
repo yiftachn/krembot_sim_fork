@@ -34,6 +34,7 @@
 #include "krembot_controller.h"
 #include <argos3/core/utility/configuration/argos_configuration.h>
 #include <argos3/core/simulator/simulator.h>
+#include <argos3/plugins/robots/foot-bot/simulator/footbot_entity.h>
 
 void KrembotController::Init(TConfigurationNode& t_node) {
     //actuators
@@ -47,7 +48,6 @@ void KrembotController::Init(TConfigurationNode& t_node) {
     m_pcImu = GetSensor<CCI_FootBotImuSensor>("footbot_imu");
     m_pcCamera = GetSensor<CCI_ColoredBlobOmnidirectionalCameraSensor>("colored_blob_omnidirectional_camera");
     m_pcCamera->Enable();
-
     krembot.init(
             GetId(),
             m_pcWheels,
@@ -57,4 +57,6 @@ void KrembotController::Init(TConfigurationNode& t_node) {
             m_pcCamera,
             m_pcImu
     );
+
+    Krembot::set_DISTANCE_RATIO_KREMBOT(CFootBotEntity::Get_DISTANCE_RATIO_KREMBOT());
 }

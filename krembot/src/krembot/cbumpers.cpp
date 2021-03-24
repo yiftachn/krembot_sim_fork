@@ -38,6 +38,8 @@
 
 using namespace argos;
 
+Real CBumpers::DISTANCE_RATIO_KREMBOT;
+
 CBumpers::CBumpers() {
     m_bumpers.reserve(NUM_OF_BUMPERS);
     m_bumpers.push_back(&m_bump_front);
@@ -110,7 +112,7 @@ BumpersRes CBumpers::read()
         auto & bumper = m_bumpers.at(bumper_idx);
         Real distance = m_cProximity->GetReadings()[bumper_idx].Value * 100; // convert meters to cm
         //divide by DISTANCE_RATIO_KREMBOT in order to return it to the proportions of the original sensor
-        distance = distance / DISTANCE_RATIO;
+        distance = distance / DISTANCE_RATIO_KREMBOT;
         CalcNewBumperStateBasedOnProximity(
                 distance, *bumper
         );
@@ -135,4 +137,9 @@ void CBumpers::print()
 
 void CBumpers::countDown(uint8_t duration) {
 
+}
+
+void CBumpers::set_DISTANCE_RATIO_KREMBOT(Real _DISTANCE_RATIO_KREMBOT)
+{
+    DISTANCE_RATIO_KREMBOT = _DISTANCE_RATIO_KREMBOT;
 }

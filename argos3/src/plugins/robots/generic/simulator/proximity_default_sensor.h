@@ -21,8 +21,6 @@ namespace argos {
 #include <argos3/core/simulator/space/space.h>
 #include <argos3/core/simulator/sensor.h>
 
-#define DISTANCE_RATIO_KREMBOT 2.616515631   // footbot-BODY_RADIUS / krembot-BODY_RADIUS
-
 namespace argos {
 
    class CProximityDefaultSensor : public CSimulatedSensor,

@@ -115,6 +115,13 @@ public:
     inline void setup() { }
 
    inline void loop() {}
+
+    static void set_DISTANCE_RATIO_KREMBOT(Real _DISTANCE_RATIO_KREMBOT)
+    {
+        RGBASensor::set_DISTANCE_RATIO_KREMBOT(_DISTANCE_RATIO_KREMBOT);
+        CBumpers::set_DISTANCE_RATIO_KREMBOT(_DISTANCE_RATIO_KREMBOT);
+    }
+
 };
 
 #endif

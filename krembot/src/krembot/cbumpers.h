@@ -50,7 +50,6 @@
  * and then, return it to the proportions of the original sensor
  * (so that the robots' code works in the same way)
  * */
-#define DISTANCE_RATIO 2.616515631
 
 using namespace argos;
 
@@ -71,6 +70,7 @@ private:
     const MobileBase * m_base = nullptr;
 
     static const uint8_t NUM_OF_BUMPERS = 8;
+    static Real DISTANCE_RATIO_KREMBOT;
 
     /*
      * The following members are left here despite the fact
@@ -108,6 +108,8 @@ public:
     void printCalib() {};
     bool calib() {return true; };
     uint16_t readRaw() { return 0; };
+
+    static void set_DISTANCE_RATIO_KREMBOT(Real _DISTANCE_RATIO_KREMBOT);
 
 };
 
